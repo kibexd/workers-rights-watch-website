@@ -1121,6 +1121,9 @@ export default function ResourcesPage() {
                             </div>
                           </DialogTrigger>
                           <DialogContent className="bg-[#1A1A1A] dark:bg-[#1A1A1A] light:bg-white border-0 rounded-2xl max-w-5xl p-0">
+                            <DialogHeader>
+                              <DialogTitle className="sr-only">Image Gallery</DialogTitle>
+                            </DialogHeader>
                             <div className="relative h-[70vh]">
                               <Image
                                 src={selectedImage?.image || "/placeholder.svg"}

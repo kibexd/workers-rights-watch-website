@@ -189,7 +189,7 @@ export default function HomePage() {
       <section className="relative h-screen flex items-center">
         <div className="absolute inset-0 z-0">
           <Image
-            src="/2024_09_12_12_04_IMG_1159.jpg?height=1080&width=1920"
+            src="/pic1.jpg?height=1080&width=1920"
             alt="Workers in action"
             fill
             className="object-cover opacity-40 dark:opacity-40 light:opacity-20"

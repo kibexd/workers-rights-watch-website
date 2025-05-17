@@ -170,7 +170,7 @@ export default function Footer() {
           <p className="text-gray-500 dark:text-gray-500 light:text-gray-400 text-sm">
             Designed and Developed by{" "}
             <a
-              href="https://kifee.netlify.app/"
+              href="https://kife254.netlify.app"
               target="_blank"
               rel="noopener noreferrer"
               className="text-teal-500 hover:text-teal-400"

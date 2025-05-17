@@ -23,6 +23,14 @@ import {
 } from "lucide-react"
 import { motion } from "framer-motion"
 
+interface FormErrors {
+  name?: string;
+  email?: string;
+  subject?: string;
+  message?: string;
+  submit?: string;
+}
+
 export default function ContactPage() {
   const [formState, setFormState] = useState({
     name: "",
@@ -33,24 +41,24 @@ export default function ContactPage() {
 
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [isSubmitted, setIsSubmitted] = useState(false)
-  const [formErrors, setFormErrors] = useState({})
+  const [formErrors, setFormErrors] = useState<FormErrors>({})
 
-  const handleChange = (e) => {
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { id, value } = e.target
     setFormState((prev) => ({ ...prev, [id]: value }))
 
     // Clear error for this field if it exists
-    if (formErrors[id]) {
+    if (formErrors[id as keyof FormErrors]) {
       setFormErrors((prev) => {
         const newErrors = { ...prev }
-        delete newErrors[id]
+        delete newErrors[id as keyof FormErrors]
         return newErrors
       })
     }
   }
 
   const validateForm = () => {
-    const errors = {}
+    const errors: FormErrors = {}
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
 
     if (!formState.name.trim()) errors.name = "Name is required"
@@ -62,7 +70,7 @@ export default function ContactPage() {
     return errors
   }
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
 
     // Validate form
@@ -132,7 +140,7 @@ export default function ContactPage() {
       <section className="relative py-32">
         <div className="absolute inset-0 z-0">
           <Image
-            src="/placeholder.svg?height=600&width=1920"
+            src="/pic2.jpg?height=600&width=1920"
             alt="Contact Us"
             fill
             className="object-cover opacity-20 dark:opacity-20 light:opacity-10"
