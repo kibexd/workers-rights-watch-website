@@ -11,10 +11,25 @@ import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/u
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import { Badge } from "@/components/ui/badge"
 
+interface TeamMember {
+  id: number
+  name: string
+  title: string
+  image: string
+  bio: string
+  email?: string
+  linkedin?: string
+  twitter?: string
+  location: string
+  joinDate: string
+  expertise: string[]
+  education: string
+}
+
 export default function TeamPage() {
-  const [activeTab, setActiveTab] = useState("leadership")
-  const [selectedMember, setSelectedMember] = useState(null)
-  const [dialogOpen, setDialogOpen] = useState(false)
+  const [activeTab, setActiveTab] = useState<string>("leadership")
+  const [selectedMember, setSelectedMember] = useState<TeamMember | null>(null)
+  const [dialogOpen, setDialogOpen] = useState<boolean>(false)
 
   // Team members data
   const leadershipTeam = [
@@ -193,11 +208,11 @@ export default function TeamPage() {
     },
   ]
 
-  const handleTabChange = (value) => {
+  const handleTabChange = (value: string) => {
     setActiveTab(value)
   }
 
-  const openMemberProfile = (member) => {
+  const openMemberProfile = (member: TeamMember) => {
     setSelectedMember(member)
     setDialogOpen(true)
   }
@@ -206,10 +221,10 @@ export default function TeamPage() {
     setDialogOpen(false)
   }
 
-  const renderTeamMembers = (members) => {
+  const renderTeamMembers = (members: TeamMember[]) => {
     return (
       <div className="grid md:grid-cols-3 gap-8">
-        {members.map((member, index) => (
+        {members.map((member: TeamMember, index: number) => (
           <motion.div
             key={member.id}
             initial={{ opacity: 0, y: 40 }}
@@ -450,7 +465,7 @@ export default function TeamPage() {
                     <div>
                       <h4 className="text-xl font-semibold text-white mb-3">Areas of Expertise</h4>
                       <div className="flex flex-wrap gap-2">
-                        {selectedMember.expertise.map((skill, index) => (
+                        {selectedMember.expertise.map((skill: string, index: number) => (
                           <Badge key={index} className="bg-teal-500/20 text-teal-500 hover:bg-teal-500/30 px-3 py-1">
                             {skill}
                           </Badge>
