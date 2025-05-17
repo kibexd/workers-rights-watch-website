@@ -38,7 +38,7 @@ interface Video extends Resource {
   videoUrl: string
 }
 
-interface Image extends Resource {
+interface ImageResource extends Resource {
   description: string
   image: string
   location: string
@@ -49,7 +49,7 @@ interface Resources {
   articles: Article[]
   reports: Report[]
   videos: Video[]
-  images: Image[]
+  images: ImageResource[]
 }
 
 interface ActiveFilters {
@@ -58,6 +58,8 @@ interface ActiveFilters {
   videos: string[]
   images: string[]
 }
+
+type Image = ImageResource;
 
 export default function ResourcesPage() {
   const [activeTab, setActiveTab] = useState<string>("articles")
@@ -74,7 +76,7 @@ export default function ResourcesPage() {
     videos: [],
     images: [],
   })
-  const [selectedImage, setSelectedImage] = useState<Image | null>(null)
+  const [selectedImage, setSelectedImage] = useState<ImageResource | null>(null)
   const [currentImageIndex, setCurrentImageIndex] = useState<number>(0)
   const [isSearching, setIsSearching] = useState<boolean>(false)
 
@@ -86,7 +88,7 @@ export default function ResourcesPage() {
         title: "DelMonte Campaign",
         date: "March 15, 2024",
         excerpt: "Exploring the initial engagement of civil society in Kenya's cut-flower industry.",
-        image: "/placeholder.svg?height=400&width=600",
+        image: "/pic2.jpg",
         category: "Campaigns",
         content:
           "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed euismod, nisl vel ultricies lacinia, nisl nisl aliquam nisl, eu aliquam nisl nisl eu nisl.",
@@ -96,7 +98,7 @@ export default function ResourcesPage() {
         title: "Workers' Struggle In Kenya",
         date: "February 28, 2024",
         excerpt: "A historical perspective on the workers' movement in Kenya since colonial times.",
-        image: "/placeholder.svg?height=400&width=600",
+        image: "/pic3.jpg",
         category: "History",
         content:
           "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed euismod, nisl vel ultricies lacinia, nisl nisl aliquam nisl, eu aliquam nisl nisl eu nisl.",
@@ -106,7 +108,7 @@ export default function ResourcesPage() {
         title: "Women's Freedom to Work",
         date: "January 20, 2024",
         excerpt: "Addressing workplace harassment and promoting gender equality in the workplace.",
-        image: "/placeholder.svg?height=400&width=600",
+        image: "/pic4.jpg",
         category: "Gender Equality",
         content:
           "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed euismod, nisl vel ultricies lacinia, nisl nisl aliquam nisl, eu aliquam nisl nisl eu nisl.",
@@ -116,7 +118,7 @@ export default function ResourcesPage() {
         title: "The Future of Labor Unions",
         date: "December 12, 2023",
         excerpt: "Exploring the evolving role of unions in the modern workplace and economy.",
-        image: "/placeholder.svg?height=400&width=600",
+        image: "/pic1.jpg",
         category: "Unions",
         content:
           "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed euismod, nisl vel ultricies lacinia, nisl nisl aliquam nisl, eu aliquam nisl nisl eu nisl.",
@@ -126,7 +128,7 @@ export default function ResourcesPage() {
         title: "Workplace Safety Standards",
         date: "November 5, 2023",
         excerpt: "An overview of essential safety standards that every workplace should implement.",
-        image: "/placeholder.svg?height=400&width=600",
+        image: "/pic2.jpg",
         category: "Safety",
         content:
           "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed euismod, nisl vel ultricies lacinia, nisl nisl aliquam nisl, eu aliquam nisl nisl eu nisl.",
@@ -136,7 +138,7 @@ export default function ResourcesPage() {
         title: "Fair Wages Campaign",
         date: "October 18, 2023",
         excerpt: "Advocating for fair compensation and benefits for workers across all sectors.",
-        image: "/placeholder.svg?height=400&width=600",
+        image: "/pic3.jpg",
         category: "Campaigns",
         content:
           "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed euismod, nisl vel ultricies lacinia, nisl nisl aliquam nisl, eu aliquam nisl nisl eu nisl.",
@@ -149,11 +151,11 @@ export default function ResourcesPage() {
         date: "January 15, 2024",
         description: "Our comprehensive report on the progress and impact of our initiatives over the past year.",
         fileSize: "2.4 MB",
-        image: "/placeholder.svg?height=300&width=500",
+        image: "/pic4.jpg",
         category: "Annual Reports",
         content:
           "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed euismod, nisl vel ultricies lacinia, nisl nisl aliquam nisl, eu aliquam nisl nisl eu nisl.",
-        downloadUrl: "#",
+        downloadUrl: "/cli-handbook.pdf",
       },
       {
         id: 8,
@@ -161,11 +163,11 @@ export default function ResourcesPage() {
         date: "November 30, 2023",
         description: "A detailed analysis of labor rights violations across different sectors in Kenya.",
         fileSize: "3.1 MB",
-        image: "/placeholder.svg?height=300&width=500",
+        image: "/pic1.jpg",
         category: "Research",
         content:
           "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed euismod, nisl vel ultricies lacinia, nisl nisl aliquam nisl, eu aliquam nisl nisl eu nisl.",
-        downloadUrl: "#",
+        downloadUrl: "/report2.docx",
       },
       {
         id: 9,
@@ -173,11 +175,11 @@ export default function ResourcesPage() {
         date: "October 10, 2023",
         description: "Research findings on gender equality issues in Kenyan workplaces.",
         fileSize: "1.8 MB",
-        image: "/placeholder.svg?height=300&width=500",
+        image: "/pic2.jpg",
         category: "Gender Equality",
         content:
           "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed euismod, nisl vel ultricies lacinia, nisl nisl aliquam nisl, eu aliquam nisl nisl eu nisl.",
-        downloadUrl: "#",
+        downloadUrl: "/report3.pdf",
       },
       {
         id: 10,
@@ -185,11 +187,11 @@ export default function ResourcesPage() {
         date: "August 22, 2023",
         description: "Assessment of workplace safety conditions and recommendations for improvement.",
         fileSize: "2.7 MB",
-        image: "/placeholder.svg?height=300&width=500",
+        image: "/pic3.jpg",
         category: "Safety",
         content:
           "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed euismod, nisl vel ultricies lacinia, nisl nisl aliquam nisl, eu aliquam nisl nisl eu nisl.",
-        downloadUrl: "#",
+        downloadUrl: "/report4.pdf",
       },
     ],
     videos: [
@@ -199,11 +201,11 @@ export default function ResourcesPage() {
         date: "February 5, 2024",
         description: "An educational video on basic workers' rights and how to assert them.",
         duration: "15:24",
-        thumbnail: "/placeholder.svg?height=400&width=700",
+        thumbnail: "/pic4.jpg",
         category: "Education",
         content:
           "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed euismod, nisl vel ultricies lacinia, nisl nisl aliquam nisl, eu aliquam nisl nisl eu nisl.",
-        videoUrl: "#",
+        videoUrl: "https://www.youtube.com/watch?v=example1",
       },
       {
         id: 12,
@@ -211,11 +213,11 @@ export default function ResourcesPage() {
         date: "December 18, 2023",
         description: "Interviews with key figures in Kenya's labor movement discussing current challenges.",
         duration: "28:45",
-        thumbnail: "/placeholder.svg?height=400&width=700",
+        thumbnail: "/pic1.jpg",
         category: "Interviews",
         content:
           "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed euismod, nisl vel ultricies lacinia, nisl nisl aliquam nisl, eu aliquam nisl nisl eu nisl.",
-        videoUrl: "#",
+        videoUrl: "https://www.youtube.com/watch?v=example2",
       },
       {
         id: 13,
@@ -223,11 +225,11 @@ export default function ResourcesPage() {
         date: "October 5, 2023",
         description: "A comprehensive guide to workplace safety protocols and best practices.",
         duration: "22:10",
-        thumbnail: "/placeholder.svg?height=400&width=700",
+        thumbnail: "/pic2.jpg",
         category: "Safety",
         content:
           "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed euismod, nisl vel ultricies lacinia, nisl nisl aliquam nisl, eu aliquam nisl nisl eu nisl.",
-        videoUrl: "#",
+        videoUrl: "https://www.youtube.com/watch?v=example3",
       },
       {
         id: 14,
@@ -235,11 +237,11 @@ export default function ResourcesPage() {
         date: "September 12, 2023",
         description: "Addressing gender discrimination and promoting equality in professional settings.",
         duration: "19:35",
-        thumbnail: "/placeholder.svg?height=400&width=700",
+        thumbnail: "/pic3.jpg",
         category: "Gender Equality",
         content:
           "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed euismod, nisl vel ultricies lacinia, nisl nisl aliquam nisl, eu aliquam nisl nisl eu nisl.",
-        videoUrl: "#",
+        videoUrl: "https://www.youtube.com/watch?v=example4",
       },
     ],
     images: [
@@ -248,7 +250,7 @@ export default function ResourcesPage() {
         title: "Worker Education Workshop",
         date: "March 20, 2024",
         description: "Workers participating in our rights education workshop in Nairobi.",
-        image: "/placeholder.svg?height=600&width=800",
+        image: "/eunice.jpg",
         category: "Events",
         location: "Nairobi, Kenya",
       },
@@ -257,7 +259,7 @@ export default function ResourcesPage() {
         title: "Community Outreach Program",
         date: "February 15, 2024",
         description: "Our team engaging with local communities to raise awareness about labor rights.",
-        image: "/placeholder.svg?height=600&width=800",
+        image: "/pic1.jpg",
         category: "Outreach",
         location: "Mombasa, Kenya",
       },
@@ -266,7 +268,7 @@ export default function ResourcesPage() {
         title: "Annual Conference 2023",
         date: "December 5, 2023",
         description: "Participants at our annual conference discussing the future of labor rights in Kenya.",
-        image: "/placeholder.svg?height=600&width=800",
+        image: "/pic2.jpg",
         category: "Events",
         location: "Nairobi, Kenya",
       },
@@ -275,7 +277,7 @@ export default function ResourcesPage() {
         title: "Women's Rights Workshop",
         date: "November 10, 2023",
         description: "Women workers learning about their rights and gender equality in the workplace.",
-        image: "/placeholder.svg?height=600&width=800",
+        image: "/pic3.jpg",
         category: "Gender Equality",
         location: "Kisumu, Kenya",
       },
@@ -284,7 +286,7 @@ export default function ResourcesPage() {
         title: "Legal Aid Clinic",
         date: "October 25, 2023",
         description: "Our legal team providing free consultation to workers facing rights violations.",
-        image: "/placeholder.svg?height=600&width=800",
+        image: "/pic4.jpg",
         category: "Legal Support",
         location: "Nakuru, Kenya",
       },
@@ -293,7 +295,7 @@ export default function ResourcesPage() {
         title: "Advocacy Campaign Launch",
         date: "September 18, 2023",
         description: "Launch of our new advocacy campaign for fair wages across all sectors.",
-        image: "/placeholder.svg?height=600&width=800",
+        image: "/eunice.jpg",
         category: "Campaigns",
         location: "Nairobi, Kenya",
       },
@@ -459,7 +461,7 @@ export default function ResourcesPage() {
     })
   }
 
-  const handleImageClick = (image: Image, index: number) => {
+  const handleImageClick = (image: ImageResource, index: number) => {
     setSelectedImage(image)
     setCurrentImageIndex(index)
   }
@@ -521,7 +523,7 @@ export default function ResourcesPage() {
       <section className="relative py-32">
         <div className="absolute inset-0 z-0">
           <Image
-            src="/placeholder.svg?height=600&width=1920"
+            src="/pic2.jpg?height=600&width=1920"
             alt="Resources"
             fill
             className="object-cover opacity-20 dark:opacity-20 light:opacity-10"

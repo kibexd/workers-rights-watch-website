@@ -64,7 +64,7 @@ export default function AboutPage() {
       name: "Eunice M. Waweru",
       title: "Executive Director & Program Coordinator",
       bio: "Ms. Eunice has over 20 years experience as a trade unionist, working closely with labor movements and civil society organizations.",
-      image: "/placeholder.svg?height=400&width=400",
+      image: "/eunice1.jpg?height=400&width=400",
     },
     {
       name: "Caroline Ng'endo",
@@ -85,7 +85,7 @@ export default function AboutPage() {
       <section className="relative py-32">
         <div className="absolute inset-0 z-0">
           <Image
-            src="/placeholder.svg?height=600&width=1920"
+            src="/pic7.jpg?height=600&width=1920"
             alt="About Us"
             fill
             className="object-cover opacity-20 dark:opacity-20 light:opacity-10"
@@ -181,7 +181,7 @@ export default function AboutPage() {
                 >
                   <div className="relative h-full min-h-[300px]">
                     <Image
-                      src="/placeholder.svg?height=600&width=400"
+                      src="/pic8.jpg?height=600&width=400"
                       alt="Workers in action"
                       fill
                       className="object-cover"

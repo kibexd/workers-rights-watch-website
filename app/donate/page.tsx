@@ -10,6 +10,7 @@ import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import { motion } from "framer-motion"
 import { CheckCircle, CreditCard, DollarSign, Heart, Phone, AlertCircle, ChevronDown } from "lucide-react"
+import { loadStripe } from '@stripe/stripe-js'
 
 // Currency data with exchange rates (approximate)
 const currencies = [
@@ -46,6 +47,18 @@ const countryToCurrency = {
 // Default donation amounts in USD
 const defaultAmounts = [10, 25, 50, 100]
 
+// Initialize Stripe outside the component render function to avoid recreating it
+const getStripe = async () => {
+  // Ensure NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY is set in .env.local
+  const publishableKey = process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY;
+  if (!publishableKey) {
+      console.error("Stripe publishable key is not set.");
+      return null; // Or throw an error
+  }
+  const stripe = await loadStripe(publishableKey);
+  return stripe;
+};
+
 export default function DonatePage() {
   const [donationAmount, setDonationAmount] = useState("25")
   const [customAmount, setCustomAmount] = useState("")
@@ -61,6 +74,7 @@ export default function DonatePage() {
   const [countryCode, setCountryCode] = useState("")
   const [isDetectingLocation, setIsDetectingLocation] = useState(true)
   const [showCurrencySelector, setShowCurrencySelector] = useState(false)
+  const [mpesaStatusCheckInterval, setMpesaStatusCheckInterval] = useState<NodeJS.Timeout | null>(null); // State to hold the interval ID
 
   // Detect user's country on component mount
   useEffect(() => {
@@ -93,7 +107,15 @@ export default function DonatePage() {
     }
 
     detectCountry()
-  }, [])
+
+    // Clear interval on component unmount
+    return () => {
+        if (mpesaStatusCheckInterval) {
+            clearInterval(mpesaStatusCheckInterval);
+        }
+    };
+
+  }, []) // Add mpesaStatusCheckInterval to dependencies if you modify it outside useEffect
 
   // Convert amount from USD to selected currency
   const convertAmount = (amountUSD: number): number => {
@@ -122,20 +144,23 @@ export default function DonatePage() {
     const newCurrency = currencies.find((c) => c.code === currencyCode)
     if (newCurrency) {
       setCurrency(newCurrency)
+       // Reset amount selection when currency changes
+       setDonationAmount("25"); // Or set to a default in the new currency
     }
   }
 
   const getActualAmount = (): number => {
-    if (donationAmount === "custom" && customAmount) {
-      return Number.parseInt(customAmount, 10)
-    }
-    return Number.parseInt(donationAmount, 10)
+    const amount = donationAmount === "custom" && customAmount ? Number.parseFloat(customAmount) : Number.parseFloat(donationAmount);
+     // Ensure the amount is a valid number
+    return isNaN(amount) ? 0 : amount;
   }
 
   // Convert back to USD for processing
   const getAmountInUSD = (): number => {
-    const amount = getActualAmount()
-    return Math.round(amount / currency.rate)
+    const amount = getActualAmount();
+     if (amount === 0) return 0;
+     // Prevent division by zero if rate is somehow 0
+    return Math.round(amount / (currency.rate || 1));
   }
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
@@ -152,10 +177,12 @@ export default function DonatePage() {
       }
 
       if (paymentMethod === "card") {
-        // Commented out Stripe integration - to be implemented locally
-        /*
-        const stripe = await getStripe()
-        
+        // Uncommented Stripe integration
+        const stripe = await getStripe() // Get Stripe instance
+        if (!stripe) {
+             throw new Error("Stripe is not initialized."); // Handle Stripe initialization error
+        }
+
         // Create payment intent on the server
         const response = await fetch("/api/create-payment-intent", {
           method: "POST",
@@ -163,10 +190,10 @@ export default function DonatePage() {
             "Content-Type": "application/json",
           },
           body: JSON.stringify({
-            amount: amountUSD,
-            currency: "usd",
-            displayAmount: amount,
-            displayCurrency: currency.code,
+            amount: amountUSD, // Stripe usually processes in base currency (USD) and handles conversion
+            currency: "usd", // Send USD to backend API for Stripe
+            displayAmount: amount, // Send original amount for confirmation message
+            displayCurrency: currency.code, // Send original currency for confirmation message
             name: donorName,
             email: donorEmail,
             paymentMethod: "card",
@@ -174,45 +201,54 @@ export default function DonatePage() {
         })
 
         if (!response.ok) {
-          throw new Error("Failed to create payment intent")
+          const errorData = await response.json();
+          throw new Error(errorData.error || "Failed to create payment intent");
         }
 
         const { clientSecret } = await response.json()
 
-        // Redirect to Stripe Checkout
-        const { error } = await stripe.redirectToCheckout({
-          clientSecret,
-        })
+        // Redirect to Stripe Checkout (This is for a simple checkout flow)
+        // For a more integrated flow, you would use stripe.confirmCardPayment or Elements
+         const { error: stripeError } = await stripe.redirectToCheckout({ // Using redirectToCheckout example
+           sessionId: '{{SESSION_ID}}', // Replace with actual Session ID if using Checkout Sessions API
+         });
 
-        if (error) {
-          throw new Error(error.message)
+
+        if (stripeError) {
+          throw new Error(stripeError.message || "An error occurred during Stripe redirection.");
         }
-        */
 
-        // For demo purposes, simulate success
-        setTimeout(() => {
-          setIsProcessing(false)
-          setIsSuccess(true)
-        }, 2000)
+
+         // If using Elements/confirmCardPayment, the logic would be different here.
+         // You would collect card details using Elements and then call stripe.confirmCardPayment(clientSecret, ...)
+
+
+        // For demo purposes, simulate success - REMOVE THIS IN REAL IMPLEMENTATION
+        // setTimeout(() => {
+        //   setIsProcessing(false)
+        //   setIsSuccess(true)
+        // }, 2000)
+
+
       } else if (paymentMethod === "mpesa") {
-        // Commented out M-Pesa integration - to be implemented locally
-        /*
-        // Validate phone number
-        if (!mpesaNumber || mpesaNumber.length < 10) {
-          throw new Error("Please enter a valid M-Pesa phone number")
-        }
+        // Uncommented M-Pesa integration
 
-        // Call M-Pesa API
+        // Validate phone number (add more robust validation)
+        if (!mpesaNumber || mpesaNumber.length < 9 || !mpesaNumber.match(/^\d+$/)) { // Basic validation
+          throw new Error("Please enter a valid M-Pesa phone number");
+        }
+         // Format phone number if needed by your backend API (e.g., to 254...)
+         let formattedMpesaNumber = mpesaNumber; // Your backend API might handle formatting
+
+        // Call M-Pesa API route
         const response = await fetch("/api/mpesa-payment", {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
           },
           body: JSON.stringify({
-            amount,
-            amountUSD,
-            currency: currency.code,
-            phone: mpesaNumber,
+            amount: amount, // Send amount in KES for M-Pesa
+            phone: formattedMpesaNumber, // Send formatted phone number
             name: donorName,
             email: donorEmail,
           }),
@@ -220,47 +256,65 @@ export default function DonatePage() {
 
         if (!response.ok) {
           const errorData = await response.json()
-          throw new Error(errorData.message || "Failed to initiate M-Pesa payment")
+          throw new Error(errorData.error || "Failed to initiate M-Pesa payment")
         }
 
         const { success, checkoutRequestID } = await response.json()
 
-        if (!success) {
+        if (!success || !checkoutRequestID) {
           throw new Error("Failed to initiate M-Pesa payment")
         }
 
-        // Poll for payment status
+         // Inform user to check their phone for the M-Pesa prompt
+         alert("Please check your phone for the M-Pesa payment prompt to complete the donation."); // Or use a modal/UI element
+
+
+        // Poll for payment status - Requires an /api/mpesa-status endpoint (not provided)
+        // You need to create an API route /api/mpesa-status that checks Safaricom's status
+        /*
         const statusCheck = setInterval(async () => {
-          const statusResponse = await fetch(`/api/mpesa-status?checkoutRequestID=${checkoutRequestID}`)
+          const statusResponse = await fetch(`/api/mpesa-status?checkoutRequestID=${checkoutRequestID}`) // You need to create this endpoint
           const statusData = await statusResponse.json()
-          
-          if (statusData.status === "COMPLETED") {
+
+          if (statusData.status === "COMPLETED") { // Assuming your status endpoint returns a status field
             clearInterval(statusCheck)
+            setMpesaStatusCheckInterval(null); // Clear interval state
             setIsProcessing(false)
             setIsSuccess(true)
           } else if (statusData.status === "FAILED") {
             clearInterval(statusCheck)
+             setMpesaStatusCheckInterval(null); // Clear interval state
             setIsProcessing(false)
-            throw new Error("M-Pesa payment failed")
+            throw new Error("M-Pesa payment failed");
           }
-        }, 5000)
+           // Add a case for PENDING if needed
+        }, 5000); // Poll every 5 seconds
 
-        // Clear interval after 2 minutes (timeout)
+         setMpesaStatusCheckInterval(statusCheck); // Store interval ID in state
+
+
+        // Clear interval after a timeout (e.g., 2 minutes)
         setTimeout(() => {
-          clearInterval(statusCheck)
-          setIsProcessing(false)
-          throw new Error("Payment verification timed out. Please check your M-Pesa for confirmation.")
-        }, 120000)
+          if (mpesaStatusCheckInterval) { // Only clear if it's still active
+             clearInterval(mpesaStatusCheckInterval);
+             setMpesaStatusCheckInterval(null);
+             setIsProcessing(false);
+             setErrorMessage("Payment verification timed out. Please check your M-Pesa for confirmation.");
+          }
+        }, 120000); // 2 minutes timeout
         */
 
-        // For demo purposes, simulate success
+
+        // For demo purposes, simulate success - REMOVE THIS IN REAL IMPLEMENTATION
         setTimeout(() => {
           setIsProcessing(false)
           setIsSuccess(true)
         }, 2000)
+
+
       } else if (paymentMethod === "paypal") {
-        // Commented out PayPal integration - to be implemented locally
-        /*
+        // Uncommented PayPal integration
+
         // Redirect to PayPal
         const response = await fetch("/api/paypal-create-order", {
           method: "POST",
@@ -268,29 +322,32 @@ export default function DonatePage() {
             "Content-Type": "application/json",
           },
           body: JSON.stringify({
-            amount: amountUSD,
-            displayAmount: amount,
-            currency: currency.code,
+            amount: amountUSD, // Send USD to backend API for PayPal
             name: donorName,
             email: donorEmail,
           }),
         })
 
         if (!response.ok) {
-          throw new Error("Failed to create PayPal order")
+          const errorData = await response.json();
+          throw new Error(errorData.error || "Failed to create PayPal order");
         }
 
-        const { orderID, approvalUrl } = await response.json()
-        
-        // Redirect to PayPal approval URL
-        window.location.href = approvalUrl
-        */
+        const { orderID, approvalUrl } = await response.json() // Backend returns approvalUrl
 
-        // For demo purposes, simulate success
-        setTimeout(() => {
-          setIsProcessing(false)
-          setIsSuccess(true)
-        }, 2000)
+         if (!approvalUrl) {
+             throw new Error("Failed to get PayPal approval URL.");
+         }
+
+        // Redirect user to PayPal's approval URL
+        window.location.href = approvalUrl;
+
+
+        // For demo purposes, simulate success - REMOVE THIS IN REAL IMPLEMENTATION
+        // setTimeout(() => {
+        //   setIsProcessing(false)
+        //   setIsSuccess(true)
+        // }, 2000)
       }
     } catch (error) {
       if (error instanceof Error) {
@@ -299,6 +356,11 @@ export default function DonatePage() {
         setErrorMessage("An error occurred during payment processing")
       }
       setIsProcessing(false)
+       // Clear M-Pesa interval on error if it's active
+       if (mpesaStatusCheckInterval) {
+           clearInterval(mpesaStatusCheckInterval);
+           setMpesaStatusCheckInterval(null);
+       }
     }
   }
 
@@ -312,6 +374,11 @@ export default function DonatePage() {
     setMpesaNumber("")
     setIsSuccess(false)
     setErrorMessage("")
+     // Clear any active M-Pesa status check interval
+    if (mpesaStatusCheckInterval) {
+        clearInterval(mpesaStatusCheckInterval);
+        setMpesaStatusCheckInterval(null);
+    }
   }
 
   // Show M-Pesa option only for KES currency
@@ -322,7 +389,7 @@ export default function DonatePage() {
       <section className="relative py-32">
         <div className="absolute inset-0 z-0">
           <Image
-            src="/placeholder.svg?height=600&width=1920"
+            src="/pic7.jpg?height=600&width=1920"
             alt="Donate"
             fill
             className="object-cover opacity-20 dark:opacity-20 light:opacity-10"
@@ -383,7 +450,6 @@ export default function DonatePage() {
                 <CardContent className="p-8">
                   <form onSubmit={handleSubmit}>
                     <div className="space-y-8">
-                      {/* Currency Selector */}
                       <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
                         <h2 className="text-2xl font-bold text-white dark:text-white light:text-gray-900">
                           Choose Donation Amount
@@ -433,7 +499,6 @@ export default function DonatePage() {
                         </div>
                       </div>
 
-                      {/* Donation Amount Selection */}
                       <div>
                         <RadioGroup
                           value={donationAmount}
@@ -446,11 +511,11 @@ export default function DonatePage() {
                               <div key={amount}>
                                 <RadioGroupItem
                                   value={convertedAmount.toString()}
-                                  id={`amount-${convertedAmount}`}
+                                  id={`amount-${amount}`}
                                   className="peer sr-only"
                                 />
                                 <Label
-                                  htmlFor={`amount-${convertedAmount}`}
+                                  htmlFor={`amount-${amount}`}
                                   className="flex flex-col items-center justify-center h-24 rounded-xl border-2 border-gray-700 dark:border-gray-700 light:border-gray-300 bg-[#1A1A1A] dark:bg-[#1A1A1A] light:bg-white text-gray-300 dark:text-gray-300 light:text-gray-700 peer-data-[state=checked]:border-teal-500 peer-data-[state=checked]:text-teal-500 hover:bg-[#222222] dark:hover:bg-[#222222] light:hover:bg-gray-50 hover:text-white dark:hover:text-white light:hover:text-gray-900 cursor-pointer transition-all"
                                 >
                                   <span className="text-xl font-bold">{formatAmount(convertedAmount)}</span>
@@ -487,11 +552,14 @@ export default function DonatePage() {
                                 onChange={handleCustomAmountChange}
                                 placeholder="Enter amount"
                                 className="pl-10 bg-[#1A1A1A] dark:bg-[#1A1A1A] light:bg-white border-gray-700 dark:border-gray-700 light:border-gray-300 rounded-xl h-12 focus:ring-2 focus:ring-teal-500 text-white dark:text-white light:text-gray-900"
+                                type="number"
+                                min="1"
+                                step="any"
                               />
                             </div>
                             {customAmount && currency.code !== "USD" && (
                               <p className="mt-1 text-sm text-gray-500">
-                                ≈ ${Math.round(Number.parseInt(customAmount) / currency.rate)}
+                                ≈ ${Math.round(Number.parseFloat(customAmount) / (currency.rate || 1))}
                               </p>
                             )}
                           </div>
@@ -540,6 +608,7 @@ export default function DonatePage() {
                               onChange={(e) => setDonorPhone(e.target.value)}
                               placeholder="+254..."
                               className="mt-1 bg-[#1A1A1A] dark:bg-[#1A1A1A] light:bg-white border-gray-700 dark:border-gray-700 light:border-gray-300 rounded-xl h-12 focus:ring-2 focus:ring-teal-500 text-white dark:text-white light:text-gray-900"
+                              type="tel"
                             />
                           </div>
                         </div>
@@ -618,6 +687,7 @@ export default function DonatePage() {
                           </TabsContent>
 
                           <TabsContent value="mpesa">
+                            {showMpesa && (
                             <div className="bg-[#1A1A1A] dark:bg-[#1A1A1A] light:bg-gray-50 p-6 rounded-xl border border-gray-800 dark:border-gray-800 light:border-gray-200">
                               <div className="mb-4">
                                 <Label
@@ -633,6 +703,7 @@ export default function DonatePage() {
                                   placeholder="254..."
                                   className="mt-1 bg-[#252525] dark:bg-[#252525] light:bg-white border-gray-700 dark:border-gray-700 light:border-gray-300 rounded-xl h-12 focus:ring-2 focus:ring-teal-500 text-white dark:text-white light:text-gray-900"
                                   required={paymentMethod === "mpesa"}
+                                  type="tel"
                                 />
                               </div>
                               <p className="text-gray-400 dark:text-gray-400 light:text-gray-600 mb-4">
@@ -642,6 +713,7 @@ export default function DonatePage() {
                                 Please ensure your phone is on and has sufficient balance to complete the transaction.
                               </p>
                             </div>
+                            )}
                           </TabsContent>
 
                           <TabsContent value="paypal">
@@ -677,7 +749,7 @@ export default function DonatePage() {
                       <Button
                         type="submit"
                         className="w-full bg-teal-500 hover:bg-teal-600 text-black font-medium rounded-full h-14 flex items-center justify-center"
-                        disabled={isProcessing || (donationAmount === "custom" && !customAmount)}
+                        disabled={isProcessing || (donationAmount === "custom" && !customAmount) || getActualAmount() <= 0}
                       >
                         {isProcessing ? (
                           <div className="flex items-center">
@@ -742,19 +814,19 @@ export default function DonatePage() {
                   title: "Worker Education",
                   description:
                     "Fund workshops and training sessions that educate workers about their rights under Kenyan law.",
-                  image: "/placeholder.svg?height=300&width=400",
+                  image: "/pic1.jpg",
                 },
                 {
                   title: "Legal Support",
                   description:
                     "Help provide legal assistance to workers facing rights violations and unfair treatment.",
-                  image: "/placeholder.svg?height=300&width=400",
+                  image: "/pic2.jpg",
                 },
                 {
                   title: "Advocacy Campaigns",
                   description:
                     "Support our advocacy efforts to improve labor laws and workplace conditions across Kenya.",
-                  image: "/placeholder.svg?height=300&width=400",
+                  image: "/pic3.jpg",
                 },
               ].map((item, index) => (
                 <motion.div

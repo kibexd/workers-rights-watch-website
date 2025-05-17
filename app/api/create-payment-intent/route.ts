@@ -12,9 +12,9 @@ export async function POST(request: Request) {
     }
 
     // This is where you would integrate with Stripe
-    // Commented out for now - implement locally
-    /*
-    const stripe = require('stripe')(process.env.STRIPE_SECRET_KEY)
+    // Uncommented code:
+    // Ensure stripe-js is installed: npm install @stripe/stripe-js stripe
+    const stripe = require('stripe')(process.env.STRIPE_SECRET_KEY) // You need to set STRIPE_SECRET_KEY in .env.local
 
     // Create a payment intent
     const paymentIntent = await stripe.paymentIntents.create({
@@ -28,17 +28,17 @@ export async function POST(request: Request) {
     })
 
     // Return the client secret
-    return NextResponse.json({ 
-      success: true, 
-      clientSecret: paymentIntent.client_secret 
-    })
-    */
-
-    // For demo purposes, return a success response
     return NextResponse.json({
       success: true,
-      clientSecret: "demo_client_secret_" + Date.now(),
+      clientSecret: paymentIntent.client_secret
     })
+
+
+    // For demo purposes, return a success response
+    // return NextResponse.json({
+    //   success: true,
+    //   clientSecret: "demo_client_secret_" + Date.now(),
+    // })
   } catch (error) {
     console.error("Error creating payment intent:", error)
     return NextResponse.json({ success: false, error: "Failed to process payment" }, { status: 500 })

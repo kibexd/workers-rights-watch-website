@@ -37,7 +37,7 @@ export default function TeamPage() {
       id: 1,
       name: "Eunice M. Waweru",
       title: "Executive Director & Program Coordinator",
-      image: "/placeholder.svg?height=400&width=400",
+      image: "/eunice1.jpg?height=400&width=400",
       bio: "Ms. Eunice has over 20 years experience as a trade unionist, working closely with labor movements and civil society organizations. She has been instrumental in establishing Workers Rights Watch as a leading advocate for workers' rights in Kenya.",
       email: "eunice@workersrightswatch.org",
       linkedin: "https://www.linkedin.com/in/eunice-waweru/",

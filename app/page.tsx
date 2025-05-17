@@ -1,12 +1,13 @@
 "use client"
 
+import React from "react"
 import { useState, useEffect, useRef } from "react"
 import Link from "next/link"
 import Image from "next/image"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
-import { ArrowRight, ChevronRight, Shield, Users, Scale, ImageIcon } from "lucide-react"
+import { ArrowRight, ChevronRight, Shield, Users, Scale, ImageIcon, FileText, Download } from "lucide-react"
 import { motion } from "framer-motion"
 import { Dialog, DialogContent, DialogTrigger, DialogTitle } from "@/components/ui/dialog"
 import { Badge } from "@/components/ui/badge"
@@ -72,7 +73,7 @@ export default function HomePage() {
       id: 1,
       title: "Worker Education Workshop",
       description: "Workers participating in our rights education workshop in Nairobi.",
-      image: "/placeholder.svg?height=600&width=800",
+      image: "/pic1.jpg",
       category: "Events",
       location: "Nairobi, Kenya",
     },
@@ -80,7 +81,7 @@ export default function HomePage() {
       id: 2,
       title: "Community Outreach Program",
       description: "Our team engaging with local communities to raise awareness about labor rights.",
-      image: "/placeholder.svg?height=600&width=800",
+      image: "/pic2.jpg",
       category: "Outreach",
       location: "Mombasa, Kenya",
     },
@@ -88,7 +89,7 @@ export default function HomePage() {
       id: 3,
       title: "Annual Conference 2023",
       description: "Participants at our annual conference discussing the future of labor rights in Kenya.",
-      image: "/placeholder.svg?height=600&width=800",
+      image: "/pic3.jpg",
       category: "Events",
       location: "Nairobi, Kenya",
     },
@@ -96,11 +97,63 @@ export default function HomePage() {
       id: 4,
       title: "Women's Rights Workshop",
       description: "Women workers learning about their rights and gender equality in the workplace.",
-      image: "/placeholder.svg?height=600&width=800",
+      image: "/pic4.jpg",
       category: "Gender Equality",
       location: "Kisumu, Kenya",
     },
   ]
+
+  // Example resource data for homepage preview (ensure images and downloadUrls are correct)
+  const homepageResources = {
+    articles: [
+      {
+        title: "Women's Freedom to Work",
+        content: "Addressing workplace harassment and promoting gender equality.",
+        image: "/pic2.jpg", // Example image path
+      },
+      {
+        title: "The Future of Labor Unions",
+        content: "Exploring the evolving role of unions in the modern workplace.",
+        image: "/pic3.jpg", // Example image path
+      },
+      {
+        title: "Workers' Rights in Digital Age",
+        content: "How technology is reshaping labor rights and workplace dynamics.",
+        image: "/pic4.jpg", // Example image path
+      },
+    ],
+    reports: [
+      {
+        title: "Annual Impact Report 2023",
+        content:
+          "Our comprehensive report on the progress and impact of our initiatives over the past year.",
+        image: "/pic2.jpg", // Example image path
+        downloadUrl: "/cli-handbook.pdf", // Example download URL
+      },
+      {
+        title: "Labor Rights Violations in Kenya",
+        content: "A detailed analysis of labor rights violations across different sectors in Kenya.",
+        image: "/pic3.jpg", // Example image path
+        downloadUrl: "/report2.docx", // Example download URL
+      },
+    ],
+    videos: [
+      {
+        title: "Workers' Rights Awareness",
+        content: "An educational video on basic workers' rights and how to assert them.",
+        image: "/pic2.jpg", // Example image path
+        duration: "15:24",
+        videoUrl: "https://www.youtube.com/watch?v=example1", // Example YouTube URL
+      },
+      {
+        title: "Interview: Labor Movement Leaders",
+        content: "Interviews with key figures in Kenya's labor movement discussing current challenges.",
+        image: "/pic3.jpg", // Example image path
+        duration: "28:45",
+        videoUrl: "https://www.youtube.com/watch?v=example2", // Example YouTube URL
+      },
+    ],
+  }
 
   interface HandleImageClick {
     (image: GalleryImage): void
@@ -108,6 +161,27 @@ export default function HomePage() {
 
   const handleImageClick: HandleImageClick = (image) => {
     setSelectedImage(image)
+  }
+
+  // Add handleVideoClick for homepage videos
+  const handleVideoClick = (videoUrl: string) => {
+    if (videoUrl) {
+      window.open(videoUrl, "_blank");
+    }
+  }
+
+   // Add handleDownload for homepage reports
+  const handleDownload = (downloadUrl: string, title: string) => {
+    if (downloadUrl) {
+      const link = document.createElement("a") as HTMLAnchorElement;
+      if (link) {
+        link.href = downloadUrl;
+        link.download = title;
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+      }
+    }
   }
 
   return (
@@ -231,7 +305,7 @@ export default function HomePage() {
               <div className="absolute -top-6 -left-6 h-64 w-64 rounded-full bg-teal-500/10 blur-3xl"></div>
               <div className="relative rounded-2xl overflow-hidden">
                 <Image
-                  src="/2024_09_12_12_04_IMG_1159.jpg?height=600&width=800"
+                  src="/pic1.jpg?height=600&width=800"
                   alt="Workers in action"
                   width={800}
                   height={600}
@@ -313,7 +387,7 @@ export default function HomePage() {
                       onClick={() => handleImageClick(image)}
                     >
                       <Image
-                        src={image.image || "/placeholder.svg"}
+                        src={image.image || "/pic1.jpg"}
                         alt={image.title}
                         fill
                         className="object-cover transition-transform group-hover:scale-105 duration-500"
@@ -334,7 +408,7 @@ export default function HomePage() {
                     </DialogTitle>
                     <div className="relative h-[60vh]">
                       <Image
-                        src={selectedImage?.image || "/placeholder.svg"}
+                        src={selectedImage?.image || "/eunice.jpg"}
                         alt={selectedImage?.title || "Gallery image"}
                         fill
                         className="object-contain"
@@ -410,23 +484,7 @@ export default function HomePage() {
 
             <TabsContent value="articles">
               <div className="grid md:grid-cols-3 gap-8">
-                {[
-                  {
-                    title: "Women's Freedom to Work",
-                    content: "Addressing workplace harassment and promoting gender equality.",
-                    image: "/placeholder.svg?height=300&width=500",
-                  },
-                  {
-                    title: "The Future of Labor Unions",
-                    content: "Exploring the evolving role of unions in the modern workplace.",
-                    image: "/placeholder.svg?height=300&width=500",
-                  },
-                  {
-                    title: "Workers' Rights in Digital Age",
-                    content: "How technology is reshaping labor rights and workplace dynamics.",
-                    image: "/placeholder.svg?height=300&width=500",
-                  },
-                ].map((item, index) => (
+                {homepageResources.articles.map((item, index) => (
                   <motion.div
                     key={index}
                     initial={{ opacity: 0, y: 40 }}
@@ -460,19 +518,7 @@ export default function HomePage() {
 
             <TabsContent value="reports">
               <div className="grid md:grid-cols-2 gap-8">
-                {[
-                  {
-                    title: "Annual Impact Report 2023",
-                    content:
-                      "Our comprehensive report on the progress and impact of our initiatives over the past year.",
-                    image: "/placeholder.svg?height=300&width=500",
-                  },
-                  {
-                    title: "Labor Rights Violations in Kenya",
-                    content: "A detailed analysis of labor rights violations across different sectors in Kenya.",
-                    image: "/placeholder.svg?height=300&width=500",
-                  },
-                ].map((item, index) => (
+                {homepageResources.reports.map((item, index) => (
                   <motion.div
                     key={index}
                     initial={{ opacity: 0, y: 40 }}
@@ -497,8 +543,9 @@ export default function HomePage() {
                         <Button
                           variant="default"
                           className="bg-teal-500 hover:bg-teal-600 text-black font-medium rounded-full"
+                          onClick={() => handleDownload(item.downloadUrl, item.title)}
                         >
-                          Download Report
+                          <Download className="mr-2 h-4 w-4" /> Download Report
                         </Button>
                       </CardContent>
                     </Card>
@@ -509,20 +556,7 @@ export default function HomePage() {
 
             <TabsContent value="videos">
               <div className="grid md:grid-cols-2 gap-8">
-                {[
-                  {
-                    title: "Workers' Rights Awareness",
-                    content: "An educational video on basic workers' rights and how to assert them.",
-                    image: "/placeholder.svg?height=300&width=500",
-                    duration: "15:24",
-                  },
-                  {
-                    title: "Interview: Labor Movement Leaders",
-                    content: "Interviews with key figures in Kenya's labor movement discussing current challenges.",
-                    image: "/placeholder.svg?height=300&width=500",
-                    duration: "28:45",
-                  },
-                ].map((item, index) => (
+                {homepageResources.videos.map((item, index) => (
                   <motion.div
                     key={index}
                     initial={{ opacity: 0, y: 40 }}
@@ -530,7 +564,10 @@ export default function HomePage() {
                     transition={{ duration: 0.8, delay: index * 0.2 }}
                   >
                     <Card className="bg-[#111111] dark:bg-[#111111] light:bg-white border-0 overflow-hidden rounded-2xl hover:shadow-xl hover:shadow-teal-500/5 transition-all duration-300 h-full">
-                      <div className="relative h-56 overflow-hidden">
+                      <div
+                        className="relative h-56 overflow-hidden cursor-pointer"
+                        onClick={() => handleVideoClick(item.videoUrl)}
+                      >
                         <Image
                           src={item.image || "/placeholder.svg"}
                           alt={item.title}
@@ -562,6 +599,7 @@ export default function HomePage() {
                         <Button
                           variant="default"
                           className="bg-teal-500 hover:bg-teal-600 text-black font-medium rounded-full"
+                          onClick={() => handleVideoClick(item.videoUrl)}
                         >
                           Watch Video
                         </Button>

@@ -7,6 +7,7 @@ import { Button } from "@/components/ui/button"
 import { Menu, X } from "lucide-react"
 import { motion, AnimatePresence } from "framer-motion"
 import { useTheme } from "@/components/theme-provider"
+import Image from "next/image"
 
 export default function MainNav() {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
@@ -53,20 +54,14 @@ export default function MainNav() {
       <div className="container mx-auto px-6 py-4">
         <div className="flex justify-between items-center">
           <div className="flex items-center space-x-3">
-            <div className="h-10 w-10 rounded-full bg-teal-500 flex items-center justify-center">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="2"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                className="w-6 h-6 text-black dark:text-black light:text-white"
-              >
-                <circle cx="12" cy="12" r="10" />
-                <path d="M12 16v-4M12 8h.01" />
-              </svg>
+            <div className="h-10 w-10 rounded-full bg-teal-500 flex items-center justify-center overflow-hidden relative">
+              <Image
+                src="/dp.jpg"
+                alt="Workers Rights Watch Logo"
+                fill
+                className="object-cover"
+                priority
+              />
             </div>
             <Link
               href="/"

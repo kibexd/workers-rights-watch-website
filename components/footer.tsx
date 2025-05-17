@@ -1,4 +1,5 @@
 import Link from "next/link"
+import Image from "next/image"
 import { Facebook, Twitter, Instagram, Mail, Phone, MapPin, Youtube, Linkedin } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
@@ -10,8 +11,9 @@ export default function Footer() {
         <div className="grid md:grid-cols-4 gap-12">
           <div>
             <div className="flex items-center space-x-3 mb-6">
-              <div className="h-10 w-10 rounded-full bg-teal-500 flex items-center justify-center">
-                <svg
+              {/* <div className="h-10 w-10 rounded-full bg-teal-500 flex items-center justify-center"> */}
+              <div className="h-10 w-10 rounded-full bg-teal-500 flex items-center justify-center overflow-hidden relative">
+                {/* <svg
                   xmlns="http://www.w3.org/2000/svg"
                   viewBox="0 0 24 24"
                   fill="none"
@@ -23,7 +25,14 @@ export default function Footer() {
                 >
                   <circle cx="12" cy="12" r="10" />
                   <path d="M12 16v-4M12 8h.01" />
-                </svg>
+                </svg> */}
+                <Image
+                src="/dp.jpg"
+                alt="Workers Rights Watch Logo"
+                fill
+                className="object-cover"
+                priority
+              />
               </div>
               <span className="text-xl font-medium tracking-tight text-white dark:text-white light:text-white">
                 WRW

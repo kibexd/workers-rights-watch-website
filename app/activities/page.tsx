@@ -207,7 +207,7 @@ export default function ActivitiesPage() {
       <section className="relative py-32">
         <div className="absolute inset-0 z-0">
           <Image
-            src="/placeholder.svg?height=600&width=1920"
+            src="/pic5.jpg?height=600&width=1920"
             alt="Our Activities"
             fill
             className="object-cover opacity-20 dark:opacity-20 light:opacity-10"
