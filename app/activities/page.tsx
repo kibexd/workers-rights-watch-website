@@ -1,6 +1,6 @@
 "use client"
 
-import { useEffect, useRef, useState } from "react"
+import { useEffect, useRef, useState, JSX } from "react"
 import Image from "next/image"
 import Link from "next/link"
 import { Card, CardContent } from "@/components/ui/card"
@@ -10,16 +10,42 @@ import { motion } from "framer-motion"
 import { Badge } from "@/components/ui/badge"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 
+interface Activity {
+  id: number
+  title: string
+  date: string
+  location: string
+  description: string
+  image: string
+  category: string
+}
+
+interface CurrentActivity {
+  image: string
+  title: string
+  description: string
+}
+
+interface InterventionArea {
+  icon: JSX.Element
+  title: string
+  description: string
+}
+
 export default function ActivitiesPage() {
-  const [isVisible, setIsVisible] = useState({
+  const [isVisible, setIsVisible] = useState<{
+    activities: boolean
+    interventions: boolean
+    past: boolean
+  }>({
     activities: false,
     interventions: false,
     past: false,
   })
 
-  const activitiesRef = useRef(null)
-  const interventionsRef = useRef(null)
-  const pastRef = useRef(null)
+  const activitiesRef = useRef<HTMLDivElement>(null)
+  const interventionsRef = useRef<HTMLDivElement>(null)
+  const pastRef = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -49,7 +75,7 @@ export default function ActivitiesPage() {
   }, [])
 
   // Past activities data
-  const pastActivities = [
+  const pastActivities: Activity[] = [
     {
       id: 1,
       title: "DelMonte Campaign Research",
@@ -112,6 +138,70 @@ export default function ActivitiesPage() {
     },
   ]
 
+  const currentActivities: CurrentActivity[] = [
+    {
+      image: "/placeholder.svg?height=400&width=600",
+      title: "Worker Education Programs",
+      description:
+        "Educating workers about their rights, labor laws, and workplace safety through workshops and training sessions.",
+    },
+    {
+      image: "/placeholder.svg?height=400&width=600",
+      title: "Advocacy Campaigns",
+      description:
+        "Advocating for policy changes and improved labor laws to better protect workers' rights across various industries.",
+    },
+    {
+      image: "/placeholder.svg?height=400&width=600",
+      title: "Research & Documentation",
+      description:
+        "Conducting research on labor conditions and documenting violations to inform our advocacy and intervention strategies.",
+    },
+    {
+      image: "/placeholder.svg?height=400&width=600",
+      title: "Legal Support Services",
+      description:
+        "Providing legal assistance to workers facing rights violations, unfair treatment, or unsafe working conditions.",
+    },
+    {
+      image: "/placeholder.svg?height=400&width=600",
+      title: "Community Outreach",
+      description:
+        "Engaging with communities to raise awareness about workers' rights and build solidarity networks for collective action.",
+    },
+    {
+      image: "/placeholder.svg?height=400&width=600",
+      title: "Workplace Monitoring",
+      description:
+        "Monitoring workplace conditions and practices to ensure compliance with labor laws and standards.",
+    },
+  ]
+
+  const interventionAreas: InterventionArea[] = [
+    {
+      icon: <Shield className="h-10 w-10 text-teal-500" />,
+      title: "Labor Rights Education",
+      description:
+        "Educating workers about their rights under national and international labor laws and standards.",
+    },
+    {
+      icon: <Users className="h-10 w-10 text-teal-500" />,
+      title: "Workplace Safety",
+      description: "Promoting safe and healthy working conditions across all industries and sectors.",
+    },
+    {
+      icon: <Scale className="h-10 w-10 text-teal-500" />,
+      title: "Fair Wages & Benefits",
+      description: "Advocating for fair compensation, benefits, and working hours for all workers.",
+    },
+    {
+      icon: <FileText className="h-10 w-10 text-teal-500" />,
+      title: "Anti-Discrimination",
+      description:
+        "Combating workplace discrimination based on gender, ethnicity, disability, or other factors.",
+    },
+  ]
+
   return (
     <div className="min-h-screen bg-[#0A0A0A] dark:bg-[#0A0A0A] light:bg-[#F8F9FA]">
       <section className="relative py-32">
@@ -158,44 +248,7 @@ export default function ActivitiesPage() {
           </motion.div>
 
           <div className="grid md:grid-cols-3 gap-8">
-            {[
-              {
-                image: "/placeholder.svg?height=400&width=600",
-                title: "Worker Education Programs",
-                description:
-                  "Educating workers about their rights, labor laws, and workplace safety through workshops and training sessions.",
-              },
-              {
-                image: "/placeholder.svg?height=400&width=600",
-                title: "Advocacy Campaigns",
-                description:
-                  "Advocating for policy changes and improved labor laws to better protect workers' rights across various industries.",
-              },
-              {
-                image: "/placeholder.svg?height=400&width=600",
-                title: "Research & Documentation",
-                description:
-                  "Conducting research on labor conditions and documenting violations to inform our advocacy and intervention strategies.",
-              },
-              {
-                image: "/placeholder.svg?height=400&width=600",
-                title: "Legal Support Services",
-                description:
-                  "Providing legal assistance to workers facing rights violations, unfair treatment, or unsafe working conditions.",
-              },
-              {
-                image: "/placeholder.svg?height=400&width=600",
-                title: "Community Outreach",
-                description:
-                  "Engaging with communities to raise awareness about workers' rights and build solidarity networks for collective action.",
-              },
-              {
-                image: "/placeholder.svg?height=400&width=600",
-                title: "Workplace Monitoring",
-                description:
-                  "Monitoring workplace conditions and practices to ensure compliance with labor laws and standards.",
-              },
-            ].map((activity, index) => (
+            {currentActivities.map((activity, index) => (
               <motion.div
                 key={index}
                 initial={{ opacity: 0, y: 40 }}
@@ -245,30 +298,7 @@ export default function ActivitiesPage() {
           </motion.div>
 
           <div className="grid md:grid-cols-2 gap-8">
-            {[
-              {
-                icon: <Shield className="h-10 w-10 text-teal-500" />,
-                title: "Labor Rights Education",
-                description:
-                  "Educating workers about their rights under national and international labor laws and standards.",
-              },
-              {
-                icon: <Users className="h-10 w-10 text-teal-500" />,
-                title: "Workplace Safety",
-                description: "Promoting safe and healthy working conditions across all industries and sectors.",
-              },
-              {
-                icon: <Scale className="h-10 w-10 text-teal-500" />,
-                title: "Fair Wages & Benefits",
-                description: "Advocating for fair compensation, benefits, and working hours for all workers.",
-              },
-              {
-                icon: <FileText className="h-10 w-10 text-teal-500" />,
-                title: "Anti-Discrimination",
-                description:
-                  "Combating workplace discrimination based on gender, ethnicity, disability, or other factors.",
-              },
-            ].map((area, index) => (
+            {interventionAreas.map((area, index) => (
               <motion.div
                 key={index}
                 initial={{ opacity: 0, y: 40 }}

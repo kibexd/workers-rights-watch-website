@@ -76,7 +76,8 @@ export default function DonatePage() {
           setCountryCode(data.country_code)
 
           // Set currency based on country
-          const countryCurrency = countryToCurrency[data.country_code]
+          const code = data.country_code as keyof typeof countryToCurrency;
+          const countryCurrency = countryToCurrency[code];
           if (countryCurrency) {
             const detectedCurrency = currencies.find((c) => c.code === countryCurrency)
             if (detectedCurrency) {
@@ -95,36 +96,36 @@ export default function DonatePage() {
   }, [])
 
   // Convert amount from USD to selected currency
-  const convertAmount = (amountUSD) => {
+  const convertAmount = (amountUSD: number): number => {
     const converted = Math.round(amountUSD * currency.rate)
     return converted
   }
 
   // Format amount with proper currency symbol
-  const formatAmount = (amount) => {
+  const formatAmount = (amount: number): string => {
     return `${currency.symbol}${amount}`
   }
 
-  const handleAmountChange = (value) => {
+  const handleAmountChange = (value: string) => {
     setDonationAmount(value)
     if (value !== "custom") {
       setCustomAmount("")
     }
   }
 
-  const handleCustomAmountChange = (e) => {
+  const handleCustomAmountChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const value = e.target.value.replace(/[^0-9]/g, "")
     setCustomAmount(value)
   }
 
-  const handleCurrencyChange = (currencyCode) => {
+  const handleCurrencyChange = (currencyCode: string) => {
     const newCurrency = currencies.find((c) => c.code === currencyCode)
     if (newCurrency) {
       setCurrency(newCurrency)
     }
   }
 
-  const getActualAmount = () => {
+  const getActualAmount = (): number => {
     if (donationAmount === "custom" && customAmount) {
       return Number.parseInt(customAmount, 10)
     }
@@ -132,12 +133,12 @@ export default function DonatePage() {
   }
 
   // Convert back to USD for processing
-  const getAmountInUSD = () => {
+  const getAmountInUSD = (): number => {
     const amount = getActualAmount()
     return Math.round(amount / currency.rate)
   }
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
     setIsProcessing(true)
     setErrorMessage("")
@@ -292,9 +293,12 @@ export default function DonatePage() {
         }, 2000)
       }
     } catch (error) {
-      console.error("Payment error:", error)
+      if (error instanceof Error) {
+        setErrorMessage(error.message)
+      } else {
+        setErrorMessage("An error occurred during payment processing")
+      }
       setIsProcessing(false)
-      setErrorMessage(error.message || "An error occurred during payment processing")
     }
   }
 

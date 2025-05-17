@@ -11,27 +11,75 @@ import { Badge } from "@/components/ui/badge"
 import { FileText, Download, Search, ImageIcon, X, ChevronLeft, ChevronRight, MapPin, Filter } from "lucide-react"
 import { motion } from "framer-motion"
 
+interface Resource {
+  id: number
+  title: string
+  date: string
+  category: string
+  content?: string
+}
+
+interface Article extends Resource {
+  excerpt: string
+  image: string
+}
+
+interface Report extends Resource {
+  description: string
+  fileSize: string
+  image: string
+  downloadUrl: string
+}
+
+interface Video extends Resource {
+  description: string
+  duration: string
+  thumbnail: string
+  videoUrl: string
+}
+
+interface Image extends Resource {
+  description: string
+  image: string
+  location: string
+  content?: string
+}
+
+interface Resources {
+  articles: Article[]
+  reports: Report[]
+  videos: Video[]
+  images: Image[]
+}
+
+interface ActiveFilters {
+  articles: string[]
+  reports: string[]
+  videos: string[]
+  images: string[]
+}
+
 export default function ResourcesPage() {
-  const [searchQuery, setSearchQuery] = useState("")
-  const [filteredResources, setFilteredResources] = useState({
+  const [activeTab, setActiveTab] = useState<string>("articles")
+  const [searchQuery, setSearchQuery] = useState<string>("")
+  const [activeFilters, setActiveFilters] = useState<ActiveFilters>({
     articles: [],
     reports: [],
     videos: [],
     images: [],
   })
-  const [selectedImage, setSelectedImage] = useState(null)
-  const [currentImageIndex, setCurrentImageIndex] = useState(0)
-  const [isSearching, setIsSearching] = useState(false)
-  const [activeTab, setActiveTab] = useState("articles")
-  const [activeFilters, setActiveFilters] = useState({
+  const [filteredResources, setFilteredResources] = useState<Resources>({
     articles: [],
     reports: [],
     videos: [],
     images: [],
   })
+  const [selectedImage, setSelectedImage] = useState<Image | null>(null)
+  const [currentImageIndex, setCurrentImageIndex] = useState<number>(0)
+  const [isSearching, setIsSearching] = useState<boolean>(false)
 
   // Example resources data
-  const resources = {
+  const resources: Resources = {
     articles: [
       {
         id: 1,
@@ -253,7 +301,7 @@ export default function ResourcesPage() {
   }
 
   // Get unique categories for each resource type
-  const getCategories = (resourceType) => {
+  const getCategories = (resourceType: keyof Resources): string[] => {
     const categories = [...new Set(resources[resourceType].map((item) => item.category))]
     return categories
   }
@@ -271,7 +319,7 @@ export default function ResourcesPage() {
   }
 
   // Clear filter function
-  const clearFilter = (category, resourceType) => {
+  const clearFilter = (category: string, resourceType: keyof ActiveFilters) => {
     setActiveFilters((prev) => {
       const currentFilters = [...prev[resourceType]]
       const updatedFilters = currentFilters.filter((filter) => filter !== category)
@@ -285,7 +333,7 @@ export default function ResourcesPage() {
   }
 
   // Clear all filters function
-  const clearAllFilters = (resourceType) => {
+  const clearAllFilters = (resourceType: keyof ActiveFilters) => {
     setActiveFilters((prev) => {
       const newFilters = { ...prev, [resourceType]: [] }
 
@@ -313,7 +361,7 @@ export default function ResourcesPage() {
     applyFilters()
   }
 
-  const applyFilters = (customFilters = null) => {
+  const applyFilters = (customFilters: ActiveFilters | null = null) => {
     setIsSearching(true)
 
     // Use provided custom filters or current active filters
@@ -366,7 +414,6 @@ export default function ResourcesPage() {
         query === "" ||
         image.title.toLowerCase().includes(query) ||
         image.description.toLowerCase().includes(query) ||
-        image.category.toLowerCase().includes(query) ||
         image.location.toLowerCase().includes(query)
 
       const matchesFilter = filtersToApply.images.length === 0 || filtersToApply.images.includes(image.category)
@@ -386,7 +433,7 @@ export default function ResourcesPage() {
     }, 300)
   }
 
-  const toggleFilter = (category, resourceType) => {
+  const toggleFilter = (category: string, resourceType: keyof ActiveFilters) => {
     setActiveFilters((prev) => {
       const currentFilters = [...prev[resourceType]]
 
@@ -412,7 +459,7 @@ export default function ResourcesPage() {
     })
   }
 
-  const handleImageClick = (image, index) => {
+  const handleImageClick = (image: Image, index: number) => {
     setSelectedImage(image)
     setCurrentImageIndex(index)
   }
@@ -431,39 +478,41 @@ export default function ResourcesPage() {
     }
   }
 
-  const handleTabChange = (value) => {
+  const handleTabChange = (value: string) => {
     setActiveTab(value)
 
     // Update URL with the tab parameter
-    const url = new URL(window.location)
+    const url = new URL(window.location.href)
     url.searchParams.set("tab", value)
     window.history.pushState({}, "", url)
   }
 
   // Handle Enter key press in search input
-  const handleKeyDown = (e) => {
+  const handleKeyDown = (e: React.KeyboardEvent) => {
     if (e.key === "Enter") {
       handleSearch()
     }
   }
 
   // Handle video click to open in new tab
-  const handleVideoClick = (videoUrl) => {
+  const handleVideoClick = (videoUrl: string) => {
     if (videoUrl) {
       window.open(videoUrl, "_blank")
     }
   }
 
   // Handle report download
-  const handleDownload = (downloadUrl, title) => {
+  const handleDownload = (downloadUrl: string, title: string) => {
     if (downloadUrl) {
       // Create an anchor element and trigger download
-      const link = document.createElement("a")
-      link.href = downloadUrl
-      link.download = title.replace(/\s+/g, "-").toLowerCase() + ".pdf"
-      document.body.appendChild(link)
-      link.click()
-      document.body.removeChild(link)
+      const link = document.createElement("a") as HTMLAnchorElement
+      if (link) {
+        link.href = downloadUrl
+        link.download = title
+        document.body.appendChild(link)
+        link.click()
+        document.body.removeChild(link)
+      }
     }
   }
 
@@ -854,8 +903,13 @@ export default function ResourcesPage() {
                                   <div>{article.content}</div>
                                   <div>{article.content}</div>
                                 </div>
-                                <DialogClose className="absolute top-4 right-4 rounded-full p-1 text-gray-400 hover:text-white">
-                                  <X className="h-5 w-5" />
+                                <DialogClose asChild>
+                                  <button
+                                    className="absolute top-4 right-4 h-10 w-10 rounded-full bg-black/70 flex items-center justify-center text-white hover:bg-black/90 transition-colors"
+                                    aria-label="Close dialog"
+                                  >
+                                    <X className="h-5 w-5" />
+                                  </button>
                                 </DialogClose>
                               </DialogContent>
                             </Dialog>
@@ -1072,12 +1126,14 @@ export default function ResourcesPage() {
                                 fill
                                 className="object-contain"
                               />
-                              <button
-                                className="absolute top-4 right-4 h-10 w-10 rounded-full bg-black/70 flex items-center justify-center text-white hover:bg-black/90 transition-colors"
-                                onClick={() => document.querySelector("[data-dialog-close]").click()}
-                              >
-                                <X className="h-5 w-5" />
-                              </button>
+                              <DialogClose asChild>
+                                <button
+                                  className="absolute top-4 right-4 h-10 w-10 rounded-full bg-black/70 flex items-center justify-center text-white hover:bg-black/90 transition-colors"
+                                  aria-label="Close dialog"
+                                >
+                                  <X className="h-5 w-5" />
+                                </button>
+                              </DialogClose>
 
                               {currentImageIndex > 0 && (
                                 <button

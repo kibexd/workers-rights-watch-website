@@ -5,7 +5,7 @@ import Image from "next/image"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import { Card, CardContent } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
-import { Input } from "@/components/ui/input"https://web.whatsapp.com/
+import { Input } from "@/components/ui/input"
 import { Textarea } from "@/components/ui/textarea"
 import { Label } from "@/components/ui/label"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
@@ -21,8 +21,40 @@ import { Badge } from "@/components/ui/badge"
 import { Briefcase, Calendar, Clock, MapPin, Upload, CheckCircle, AlertCircle } from "lucide-react"
 import { motion } from "framer-motion"
 
+// Define interfaces for form state, job, and internship
+interface VolunteerFormState {
+  fullName: string
+  email: string
+  phone: string
+  country: string
+  about: string
+  workType: string
+  cvFile: File | null
+}
+interface JobApplicationState {
+  fullName: string
+  email: string
+  phone: string
+  coverLetter: string
+  cvFile: File | null
+}
+interface Job {
+  id: number
+  title: string
+  status: string
+  location: string
+  type: string
+  posted: string
+  deadline: string
+  salary?: string
+  stipend?: string
+  description: string
+  responsibilities: string[]
+  requirements: string[]
+}
+
 export default function CareersPage() {
-  const [formState, setFormState] = useState({
+  const [formState, setFormState] = useState<VolunteerFormState>({
     fullName: "",
     email: "",
     phone: "",
@@ -32,7 +64,7 @@ export default function CareersPage() {
     cvFile: null,
   })
 
-  const [jobApplicationState, setJobApplicationState] = useState({
+  const [jobApplicationState, setJobApplicationState] = useState<JobApplicationState>({
     fullName: "",
     email: "",
     phone: "",
@@ -40,7 +72,7 @@ export default function CareersPage() {
     cvFile: null,
   })
 
-  const [selectedJob, setSelectedJob] = useState(null)
+  const [selectedJob, setSelectedJob] = useState<Job | null>(null)
   const [cvUploaded, setCvUploaded] = useState(false)
   const [volunteerCvUploaded, setVolunteerCvUploaded] = useState(false)
   const [formSubmitting, setFormSubmitting] = useState(false)
@@ -50,7 +82,7 @@ export default function CareersPage() {
   const [formErrors, setFormErrors] = useState<Record<string, string>>({})
   const [isDialogOpen, setIsDialogOpen] = useState(false)
 
-  const handleChange = (e) => {
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { id, value } = e.target
     setFormState((prev) => ({ ...prev, [id]: value }))
 
@@ -64,7 +96,7 @@ export default function CareersPage() {
     }
   }
 
-  const handleJobApplicationChange = (e) => {
+  const handleJobApplicationChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { id, value } = e.target
     setJobApplicationState((prev) => ({ ...prev, [id]: value }))
 
@@ -78,8 +110,8 @@ export default function CareersPage() {
     }
   }
 
-  const handleFileUpload = (e) => {
-    const file = e.target.files[0]
+  const handleFileUpload = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0]
     if (file) {
       if (file.size > 5 * 1024 * 1024) {
         setFormErrors((prev) => ({
@@ -103,8 +135,8 @@ export default function CareersPage() {
     }
   }
 
-  const handleVolunteerFileUpload = (e) => {
-    const file = e.target.files[0]
+  const handleVolunteerFileUpload = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0]
     if (file) {
       if (file.size > 5 * 1024 * 1024) {
         setFormErrors((prev) => ({
@@ -128,7 +160,7 @@ export default function CareersPage() {
     }
   }
 
-  const handleSelectChange = (id, value) => {
+  const handleSelectChange = (id: string, value: string) => {
     setFormState((prev) => ({ ...prev, [id]: value }))
 
     // Clear error for this field if it exists
@@ -141,12 +173,12 @@ export default function CareersPage() {
     }
   }
 
-  const validateForm = (data, type) => {
-    const errors = {}
+  const validateForm = (data: VolunteerFormState | JobApplicationState, type: "volunteer" | "job") => {
+    const errors: Record<string, string> = {}
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
     const phoneRegex = /^\+?[0-9\s\-()]{10,15}$/
 
-    if (type === "volunteer") {
+    if (type === "volunteer" && isVolunteerFormState(data)) {
       if (!data.fullName.trim()) errors.fullName = "Full name is required"
       if (!data.email.trim()) errors.email = "Email is required"
       else if (!emailRegex.test(data.email)) errors.email = "Invalid email format"
@@ -156,7 +188,7 @@ export default function CareersPage() {
       if (!data.about.trim()) errors.about = "This field is required"
       if (!data.workType) errors.workType = "Please select a work type"
       if (!data.cvFile) errors.volunteerCvFile = "Resume/CV is required"
-    } else if (type === "job") {
+    } else if (type === "job" && isJobApplicationState(data)) {
       if (!data.fullName.trim()) errors.fullName = "Full name is required"
       if (!data.email.trim()) errors.email = "Email is required"
       else if (!emailRegex.test(data.email)) errors.email = "Invalid email format"
@@ -169,7 +201,22 @@ export default function CareersPage() {
     return errors
   }
 
-  const handleSubmit = async (e) => {
+  function isVolunteerFormState(data: any): data is VolunteerFormState {
+    return (
+      typeof data === "object" &&
+      "country" in data &&
+      "about" in data &&
+      "workType" in data
+    )
+  }
+  function isJobApplicationState(data: any): data is JobApplicationState {
+    return (
+      typeof data === "object" &&
+      "coverLetter" in data
+    )
+  }
+
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
 
     // Validate form
@@ -229,7 +276,7 @@ export default function CareersPage() {
     }
   }
 
-  const handleJobApplication = async (e) => {
+  const handleJobApplication = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
 
     // Validate form
@@ -244,8 +291,8 @@ export default function CareersPage() {
     try {
       // Create form data to send
       const formData = new FormData()
-      formData.append("jobId", selectedJob?.id)
-      formData.append("jobTitle", selectedJob?.title)
+      formData.append("jobId", selectedJob?.id.toString() || "")
+      formData.append("jobTitle", selectedJob?.title || "")
       formData.append("fullName", jobApplicationState.fullName)
       formData.append("email", jobApplicationState.email)
       formData.append("phone", jobApplicationState.phone)
@@ -288,7 +335,7 @@ export default function CareersPage() {
     }
   }
 
-  const openJobDetails = (job) => {
+  const openJobDetails = (job: Job) => {
     setSelectedJob(job)
     setIsDialogOpen(true) // Open the dialog using state
     // Reset form state and errors when opening a new job
@@ -770,7 +817,7 @@ export default function CareersPage() {
                                       <span className="font-semibold">CV uploaded successfully</span>
                                     </p>
                                     <p className="text-xs text-gray-500 dark:text-gray-500 light:text-gray-500">
-                                      {formState.cvFile?.name} ({Math.round(formState.cvFile?.size / 1024)} KB)
+                                      {formState.cvFile?.name} ({formState.cvFile?.size ? Math.round(formState.cvFile.size / 1024) : 0} KB)
                                     </p>
                                     <p className="text-xs text-gray-500 dark:text-gray-500 light:text-gray-500 mt-1">
                                       Click to change file
@@ -1035,8 +1082,7 @@ export default function CareersPage() {
                                   <span className="font-semibold">CV uploaded successfully</span>
                                 </p>
                                 <p className="text-xs text-gray-500 dark:text-gray-500 light:text-gray-500">
-                                  {jobApplicationState.cvFile?.name} (
-                                  {Math.round(jobApplicationState.cvFile?.size / 1024)} KB)
+                                  {jobApplicationState.cvFile?.name} ({jobApplicationState.cvFile?.size ? Math.round(jobApplicationState.cvFile.size / 1024) : 0} KB)
                                 </p>
                                 <p className="text-xs text-gray-500 dark:text-gray-500 light:text-gray-500 mt-1">
                                   Click to change file
