@@ -5,7 +5,7 @@ import Image from "next/image"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import { Card, CardContent } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
-import { Input } from "@/components/ui/input"
+import { Input } from "@/components/ui/input"https://web.whatsapp.com/
 import { Textarea } from "@/components/ui/textarea"
 import { Label } from "@/components/ui/label"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
@@ -47,7 +47,7 @@ export default function CareersPage() {
   const [formSubmitted, setFormSubmitted] = useState(false)
   const [jobFormSubmitting, setJobFormSubmitting] = useState(false)
   const [jobFormSubmitted, setJobFormSubmitted] = useState(false)
-  const [formErrors, setFormErrors] = useState({})
+  const [formErrors, setFormErrors] = useState<Record<string, string>>({})
   const [isDialogOpen, setIsDialogOpen] = useState(false)
 
   const handleChange = (e) => {

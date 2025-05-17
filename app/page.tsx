@@ -19,7 +19,16 @@ export default function HomePage() {
     gallery: false,
   })
 
-  const [selectedImage, setSelectedImage] = useState(null)
+  type GalleryImage = {
+    id: number
+    title: string
+    description: string
+    image: string
+    category: string
+    location: string
+  }
+
+  const [selectedImage, setSelectedImage] = useState<GalleryImage | null>(null)
 
   const missionRef = useRef(null)
   const impactRef = useRef(null)
@@ -93,7 +102,11 @@ export default function HomePage() {
     },
   ]
 
-  const handleImageClick = (image) => {
+  interface HandleImageClick {
+    (image: GalleryImage): void
+  }
+
+  const handleImageClick: HandleImageClick = (image) => {
     setSelectedImage(image)
   }
 

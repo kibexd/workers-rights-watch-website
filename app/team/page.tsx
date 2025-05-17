@@ -348,8 +348,8 @@ export default function TeamPage() {
       <Dialog open={dialogOpen} onOpenChange={setDialogOpen}>
         <DialogContent className="bg-[#1A1A1A] dark:bg-[#1A1A1A] light:bg-white border-0 rounded-2xl max-w-4xl p-0 overflow-hidden">
           <DialogTitle className="sr-only">
-                      {selectedImage?.title || "Gallery image"}
-                    </DialogTitle>
+            {selectedMember?.name || "Team Member"}
+          </DialogTitle>
           {selectedMember && (
             <div className="flex flex-col md:flex-row h-full">
               {/* Left sidebar with image and contact info */}
