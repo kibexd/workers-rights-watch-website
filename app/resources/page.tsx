@@ -85,33 +85,30 @@ export default function ResourcesPage() {
     articles: [
       {
         id: 1,
-        title: "DelMonte Campaign",
+        title: "Exchange Program Success Story",
         date: "March 15, 2024",
-        excerpt: "Exploring the initial engagement of civil society in Kenya's cut-flower industry.",
-        image: "/pic2.jpg",
-        category: "Campaigns",
-        content:
-          "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed euismod, nisl vel ultricies lacinia, nisl nisl aliquam nisl, eu aliquam nisl nisl eu nisl.",
+        excerpt: "A transformative exchange program bringing together workers from different regions to share experiences and best practices.",
+        image: "/Exchange program pictures/ep1.jpg",
+        category: "Exchange Program",
+        content: "Our exchange program has successfully facilitated cross-cultural learning and workers' rights advocacy. Participants from different regions came together to share their experiences, challenges, and solutions in promoting workers' rights. The program included workshops, site visits, and collaborative projects that strengthened the workers' rights movement across different communities."
       },
       {
         id: 2,
-        title: "Workers' Struggle In Kenya",
+        title: "Wildfire Farm Training Initiative",
         date: "February 28, 2024",
-        excerpt: "A historical perspective on the workers' movement in Kenya since colonial times.",
-        image: "/pic3.jpg",
-        category: "History",
-        content:
-          "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed euismod, nisl vel ultricies lacinia, nisl nisl aliquam nisl, eu aliquam nisl nisl eu nisl.",
+        excerpt: "Comprehensive training program addressing workers' rights, human rights, and leadership development.",
+        image: "/Wildfire farm awareness creation on workers rights,human rights,sexual harassment and leadership/wfa1.jpeg",
+        category: "Training",
+        content: "The Wildfire Farm training initiative has been instrumental in raising awareness about workers' rights, human rights, and leadership. Through interactive sessions and practical workshops, participants gained valuable insights into their rights and responsibilities, while developing essential leadership skills to advocate for better working conditions."
       },
       {
         id: 3,
-        title: "Women's Freedom to Work",
+        title: "Reproductive Health Workshop",
         date: "January 20, 2024",
-        excerpt: "Addressing workplace harassment and promoting gender equality in the workplace.",
-        image: "/pic4.jpg",
-        category: "Gender Equality",
-        content:
-          "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed euismod, nisl vel ultricies lacinia, nisl nisl aliquam nisl, eu aliquam nisl nisl eu nisl.",
+        excerpt: "Empowering women workers through comprehensive reproductive health and menstrual hygiene training.",
+        image: "/Reproductive health and menstrual hygiene training at Black petal farm/rh1.jpg",
+        category: "Health",
+        content: "Our reproductive health workshop at Black Petal Farm has been a significant step in promoting women's health and well-being in the workplace. The program covered essential topics including menstrual hygiene, reproductive health rights, and workplace accommodations for women's health needs."
       },
       {
         id: 4,
@@ -147,27 +144,25 @@ export default function ResourcesPage() {
     reports: [
       {
         id: 7,
-        title: "Annual Impact Report 2023",
+        title: "Gender Mainstreaming Report 2024",
         date: "January 15, 2024",
-        description: "Our comprehensive report on the progress and impact of our initiatives over the past year.",
+        description: "Comprehensive analysis of gender mainstreaming initiatives and sexual harassment prevention programs.",
         fileSize: "2.4 MB",
-        image: "/pic4.jpg",
-        category: "Annual Reports",
-        content:
-          "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed euismod, nisl vel ultricies lacinia, nisl nisl aliquam nisl, eu aliquam nisl nisl eu nisl.",
-        downloadUrl: "/cli-handbook.pdf",
+        image: "/Training and awareness creation on gender mainstreaming ,sexual harassment and leadership at Margin par -Kariki Molo farm/ta1.jpg",
+        category: "Gender Equality",
+        content: "This report details our comprehensive approach to gender mainstreaming and sexual harassment prevention in agricultural workplaces. It includes case studies, best practices, and recommendations for creating safer and more inclusive work environments.",
+        downloadUrl: "/reports/gender-mainstreaming-2024.pdf"
       },
       {
         id: 8,
-        title: "Labor Rights Violations in Kenya",
+        title: "Workers' Rights Assessment 2024",
         date: "November 30, 2023",
-        description: "A detailed analysis of labor rights violations across different sectors in Kenya.",
+        description: "Detailed analysis of workers' rights implementation and challenges in the agricultural sector.",
         fileSize: "3.1 MB",
-        image: "/pic1.jpg",
+        image: "/Wildfire farm awareness creation on workers rights,human rights,sexual harassment and leadership/wfa2.jpeg",
         category: "Research",
-        content:
-          "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed euismod, nisl vel ultricies lacinia, nisl nisl aliquam nisl, eu aliquam nisl nisl eu nisl.",
-        downloadUrl: "/report2.docx",
+        content: "Our latest assessment of workers' rights implementation in the agricultural sector reveals both progress and ongoing challenges. The report provides detailed analysis and recommendations for improving working conditions and protecting workers' rights.",
+        downloadUrl: "/reports/workers-rights-assessment-2024.pdf"
       },
       {
         id: 9,
@@ -197,27 +192,25 @@ export default function ResourcesPage() {
     videos: [
       {
         id: 11,
-        title: "Workers' Rights Awareness",
+        title: "Leadership Training Session Highlights",
         date: "February 5, 2024",
-        description: "An educational video on basic workers' rights and how to assert them.",
-        duration: "15:24",
-        thumbnail: "/pic4.jpg",
-        category: "Education",
-        content:
-          "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed euismod, nisl vel ultricies lacinia, nisl nisl aliquam nisl, eu aliquam nisl nisl eu nisl.",
-        videoUrl: "https://www.youtube.com/watch?v=example1",
+        description: "Interactive leadership training session with farm workers and management.",
+        duration: "45:30",
+        thumbnail: "/Training and awareness creation on gender mainstreaming ,sexual harassment and leadership at Margin par -Kariki Molo farm/ta2.jpg",
+        category: "Training",
+        content: "This video captures the highlights of our leadership training session, showcasing the interactive workshops and discussions that helped participants develop essential leadership skills for advocating workers' rights.",
+        videoUrl: "https://www.youtube.com/watch?v=example1"
       },
       {
         id: 12,
-        title: "Interview: Labor Movement Leaders",
+        title: "Exchange Program Documentary",
         date: "December 18, 2023",
-        description: "Interviews with key figures in Kenya's labor movement discussing current challenges.",
-        duration: "28:45",
-        thumbnail: "/pic1.jpg",
-        category: "Interviews",
-        content:
-          "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed euismod, nisl vel ultricies lacinia, nisl nisl aliquam nisl, eu aliquam nisl nisl eu nisl.",
-        videoUrl: "https://www.youtube.com/watch?v=example2",
+        description: "Documentary showcasing the impact of our exchange program on workers' rights advocacy.",
+        duration: "32:15",
+        thumbnail: "/Exchange program pictures/ep2.jpg",
+        category: "Exchange Program",
+        content: "This documentary follows the journey of participants in our exchange program, highlighting how cross-cultural learning and collaboration have strengthened the workers' rights movement across different regions.",
+        videoUrl: "https://www.youtube.com/watch?v=example2"
       },
       {
         id: 13,
@@ -247,39 +240,39 @@ export default function ResourcesPage() {
     images: [
       {
         id: 15,
-        title: "Worker Education Workshop",
+        title: "Exchange Program Workshop",
         date: "March 20, 2024",
-        description: "Workers participating in our rights education workshop in Nairobi.",
-        image: "/eunice.jpg",
-        category: "Events",
-        location: "Nairobi, Kenya",
+        description: "Participants engaging in cross-cultural learning and workers' rights advocacy.",
+        image: "/Exchange program pictures/ep3.jpg",
+        category: "Exchange Program",
+        location: "Nairobi, Kenya"
       },
       {
         id: 16,
-        title: "Community Outreach Program",
+        title: "Wildfire Farm Training Session",
         date: "February 15, 2024",
-        description: "Our team engaging with local communities to raise awareness about labor rights.",
-        image: "/pic1.jpg",
-        category: "Outreach",
-        location: "Mombasa, Kenya",
+        description: "Interactive training session on workers' rights and leadership development.",
+        image: "/Wildfire farm awareness creation on workers rights,human rights,sexual harassment and leadership/wfa3.jpeg",
+        category: "Training",
+        location: "Wildfire Farm, Kenya"
       },
       {
         id: 17,
-        title: "Annual Conference 2023",
+        title: "Reproductive Health Workshop",
         date: "December 5, 2023",
-        description: "Participants at our annual conference discussing the future of labor rights in Kenya.",
-        image: "/pic2.jpg",
-        category: "Events",
-        location: "Nairobi, Kenya",
+        description: "Women workers participating in reproductive health and menstrual hygiene training.",
+        image: "/Reproductive health and menstrual hygiene training at Black petal farm/rh2.jpg",
+        category: "Health",
+        location: "Black Petal Farm, Kenya"
       },
       {
         id: 18,
-        title: "Women's Rights Workshop",
+        title: "Gender Mainstreaming Training",
         date: "November 10, 2023",
-        description: "Women workers learning about their rights and gender equality in the workplace.",
-        image: "/pic3.jpg",
+        description: "Training session on gender mainstreaming and sexual harassment prevention.",
+        image: "/Training and awareness creation on gender mainstreaming ,sexual harassment and leadership at Margin par -Kariki Molo farm/ta3.jpg",
         category: "Gender Equality",
-        location: "Kisumu, Kenya",
+        location: "Margin Par-Kariki Molo Farm, Kenya"
       },
       {
         id: 19,

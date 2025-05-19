@@ -71,86 +71,124 @@ export default function HomePage() {
   const galleryImages = [
     {
       id: 1,
-      title: "Worker Education Workshop",
-      description: "Workers participating in our rights education workshop in Nairobi.",
-      image: "/pic1.jpg",
-      category: "Events",
-      location: "Nairobi, Kenya",
+      title: "Exchange Program Workshop",
+      description: "Participants engaging in cross-cultural learning and workers' rights advocacy.",
+      image: "/Exchange program pictures/ep1.jpg",
+      category: "Exchange Program",
+      location: "Nairobi, Kenya"
     },
     {
       id: 2,
-      title: "Community Outreach Program",
-      description: "Our team engaging with local communities to raise awareness about labor rights.",
-      image: "/pic2.jpg",
-      category: "Outreach",
-      location: "Mombasa, Kenya",
+      title: "Wildfire Farm Training",
+      description: "Interactive session on workers' rights, human rights, and leadership development.",
+      image: "/Wildfire farm awareness creation on workers rights,human rights,sexual harassment and leadership/wfa1.jpeg",
+      category: "Training",
+      location: "Wildfire Farm, Kenya"
     },
     {
       id: 3,
-      title: "Annual Conference 2023",
-      description: "Participants at our annual conference discussing the future of labor rights in Kenya.",
-      image: "/pic3.jpg",
-      category: "Events",
-      location: "Nairobi, Kenya",
+      title: "Reproductive Health Workshop",
+      description: "Women workers participating in reproductive health and menstrual hygiene training.",
+      image: "/Reproductive health and menstrual hygiene training at Black petal farm/rh1.jpg",
+      category: "Health",
+      location: "Black Petal Farm, Kenya"
     },
     {
       id: 4,
-      title: "Women's Rights Workshop",
-      description: "Women workers learning about their rights and gender equality in the workplace.",
-      image: "/pic4.jpg",
+      title: "Gender Mainstreaming Training",
+      description: "Training session on gender mainstreaming and sexual harassment prevention.",
+      image: "/Training and awareness creation on gender mainstreaming ,sexual harassment and leadership at Margin par -Kariki Molo farm/ta1.jpg",
       category: "Gender Equality",
-      location: "Kisumu, Kenya",
+      location: "Margin Par-Kariki Molo Farm, Kenya"
     },
+    {
+      id: 5,
+      title: "Exchange Program Group Activity",
+      description: "Participants collaborating during the exchange program workshop.",
+      image: "/Exchange program pictures/ep2.jpg",
+      category: "Exchange Program",
+      location: "Nairobi, Kenya"
+    },
+    {
+      id: 6,
+      title: "Leadership Development Session",
+      description: "Farm workers engaging in leadership and rights awareness training.",
+      image: "/Wildfire farm awareness creation on workers rights,human rights,sexual harassment and leadership/wfa2.jpeg",
+      category: "Training",
+      location: "Wildfire Farm, Kenya"
+    },
+    {
+      id: 7,
+      title: "Health Education Workshop",
+      description: "Interactive session on reproductive health and workplace wellness.",
+      image: "/Reproductive health and menstrual hygiene training at Black petal farm/rh2.jpg",
+      category: "Health",
+      location: "Black Petal Farm, Kenya"
+    },
+    {
+      id: 8,
+      title: "Gender Equality Training",
+      description: "Workshop focusing on gender mainstreaming and workplace equality.",
+      image: "/Training and awareness creation on gender mainstreaming ,sexual harassment and leadership at Margin par -Kariki Molo farm/ta2.jpg",
+      category: "Gender Equality",
+      location: "Margin Par-Kariki Molo Farm, Kenya"
+    }
   ]
 
   // Example resource data for homepage preview (ensure images and downloadUrls are correct)
   const homepageResources = {
     articles: [
       {
-        title: "Women's Freedom to Work",
-        content: "Addressing workplace harassment and promoting gender equality.",
-        image: "/pic2.jpg", // Example image path
+        title: "Exchange Program Success",
+        content: "Participants engaging in cross-cultural learning and workers' rights advocacy.",
+        image: "/Exchange program pictures/ep1.jpg",
+        category: "Exchange Program"
       },
       {
-        title: "The Future of Labor Unions",
-        content: "Exploring the evolving role of unions in the modern workplace.",
-        image: "/pic3.jpg", // Example image path
+        title: "Wildfire Farm Training",
+        content: "Comprehensive awareness creation on workers' rights, human rights, and leadership.",
+        image: "/Wildfire farm awareness creation on workers rights,human rights,sexual harassment and leadership/wfa1.jpeg",
+        category: "Training"
       },
       {
-        title: "Workers' Rights in Digital Age",
-        content: "How technology is reshaping labor rights and workplace dynamics.",
-        image: "/pic4.jpg", // Example image path
+        title: "Reproductive Health Workshop",
+        content: "Empowering women workers through reproductive health and menstrual hygiene training.",
+        image: "/Reproductive health and menstrual hygiene training at Black petal farm/rh1.jpg",
+        category: "Health"
       },
     ],
     reports: [
       {
-        title: "Annual Impact Report 2023",
-        content:
-          "Our comprehensive report on the progress and impact of our initiatives over the past year.",
-        image: "/pic2.jpg", // Example image path
-        downloadUrl: "/cli-handbook.pdf", // Example download URL
+        title: "Gender Mainstreaming Report",
+        content: "Comprehensive training and awareness creation on gender mainstreaming and sexual harassment prevention.",
+        image: "/Training and awareness creation on gender mainstreaming ,sexual harassment and leadership at Margin par -Kariki Molo farm/ta1.jpg",
+        downloadUrl: "/reports/gender-mainstreaming.pdf",
+        category: "Gender Equality"
       },
       {
-        title: "Labor Rights Violations in Kenya",
-        content: "A detailed analysis of labor rights violations across different sectors in Kenya.",
-        image: "/pic3.jpg", // Example image path
-        downloadUrl: "/report2.docx", // Example download URL
+        title: "Workers' Rights Assessment",
+        content: "Detailed analysis of workers' rights implementation and challenges in agricultural sector.",
+        image: "/Wildfire farm awareness creation on workers rights,human rights,sexual harassment and leadership/wfa2.jpeg",
+        downloadUrl: "/reports/workers-rights-assessment.pdf",
+        category: "Research"
       },
     ],
     videos: [
       {
-        title: "Workers' Rights Awareness",
-        content: "An educational video on basic workers' rights and how to assert them.",
-        image: "/pic2.jpg", // Example image path
-        duration: "15:24",
-        videoUrl: "https://www.youtube.com/watch?v=example1", // Example YouTube URL
+        title: "Leadership Training Session",
+        content: "Interactive leadership training session with farm workers and management.",
+        image: "/Training and awareness creation on gender mainstreaming ,sexual harassment and leadership at Margin par -Kariki Molo farm/ta2.jpg",
+        duration: "45:30",
+        videoUrl: "https://www.youtube.com/watch?v=example1",
+        category: "Training"
       },
       {
-        title: "Interview: Labor Movement Leaders",
-        content: "Interviews with key figures in Kenya's labor movement discussing current challenges.",
-        image: "/pic3.jpg", // Example image path
-        duration: "28:45",
-        videoUrl: "https://www.youtube.com/watch?v=example2", // Example YouTube URL
+        title: "Exchange Program Highlights",
+        content: "Highlights from our successful exchange program promoting workers' rights.",
+        image: "/Exchange program pictures/ep2.jpg",
+        duration: "32:15",
+        videoUrl: "https://www.youtube.com/watch?v=example2",
+        category: "Exchange Program"
       },
     ],
   }
