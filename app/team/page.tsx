@@ -5,7 +5,7 @@ import Image from "next/image"
 import Link from "next/link"
 import { Card, CardContent } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
-import { Mail, Linkedin, Twitter, ExternalLink, MapPin, Briefcase, Calendar, X } from "lucide-react"
+import { Mail, Linkedin, Twitter, ExternalLink, MapPin, Briefcase, Calendar, X, Users, Scale, FileText, Shield } from "lucide-react"
 import { motion } from "framer-motion"
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
@@ -503,6 +503,49 @@ export default function TeamPage() {
           )}
         </DialogContent>
       </Dialog>
+
+      {/* Who We Work With Section */}
+      <section className="py-16 bg-[#181818] dark:bg-[#181818] light:bg-[#F8F9FA]">
+        <div className="container mx-auto px-6">
+          <motion.div
+            initial={{ opacity: 0, y: 40 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+            className="text-center mb-12"
+          >
+            <h2 className="text-3xl font-bold text-white dark:text-white light:text-gray-900 mb-4">Who We Work With</h2>
+            <p className="text-xl text-gray-400 dark:text-gray-400 light:text-gray-700 max-w-2xl mx-auto">
+              Workers Rights Watch collaborates with a diverse network of individuals and groups who support our mission in many ways.
+            </p>
+          </motion.div>
+          <div className="grid md:grid-cols-4 gap-8">
+            {/* Card 1: Workers' Assemblies */}
+            <div className="bg-gradient-to-b from-[#232526] to-[#181818] rounded-3xl shadow-xl p-8 flex flex-col items-center text-center">
+              <Users className="h-12 w-12 text-teal-500 mb-4" />
+              <h3 className="text-xl font-bold text-white mb-2">Workers' Assemblies</h3>
+              <p className="text-gray-400">Grassroots groups of workers who provide insights, feedback, and mobilize for collective action.</p>
+            </div>
+            {/* Card 2: Community Leaders */}
+            <div className="bg-gradient-to-b from-[#232526] to-[#181818] rounded-3xl shadow-xl p-8 flex flex-col items-center text-center">
+              <Scale className="h-12 w-12 text-teal-500 mb-4" />
+              <h3 className="text-xl font-bold text-white mb-2">Community Leaders</h3>
+              <p className="text-gray-400">Local champions who help us reach and empower workers in their communities.</p>
+            </div>
+            {/* Card 3: Legal Advisors */}
+            <div className="bg-gradient-to-b from-[#232526] to-[#181818] rounded-3xl shadow-xl p-8 flex flex-col items-center text-center">
+              <FileText className="h-12 w-12 text-teal-500 mb-4" />
+              <h3 className="text-xl font-bold text-white mb-2">Legal Advisors</h3>
+              <p className="text-gray-400">A network of legal professionals who provide guidance and representation for workers' rights cases.</p>
+            </div>
+            {/* Card 4: Partner Organizations */}
+            <div className="bg-gradient-to-b from-[#232526] to-[#181818] rounded-3xl shadow-xl p-8 flex flex-col items-center text-center">
+              <Shield className="h-12 w-12 text-teal-500 mb-4" />
+              <h3 className="text-xl font-bold text-white mb-2">Partner Organizations</h3>
+              <p className="text-gray-400">We collaborate with NGOs, unions, and advocacy groups to amplify our impact and reach.</p>
+            </div>
+          </div>
+        </div>
+      </section>
 
       <section className="py-16 bg-[#0F0F0F] dark:bg-[#0F0F0F] light:bg-[#F0F0F0]">
         <div className="container mx-auto px-6 text-center">

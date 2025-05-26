@@ -35,6 +35,7 @@ export default function MainNav() {
     { href: "/about", label: "About" },
     { href: "/team", label: "Our Team" },
     { href: "/our-work", label: "Our Work" },
+    { href: "/activities", label: "Our Activities" },
     { href: "/careers", label: "Careers" },
     { href: "/contact", label: "Contact" },
   ]

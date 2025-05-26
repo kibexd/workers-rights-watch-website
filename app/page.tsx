@@ -26,6 +26,40 @@ const partners = [
 // Double the partners array to create seamless loop
 const doubledPartners = [...partners, ...partners];
 
+type AnimatedNumberProps = {
+  target: number;
+  isVisible: boolean;
+  suffix?: string;
+  className?: string;
+};
+
+function AnimatedNumber({ target, isVisible, suffix = '', className = '' }: AnimatedNumberProps) {
+  const [count, setCount] = React.useState(0);
+  React.useEffect(() => {
+    if (!isVisible) return;
+    let start = 0;
+    const duration = 1200;
+    const step = Math.ceil(target / (duration / 16));
+    let raf: number | undefined;
+    let mounted = true;
+    function animate() {
+      start += step;
+      if (start >= target) {
+        if (mounted) setCount(target);
+      } else {
+        if (mounted) setCount(start);
+        raf = requestAnimationFrame(animate);
+      }
+    }
+    animate();
+    return () => {
+      mounted = false;
+      if (raf !== undefined) cancelAnimationFrame(raf);
+    };
+  }, [isVisible, target]);
+  return <span className={className}>{count.toLocaleString()}{suffix}</span>;
+}
+
 export default function HomePage() {
   const [isVisible, setIsVisible] = useState({
     mission: false,
@@ -350,84 +384,63 @@ export default function HomePage() {
 
       <section ref={impactRef} className="py-24 bg-[#0F0F0F] dark:bg-[#0F0F0F] light:bg-[#F0F0F0]">
         <div className="container mx-auto px-6">
-          <div className="grid md:grid-cols-2 gap-16 items-center">
-            <motion.div
-              initial={{ opacity: 0, x: -40 }}
-              animate={isVisible.impact ? { opacity: 1, x: 0 } : {}}
-              transition={{ duration: 0.8 }}
-              className="relative"
-            >
-              <div className="absolute -top-6 -left-6 h-64 w-64 rounded-full bg-teal-500/10 blur-3xl"></div>
-              <div className="relative rounded-2xl overflow-hidden">
-                <Image
-                  src="/pic1.jpg?height=600&width=800"
-                  alt="Workers in action"
-                  width={800}
-                  height={600}
-                  className="w-full h-auto object-cover rounded-2xl"
-                />
-              </div>
-            </motion.div>
-
-            <motion.div
-              initial={{ opacity: 0, x: 40 }}
-              animate={isVisible.impact ? { opacity: 1, x: 0 } : {}}
-              transition={{ duration: 0.8 }}
-              className="space-y-6"
-            >
-              <h2 className="text-4xl font-bold text-white dark:text-white light:text-gray-900">Our Impact</h2>
-              <p className="text-xl text-gray-400 dark:text-gray-400 light:text-gray-700">
-                For over two decades, we've been at the forefront of the labor rights movement in Kenya, driving
-                meaningful change.
-              </p>
-              
-              <div className="grid grid-cols-2 gap-6 mt-8">
-                <div className="bg-[#111111] p-6 rounded-2xl">
-                  <h3 className="text-4xl font-bold text-teal-500 mb-2">50,000+</h3>
-                  <p className="text-gray-300">Workers Empowered Through Education</p>
-                </div>
-                <div className="bg-[#111111] p-6 rounded-2xl">
-                  <h3 className="text-4xl font-bold text-teal-500 mb-2">2,500+</h3>
-                  <p className="text-gray-300">Legal Cases Successfully Resolved</p>
-                </div>
-                <div className="bg-[#111111] p-6 rounded-2xl">
-                  <h3 className="text-4xl font-bold text-teal-500 mb-2">200+</h3>
-                  <p className="text-gray-300">Companies Engaged in Policy Reform</p>
-                </div>
-                <div className="bg-[#111111] p-6 rounded-2xl">
-                  <h3 className="text-4xl font-bold text-teal-500 mb-2">15+</h3>
-                  <p className="text-gray-300">Years of Dedicated Service</p>
-                </div>
-              </div>
-
-              <div className="space-y-6 mt-8">
-                {[
-                  "Our team brings extensive experience from various labor rights movements, providing first-hand insights into workers' issues.",
-                  "We develop and implement projects in consultation with partners, ensuring targeted interventions in areas of need.",
-                  "Through diverse engagement methods, we've expanded our focus to address both direct and indirect issues affecting labor and gender rights.",
-                ].map((point, index) => (
-                  <motion.div
-                    key={index}
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={isVisible.impact ? { opacity: 1, y: 0 } : {}}
-                    transition={{ duration: 0.5, delay: 0.3 + index * 0.2 }}
-                    className="flex items-start"
-                  >
-                    <div className="h-6 w-6 rounded-full bg-teal-500 flex items-center justify-center text-black font-bold mr-4 mt-1 flex-shrink-0">
-                      {index + 1}
-                    </div>
-                    <p className="text-gray-300 dark:text-gray-300 light:text-gray-700">{point}</p>
-                  </motion.div>
-                ))}
-              </div>
-              <Button
-                asChild
-                variant="default"
-                className="bg-teal-500 hover:bg-teal-600 text-black font-medium rounded-full px-8 py-6 text-base mt-6"
+          <motion.div
+            initial={{ opacity: 0, y: 40 }}
+            animate={isVisible.impact ? { opacity: 1, y: 0 } : {}}
+            transition={{ duration: 0.8 }}
+            className="text-center mb-16"
+          >
+            <h2 className="text-5xl font-bold mb-6 text-white dark:text-white light:text-gray-900">Our Impact</h2>
+            <p className="text-2xl text-gray-400 dark:text-gray-400 light:text-gray-700 max-w-3xl mx-auto mb-12">
+              For over two decades, we've been at the forefront of the labor rights movement in Kenya, driving meaningful change.
+            </p>
+          </motion.div>
+          <div className="grid md:grid-cols-3 gap-10">
+            {/* Impact Card 1 */}
+            <Link href="/resources?tab=articles" className="group">
+              <motion.div
+                whileHover={{ scale: 1.04, boxShadow: "0 8px 32px 0 rgba(0,0,0,0.18)" }}
+                className="bg-gradient-to-b from-[#181818] to-[#232526] rounded-3xl shadow-xl p-10 flex flex-col items-center text-center transition-all duration-300 cursor-pointer hover:shadow-2xl"
               >
-                <Link href="/activities">Learn More</Link>
-              </Button>
-            </motion.div>
+                <div className="h-24 w-24 rounded-2xl bg-teal-500/10 flex items-center justify-center mb-6">
+                  <Shield className="h-12 w-12 text-teal-500" />
+                </div>
+                <AnimatedNumber target={50000} isVisible={isVisible.impact} suffix="+" className="text-5xl font-extrabold text-white mb-2" />
+                <h3 className="text-2xl font-bold text-white mb-2">Workers Empowered</h3>
+                <p className="text-lg text-gray-400 mb-4">Through education, advocacy, and support, we've empowered over 50,000 workers to know and claim their rights.</p>
+                <span className="text-teal-500 font-medium group-hover:underline">Read Article</span>
+              </motion.div>
+            </Link>
+            {/* Impact Card 2 */}
+            <Link href="/resources?tab=articles" className="group">
+              <motion.div
+                whileHover={{ scale: 1.04, boxShadow: "0 8px 32px 0 rgba(0,0,0,0.18)" }}
+                className="bg-gradient-to-b from-[#181818] to-[#232526] rounded-3xl shadow-xl p-10 flex flex-col items-center text-center transition-all duration-300 cursor-pointer hover:shadow-2xl"
+              >
+                <div className="h-24 w-24 rounded-2xl bg-teal-500/10 flex items-center justify-center mb-6">
+                  <Scale className="h-12 w-12 text-teal-500" />
+                </div>
+                <AnimatedNumber target={2500} isVisible={isVisible.impact} suffix="+" className="text-5xl font-extrabold text-white mb-2" />
+                <h3 className="text-2xl font-bold text-white mb-2">Legal Cases Resolved</h3>
+                <p className="text-lg text-gray-400 mb-4">We have successfully resolved over 2,500 legal cases, ensuring justice and fair treatment for workers.</p>
+                <span className="text-teal-500 font-medium group-hover:underline">Read Article</span>
+              </motion.div>
+            </Link>
+            {/* Impact Card 3 */}
+            <Link href="/resources?tab=articles" className="group">
+              <motion.div
+                whileHover={{ scale: 1.04, boxShadow: "0 8px 32px 0 rgba(0,0,0,0.18)" }}
+                className="bg-gradient-to-b from-[#181818] to-[#232526] rounded-3xl shadow-xl p-10 flex flex-col items-center text-center transition-all duration-300 cursor-pointer hover:shadow-2xl"
+              >
+                <div className="h-24 w-24 rounded-2xl bg-teal-500/10 flex items-center justify-center mb-6">
+                  <Users className="h-12 w-12 text-teal-500" />
+                </div>
+                <AnimatedNumber target={200} isVisible={isVisible.impact} suffix="+" className="text-5xl font-extrabold text-white mb-2" />
+                <h3 className="text-2xl font-bold text-white mb-2">Companies Engaged</h3>
+                <p className="text-lg text-gray-400 mb-4">Over 200 companies have partnered with us to reform policies and improve workplace standards.</p>
+                <span className="text-teal-500 font-medium group-hover:underline">Read Article</span>
+              </motion.div>
+            </Link>
           </div>
         </div>
       </section>
@@ -710,7 +723,7 @@ export default function HomePage() {
           </div>
           <div className="relative w-full" style={{overflow: 'visible'}}>
             <div
-              className={`flex gap-8 transition-all duration-500 ${
+              className={`flex gap-12 transition-all duration-500 ${
                 scrollPaused ? 'pause-animation' : 'animate-scroll-x'
               }`}
               onMouseLeave={() => { setScrollPaused(false); setHoveredIndex(null); }}
@@ -719,7 +732,7 @@ export default function HomePage() {
               {doubledPartners.map((partner, idx) => (
                 <div
                   key={`${partner.name}-${idx}`}
-                  className="flex-shrink-0 relative group flex flex-col items-center justify-center w-48 h-28 bg-[#111111] rounded-2xl shadow-lg transition-all duration-300 cursor-pointer"
+                  className="flex-shrink-0 relative group flex flex-col items-center justify-center w-64 h-40 bg-[#181818] rounded-3xl shadow-xl transition-all duration-300 cursor-pointer hover:shadow-2xl border border-[#232526]"
                   onMouseEnter={() => { setScrollPaused(true); setHoveredIndex(idx); }}
                   onMouseLeave={() => { setScrollPaused(false); setHoveredIndex(null); }}
                   onClick={() => window.open(partner.url, '_blank')}
@@ -728,14 +741,14 @@ export default function HomePage() {
                   aria-label={`Visit ${partner.name} website`}
                   style={{overflow: 'visible'}}
                 >
-                  <img
-                    src={partner.logo}
-                    alt={partner.name}
-                    className={`object-contain h-16 w-32 filter transition-all duration-300 ${
-                      hoveredIndex === idx ? 'grayscale-0 scale-110' : 'grayscale'
-                    }`}
-                    style={{ pointerEvents: "none" }}
-                  />
+                  <div className="flex items-center justify-center h-28 w-44">
+                    <img
+                      src={partner.logo}
+                      alt={partner.name}
+                      className="object-contain h-24 w-40 transition-transform duration-300"
+                      style={{ pointerEvents: "none" }}
+                    />
+                  </div>
                   {/* Tooltip */}
                   {hoveredIndex === idx && (
                     <div className="absolute z-30 left-1/2 -translate-x-1/2 -top-14 bg-black/90 text-white px-4 py-2 rounded-xl shadow-lg text-sm font-medium animate-fade-in whitespace-nowrap" style={{overflow: 'visible'}}>
