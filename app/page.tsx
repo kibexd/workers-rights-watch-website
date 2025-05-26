@@ -12,6 +12,20 @@ import { motion } from "framer-motion"
 import { Dialog, DialogContent, DialogTrigger, DialogTitle } from "@/components/ui/dialog"
 import { Badge } from "@/components/ui/badge"
 
+const partners = [
+  { name: "ILO", logo: "/ilo.png", url: "https://www.ilo.org" },
+  { name: "UN Women", logo: "/un-women.jpg", url: "https://www.unwomen.org" },
+  { name: "Amnesty International", logo: "/amnesty.png", url: "https://www.amnesty.org" },
+  { name: "Human Rights Watch", logo: "/hrw.png", url: "https://www.hrw.org" },
+  { name: "Solidarity Center", logo: "/sc.png", url: "https://www.solidaritycenter.org" },
+  { name: "Kenya Human Rights Commission", logo: "/khrc.png", url: "https://www.khrc.or.ke" },
+  { name: "Federation of Kenya Employers", logo: "/foke.jpg", url: "https://www.fke-kenya.org" },
+  { name: "Central Organization of Trade Unions", logo: "/cotu.jpg", url: "https://www.cotu-kenya.org" },
+];
+
+// Double the partners array to create seamless loop
+const doubledPartners = [...partners, ...partners];
+
 export default function HomePage() {
   const [isVisible, setIsVisible] = useState({
     mission: false,
@@ -35,6 +49,9 @@ export default function HomePage() {
   const impactRef = useRef(null)
   const resourcesRef = useRef(null)
   const galleryRef = useRef(null)
+
+  const [scrollPaused, setScrollPaused] = useState(false);
+  const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -161,14 +178,14 @@ export default function HomePage() {
       {
         title: "Gender Mainstreaming Report",
         content: "Comprehensive training and awareness creation on gender mainstreaming and sexual harassment prevention.",
-        image: "/Training and awareness creation on gender mainstreaming ,sexual harassment and leadership at Margin par -Kariki Molo farm/ta1.jpg",
+        image: "/reportpic4.png",
         downloadUrl: "/reports/gender-mainstreaming.pdf",
         category: "Gender Equality"
       },
       {
         title: "Workers' Rights Assessment",
         content: "Detailed analysis of workers' rights implementation and challenges in agricultural sector.",
-        image: "/Wildfire farm awareness creation on workers rights,human rights,sexual harassment and leadership/wfa2.jpeg",
+        image: "/reportpic3.png",
         downloadUrl: "/reports/workers-rights-assessment.pdf",
         category: "Research"
       },
@@ -360,9 +377,29 @@ export default function HomePage() {
             >
               <h2 className="text-4xl font-bold text-white dark:text-white light:text-gray-900">Our Impact</h2>
               <p className="text-xl text-gray-400 dark:text-gray-400 light:text-gray-700">
-                For over two decades, we&apos;ve been at the forefront of the labor rights movement in Kenya, driving
+                For over two decades, we've been at the forefront of the labor rights movement in Kenya, driving
                 meaningful change.
               </p>
+              
+              <div className="grid grid-cols-2 gap-6 mt-8">
+                <div className="bg-[#111111] p-6 rounded-2xl">
+                  <h3 className="text-4xl font-bold text-teal-500 mb-2">50,000+</h3>
+                  <p className="text-gray-300">Workers Empowered Through Education</p>
+                </div>
+                <div className="bg-[#111111] p-6 rounded-2xl">
+                  <h3 className="text-4xl font-bold text-teal-500 mb-2">2,500+</h3>
+                  <p className="text-gray-300">Legal Cases Successfully Resolved</p>
+                </div>
+                <div className="bg-[#111111] p-6 rounded-2xl">
+                  <h3 className="text-4xl font-bold text-teal-500 mb-2">200+</h3>
+                  <p className="text-gray-300">Companies Engaged in Policy Reform</p>
+                </div>
+                <div className="bg-[#111111] p-6 rounded-2xl">
+                  <h3 className="text-4xl font-bold text-teal-500 mb-2">15+</h3>
+                  <p className="text-gray-300">Years of Dedicated Service</p>
+                </div>
+              </div>
+
               <div className="space-y-6 mt-8">
                 {[
                   "Our team brings extensive experience from various labor rights movements, providing first-hand insights into workers' issues.",
@@ -661,6 +698,74 @@ export default function HomePage() {
             </Button>
           </div>
         </div>
+      </section>
+
+      <section className="py-20 bg-[#0A0A0A] dark:bg-[#0A0A0A] light:bg-[#F8F9FA]" style={{overflow: 'visible'}}>
+        <div className="container mx-auto px-6">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl font-bold text-white dark:text-white light:text-gray-900 mb-4">Our Partners</h2>
+            <p className="text-xl text-gray-400 dark:text-gray-400 light:text-gray-700 max-w-2xl mx-auto">
+              Working together with leading organizations to create lasting change in workers' rights
+            </p>
+          </div>
+          <div className="relative w-full" style={{overflow: 'visible'}}>
+            <div
+              className={`flex gap-8 transition-all duration-500 ${
+                scrollPaused ? 'pause-animation' : 'animate-scroll-x'
+              }`}
+              onMouseLeave={() => { setScrollPaused(false); setHoveredIndex(null); }}
+              style={{overflow: 'visible'}}
+            >
+              {doubledPartners.map((partner, idx) => (
+                <div
+                  key={`${partner.name}-${idx}`}
+                  className="flex-shrink-0 relative group flex flex-col items-center justify-center w-48 h-28 bg-[#111111] rounded-2xl shadow-lg transition-all duration-300 cursor-pointer"
+                  onMouseEnter={() => { setScrollPaused(true); setHoveredIndex(idx); }}
+                  onMouseLeave={() => { setScrollPaused(false); setHoveredIndex(null); }}
+                  onClick={() => window.open(partner.url, '_blank')}
+                  tabIndex={0}
+                  role="button"
+                  aria-label={`Visit ${partner.name} website`}
+                  style={{overflow: 'visible'}}
+                >
+                  <img
+                    src={partner.logo}
+                    alt={partner.name}
+                    className={`object-contain h-16 w-32 filter transition-all duration-300 ${
+                      hoveredIndex === idx ? 'grayscale-0 scale-110' : 'grayscale'
+                    }`}
+                    style={{ pointerEvents: "none" }}
+                  />
+                  {/* Tooltip */}
+                  {hoveredIndex === idx && (
+                    <div className="absolute z-30 left-1/2 -translate-x-1/2 -top-14 bg-black/90 text-white px-4 py-2 rounded-xl shadow-lg text-sm font-medium animate-fade-in whitespace-nowrap" style={{overflow: 'visible'}}>
+                      {partner.name} <span className="text-teal-400 ml-2">Visit Website →</span>
+                    </div>
+                  )}
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+        <style jsx>{`
+          @keyframes scroll-x {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
+          }
+          .animate-scroll-x {
+            animation: scroll-x 30s linear infinite;
+          }
+          .pause-animation {
+            animation-play-state: paused;
+          }
+          .animate-fade-in {
+            animation: fadeIn 0.2s;
+          }
+          @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px);}
+            to { opacity: 1; transform: translateY(0);}
+          }
+        `}</style>
       </section>
 
       <section className="py-24 bg-teal-500 text-black">

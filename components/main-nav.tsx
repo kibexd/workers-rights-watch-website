@@ -2,193 +2,174 @@
 
 import { useState, useEffect } from "react"
 import Link from "next/link"
+import Image from "next/image"
 import { usePathname } from "next/navigation"
 import { Button } from "@/components/ui/button"
-import { Menu, X } from "lucide-react"
+// import { ThemeToggle } from "@/components/theme-toggle"
+import { Menu, X, ChevronDown } from "lucide-react"
 import { motion, AnimatePresence } from "framer-motion"
-import { useTheme } from "@/components/theme-provider"
-import Image from "next/image"
+import TopHeader from "@/components/top-header"
+import { FloatingSocial } from "@/components/floating-social"
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu"
 
 export default function MainNav() {
-  const [isMenuOpen, setIsMenuOpen] = useState(false)
-  const [scrolled, setScrolled] = useState(false)
+  const [isOpen, setIsOpen] = useState(false)
+  const [isScrolled, setIsScrolled] = useState(false)
   const pathname = usePathname()
-  const { theme, setTheme, resolvedTheme } = useTheme()
 
   useEffect(() => {
     const handleScroll = () => {
-      setScrolled(window.scrollY > 20)
+      setIsScrolled(window.scrollY > 20)
     }
     window.addEventListener("scroll", handleScroll)
     return () => window.removeEventListener("scroll", handleScroll)
   }, [])
 
-  const toggleTheme = () => {
-    setTheme(resolvedTheme === "dark" ? "light" : "dark")
-  }
-
-  const toggleMenu = () => {
-    setIsMenuOpen(!isMenuOpen)
-  }
-
-  const navItems = [
+  const navLinks = [
     { href: "/", label: "Home" },
-    { href: "/about", label: "About Us" },
-    { href: "/our-work", label: "Our Work" },
-    { href: "/activities", label: "Our Activities" },
-    { href: "/resources", label: "Resources" },
+    { href: "/about", label: "About" },
     { href: "/team", label: "Our Team" },
+    { href: "/our-work", label: "Our Work" },
     { href: "/careers", label: "Careers" },
     { href: "/contact", label: "Contact" },
-    { href: "/donate", label: "Donate" },
+  ]
+
+  const resourceLinks = [
+    { href: "/resources?tab=articles", label: "Articles" },
+    { href: "/resources?tab=reports", label: "Reports" },
+    { href: "/resources?tab=videos", label: "Videos" },
+    { href: "/resources?tab=images", label: "Photo Gallery" },
   ]
 
   return (
-    <header
-      className={`sticky top-0 z-50 transition-all duration-300 ${
-        scrolled
-          ? "bg-black/80 backdrop-blur-md dark:bg-black/80 light:bg-white/80"
-          : "bg-transparent dark:bg-transparent light:bg-transparent"
-      }`}
-    >
-      <div className="container mx-auto px-6 py-4">
-        <div className="flex justify-between items-center">
-          <div className="flex items-center space-x-3">
-            <div className="h-10 w-10 rounded-full bg-teal-500 flex items-center justify-center overflow-hidden relative">
+    <>
+      <TopHeader />
+      <header
+        className={`fixed top-10 left-0 right-0 z-50 transition-all duration-300 ${
+          isScrolled ? "bg-black/80 backdrop-blur-md" : "bg-transparent"
+        }`}
+      >
+        <nav className="container mx-auto px-6">
+          <div className="flex items-center justify-between h-20">
+            <Link href="/" className="flex items-center space-x-3">
               <Image
                 src="/dp.jpg"
                 alt="Workers Rights Watch Logo"
-                fill
-                className="object-cover"
-                priority
+                width={40}
+                height={40}
+                className="w-10 h-10"
               />
-            </div>
-            <Link
-              href="/"
-              className="text-xl font-medium tracking-tight text-white dark:text-white light:text-gray-900"
-            >
-              WORKERS RIGHTS WATCH
+              <span className="text-xl font-bold text-white">Workers Rights Watch</span>
             </Link>
-          </div>
 
-          <nav className="hidden md:flex items-center space-x-8">
-            <ul className="flex space-x-8 text-sm font-medium">
-              {navItems.map((item) => (
-                <li key={item.label}>
-                  <Link
-                    href={item.href}
-                    className={`relative py-2 hover:text-teal-400 transition-colors ${
-                      pathname === item.href
-                        ? "text-teal-400 dark:text-teal-400 light:text-teal-600"
-                        : "text-gray-300 dark:text-gray-300 light:text-gray-700"
+            {/* Desktop Navigation */}
+            <div className="hidden md:flex items-center space-x-8">
+              {navLinks.map((link) => (
+                <Link
+                  key={link.href}
+                  href={link.href}
+                  className={`text-sm font-medium transition-colors hover:text-teal-500 ${
+                    pathname === link.href ? "text-teal-500" : "text-white"
+                  }`}
+                >
+                  {link.label}
+                </Link>
+              ))}
+              <DropdownMenu>
+                <DropdownMenuTrigger asChild>
+                  <Button
+                    variant="ghost"
+                    className={`text-sm font-medium transition-colors hover:text-teal-500 ${
+                      pathname.startsWith("/resources") ? "text-teal-500" : "text-white"
                     }`}
                   >
-                    {item.label}
-                    {pathname === item.href && (
-                      <motion.div
-                        layoutId="underline"
-                        className="absolute left-0 right-0 h-0.5 bg-teal-400 dark:bg-teal-400 light:bg-teal-600 bottom-0"
-                        initial={{ opacity: 0 }}
-                        animate={{ opacity: 1 }}
-                        transition={{ duration: 0.3 }}
-                      />
-                    )}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-            {/* Theme toggle button - temporarily disabled
-<Button
-  onClick={toggleTheme}
-  variant="ghost"
-  size="icon"
-  className="text-gray-300 dark:text-gray-300 light:text-gray-700 rounded-full"
-  aria-label="Toggle theme"
->
-  {resolvedTheme === "dark" ? <Sun className="h-5 w-5" /> : <Moon className="h-5 w-5" />}
-</Button>
-*/}
-            <Button
-              variant="default"
-              className="bg-teal-500 hover:bg-teal-600 text-black font-medium rounded-full px-6"
-            >
-              <Link href="/donate">Donate Us</Link>
-            </Button>
-          </nav>
+                    Resources <ChevronDown className="ml-1 h-4 w-4" />
+                  </Button>
+                </DropdownMenuTrigger>
+                <DropdownMenuContent align="end" className="w-48 bg-[#111111] border-gray-800">
+                  {resourceLinks.map((link) => (
+                    <DropdownMenuItem key={link.href} asChild>
+                      <Link
+                        href={link.href}
+                        className="text-white hover:text-teal-500 hover:bg-[#1A1A1A] cursor-pointer"
+                      >
+                        {link.label}
+                      </Link>
+                    </DropdownMenuItem>
+                  ))}
+                </DropdownMenuContent>
+              </DropdownMenu>
+              <Link href="/donate">
+                <Button className="bg-teal-500 hover:bg-teal-600 text-black font-semibold rounded-full px-6 py-2 ml-2 shadow-lg">
+                  Donate
+                </Button>
+              </Link>
+              {/* <ThemeToggle /> */}
+            </div>
 
-          <div className="md:hidden flex items-center">
-            {/* Theme toggle button - temporarily disabled
-<Button
-  onClick={toggleTheme}
-  variant="ghost"
-  size="icon"
-  className="mr-2 text-gray-300 dark:text-gray-300 light:text-gray-700 rounded-full"
-  aria-label="Toggle theme"
->
-  {resolvedTheme === "dark" ? <Sun className="h-5 w-5" /> : <Moon className="h-5 w-5" />}
-</Button>
-*/}
-            <Button
-              onClick={toggleMenu}
-              variant="ghost"
-              size="icon"
-              className="text-gray-300 dark:text-gray-300 light:text-gray-700 rounded-full"
+            {/* Mobile Menu Button */}
+            <button
+              className="md:hidden text-white"
+              onClick={() => setIsOpen(!isOpen)}
+              aria-label="Toggle menu"
             >
-              {isMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
-            </Button>
+              {isOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
+            </button>
           </div>
-        </div>
+        </nav>
 
-        {/* Mobile menu */}
+        {/* Mobile Navigation */}
         <AnimatePresence>
-          {isMenuOpen && (
+          {isOpen && (
             <motion.div
-              className="md:hidden mt-4 py-6 border-t border-gray-800 dark:border-gray-800 light:border-gray-200"
               initial={{ opacity: 0, height: 0 }}
               animate={{ opacity: 1, height: "auto" }}
               exit={{ opacity: 0, height: 0 }}
-              transition={{ duration: 0.3 }}
+              transition={{ duration: 0.2 }}
+              className="md:hidden bg-black/95 backdrop-blur-md"
             >
-              <ul className="flex flex-col space-y-6">
-                {navItems.map((item) => (
-                  <motion.li
-                    key={item.label}
-                    initial={{ opacity: 0, x: -10 }}
-                    animate={{ opacity: 1, x: 0 }}
-                    transition={{ duration: 0.3 }}
-                  >
+              <div className="container mx-auto px-6 py-4">
+                <div className="flex flex-col space-y-4">
+                  {navLinks.map((link) => (
                     <Link
-                      href={item.href}
-                      className={`block text-lg hover:text-teal-400 transition-colors ${
-                        pathname === item.href
-                          ? "text-teal-400 dark:text-teal-400 light:text-teal-600"
-                          : "text-gray-300 dark:text-gray-300 light:text-gray-700"
+                      key={link.href}
+                      href={link.href}
+                      className={`text-sm font-medium transition-colors hover:text-teal-500 ${
+                        pathname === link.href ? "text-teal-500" : "text-white"
                       }`}
-                      onClick={() => setIsMenuOpen(false)}
+                      onClick={() => setIsOpen(false)}
                     >
-                      {item.label}
+                      {link.label}
                     </Link>
-                  </motion.li>
-                ))}
-                <motion.li
-                  initial={{ opacity: 0, x: -10 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  transition={{ duration: 0.3, delay: 0.3 }}
-                >
-                  <Button
-                    variant="default"
-                    className="w-full bg-teal-500 hover:bg-teal-600 text-black font-medium rounded-full"
-                  >
-                    <Link href="/donate" onClick={() => setIsMenuOpen(false)}>
-                      Donate Us
-                    </Link>
-                  </Button>
-                </motion.li>
-              </ul>
+                  ))}
+                  <div className="space-y-2">
+                    <p className="text-sm font-medium text-teal-500">Resources</p>
+                    {resourceLinks.map((link) => (
+                      <Link
+                        key={link.href}
+                        href={link.href}
+                        className="block pl-4 text-sm text-white hover:text-teal-500"
+                        onClick={() => setIsOpen(false)}
+                      >
+                        {link.label}
+                      </Link>
+                    ))}
+                  </div>
+                  {/* <div className="pt-4">
+                    <ThemeToggle />
+                  </div> */}
+                </div>
+              </div>
             </motion.div>
           )}
         </AnimatePresence>
-      </div>
-    </header>
+      </header>
+      <FloatingSocial />
+    </>
   )
 }

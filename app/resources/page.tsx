@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from "react"
 import Image from "next/image"
+import { useSearchParams } from "next/navigation"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import { Card, CardContent, CardHeader, CardTitle, CardFooter } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
@@ -61,8 +62,16 @@ interface ActiveFilters {
 
 type Image = ImageResource;
 
+const tabs = [
+  { id: "articles", label: "Articles" },
+  { id: "reports", label: "Reports" },
+  { id: "videos", label: "Videos" },
+  { id: "images", label: "Photo Gallery" },
+]
+
 export default function ResourcesPage() {
-  const [activeTab, setActiveTab] = useState<string>("articles")
+  const searchParams = useSearchParams()
+  const [activeTab, setActiveTab] = useState("articles")
   const [searchQuery, setSearchQuery] = useState<string>("")
   const [activeFilters, setActiveFilters] = useState<ActiveFilters>({
     articles: [],
@@ -344,12 +353,11 @@ export default function ResourcesPage() {
     setFilteredResources(resources)
 
     // Check if there's a tab parameter in the URL
-    const urlParams = new URLSearchParams(window.location.search)
-    const tabParam = urlParams.get("tab")
-    if (tabParam && ["articles", "reports", "videos", "images"].includes(tabParam)) {
+    const tabParam = searchParams.get("tab")
+    if (tabParam && tabs.some((t) => t.id === tabParam)) {
       setActiveTab(tabParam)
     }
-  }, [])
+  }, [searchParams])
 
   const handleSearch = () => {
     setIsSearching(true)
@@ -613,30 +621,15 @@ export default function ResourcesPage() {
           >
             <Tabs defaultValue={activeTab} onValueChange={handleTabChange} className="w-full">
               <TabsList className="justify-center mb-8 bg-transparent border border-gray-800 dark:border-gray-800 light:border-gray-200 rounded-full p-1 w-fit mx-auto">
-                <TabsTrigger
-                  value="articles"
-                  className="rounded-full px-8 py-2 data-[state=active]:bg-teal-500 data-[state=active]:text-black"
-                >
-                  Articles
-                </TabsTrigger>
-                <TabsTrigger
-                  value="reports"
-                  className="rounded-full px-8 py-2 data-[state=active]:bg-teal-500 data-[state=active]:text-black"
-                >
-                  Reports
-                </TabsTrigger>
-                <TabsTrigger
-                  value="videos"
-                  className="rounded-full px-8 py-2 data-[state=active]:bg-teal-500 data-[state=active]:text-black"
-                >
-                  Videos
-                </TabsTrigger>
-                <TabsTrigger
-                  value="images"
-                  className="rounded-full px-8 py-2 data-[state=active]:bg-teal-500 data-[state=active]:text-black"
-                >
-                  Photo Gallery
-                </TabsTrigger>
+                {tabs.map((tab) => (
+                  <TabsTrigger
+                    key={tab.id}
+                    value={tab.id}
+                    className="rounded-full px-8 py-2 data-[state=active]:bg-teal-500 data-[state=active]:text-black"
+                  >
+                    {tab.label}
+                  </TabsTrigger>
+                ))}
               </TabsList>
 
               {/* Filter chips for each tab */}

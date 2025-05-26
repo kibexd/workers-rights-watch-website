@@ -84,6 +84,10 @@ export default function DonatePage() {
 
         // Try to get country from IP address
         const response = await fetch("https://ipapi.co/json/")
+        if (!response.ok) {
+          throw new Error("Failed to fetch location data")
+        }
+        
         const data = await response.json()
 
         if (data && data.country_code) {
@@ -100,7 +104,9 @@ export default function DonatePage() {
           }
         }
       } catch (error) {
-        console.error("Error detecting location:", error)
+        console.warn("Error detecting location:", error)
+        // Fallback to USD if location detection fails
+        setCurrency(currencies[0]) // USD is the first currency in the list
       } finally {
         setIsDetectingLocation(false)
       }
@@ -450,56 +456,56 @@ export default function DonatePage() {
                 <CardContent className="p-8">
                   <form onSubmit={handleSubmit}>
                     <div className="space-y-8">
-                      <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
-                        <h2 className="text-2xl font-bold text-white dark:text-white light:text-gray-900">
+                      <div>
+                        <h2 className="text-2xl font-bold text-white dark:text-white light:text-gray-900 mb-6">
                           Choose Donation Amount
                         </h2>
 
-                        <div className="relative">
-                          <div
-                            className="flex items-center gap-2 bg-[#1A1A1A] dark:bg-[#1A1A1A] light:bg-white border border-gray-700 dark:border-gray-700 light:border-gray-300 rounded-full px-4 py-2 cursor-pointer hover:border-teal-500 transition-all"
-                            onClick={() => setShowCurrencySelector(!showCurrencySelector)}
-                          >
-                            <span className="text-2xl">{currency.flag}</span>
-                            <span className="text-white dark:text-white light:text-gray-900 font-medium">
-                              {currency.code}
-                            </span>
-                            <ChevronDown className="h-4 w-4 text-gray-400" />
-                          </div>
-
-                          {showCurrencySelector && (
-                            <div className="absolute top-full right-0 mt-2 w-64 max-h-80 overflow-y-auto bg-[#1A1A1A] dark:bg-[#1A1A1A] light:bg-white border border-gray-700 dark:border-gray-700 light:border-gray-300 rounded-xl shadow-xl z-50">
-                              <div className="p-2">
-                                {currencies.map((curr) => (
-                                  <div
-                                    key={curr.code}
-                                    className={`flex items-center gap-3 px-3 py-2.5 rounded-lg cursor-pointer hover:bg-[#252525] dark:hover:bg-[#252525] light:hover:bg-gray-100 transition-colors ${currency.code === curr.code ? "bg-[#252525] dark:bg-[#252525] light:bg-gray-100" : ""}`}
-                                    onClick={() => {
-                                      handleCurrencyChange(curr.code)
-                                      setShowCurrencySelector(false)
-                                    }}
-                                  >
-                                    <span className="text-2xl">{curr.flag}</span>
-                                    <div className="flex flex-col">
-                                      <span className="text-white dark:text-white light:text-gray-900 font-medium">
-                                        {curr.code}
-                                      </span>
-                                      <span className="text-gray-400 dark:text-gray-400 light:text-gray-600 text-sm">
-                                        {curr.name}
-                                      </span>
-                                    </div>
-                                    {currency.code === curr.code && (
-                                      <CheckCircle className="h-4 w-4 text-teal-500 ml-auto" />
-                                    )}
-                                  </div>
-                                ))}
-                              </div>
+                        <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4 mb-8">
+                          <div className="relative">
+                            <div
+                              className="flex items-center gap-2 bg-[#1A1A1A] dark:bg-[#1A1A1A] light:bg-white border border-gray-700 dark:border-gray-700 light:border-gray-300 rounded-full px-4 py-2 cursor-pointer hover:border-teal-500 transition-all"
+                              onClick={() => setShowCurrencySelector(!showCurrencySelector)}
+                            >
+                              <span className="text-2xl">{currency.flag}</span>
+                              <span className="text-white dark:text-white light:text-gray-900 font-medium">
+                                {currency.code}
+                              </span>
+                              <ChevronDown className="h-4 w-4 text-gray-400" />
                             </div>
-                          )}
-                        </div>
-                      </div>
 
-                      <div>
+                            {showCurrencySelector && (
+                              <div className="absolute top-full right-0 mt-2 w-64 max-h-80 overflow-y-auto bg-[#1A1A1A] dark:bg-[#1A1A1A] light:bg-white border border-gray-700 dark:border-gray-700 light:border-gray-300 rounded-xl shadow-xl z-50">
+                                <div className="p-2">
+                                  {currencies.map((curr) => (
+                                    <div
+                                      key={curr.code}
+                                      className={`flex items-center gap-3 px-3 py-2.5 rounded-lg cursor-pointer hover:bg-[#252525] dark:hover:bg-[#252525] light:hover:bg-gray-100 transition-colors ${currency.code === curr.code ? "bg-[#252525] dark:bg-[#252525] light:bg-gray-100" : ""}`}
+                                      onClick={() => {
+                                        handleCurrencyChange(curr.code)
+                                        setShowCurrencySelector(false)
+                                      }}
+                                    >
+                                      <span className="text-2xl">{curr.flag}</span>
+                                      <div className="flex flex-col">
+                                        <span className="text-white dark:text-white light:text-gray-900 font-medium">
+                                          {curr.code}
+                                        </span>
+                                        <span className="text-gray-400 dark:text-gray-400 light:text-gray-600 text-sm">
+                                          {curr.name}
+                                        </span>
+                                      </div>
+                                      {currency.code === curr.code && (
+                                        <CheckCircle className="h-4 w-4 text-teal-500 ml-auto" />
+                                      )}
+                                    </div>
+                                  ))}
+                                </div>
+                              </div>
+                            )}
+                          </div>
+                        </div>
+
                         <RadioGroup
                           value={donationAmount}
                           onValueChange={handleAmountChange}
@@ -566,178 +572,182 @@ export default function DonatePage() {
                         )}
                       </div>
 
-                      <div>
-                        <h2 className="text-2xl font-bold text-white dark:text-white light:text-gray-900 mb-6">
-                          Your Information
-                        </h2>
-                        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                      {getActualAmount() > 0 && (
+                        <>
                           <div>
-                            <Label htmlFor="donor-name" className="text-white dark:text-white light:text-gray-900">
-                              Full Name
-                            </Label>
-                            <Input
-                              id="donor-name"
-                              value={donorName}
-                              onChange={(e) => setDonorName(e.target.value)}
-                              placeholder="John Doe"
-                              className="mt-1 bg-[#1A1A1A] dark:bg-[#1A1A1A] light:bg-white border-gray-700 dark:border-gray-700 light:border-gray-300 rounded-xl h-12 focus:ring-2 focus:ring-teal-500 text-white dark:text-white light:text-gray-900"
-                              required
-                            />
-                          </div>
-                          <div>
-                            <Label htmlFor="donor-email" className="text-white dark:text-white light:text-gray-900">
-                              Email Address
-                            </Label>
-                            <Input
-                              id="donor-email"
-                              type="email"
-                              value={donorEmail}
-                              onChange={(e) => setDonorEmail(e.target.value)}
-                              placeholder="john@example.com"
-                              className="mt-1 bg-[#1A1A1A] dark:bg-[#1A1A1A] light:bg-white border-gray-700 dark:border-gray-700 light:border-gray-300 rounded-xl h-12 focus:ring-2 focus:ring-teal-500 text-white dark:text-white light:text-gray-900"
-                              required
-                            />
-                          </div>
-                          <div>
-                            <Label htmlFor="donor-phone" className="text-white dark:text-white light:text-gray-900">
-                              Phone Number (Optional)
-                            </Label>
-                            <Input
-                              id="donor-phone"
-                              value={donorPhone}
-                              onChange={(e) => setDonorPhone(e.target.value)}
-                              placeholder="+254..."
-                              className="mt-1 bg-[#1A1A1A] dark:bg-[#1A1A1A] light:bg-white border-gray-700 dark:border-gray-700 light:border-gray-300 rounded-xl h-12 focus:ring-2 focus:ring-teal-500 text-white dark:text-white light:text-gray-900"
-                              type="tel"
-                            />
-                          </div>
-                        </div>
-                      </div>
-
-                      <div>
-                        <h2 className="text-2xl font-bold text-white dark:text-white light:text-gray-900 mb-6">
-                          Payment Method
-                        </h2>
-                        <Tabs
-                          defaultValue="card"
-                          value={paymentMethod}
-                          onValueChange={setPaymentMethod}
-                          className="w-full"
-                        >
-                          <TabsList
-                            className={`grid ${showMpesa ? "grid-cols-3" : "grid-cols-2"} mb-8 bg-[#1A1A1A] dark:bg-[#1A1A1A] light:bg-gray-100 rounded-xl p-1`}
-                          >
-                            <TabsTrigger
-                              value="card"
-                              className="rounded-lg py-3 data-[state=active]:bg-teal-500 data-[state=active]:text-black"
-                            >
-                              <CreditCard className="h-5 w-5 mr-2" />
-                              Credit Card
-                            </TabsTrigger>
-                            {showMpesa && (
-                              <TabsTrigger
-                                value="mpesa"
-                                className="rounded-lg py-3 data-[state=active]:bg-teal-500 data-[state=active]:text-black"
-                              >
-                                <Phone className="h-5 w-5 mr-2" />
-                                M-Pesa
-                              </TabsTrigger>
-                            )}
-                            <TabsTrigger
-                              value="paypal"
-                              className="rounded-lg py-3 data-[state=active]:bg-teal-500 data-[state=active]:text-black"
-                            >
-                              <DollarSign className="h-5 w-5 mr-2" />
-                              PayPal
-                            </TabsTrigger>
-                          </TabsList>
-
-                          <TabsContent value="card">
-                            <div className="bg-[#1A1A1A] dark:bg-[#1A1A1A] light:bg-gray-50 p-6 rounded-xl border border-gray-800 dark:border-gray-800 light:border-gray-200">
-                              <p className="text-gray-400 dark:text-gray-400 light:text-gray-600 mb-4">
-                                You will be redirected to our secure payment processor to complete your donation.
-                              </p>
-                              <div className="flex items-center space-x-2 mb-4">
-                                <Image
-                                  src="/placeholder.svg?height=30&width=40"
-                                  alt="Visa"
-                                  width={40}
-                                  height={30}
-                                  className="rounded"
-                                />
-                                <Image
-                                  src="/placeholder.svg?height=30&width=40"
-                                  alt="Mastercard"
-                                  width={40}
-                                  height={30}
-                                  className="rounded"
-                                />
-                                <Image
-                                  src="/placeholder.svg?height=30&width=40"
-                                  alt="American Express"
-                                  width={40}
-                                  height={30}
-                                  className="rounded"
-                                />
-                              </div>
-                              <p className="text-sm text-gray-500 dark:text-gray-500 light:text-gray-400">
-                                Your payment information is securely processed and we do not store your card details.
-                              </p>
-                            </div>
-                          </TabsContent>
-
-                          <TabsContent value="mpesa">
-                            {showMpesa && (
-                            <div className="bg-[#1A1A1A] dark:bg-[#1A1A1A] light:bg-gray-50 p-6 rounded-xl border border-gray-800 dark:border-gray-800 light:border-gray-200">
-                              <div className="mb-4">
-                                <Label
-                                  htmlFor="mpesa-number"
-                                  className="text-white dark:text-white light:text-gray-900"
-                                >
-                                  M-Pesa Phone Number
+                            <h2 className="text-2xl font-bold text-white dark:text-white light:text-gray-900 mb-6">
+                              Your Information
+                            </h2>
+                            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                              <div>
+                                <Label htmlFor="donor-name" className="text-white dark:text-white light:text-gray-900">
+                                  Full Name
                                 </Label>
                                 <Input
-                                  id="mpesa-number"
-                                  value={mpesaNumber}
-                                  onChange={(e) => setMpesaNumber(e.target.value)}
-                                  placeholder="254..."
-                                  className="mt-1 bg-[#252525] dark:bg-[#252525] light:bg-white border-gray-700 dark:border-gray-700 light:border-gray-300 rounded-xl h-12 focus:ring-2 focus:ring-teal-500 text-white dark:text-white light:text-gray-900"
-                                  required={paymentMethod === "mpesa"}
+                                  id="donor-name"
+                                  value={donorName}
+                                  onChange={(e) => setDonorName(e.target.value)}
+                                  placeholder="John Doe"
+                                  className="mt-1 bg-[#1A1A1A] dark:bg-[#1A1A1A] light:bg-white border-gray-700 dark:border-gray-700 light:border-gray-300 rounded-xl h-12 focus:ring-2 focus:ring-teal-500 text-white dark:text-white light:text-gray-900"
+                                  required
+                                />
+                              </div>
+                              <div>
+                                <Label htmlFor="donor-email" className="text-white dark:text-white light:text-gray-900">
+                                  Email Address
+                                </Label>
+                                <Input
+                                  id="donor-email"
+                                  type="email"
+                                  value={donorEmail}
+                                  onChange={(e) => setDonorEmail(e.target.value)}
+                                  placeholder="john@example.com"
+                                  className="mt-1 bg-[#1A1A1A] dark:bg-[#1A1A1A] light:bg-white border-gray-700 dark:border-gray-700 light:border-gray-300 rounded-xl h-12 focus:ring-2 focus:ring-teal-500 text-white dark:text-white light:text-gray-900"
+                                  required
+                                />
+                              </div>
+                              <div>
+                                <Label htmlFor="donor-phone" className="text-white dark:text-white light:text-gray-900">
+                                  Phone Number (Optional)
+                                </Label>
+                                <Input
+                                  id="donor-phone"
+                                  value={donorPhone}
+                                  onChange={(e) => setDonorPhone(e.target.value)}
+                                  placeholder="+254..."
+                                  className="mt-1 bg-[#1A1A1A] dark:bg-[#1A1A1A] light:bg-white border-gray-700 dark:border-gray-700 light:border-gray-300 rounded-xl h-12 focus:ring-2 focus:ring-teal-500 text-white dark:text-white light:text-gray-900"
                                   type="tel"
                                 />
                               </div>
-                              <p className="text-gray-400 dark:text-gray-400 light:text-gray-600 mb-4">
-                                You will receive an M-Pesa prompt on your phone to complete the payment.
-                              </p>
-                              <p className="text-sm text-gray-500 dark:text-gray-500 light:text-gray-400">
-                                Please ensure your phone is on and has sufficient balance to complete the transaction.
-                              </p>
                             </div>
-                            )}
-                          </TabsContent>
+                          </div>
 
-                          <TabsContent value="paypal">
-                            <div className="bg-[#1A1A1A] dark:bg-[#1A1A1A] light:bg-gray-50 p-6 rounded-xl border border-gray-800 dark:border-gray-800 light:border-gray-200">
-                              <p className="text-gray-400 dark:text-gray-400 light:text-gray-600 mb-4">
-                                You will be redirected to PayPal to complete your donation securely.
-                              </p>
-                              <div className="flex items-center justify-center mb-4">
-                                <Image
-                                  src="/placeholder.svg?height=60&width=120"
-                                  alt="PayPal"
-                                  width={120}
-                                  height={60}
-                                  className="rounded"
-                                />
-                              </div>
-                              <p className="text-sm text-gray-500 dark:text-gray-500 light:text-gray-400">
-                                PayPal securely processes your payment information. You can use your PayPal account or
-                                credit card.
-                              </p>
-                            </div>
-                          </TabsContent>
-                        </Tabs>
-                      </div>
+                          <div>
+                            <h2 className="text-2xl font-bold text-white dark:text-white light:text-gray-900 mb-6">
+                              Payment Method
+                            </h2>
+                            <Tabs
+                              defaultValue="card"
+                              value={paymentMethod}
+                              onValueChange={setPaymentMethod}
+                              className="w-full"
+                            >
+                              <TabsList
+                                className={`grid ${showMpesa ? "grid-cols-3" : "grid-cols-2"} mb-8 bg-[#1A1A1A] dark:bg-[#1A1A1A] light:bg-gray-100 rounded-xl p-1`}
+                              >
+                                <TabsTrigger
+                                  value="card"
+                                  className="rounded-lg py-3 data-[state=active]:bg-teal-500 data-[state=active]:text-black"
+                                >
+                                  <CreditCard className="h-5 w-5 mr-2" />
+                                  Credit Card
+                                </TabsTrigger>
+                                {showMpesa && (
+                                  <TabsTrigger
+                                    value="mpesa"
+                                    className="rounded-lg py-3 data-[state=active]:bg-teal-500 data-[state=active]:text-black"
+                                  >
+                                    <Phone className="h-5 w-5 mr-2" />
+                                    M-Pesa
+                                  </TabsTrigger>
+                                )}
+                                <TabsTrigger
+                                  value="paypal"
+                                  className="rounded-lg py-3 data-[state=active]:bg-teal-500 data-[state=active]:text-black"
+                                >
+                                  <DollarSign className="h-5 w-5 mr-2" />
+                                  PayPal
+                                </TabsTrigger>
+                              </TabsList>
+
+                              <TabsContent value="card">
+                                <div className="bg-[#1A1A1A] dark:bg-[#1A1A1A] light:bg-gray-50 p-6 rounded-xl border border-gray-800 dark:border-gray-800 light:border-gray-200">
+                                  <p className="text-gray-400 dark:text-gray-400 light:text-gray-600 mb-4">
+                                    You will be redirected to our secure payment processor to complete your donation.
+                                  </p>
+                                  <div className="flex items-center space-x-2 mb-4">
+                                    <Image
+                                      src="/placeholder.svg?height=30&width=40"
+                                      alt="Visa"
+                                      width={40}
+                                      height={30}
+                                      className="rounded"
+                                    />
+                                    <Image
+                                      src="/placeholder.svg?height=30&width=40"
+                                      alt="Mastercard"
+                                      width={40}
+                                      height={30}
+                                      className="rounded"
+                                    />
+                                    <Image
+                                      src="/placeholder.svg?height=30&width=40"
+                                      alt="American Express"
+                                      width={40}
+                                      height={30}
+                                      className="rounded"
+                                    />
+                                  </div>
+                                  <p className="text-sm text-gray-500 dark:text-gray-500 light:text-gray-400">
+                                    Your payment information is securely processed and we do not store your card details.
+                                  </p>
+                                </div>
+                              </TabsContent>
+
+                              <TabsContent value="mpesa">
+                                {showMpesa && (
+                                <div className="bg-[#1A1A1A] dark:bg-[#1A1A1A] light:bg-gray-50 p-6 rounded-xl border border-gray-800 dark:border-gray-800 light:border-gray-200">
+                                  <div className="mb-4">
+                                    <Label
+                                      htmlFor="mpesa-number"
+                                      className="text-white dark:text-white light:text-gray-900"
+                                    >
+                                      M-Pesa Phone Number
+                                    </Label>
+                                    <Input
+                                      id="mpesa-number"
+                                      value={mpesaNumber}
+                                      onChange={(e) => setMpesaNumber(e.target.value)}
+                                      placeholder="254..."
+                                      className="mt-1 bg-[#252525] dark:bg-[#252525] light:bg-white border-gray-700 dark:border-gray-700 light:border-gray-300 rounded-xl h-12 focus:ring-2 focus:ring-teal-500 text-white dark:text-white light:text-gray-900"
+                                      required={paymentMethod === "mpesa"}
+                                      type="tel"
+                                    />
+                                  </div>
+                                  <p className="text-gray-400 dark:text-gray-400 light:text-gray-600 mb-4">
+                                    You will receive an M-Pesa prompt on your phone to complete the payment.
+                                  </p>
+                                  <p className="text-sm text-gray-500 dark:text-gray-500 light:text-gray-400">
+                                    Please ensure your phone is on and has sufficient balance to complete the transaction.
+                                  </p>
+                                </div>
+                                )}
+                              </TabsContent>
+
+                              <TabsContent value="paypal">
+                                <div className="bg-[#1A1A1A] dark:bg-[#1A1A1A] light:bg-gray-50 p-6 rounded-xl border border-gray-800 dark:border-gray-800 light:border-gray-200">
+                                  <p className="text-gray-400 dark:text-gray-400 light:text-gray-600 mb-4">
+                                    You will be redirected to PayPal to complete your donation securely.
+                                  </p>
+                                  <div className="flex items-center justify-center mb-4">
+                                    <Image
+                                      src="/placeholder.svg?height=60&width=120"
+                                      alt="PayPal"
+                                      width={120}
+                                      height={60}
+                                      className="rounded"
+                                    />
+                                  </div>
+                                  <p className="text-sm text-gray-500 dark:text-gray-500 light:text-gray-400">
+                                    PayPal securely processes your payment information. You can use your PayPal account or
+                                    credit card.
+                                  </p>
+                                </div>
+                              </TabsContent>
+                            </Tabs>
+                          </div>
+                        </>
+                      )}
 
                       {errorMessage && (
                         <div className="bg-red-500/10 p-4 rounded-xl flex items-start">

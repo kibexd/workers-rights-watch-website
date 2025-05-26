@@ -1,15 +1,15 @@
-import type React from "react"
+import type { Metadata } from "next"
+import { Inter } from "next/font/google"
+import "./globals.css"
 import { ThemeProvider } from "@/components/theme-provider"
 import MainNav from "@/components/main-nav"
 import Footer from "@/components/footer"
-import "./globals.css"
-import { Inter } from "next/font/google"
 
-const inter = Inter({ subsets: ["latin"], variable: "--font-inter" })
+const inter = Inter({ subsets: ["latin"] })
 
-export const metadata = {
+export const metadata: Metadata = {
   title: "Workers Rights Watch",
-  description: "Championing workers' rights in Kenya and beyond",
+  description: "Advocating for workers' rights and fair labor practices worldwide.",
   generator: 'v0.dev',
   icons: {
     icon: [
@@ -31,13 +31,18 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body className={`${inter.variable} font-sans min-h-screen antialiased`}>
-        <ThemeProvider defaultTheme="dark">
-          <div className="flex flex-col min-h-screen bg-[#0A0A0A] text-white">
-            <MainNav />
-            <main className="flex-1 w-full">{children}</main>
-            <Footer />
-          </div>
+      <body className={inter.className}>
+        <ThemeProvider
+          attribute="class"
+          defaultTheme="dark"
+          enableSystem
+          disableTransitionOnChange
+        >
+          <MainNav />
+          <main className="pt-32 pb-20">
+            {children}
+          </main>
+          <Footer />
         </ThemeProvider>
       </body>
     </html>
