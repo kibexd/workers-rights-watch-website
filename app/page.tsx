@@ -7,7 +7,7 @@ import Image from "next/image"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
-import { ArrowRight, ChevronRight, Shield, Users, Scale, ImageIcon, FileText, Download } from "lucide-react"
+import { ArrowRight, ChevronRight, Shield, Users, Scale, ImageIcon, FileText, Download, Twitter } from "lucide-react"
 import { motion } from "framer-motion"
 import { Dialog, DialogContent, DialogTrigger, DialogTitle } from "@/components/ui/dialog"
 import { Badge } from "@/components/ui/badge"
@@ -87,6 +87,9 @@ export default function HomePage() {
   const [scrollPaused, setScrollPaused] = useState(false);
   const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
 
+  const [tweets, setTweets] = useState([])
+  const [isLoading, setIsLoading] = useState(true)
+
   useEffect(() => {
     const observer = new IntersectionObserver(
       (entries) => {
@@ -116,6 +119,22 @@ export default function HomePage() {
       if (resourcesRef.current) observer.unobserve(resourcesRef.current)
       if (galleryRef.current) observer.unobserve(galleryRef.current)
     }
+  }, [])
+
+  useEffect(() => {
+    const fetchTweets = async () => {
+      try {
+        const response = await fetch('/api/twitter')
+        const data = await response.json()
+        setTweets(data.data || [])
+      } catch (error) {
+        console.error('Error fetching tweets:', error)
+      } finally {
+        setIsLoading(false)
+      }
+    }
+
+    fetchTweets()
   }, [])
 
   // Gallery images data
@@ -273,6 +292,64 @@ export default function HomePage() {
     }
   }
 
+  // Define the PartnerCard component inside HomePage
+  const PartnerCard = ({ 
+    partner, 
+    onHoverStart, 
+    onHoverEnd 
+  }: { 
+    partner: { name: string; logo: string; url: string }; 
+    onHoverStart: () => void; 
+    onHoverEnd: () => void;
+  }) => {
+    return (
+      <div
+        className="flex-shrink-0 relative"
+        onMouseEnter={onHoverStart}
+        onMouseLeave={onHoverEnd}
+        onClick={() => window.open(partner.url, '_blank')}
+        tabIndex={0}
+        role="button"
+        aria-label={`Visit ${partner.name} website`}
+      >
+        <motion.div
+          whileHover={{ 
+            y: -8, 
+            boxShadow: "0 20px 30px rgba(0,0,0,0.3)",
+            borderColor: '#3a3a3a' 
+          }}
+          className="w-64 h-52 bg-[#121212] rounded-2xl flex items-center justify-center px-6 cursor-pointer border border-[#282828] transition-all duration-300"
+        >
+          <div className="flex flex-col items-center justify-center w-full h-full">
+            {/* Logo container with fixed dimensions */}
+            <div className="w-48 h-36 flex items-center justify-center mb-2 relative">
+              <Image
+                src={partner.logo}
+                alt={partner.name}
+                fill
+                style={{ objectFit: "contain" }}
+                className="transition-all duration-300"
+              />
+            </div>
+            {/* Partner name always visible */}
+            <p className="text-white text-sm font-medium opacity-70 transition-opacity duration-300 hover:opacity-100 mt-auto">
+              {partner.name}
+            </p>
+            {/* Visit button that appears on hover */}
+            <motion.span
+              initial={{ opacity: 0, y: 5 }}
+              whileHover={{ opacity: 1, y: 0 }}
+              className="inline-flex items-center text-teal-400 text-xs font-medium mt-1"
+            >
+              Visit Website
+              <ArrowRight className="h-3 w-3 ml-1" />
+            </motion.span>
+          </div>
+        </motion.div>
+      </div>
+    );
+  };
+
   return (
     <div className="min-h-screen bg-[#0A0A0A] dark:bg-[#0A0A0A] light:bg-[#F8F9FA]">
       <section className="relative h-screen flex items-center">
@@ -382,68 +459,99 @@ export default function HomePage() {
         </div>
       </section>
 
-      <section ref={impactRef} className="py-24 bg-[#0F0F0F] dark:bg-[#0F0F0F] light:bg-[#F0F0F0]">
-        <div className="container mx-auto px-6">
+      <section ref={impactRef} className="py-32 bg-[#0F0F0F] dark:bg-[#0F0F0F] light:bg-[#F0F0F0]">
+  <div className="container mx-auto px-6">
+    <motion.div
+      initial={{ opacity: 0, y: 40 }}
+      animate={isVisible.impact ? { opacity: 1, y: 0 } : {}}
+      transition={{ duration: 0.8 }}
+      className="text-center mb-20"
+    >
+      <h2 className="text-5xl font-bold mb-6 text-white dark:text-white light:text-gray-900">Our Impact</h2>
+      <p className="text-2xl text-gray-400 dark:text-gray-400 light:text-gray-700 max-w-3xl mx-auto mb-12">
+        For over two decades, we've been at the forefront of the labor rights movement in Kenya, driving meaningful change.
+      </p>
+    </motion.div>
+
+    <div className="grid md:grid-cols-3 gap-10">
+      {[
+        {
+          image: "/pic1.jpg",
+          icon: <Shield className="h-12 w-12 text-teal-500" />,
+          number: 50000,
+          title: "Workers Empowered",
+          description: "Through education, advocacy, and support, we've empowered over 50,000 workers to know and claim their rights.",
+          link: "/resources?tab=articles"
+        },
+        {
+          image: "/pic2.jpg",
+          icon: <Scale className="h-12 w-12 text-teal-500" />,
+          number: 2500,
+          title: "Legal Cases Resolved",
+          description: "We have successfully resolved over 2,500 legal cases, ensuring justice and fair treatment for workers.",
+          link: "/resources?tab=articles"
+        },
+        {
+          image: "/pic6.jpg",
+          icon: <Users className="h-12 w-12 text-teal-500" />,
+          number: 200,
+          title: "Companies Engaged",
+          description: "Over 200 companies have partnered with us to reform policies and improve workplace standards.",
+          link: "/resources?tab=articles"
+        }
+      ].map((item, index) => (
+        <Link key={index} href={item.link} className="group">
           <motion.div
             initial={{ opacity: 0, y: 40 }}
             animate={isVisible.impact ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.8 }}
-            className="text-center mb-16"
+            transition={{ duration: 0.8, delay: index * 0.15 }}
+            whileHover={{ y: -8 }}
+            className="overflow-hidden h-full rounded-3xl relative flex flex-col"
           >
-            <h2 className="text-5xl font-bold mb-6 text-white dark:text-white light:text-gray-900">Our Impact</h2>
-            <p className="text-2xl text-gray-400 dark:text-gray-400 light:text-gray-700 max-w-3xl mx-auto mb-12">
-              For over two decades, we've been at the forefront of the labor rights movement in Kenya, driving meaningful change.
-            </p>
+            {/* Image Container */}
+            <div className="relative h-64 w-full overflow-hidden">
+              <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent z-10" />
+              <Image
+                src={item.image}
+                alt={item.title}
+                fill
+                className="object-cover transition-transform duration-700 group-hover:scale-110"
+              />
+            </div>
+            
+            {/* Content Container */}
+            <div className="bg-[#181818] p-8 flex-grow flex flex-col">
+              {/* Stats */}
+              <div className="flex items-center justify-between mb-5">
+                <AnimatedNumber
+                  target={item.number}
+                  isVisible={isVisible.impact}
+                  suffix="+"
+                  className="text-5xl font-extrabold text-white"
+                />
+                <div className="h-14 w-14 rounded-full bg-teal-500/10 flex items-center justify-center transition-transform duration-500 group-hover:scale-110 group-hover:bg-teal-500/20">
+                  {item.icon}
+                </div>
+              </div>
+              
+              {/* Text Content */}
+              <h3 className="text-2xl font-bold text-white mb-3">{item.title}</h3>
+              <p className="text-lg text-gray-400 mb-6 flex-grow">{item.description}</p>
+              
+              {/* Button */}
+              <div className="mt-auto">
+                <span className="inline-flex items-center text-teal-500 font-medium group-hover:underline">
+                  Read Success Stories
+                  <ArrowRight className="h-4 w-4 ml-2 transition-transform group-hover:translate-x-1" />
+                </span>
+              </div>
+            </div>
           </motion.div>
-          <div className="grid md:grid-cols-3 gap-10">
-            {/* Impact Card 1 */}
-            <Link href="/resources?tab=articles" className="group">
-              <motion.div
-                whileHover={{ scale: 1.04, boxShadow: "0 8px 32px 0 rgba(0,0,0,0.18)" }}
-                className="bg-gradient-to-b from-[#181818] to-[#232526] rounded-3xl shadow-xl p-10 flex flex-col items-center text-center transition-all duration-300 cursor-pointer hover:shadow-2xl"
-              >
-                <div className="h-24 w-24 rounded-2xl bg-teal-500/10 flex items-center justify-center mb-6">
-                  <Shield className="h-12 w-12 text-teal-500" />
-                </div>
-                <AnimatedNumber target={50000} isVisible={isVisible.impact} suffix="+" className="text-5xl font-extrabold text-white mb-2" />
-                <h3 className="text-2xl font-bold text-white mb-2">Workers Empowered</h3>
-                <p className="text-lg text-gray-400 mb-4">Through education, advocacy, and support, we've empowered over 50,000 workers to know and claim their rights.</p>
-                <span className="text-teal-500 font-medium group-hover:underline">Read Article</span>
-              </motion.div>
-            </Link>
-            {/* Impact Card 2 */}
-            <Link href="/resources?tab=articles" className="group">
-              <motion.div
-                whileHover={{ scale: 1.04, boxShadow: "0 8px 32px 0 rgba(0,0,0,0.18)" }}
-                className="bg-gradient-to-b from-[#181818] to-[#232526] rounded-3xl shadow-xl p-10 flex flex-col items-center text-center transition-all duration-300 cursor-pointer hover:shadow-2xl"
-              >
-                <div className="h-24 w-24 rounded-2xl bg-teal-500/10 flex items-center justify-center mb-6">
-                  <Scale className="h-12 w-12 text-teal-500" />
-                </div>
-                <AnimatedNumber target={2500} isVisible={isVisible.impact} suffix="+" className="text-5xl font-extrabold text-white mb-2" />
-                <h3 className="text-2xl font-bold text-white mb-2">Legal Cases Resolved</h3>
-                <p className="text-lg text-gray-400 mb-4">We have successfully resolved over 2,500 legal cases, ensuring justice and fair treatment for workers.</p>
-                <span className="text-teal-500 font-medium group-hover:underline">Read Article</span>
-              </motion.div>
-            </Link>
-            {/* Impact Card 3 */}
-            <Link href="/resources?tab=articles" className="group">
-              <motion.div
-                whileHover={{ scale: 1.04, boxShadow: "0 8px 32px 0 rgba(0,0,0,0.18)" }}
-                className="bg-gradient-to-b from-[#181818] to-[#232526] rounded-3xl shadow-xl p-10 flex flex-col items-center text-center transition-all duration-300 cursor-pointer hover:shadow-2xl"
-              >
-                <div className="h-24 w-24 rounded-2xl bg-teal-500/10 flex items-center justify-center mb-6">
-                  <Users className="h-12 w-12 text-teal-500" />
-                </div>
-                <AnimatedNumber target={200} isVisible={isVisible.impact} suffix="+" className="text-5xl font-extrabold text-white mb-2" />
-                <h3 className="text-2xl font-bold text-white mb-2">Companies Engaged</h3>
-                <p className="text-lg text-gray-400 mb-4">Over 200 companies have partnered with us to reform policies and improve workplace standards.</p>
-                <span className="text-teal-500 font-medium group-hover:underline">Read Article</span>
-              </motion.div>
-            </Link>
-          </div>
-        </div>
-      </section>
+        </Link>
+      ))}
+    </div>
+  </div>
+</section>
 
       {/* Photo Gallery Section */}
       <section ref={galleryRef} className="py-24 bg-[#0A0A0A] dark:bg-[#0A0A0A] light:bg-[#F8F9FA]">
@@ -713,72 +821,207 @@ export default function HomePage() {
         </div>
       </section>
 
-      <section className="py-20 bg-[#0A0A0A] dark:bg-[#0A0A0A] light:bg-[#F8F9FA]" style={{overflow: 'visible'}}>
+      {/* Partners Section (properly structured) */}
+      <section className="py-24 bg-[#0A0A0A] dark:bg-[#0A0A0A] light:bg-[#F8F9FA] overflow-hidden">
         <div className="container mx-auto px-6">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold text-white dark:text-white light:text-gray-900 mb-4">Our Partners</h2>
+          <motion.div 
+            initial={{ opacity: 0, y: 40 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+            viewport={{ once: true }}
+            className="text-center mb-16"
+          >
+            <h2 className="text-4xl font-bold text-white dark:text-white light:text-gray-900 mb-4">Our Partners</h2>
             <p className="text-xl text-gray-400 dark:text-gray-400 light:text-gray-700 max-w-2xl mx-auto">
               Working together with leading organizations to create lasting change in workers' rights
             </p>
-          </div>
-          <div className="relative w-full" style={{overflow: 'visible'}}>
-            <div
-              className={`flex gap-12 transition-all duration-500 ${
-                scrollPaused ? 'pause-animation' : 'animate-scroll-x'
-              }`}
-              onMouseLeave={() => { setScrollPaused(false); setHoveredIndex(null); }}
-              style={{overflow: 'visible'}}
+          </motion.div>
+
+          <div className="relative mx-auto max-w-[95vw]">
+            {/* Gradient fade on left side */}
+            <div className="absolute left-0 top-0 bottom-0 w-24 z-10 bg-gradient-to-r from-[#0A0A0A] to-transparent pointer-events-none" />
+
+            {/* Gradient fade on right side */}
+            <div className="absolute right-0 top-0 bottom-0 w-24 z-10 bg-gradient-to-l from-[#0A0A0A] to-transparent pointer-events-none" />
+
+            {/* Main scrolling container */}
+            <div 
+              className="overflow-hidden relative" 
+              style={{ maskImage: 'linear-gradient(to right, transparent, black 5%, black 95%, transparent)' }}
             >
-              {doubledPartners.map((partner, idx) => (
-                <div
-                  key={`${partner.name}-${idx}`}
-                  className="flex-shrink-0 relative group flex flex-col items-center justify-center w-64 h-40 bg-[#181818] rounded-3xl shadow-xl transition-all duration-300 cursor-pointer hover:shadow-2xl border border-[#232526]"
-                  onMouseEnter={() => { setScrollPaused(true); setHoveredIndex(idx); }}
-                  onMouseLeave={() => { setScrollPaused(false); setHoveredIndex(null); }}
-                  onClick={() => window.open(partner.url, '_blank')}
-                  tabIndex={0}
-                  role="button"
-                  aria-label={`Visit ${partner.name} website`}
-                  style={{overflow: 'visible'}}
-                >
-                  <div className="flex items-center justify-center h-28 w-44">
-                    <img
-                      src={partner.logo}
-                      alt={partner.name}
-                      className="object-contain h-24 w-40 transition-transform duration-300"
-                      style={{ pointerEvents: "none" }}
-                    />
-                  </div>
-                  {/* Tooltip */}
-                  {hoveredIndex === idx && (
-                    <div className="absolute z-30 left-1/2 -translate-x-1/2 -top-14 bg-black/90 text-white px-4 py-2 rounded-xl shadow-lg text-sm font-medium animate-fade-in whitespace-nowrap" style={{overflow: 'visible'}}>
-                      {partner.name} <span className="text-teal-400 ml-2">Visit Website →</span>
-                    </div>
-                  )}
-                </div>
-              ))}
+              <div 
+                id="partner-scroll"
+                className="flex gap-8 py-8"
+                style={{ 
+                  width: 'fit-content'
+                }}
+              >
+                {/* First set of partners */}
+                {partners.map((partner, idx) => (
+                  <PartnerCard
+                    key={`first-${partner.name}-${idx}`} 
+                    partner={partner} 
+                    onHoverStart={() => {
+                      // Find the element and pause animation
+                      const scrollEl = document.getElementById('partner-scroll');
+                      if (scrollEl) scrollEl.classList.add('paused');
+                    }}
+                    onHoverEnd={() => {
+                      // Find the element and resume animation
+                      const scrollEl = document.getElementById('partner-scroll');
+                      if (scrollEl) scrollEl.classList.remove('paused');
+                    }}
+                  />
+                ))}
+                
+                {/* Second set of partners (duplicate for seamless looping) */}
+                {partners.map((partner, idx) => (
+                  <PartnerCard
+                    key={`second-${partner.name}-${idx}`} 
+                    partner={partner} 
+                    onHoverStart={() => {
+                      // Find the element and pause animation
+                      const scrollEl = document.getElementById('partner-scroll');
+                      if (scrollEl) scrollEl.classList.add('paused');
+                    }}
+                    onHoverEnd={() => {
+                      // Find the element and resume animation
+                      const scrollEl = document.getElementById('partner-scroll');
+                      if (scrollEl) scrollEl.classList.remove('paused');
+                    }}
+                  />
+                ))}
+              </div>
             </div>
           </div>
         </div>
+
         <style jsx>{`
-          @keyframes scroll-x {
-            0% { transform: translateX(0); }
-            100% { transform: translateX(-50%); }
+          #partner-scroll {
+            animation: scroll 50s linear infinite;
           }
-          .animate-scroll-x {
-            animation: scroll-x 30s linear infinite;
+          
+          @keyframes scroll {
+            0% {
+              transform: translateX(0);
+            }
+            100% {
+              transform: translateX(-50%);
+            }
           }
-          .pause-animation {
+          
+          #partner-scroll.paused {
             animation-play-state: paused;
           }
-          .animate-fade-in {
-            animation: fadeIn 0.2s;
-          }
-          @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(10px);}
-            to { opacity: 1; transform: translateY(0);}
-          }
         `}</style>
+      </section>
+
+      {/* Twitter Feed Section */}
+      <section className="py-24 bg-[#0A0A0A] dark:bg-[#0A0A0A] light:bg-[#F8F9FA]">
+        <div className="container mx-auto px-6">
+          <motion.div
+            initial={{ opacity: 0, y: 40 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+            className="text-center mb-16"
+          >
+            <h2 className="text-4xl font-bold mb-4 text-white dark:text-white light:text-gray-900">Latest Updates</h2>
+            <p className="text-xl text-gray-400 dark:text-gray-400 light:text-gray-700 max-w-3xl mx-auto">
+              Follow our latest activities and updates on X (Twitter)
+            </p>
+          </motion.div>
+
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {isLoading ? (
+              // Loading state
+              Array(3).fill(0).map((_, index) => (
+                <div key={index} className="animate-pulse">
+                  <div className="bg-[#111111] rounded-2xl p-6 h-full">
+                    <div className="flex items-center mb-4">
+                      <div className="h-12 w-12 rounded-full bg-gray-700" />
+                      <div className="ml-4">
+                        <div className="h-4 w-32 bg-gray-700 rounded" />
+                        <div className="h-3 w-24 bg-gray-700 rounded mt-2" />
+                      </div>
+                    </div>
+                    <div className="space-y-3">
+                      <div className="h-4 bg-gray-700 rounded w-3/4" />
+                      <div className="h-4 bg-gray-700 rounded w-1/2" />
+                    </div>
+                  </div>
+                </div>
+              ))
+            ) : tweets.length > 0 ? (
+              // Tweets
+              tweets.map((tweet: any, index: number) => (
+                <motion.div
+                  key={tweet.id}
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.5, delay: index * 0.1 }}
+                  className="group"
+                >
+                  <div className="bg-[#111111] dark:bg-[#111111] light:bg-white rounded-2xl p-6 hover:shadow-xl hover:shadow-teal-500/5 transition-all duration-300 h-full flex flex-col">
+                    <div className="flex items-center mb-4">
+                      <div className="h-12 w-12 rounded-full bg-teal-500/10 flex items-center justify-center mr-4">
+                        <Twitter className="h-6 w-6 text-teal-500" />
+                      </div>
+                      <div>
+                        <h3 className="text-lg font-semibold text-white">Workers Rights Watch</h3>
+                        <p className="text-sm text-gray-400">@Workersrights24</p>
+                      </div>
+                    </div>
+                    
+                    <p className="text-gray-300 mb-4 flex-grow">
+                      {tweet.text}
+                    </p>
+                    
+                    <div className="flex items-center justify-between text-sm text-gray-400">
+                      <span>{new Date(tweet.created_at).toLocaleDateString()}</span>
+                      <div className="flex items-center space-x-4">
+                        <span className="flex items-center">
+                          <svg className="h-4 w-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
+                          </svg>
+                          {tweet.public_metrics?.like_count || 0}
+                        </span>
+                        <span className="flex items-center">
+                          <svg className="h-4 w-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" />
+                          </svg>
+                          {tweet.public_metrics?.reply_count || 0}
+                        </span>
+                      </div>
+                    </div>
+                  </div>
+                </motion.div>
+              ))
+            ) : (
+              // No tweets state
+              <div className="col-span-full text-center py-12">
+                <p className="text-gray-400">No tweets available at the moment.</p>
+              </div>
+            )}
+          </div>
+
+          <div className="text-center mt-12">
+            <Button
+              asChild
+              variant="outline"
+              className="text-teal-500 dark:text-teal-500 light:text-teal-600 border-teal-500 dark:border-teal-500 light:border-teal-600 hover:bg-teal-500 hover:text-black rounded-full px-8 py-6 text-base"
+            >
+              <a 
+                href="https://x.com/Workersrights24" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="flex items-center"
+              >
+                <Twitter className="h-5 w-5 mr-2" />
+                Follow Us on X
+              </a>
+            </Button>
+          </div>
+        </div>
       </section>
 
       <section className="py-24 bg-teal-500 text-black">

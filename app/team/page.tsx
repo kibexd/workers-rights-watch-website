@@ -5,7 +5,7 @@ import Image from "next/image"
 import Link from "next/link"
 import { Card, CardContent } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
-import { Mail, Linkedin, Twitter, ExternalLink, MapPin, Briefcase, Calendar, X, Users, Scale, FileText, Shield } from "lucide-react"
+import { Mail, Linkedin, Twitter, ExternalLink, MapPin, Briefcase, Calendar, X, Users, Scale, FileText, Shield, ArrowRight } from "lucide-react"
 import { motion } from "framer-motion"
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
@@ -505,47 +505,99 @@ export default function TeamPage() {
       </Dialog>
 
       {/* Who We Work With Section */}
-      <section className="py-16 bg-[#181818] dark:bg-[#181818] light:bg-[#F8F9FA]">
-        <div className="container mx-auto px-6">
-          <motion.div
-            initial={{ opacity: 0, y: 40 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            className="text-center mb-12"
-          >
-            <h2 className="text-3xl font-bold text-white dark:text-white light:text-gray-900 mb-4">Who We Work With</h2>
-            <p className="text-xl text-gray-400 dark:text-gray-400 light:text-gray-700 max-w-2xl mx-auto">
-              Workers Rights Watch collaborates with a diverse network of individuals and groups who support our mission in many ways.
-            </p>
-          </motion.div>
-          <div className="grid md:grid-cols-4 gap-8">
-            {/* Card 1: Workers' Assemblies */}
-            <div className="bg-gradient-to-b from-[#232526] to-[#181818] rounded-3xl shadow-xl p-8 flex flex-col items-center text-center">
-              <Users className="h-12 w-12 text-teal-500 mb-4" />
-              <h3 className="text-xl font-bold text-white mb-2">Workers' Assemblies</h3>
-              <p className="text-gray-400">Grassroots groups of workers who provide insights, feedback, and mobilize for collective action.</p>
+<section className="py-28 bg-[#181818] dark:bg-[#181818] light:bg-[#F8F9FA] overflow-hidden">
+  <div className="container mx-auto px-6">
+    <motion.div
+      initial={{ opacity: 0, y: 40 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.8 }}
+      className="text-center mb-20"
+    >
+      <h2 className="text-5xl font-bold text-white dark:text-white light:text-gray-900 mb-6">
+        Who We Work With
+      </h2>
+      <p className="text-xl text-gray-400 dark:text-gray-400 light:text-gray-700 max-w-3xl mx-auto leading-relaxed">
+        Workers Rights Watch collaborates with a diverse network of individuals and groups who support our mission in many ways.
+      </p>
+    </motion.div>
+
+    <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-10">
+      {[
+        {
+          icon: <Users className="h-10 w-10 text-teal-500" />,
+          title: "Workers' Assemblies",
+          description: "Grassroots groups of workers who provide insights, feedback, and mobilize for collective action.",
+          image: "/pic2.jpg",
+          gradient: "from-teal-500/30 to-transparent"
+        },
+        {
+          icon: <Scale className="h-10 w-10 text-teal-500" />,
+          title: "Community Leaders",
+          description: "Local champions who help us reach and empower workers in their communities.",
+          image: "/pic7.jpg",
+          gradient: "from-blue-500/30 to-transparent"
+        },
+        {
+          icon: <FileText className="h-10 w-10 text-teal-500" />,
+          title: "Legal Advisors",
+          description: "A network of legal professionals who provide guidance and representation for workers' rights cases.",
+          image: "/pic3.jpg",
+          gradient: "from-purple-500/30 to-transparent"
+        },
+        {
+          icon: <Shield className="h-10 w-10 text-teal-500" />,
+          title: "Partner Organizations",
+          description: "We collaborate with NGOs, unions, and advocacy groups to amplify our impact and reach.",
+          image: "/pic4.jpg",
+          gradient: "from-pink-500/30 to-transparent"
+        }
+      ].map((item, index) => (
+        <motion.div
+          key={index}
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5, delay: index * 0.1 }}
+          className="relative group"
+        >
+          <div className="h-full rounded-3xl shadow-xl overflow-hidden bg-[#232526] flex flex-col">
+            {/* Image Section with Gradient Overlay */}
+            <div className="relative h-48 overflow-hidden">
+              <div className={`absolute inset-0 bg-gradient-to-tr ${item.gradient} z-10 opacity-70`}></div>
+              <Image
+                src={item.image}
+                alt={item.title}
+                fill
+                className="object-cover transition-transform duration-700 group-hover:scale-105"
+              />
+              {/* Icon positioned on the image */}
+              <div className="absolute bottom-5 right-0 m-4 z-20 h-14 w-14 rounded-2xl bg-[#181818]/70 backdrop-blur-sm flex items-center justify-center transform translate-y-1/2 group-hover:-translate-y-2 transition-transform duration-500">
+                {item.icon}
+              </div>
             </div>
-            {/* Card 2: Community Leaders */}
-            <div className="bg-gradient-to-b from-[#232526] to-[#181818] rounded-3xl shadow-xl p-8 flex flex-col items-center text-center">
-              <Scale className="h-12 w-12 text-teal-500 mb-4" />
-              <h3 className="text-xl font-bold text-white mb-2">Community Leaders</h3>
-              <p className="text-gray-400">Local champions who help us reach and empower workers in their communities.</p>
-            </div>
-            {/* Card 3: Legal Advisors */}
-            <div className="bg-gradient-to-b from-[#232526] to-[#181818] rounded-3xl shadow-xl p-8 flex flex-col items-center text-center">
-              <FileText className="h-12 w-12 text-teal-500 mb-4" />
-              <h3 className="text-xl font-bold text-white mb-2">Legal Advisors</h3>
-              <p className="text-gray-400">A network of legal professionals who provide guidance and representation for workers' rights cases.</p>
-            </div>
-            {/* Card 4: Partner Organizations */}
-            <div className="bg-gradient-to-b from-[#232526] to-[#181818] rounded-3xl shadow-xl p-8 flex flex-col items-center text-center">
-              <Shield className="h-12 w-12 text-teal-500 mb-4" />
-              <h3 className="text-xl font-bold text-white mb-2">Partner Organizations</h3>
-              <p className="text-gray-400">We collaborate with NGOs, unions, and advocacy groups to amplify our impact and reach.</p>
+
+            {/* Content Section */}
+            <div className="p-8 pt-10 flex-grow flex flex-col">
+              <h3 className="text-2xl font-bold text-white mb-4">{item.title}</h3>
+              <p className="text-gray-400 text-lg leading-relaxed">{item.description}</p>
+              
+              {/* Hidden details that appear on hover */}
+              <motion.div 
+                initial={{ opacity: 0, height: 0 }}
+                whileHover={{ opacity: 1, height: "auto" }}
+                className="mt-4 overflow-hidden"
+              >
+                <span className="inline-flex items-center text-teal-500 font-medium mt-4">
+                  Learn more
+                  <ArrowRight className="ml-2 h-4 w-4" />
+                </span>
+              </motion.div>
             </div>
           </div>
-        </div>
-      </section>
+        </motion.div>
+      ))}
+    </div>
+  </div>
+</section>
 
       <section className="py-16 bg-[#0F0F0F] dark:bg-[#0F0F0F] light:bg-[#F0F0F0]">
         <div className="container mx-auto px-6 text-center">

@@ -33,10 +33,7 @@ export default function RootLayout({
     <html lang="en" suppressHydrationWarning>
       <body className={inter.className}>
         <ThemeProvider
-          attribute="class"
           defaultTheme="dark"
-          enableSystem
-          disableTransitionOnChange
         >
           <MainNav />
           <main className="pt-32 pb-20">
