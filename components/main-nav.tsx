@@ -50,7 +50,7 @@ export default function MainNav() {
   return (
     <>
       <TopHeader />
-      <header
+    <header
         className={`fixed top-10 left-0 right-0 z-50 transition-all duration-300 ${
           isScrolled ? "bg-black/80 backdrop-blur-md" : "bg-transparent"
         }`}
@@ -71,7 +71,7 @@ export default function MainNav() {
             {/* Desktop Navigation */}
             <div className="hidden md:flex items-center space-x-8">
               {navLinks.map((link) => (
-                <Link
+                  <Link
                   key={link.href}
                   href={link.href}
                   className={`text-sm font-medium transition-colors hover:text-teal-500 ${
@@ -79,18 +79,18 @@ export default function MainNav() {
                   }`}
                 >
                   {link.label}
-                </Link>
+                  </Link>
               ))}
               <DropdownMenu>
                 <DropdownMenuTrigger asChild>
-                  <Button
-                    variant="ghost"
+<Button
+  variant="ghost"
                     className={`text-sm font-medium transition-colors hover:text-teal-500 ${
                       pathname.startsWith("/resources") ? "text-teal-500" : "text-white"
                     }`}
                   >
                     Resources <ChevronDown className="ml-1 h-4 w-4" />
-                  </Button>
+</Button>
                 </DropdownMenuTrigger>
                 <DropdownMenuContent align="end" className="w-48 bg-[#111111] border-gray-800">
                   {resourceLinks.map((link) => (
@@ -108,7 +108,7 @@ export default function MainNav() {
               <Link href="/donate">
                 <Button className="bg-teal-500 hover:bg-teal-600 text-black font-semibold rounded-full px-6 py-2 ml-2 shadow-lg">
                   Donate
-                </Button>
+            </Button>
               </Link>
               {/* <ThemeToggle /> */}
             </div>
@@ -158,7 +158,7 @@ export default function MainNav() {
                         onClick={() => setIsOpen(false)}
                       >
                         {link.label}
-                      </Link>
+                    </Link>
                     ))}
                   </div>
                   {/* <div className="pt-4">
@@ -169,7 +169,7 @@ export default function MainNav() {
             </motion.div>
           )}
         </AnimatePresence>
-      </header>
+    </header>
       <FloatingSocial />
     </>
   )

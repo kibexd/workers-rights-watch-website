@@ -622,13 +622,13 @@ export default function ResourcesPage() {
             <Tabs defaultValue={activeTab} onValueChange={handleTabChange} className="w-full">
               <TabsList className="justify-center mb-8 bg-transparent border border-gray-800 dark:border-gray-800 light:border-gray-200 rounded-full p-1 w-fit mx-auto">
                 {tabs.map((tab) => (
-                  <TabsTrigger
+                <TabsTrigger
                     key={tab.id}
                     value={tab.id}
-                    className="rounded-full px-8 py-2 data-[state=active]:bg-teal-500 data-[state=active]:text-black"
-                  >
+                  className="rounded-full px-8 py-2 data-[state=active]:bg-teal-500 data-[state=active]:text-black"
+                >
                     {tab.label}
-                  </TabsTrigger>
+                </TabsTrigger>
                 ))}
               </TabsList>
 
