@@ -14,37 +14,44 @@ export async function GET() {
           Authorization: `Bearer ${TWITTER_BEARER_TOKEN}`,
         },
       }
-    )
+    );
 
     if (!userRes.ok) {
-      const err = await userRes.json()
-      console.error('User fetch error:', err)
-      return NextResponse.json({ error: 'Failed to fetch user' }, { status: 500 })
+      const err = await userRes.json().catch(() => ({}));
+      console.error('User fetch error (status ' + userRes.status + '):', err);
+      return NextResponse.json({ error: 'Failed to fetch user', details: err }, { status: 500 });
     }
 
-    const userData = await userRes.json()
-    const userId = userData.data.id
+    const userData = await userRes.json();
+
+    if (!userData?.data?.id) {
+      // Sometimes Twitter returns error object instead of data
+      console.error('User data missing or malformed:', userData);
+      return NextResponse.json({ error: 'User data missing', details: userData }, { status: 500 });
+    }
+
+    const userId = userData.data.id;
 
     // Step 2: Fetch tweets for that user ID
     const tweetsRes = await fetch(
-      `https://api.twitter.com/2/users/${userId}/tweets?max_results=5&tweet.fields=created_at,text,public_metrics`,
+      `https://api.twitter.com/2/users/${userId}/tweets?max_results=4&tweet.fields=created_at,text,public_metrics`,
       {
         headers: {
           Authorization: `Bearer ${TWITTER_BEARER_TOKEN}`,
         },
       }
-    )
+    );
 
     if (!tweetsRes.ok) {
-      const err = await tweetsRes.json()
-      console.error('Tweets fetch error:', err)
-      return NextResponse.json({ error: 'Failed to fetch tweets' }, { status: 500 })
+      const err = await tweetsRes.json().catch(() => ({}));
+      console.error('Tweets fetch error (status ' + tweetsRes.status + '):', err);
+      return NextResponse.json({ error: 'Failed to fetch tweets', details: err }, { status: 500 });
     }
 
-    const tweets = await tweetsRes.json()
-    return NextResponse.json(tweets)
+    const tweets = await tweetsRes.json();
+    return NextResponse.json(tweets);
   } catch (error) {
-    console.error('Twitter route error:', error)
-    return NextResponse.json({ error: 'Internal Server Error' }, { status: 500 })
+    console.error('Twitter route error:', error);
+    return NextResponse.json({ error: 'Internal Server Error', details: String(error) }, { status: 500 });
   }
-} 
+}

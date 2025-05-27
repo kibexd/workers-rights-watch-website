@@ -12,6 +12,7 @@ import { motion } from "framer-motion"
 import { Dialog, DialogContent, DialogTrigger, DialogTitle } from "@/components/ui/dialog"
 import { Badge } from "@/components/ui/badge"
 import TwitterFeed from "@/components/TwitterFeed"
+import dynamic from "next/dynamic"
 
 const partners = [
   { name: "ILO", logo: "/ilo.png", url: "https://www.ilo.org" },
@@ -60,6 +61,8 @@ function AnimatedNumber({ target, isVisible, suffix = '', className = '' }: Anim
   }, [isVisible, target]);
   return <span className={className}>{count.toLocaleString()}{suffix}</span>;
 }
+
+const TwitterEmbed = dynamic(() => import('@/components/TwitterEmbed'), { ssr: false });
 
 export default function HomePage() {
   const [isVisible, setIsVisible] = useState({
@@ -932,24 +935,81 @@ export default function HomePage() {
             </p>
           </motion.div>
 
-          <TwitterFeed />
-
-          <div className="text-center mt-12">
-            <Button
-              asChild
-              variant="outline"
-              className="text-teal-500 dark:text-teal-500 light:text-teal-600 border-teal-500 dark:border-teal-500 light:border-teal-600 hover:bg-teal-500 hover:text-black rounded-full px-8 py-6 text-base"
+          {/* X/Twitter embed, beautifully styled with dynamic widget script */}
+          <div className="flex justify-center">
+            <div
+              className="
+                w-full max-w-4xl mx-auto
+                grid grid-cols-1 md:grid-cols-2 gap-8
+                rounded-3xl bg-transparent
+                transition-all duration-300
+              "
             >
-              <a 
-                href="https://x.com/Workersrights24" 
-                target="_blank" 
-                rel="noopener noreferrer"
-                className="flex items-center"
+              <div
+                className="
+                  rounded-3xl bg-[#171717]/70 dark:bg-[#171717]/80
+                  p-6 sm:p-8
+                  shadow-xl border border-[#262626]
+                  backdrop-blur
+                  ring-1 ring-teal-500/15
+                  hover:scale-[1.015] hover:shadow-2xl hover:ring-2 hover:ring-teal-500/20
+                  transition-all duration-300
+                "
+                style={{ boxShadow: "0 6px 32px 0 rgba(0,0,0,0.10)" }}
               >
-                <Twitter className="h-5 w-5 mr-2" />
+                <TwitterEmbed
+                  tweetHtml={`<blockquote class=\"twitter-tweet\" data-media-max-width=\"560\"><p lang=\"en\" dir=\"ltr\">Other activities we do;<br>✓Advocating for fair compensation benefits and working hours for all workers.<br>✓Combating workplace discrimination based on gender,ethnicity,disability or other factors.<a href=\"https://twitter.com/hashtag/Endviolence?src=hash&amp;ref_src=twsrc%5Etfw\">#Endviolence</a><a href=\"https://twitter.com/hashtag/workersrights?src=hash&amp;ref_src=twsrc%5Etfw\">#workersrights</a> <a href=\"https://twitter.com/hashtag/WomensRightsAreHumanRights?src=hash&amp;ref_src=twsrc%5Etfw\">#WomensRightsAreHumanRights</a> <a href=\"https://t.co/AezPwhRa9h\">pic.twitter.com/AezPwhRa9h</a></p>&mdash; Workersrightswatch (@Workersrights24) <a href=\"https://twitter.com/Workersrights24/status/1927265182041899063?ref_src=twsrc%5Etfw\">May 27, 2025</a></blockquote>`}
+                />
+              </div>
+              <div
+                className="
+                  rounded-3xl bg-[#171717]/70 dark:bg-[#171717]/80
+                  p-6 sm:p-8
+                  shadow-xl border border-[#262626]
+                  backdrop-blur
+                  ring-1 ring-teal-500/15
+                  hover:scale-[1.015] hover:shadow-2xl hover:ring-2 hover:ring-teal-500/20
+                  transition-all duration-300
+                "
+                style={{ boxShadow: "0 6px 32px 0 rgba(0,0,0,0.10)" }}
+              >
+                <TwitterEmbed
+                  tweetHtml={`<blockquote class=\"twitter-tweet\"><p lang=\"en\" dir=\"ltr\">Talking about periods matters🩸🩸🩸🩸💃✨<br><br>When women learn about their bodies&amp;their rights ,they are more likely to take care of themselves with confidence&amp;dignity.♀️🩸<br>We create awareness on menstrual health hygiene management to women in flower farms.🩸🩸<a href=\"https://twitter.com/hashtag/periodpositive?src=hash&amp;ref_src=twsrc%5Etfw\">#periodpositive</a> <a href=\"https://t.co/vaAvUkyczd\">pic.twitter.com/vaAvUkyczd</a></p>&mdash; Workersrightswatch (@Workersrights24) <a href=\"https://twitter.com/Workersrights24/status/1925454159983055129?ref_src=twsrc%5Etfw\">May 22, 2025</a></blockquote>`}
+                />
+              </div>
+            </div>
+          </div>
+
+          {/* Beautiful animated Apple-style Follow button */}
+          <div className="text-center mt-12">
+            <a
+              href="https://x.com/Workersrights24"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center justify-center group
+                         relative px-10 py-6 mt-3 rounded-full
+                         bg-[#101720] border border-teal-500 text-teal-400
+                         font-bold text-base shadow-lg overflow-hidden
+                         transition-all duration-300
+                         focus:outline-none
+                         hover:ring-2 hover:ring-teal-400 hover:bg-[#0a222a]
+                         "
+              style={{
+                boxShadow: "0 0 28px 0 #10bfae46"
+              }}
+            >
+              {/* Glowing animated ring */}
+              <span className="absolute inset-0 pointer-events-none rounded-full
+                  animate-pulse
+                  bg-teal-500/[.08] group-hover:bg-teal-500/[.19]
+                  blur-lg z-0
+                "
+              />
+              <Twitter className="h-5 w-5 mr-2 relative z-10" />
+              <span className="relative z-10">
                 Follow Us on X
-              </a>
-            </Button>
+              </span>
+            </a>
           </div>
         </div>
       </section>
