@@ -8,8 +8,9 @@ import { useEffect, useRef, useState } from "react";
  * - Always calls widgets.load on the embed after render.
  * - Retries if needed to ensure the card is always interactive.
  * - Apple-style glowy animated background, no border/radius mismatch.
+ * - Accepts className for parent layout styling (e.g. break-inside-avoid for masonry).
  */
-export default function TwitterEmbed({ tweetHtml }: { tweetHtml: string }) {
+export default function TwitterEmbed({ tweetHtml, className = "" }: { tweetHtml: string, className?: string }) {
   const ref = useRef<HTMLDivElement>(null);
   const [mounted, setMounted] = useState(false);
 
@@ -26,27 +27,50 @@ export default function TwitterEmbed({ tweetHtml }: { tweetHtml: string }) {
     }
   }, []);
 
-  // After every render, try to upgrade the blockquote robustly
+  // MutationObserver to robustly reload the embed
   useEffect(() => {
-    if (!mounted) return;
+    if (!mounted || !ref.current) return;
     let tries = 0;
-    const maxTries = 10;
+    const maxTries = 15;
+    const win = window as any;
+
     const tryLoad = () => {
-      const win = window as any;
       if (win['twttr']?.widgets?.load && ref.current) {
         win['twttr'].widgets.load(ref.current);
-      } else if (tries < maxTries) {
-        tries++;
-        setTimeout(tryLoad, 300);
       }
     };
+
+    // Initial load
     tryLoad();
+
+    // Retry if still not upgraded
+    const interval = setInterval(() => {
+      if (ref.current && ref.current.querySelector('.twitter-tweet-rendered')) {
+        clearInterval(interval);
+      } else if (tries < maxTries) {
+        tryLoad();
+        tries++;
+      } else {
+        clearInterval(interval);
+      }
+    }, 500);
+
+    // MutationObserver to reload on DOM changes
+    const observer = new MutationObserver(() => {
+      tryLoad();
+    });
+    observer.observe(ref.current, { childList: true, subtree: true });
+
+    return () => {
+      clearInterval(interval);
+      observer.disconnect();
+    };
   }, [mounted, tweetHtml]);
 
   if (!mounted) return null;
 
   return (
-    <div className="relative flex justify-center items-center py-6">
+    <div className={`relative flex justify-center items-center py-6 ${className}`}>
       {/* Glowy animated background */}
       <div
         className="absolute inset-0 z-0 pointer-events-none"
@@ -74,13 +98,13 @@ export default function TwitterEmbed({ tweetHtml }: { tweetHtml: string }) {
 }
 
 // To add more X (Twitter) posts in the future, simply:
-// 1. Import and use <TwitterEmbed tweetHtml={...} /> in your grid or flex layout.
+// 1. Import and use <TwitterEmbed tweetHtml={...} /> in your columns layout.
 // 2. Copy the blockquote HTML from X (Twitter) and pass as tweetHtml.
-// 3. For best results, wrap each <TwitterEmbed /> in a container with padding and spacing.
+// 3. For best results, use className="break-inside-avoid mb-8" for each card.
 //
 // Example:
-//   // <div className="grid md:grid-cols-2 gap-8">
-//   //   <TwitterEmbed tweetHtml={`<blockquote class=\"twitter-tweet\">...</blockquote>`} />
-//   //   <TwitterEmbed tweetHtml={`<blockquote class=\"twitter-tweet\">...</blockquote>`} />
+//   // <div className="columns-1 sm:columns-2 lg:columns-3 gap-8 w-full max-w-6xl mx-auto space-y-8 pb-8">
+//   //   <TwitterEmbed tweetHtml={`<blockquote class=\"twitter-tweet\">...</blockquote>`} className="break-inside-avoid mb-8" />
+//   //   <TwitterEmbed tweetHtml={`<blockquote class=\"twitter-tweet\">...</blockquote>`} className="break-inside-avoid mb-8" />
 //   //   {/* Add more here! */}
 //   // </div> 

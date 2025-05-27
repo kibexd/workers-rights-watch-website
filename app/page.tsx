@@ -936,22 +936,21 @@ export default function HomePage() {
           </motion.div>
 
           {/* X/Twitter embed, beautifully styled with dynamic widget script */}
-          <div className="flex justify-center">
-            <div
-              className="
-                w-full max-w-4xl mx-auto
-                grid grid-cols-1 md:grid-cols-2 gap-8
-                rounded-3xl bg-transparent
-                transition-all duration-300
-              "
-            >
-              <TwitterEmbed
-                tweetHtml={`<blockquote class=\"twitter-tweet\" data-media-max-width=\"560\"><p lang=\"en\" dir=\"ltr\">Other activities we do;<br>✓Advocating for fair compensation benefits and working hours for all workers.<br>✓Combating workplace discrimination based on gender,ethnicity,disability or other factors.<a href=\"https://twitter.com/hashtag/Endviolence?src=hash&amp;ref_src=twsrc%5Etfw\">#Endviolence</a><a href=\"https://twitter.com/hashtag/workersrights?src=hash&amp;ref_src=twsrc%5Etfw\">#workersrights</a> <a href=\"https://twitter.com/hashtag/WomensRightsAreHumanRights?src=hash&amp;ref_src=twsrc%5Etfw\">#WomensRightsAreHumanRights</a> <a href=\"https://t.co/AezPwhRa9h\">pic.twitter.com/AezPwhRa9h</a></p>&mdash; Workersrightswatch (@Workersrights24) <a href=\"https://twitter.com/Workersrights24/status/1927265182041899063?ref_src=twsrc%5Etfw\">May 27, 2025</a></blockquote>`}
-              />
-              <TwitterEmbed
-                tweetHtml={`<blockquote class=\"twitter-tweet\"><p lang=\"en\" dir=\"ltr\">Talking about periods matters🩸🩸🩸🩸💃✨<br><br>When women learn about their bodies&amp;their rights ,they are more likely to take care of themselves with confidence&amp;dignity.♀️🩸<br>We create awareness on menstrual health hygiene management to women in flower farms.🩸🩸<a href=\"https://twitter.com/hashtag/periodpositive?src=hash&amp;ref_src=twsrc%5Etfw\">#periodpositive</a> <a href=\"https://t.co/vaAvUkyczd\">pic.twitter.com/vaAvUkyczd</a></p>&mdash; Workersrightswatch (@Workersrights24) <a href=\"https://twitter.com/Workersrights24/status/1925454159983055129?ref_src=twsrc%5Etfw\">May 22, 2025</a></blockquote>`}
-              />
-            </div>
+          <div
+            className="columns-1 sm:columns-2 lg:columns-3 gap-8 w-full max-w-6xl mx-auto space-y-8 pb-8"
+          >
+            <TwitterEmbed
+              tweetHtml={`<blockquote class=\"twitter-tweet\" data-media-max-width=\"560\"><p lang=\"en\" dir=\"ltr\">Other activities we do;<br>✓Advocating for fair compensation benefits and working hours for all workers.<br>✓Combating workplace discrimination based on gender,ethnicity,disability or other factors.<a href=\"https://twitter.com/hashtag/Endviolence?src=hash&amp;ref_src=twsrc%5Etfw\">#Endviolence</a><a href=\"https://twitter.com/hashtag/workersrights?src=hash&amp;ref_src=twsrc%5Etfw\">#workersrights</a> <a href=\"https://twitter.com/hashtag/WomensRightsAreHumanRights?src=hash&amp;ref_src=twsrc%5Etfw\">#WomensRightsAreHumanRights</a> <a href=\"https://t.co/AezPwhRa9h\">pic.twitter.com/AezPwhRa9h</a></p>&mdash; Workersrightswatch (@Workersrights24) <a href=\"https://twitter.com/Workersrights24/status/1927265182041899063?ref_src=twsrc%5Etfw\">May 27, 2025</a></blockquote>`}
+              className="break-inside-avoid mb-8"
+            />
+            <TwitterEmbed
+              tweetHtml={`<blockquote class=\"twitter-tweet\"><p lang=\"en\" dir=\"ltr\">Talking about periods matters🩸🩸🩸🩸💃✨<br><br>When women learn about their bodies&amp;their rights ,they are more likely to take care of themselves with confidence&amp;dignity.♀️🩸<br>We create awareness on menstrual health hygiene management to women in flower farms.🩸🩸<a href=\"https://twitter.com/hashtag/periodpositive?src=hash&amp;ref_src=twsrc%5Etfw\">#periodpositive</a> <a href=\"https://t.co/vaAvUkyczd\">pic.twitter.com/vaAvUkyczd</a></p>&mdash; Workersrightswatch (@Workersrights24) <a href=\"https://twitter.com/Workersrights24/status/1925454159983055129?ref_src=twsrc%5Etfw\">May 22, 2025</a></blockquote>`}
+              className="break-inside-avoid mb-8"
+            />
+            <TwitterEmbed
+              tweetHtml={`<blockquote class=\"twitter-tweet\"><p lang=\"en\" dir=\"ltr\">At Worker&#39;s Rights Watch ,we believe in empowering workers by letting their voices lead the way.Through open,guided discussions based on what participants want to learn,we create space for workers to advocate for&amp; defend their rights confidently&amp;collectively.<a href=\"https://twitter.com/hashtag/Workersrights?src=hash&amp;ref_src=twsrc%5Etfw\">#Workersrights</a> <a href=\"https://t.co/432F1a5EkH\">pic.twitter.com/432F1a5EkH</a></p>&mdash; Workersrightswatch (@Workersrights24) <a href=\"https://twitter.com/Workersrights24/status/1921825887516811650?ref_src=twsrc%5Etfw\">May 12, 2025</a></blockquote>`}
+              className="break-inside-avoid mb-8"
+            />
           </div>
 
           {/* Beautiful animated Apple-style Follow button */}
