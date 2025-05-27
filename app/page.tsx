@@ -945,38 +945,12 @@ export default function HomePage() {
                 transition-all duration-300
               "
             >
-              <div
-                className="
-                  rounded-3xl bg-[#171717]/70 dark:bg-[#171717]/80
-                  p-6 sm:p-8
-                  shadow-xl border border-[#262626]
-                  backdrop-blur
-                  ring-1 ring-teal-500/15
-                  hover:scale-[1.015] hover:shadow-2xl hover:ring-2 hover:ring-teal-500/20
-                  transition-all duration-300
-                "
-                style={{ boxShadow: "0 6px 32px 0 rgba(0,0,0,0.10)" }}
-              >
-                <TwitterEmbed
-                  tweetHtml={`<blockquote class=\"twitter-tweet\" data-media-max-width=\"560\"><p lang=\"en\" dir=\"ltr\">Other activities we do;<br>✓Advocating for fair compensation benefits and working hours for all workers.<br>✓Combating workplace discrimination based on gender,ethnicity,disability or other factors.<a href=\"https://twitter.com/hashtag/Endviolence?src=hash&amp;ref_src=twsrc%5Etfw\">#Endviolence</a><a href=\"https://twitter.com/hashtag/workersrights?src=hash&amp;ref_src=twsrc%5Etfw\">#workersrights</a> <a href=\"https://twitter.com/hashtag/WomensRightsAreHumanRights?src=hash&amp;ref_src=twsrc%5Etfw\">#WomensRightsAreHumanRights</a> <a href=\"https://t.co/AezPwhRa9h\">pic.twitter.com/AezPwhRa9h</a></p>&mdash; Workersrightswatch (@Workersrights24) <a href=\"https://twitter.com/Workersrights24/status/1927265182041899063?ref_src=twsrc%5Etfw\">May 27, 2025</a></blockquote>`}
-                />
-              </div>
-              <div
-                className="
-                  rounded-3xl bg-[#171717]/70 dark:bg-[#171717]/80
-                  p-6 sm:p-8
-                  shadow-xl border border-[#262626]
-                  backdrop-blur
-                  ring-1 ring-teal-500/15
-                  hover:scale-[1.015] hover:shadow-2xl hover:ring-2 hover:ring-teal-500/20
-                  transition-all duration-300
-                "
-                style={{ boxShadow: "0 6px 32px 0 rgba(0,0,0,0.10)" }}
-              >
-                <TwitterEmbed
-                  tweetHtml={`<blockquote class=\"twitter-tweet\"><p lang=\"en\" dir=\"ltr\">Talking about periods matters🩸🩸🩸🩸💃✨<br><br>When women learn about their bodies&amp;their rights ,they are more likely to take care of themselves with confidence&amp;dignity.♀️🩸<br>We create awareness on menstrual health hygiene management to women in flower farms.🩸🩸<a href=\"https://twitter.com/hashtag/periodpositive?src=hash&amp;ref_src=twsrc%5Etfw\">#periodpositive</a> <a href=\"https://t.co/vaAvUkyczd\">pic.twitter.com/vaAvUkyczd</a></p>&mdash; Workersrightswatch (@Workersrights24) <a href=\"https://twitter.com/Workersrights24/status/1925454159983055129?ref_src=twsrc%5Etfw\">May 22, 2025</a></blockquote>`}
-                />
-              </div>
+              <TwitterEmbed
+                tweetHtml={`<blockquote class=\"twitter-tweet\" data-media-max-width=\"560\"><p lang=\"en\" dir=\"ltr\">Other activities we do;<br>✓Advocating for fair compensation benefits and working hours for all workers.<br>✓Combating workplace discrimination based on gender,ethnicity,disability or other factors.<a href=\"https://twitter.com/hashtag/Endviolence?src=hash&amp;ref_src=twsrc%5Etfw\">#Endviolence</a><a href=\"https://twitter.com/hashtag/workersrights?src=hash&amp;ref_src=twsrc%5Etfw\">#workersrights</a> <a href=\"https://twitter.com/hashtag/WomensRightsAreHumanRights?src=hash&amp;ref_src=twsrc%5Etfw\">#WomensRightsAreHumanRights</a> <a href=\"https://t.co/AezPwhRa9h\">pic.twitter.com/AezPwhRa9h</a></p>&mdash; Workersrightswatch (@Workersrights24) <a href=\"https://twitter.com/Workersrights24/status/1927265182041899063?ref_src=twsrc%5Etfw\">May 27, 2025</a></blockquote>`}
+              />
+              <TwitterEmbed
+                tweetHtml={`<blockquote class=\"twitter-tweet\"><p lang=\"en\" dir=\"ltr\">Talking about periods matters🩸🩸🩸🩸💃✨<br><br>When women learn about their bodies&amp;their rights ,they are more likely to take care of themselves with confidence&amp;dignity.♀️🩸<br>We create awareness on menstrual health hygiene management to women in flower farms.🩸🩸<a href=\"https://twitter.com/hashtag/periodpositive?src=hash&amp;ref_src=twsrc%5Etfw\">#periodpositive</a> <a href=\"https://t.co/vaAvUkyczd\">pic.twitter.com/vaAvUkyczd</a></p>&mdash; Workersrightswatch (@Workersrights24) <a href=\"https://twitter.com/Workersrights24/status/1925454159983055129?ref_src=twsrc%5Etfw\">May 22, 2025</a></blockquote>`}
+              />
             </div>
           </div>
 
