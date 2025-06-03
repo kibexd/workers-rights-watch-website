@@ -120,7 +120,9 @@ export default function Footer() {
 
         {/* Social Links & Copyright */}
         <div className="mt-12 pt-8 border-t border-gray-800">
-          <div className="flex flex-col md:flex-row justify-between items-center">
+          {/* Combined row for social links, designed by, and copyright */}
+          <div className="flex flex-col md:flex-row items-center justify-between">
+            {/* Social Links */}
             <div className="flex space-x-4 mb-4 md:mb-0">
               {socialLinks.map((link) => (
                 <a
@@ -134,21 +136,23 @@ export default function Footer() {
                 </a>
               ))}
             </div>
-            <div className="flex flex-col items-center mt-4 md:mt-0">
-              <p className="text-sm text-center md:text-center">
-                © {new Date().getFullYear()} Workers Rights Watch. All rights reserved.
-              </p>
-              <p className="text-sm text-center md:text-center mt-2">
-                Designed and built by{' '}
-                <a
-                  href="https://github.com/kife"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-teal-500 hover:text-teal-400"
-                >
-                  Kife ☻
-                </a>
-              </p>
+
+            {/* Designed by text - Centered */}
+            <div className="text-sm text-center mb-4 md:mb-0">
+              Designed and built by{' '}
+              <a
+                href="https://github.com/kife"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-teal-500 hover:text-teal-400"
+              >
+                Kife ☻
+              </a>
+            </div>
+
+            {/* Copyright text - Aligned right on md+ screens */}
+            <div className="text-sm text-center md:text-right">
+              © {new Date().getFullYear()} Workers Rights Watch. All rights reserved.
             </div>
           </div>
         </div>

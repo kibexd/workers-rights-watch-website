@@ -47,7 +47,7 @@ const heroItems = [
   },
   {
     type: "video" as const,
-    src: "/videos/impact.mp4", // Ensure this path is correct and video exists
+    src: "/video1.MP4", // Ensure this path is correct and video exists
     alt: "Our work in action",
     videoUrl: "/video1.MP4",
   },
@@ -58,7 +58,7 @@ const heroItems = [
   },
   {
     type: "video" as const,
-    src: "/videos/impact.mp4", // Ensure this path is correct and video exists
+    src: "/video3.MP4", // Ensure this path is correct and video exists
     alt: "Our work in action",
     videoUrl: "/video3.MP4",
   },
@@ -69,7 +69,7 @@ const heroItems = [
   },
   {
     type: "video" as const,
-    src: "/videos/impact.mp4", // Ensure this path is correct and video exists
+    src: "/video2.mp4", // Ensure this path is correct and video exists
     alt: "Our work in action",
     videoUrl: "/video2.MP4",
   },
