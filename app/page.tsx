@@ -5,28 +5,75 @@ import { useState, useEffect, useRef } from "react"
 import Link from "next/link"
 import Image from "next/image"
 import { Button } from "@/components/ui/button"
-import { Card, CardContent } from "@/components/ui/card"
+import { Card, CardContent, CardHeader, CardTitle, CardFooter } from "@/components/ui/card"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
-import { ArrowRight, ChevronRight, Shield, Users, Scale, ImageIcon, FileText, Download, Twitter } from "lucide-react"
+import { ArrowRight, ChevronRight, Shield, Users, Scale, ImageIcon, FileText, Download, Twitter, MapPin, Phone, Mail, Facebook, Instagram, Linkedin, Youtube, ArrowLeftRight } from "lucide-react"
 import { motion } from "framer-motion"
-import { Dialog, DialogContent, DialogTrigger, DialogTitle } from "@/components/ui/dialog"
+import { Dialog, DialogContent, DialogTrigger, DialogTitle, DialogClose } from "@/components/ui/dialog"
 import { Badge } from "@/components/ui/badge"
-import TwitterFeed from "@/components/TwitterFeed"
+import { Input } from "@/components/ui/input"
 import dynamic from "next/dynamic"
+import { HeroCarousel } from "@/components/hero-carousel"
 
 const partners = [
-  { name: "ILO", logo: "/ilo.png", url: "https://www.ilo.org" },
-  { name: "UN Women", logo: "/un-women.jpg", url: "https://www.unwomen.org" },
-  { name: "Amnesty International", logo: "/amnesty.png", url: "https://www.amnesty.org" },
-  { name: "Human Rights Watch", logo: "/hrw.png", url: "https://www.hrw.org" },
-  { name: "Solidarity Center", logo: "/sc.png", url: "https://www.solidaritycenter.org" },
-  { name: "Kenya Human Rights Commission", logo: "/khrc.png", url: "https://www.khrc.or.ke" },
-  { name: "Federation of Kenya Employers", logo: "/foke.jpg", url: "https://www.fke-kenya.org" },
-  { name: "Central Organization of Trade Unions", logo: "/cotu.jpg", url: "https://www.cotu-kenya.org" },
+  { name: "Anti-Slavery International", logo: "/asi.jpg", url: "https://www.antislavery.org/" },
+  { name: "FEMNET", logo: "/femnet.png", url: "https://www.femnet.org/" },
+  { name: "Women Win", logo: "/womenwin.png", url: "https://www.womenwin.org/" },
+  { name: "Hivos", logo: "/hivos.png", url: "https://hivos.org/" },
+  { name: "Women Working World Wide", logo: "/www.jpeg", url: "https://www.women-ww.org/" },
+  { name: "FIDA-Kenya", logo: "/fida.jpeg", url: "https://fidakenya.org/" },
+  { name: "Kenya Flower Council", logo: "/kfc.png", url: "https://kenyaflowercouncil.org/" },
+  { name: "Equality Now", logo: "/equalitynow.png", url: "https://equalitynow.org/" },
+  { name: "Haki Mashinani", logo: "/hakimashinani.jpeg", url: "https://www.hakimashinanikenya.org/" },
+  { name: "Fair Trade Africa", logo: "/fta.png", url: "https://fairtradeafrica.net/" },
+  { name: "Rainforest Alliance", logo: "/rainforest.png", url: "https://www.rainforest-alliance.org/" },
+  { name: "Ufadhili Trust", logo: "/ufadhili.png", url: "https://www.ufadhilitrust.org/" },
+  { name: "Kenya Human Rights Commission", logo: "/khrc.png", url: "https://khrc.or.ke/" },
+  { name: "Women Empowerment Link", logo: "/wel.jpeg", url: "https://wel.or.ke/" },
+  { name: "CREAW", logo: "/creaw.png", url: "https://home.creaw.org/" },
+  { name: "Business and Human Rights Resource Center", logo: "/bhrc.png", url: "https://www.business-humanrights.org/en/latest-news/kenya/" },
+  { name: "CIFCAD", logo: "/cifcad.png", url: "https://cifcad.org/" }
 ];
 
 // Double the partners array to create seamless loop
 const doubledPartners = [...partners, ...partners];
+
+// Define Hero Carousel items
+const heroItems = [
+  {
+    type: "image" as const,
+    src: "/pic1.jpg",
+    alt: "Workers in action",
+  },
+  {
+    type: "video" as const,
+    src: "/videos/impact.mp4", // Ensure this path is correct and video exists
+    alt: "Our work in action",
+    videoUrl: "/video1.MP4",
+  },
+  {
+    type: "image" as const,
+    src: "/pic2.jpg",
+    alt: "Community engagement",
+  },
+  {
+    type: "video" as const,
+    src: "/videos/impact.mp4", // Ensure this path is correct and video exists
+    alt: "Our work in action",
+    videoUrl: "/video3.MP4",
+  },
+  {
+    type: "image" as const,
+    src: "/pic3.jpg",
+    alt: "Training session",
+  },
+  {
+    type: "video" as const,
+    src: "/videos/impact.mp4", // Ensure this path is correct and video exists
+    alt: "Our work in action",
+    videoUrl: "/video2.MP4",
+  },
+];
 
 type AnimatedNumberProps = {
   target: number;
@@ -90,8 +137,9 @@ export default function HomePage() {
 
   const [scrollPaused, setScrollPaused] = useState(false);
   const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
+  const [scrollDirection, setScrollDirection] = useState<'left' | 'right'>('left'); // State for scroll direction
 
-  const [tweets, setTweets] = useState([])
+  const [tweets, setTweets] = useState<Array<{ html: string }>>([])
   const [isLoading, setIsLoading] = useState(true)
 
   useEffect(() => {
@@ -325,7 +373,7 @@ export default function HomePage() {
           className="w-64 h-52 bg-[#121212] rounded-2xl flex items-center justify-center px-6 cursor-pointer border border-[#282828] transition-all duration-300"
         >
           <div className="flex flex-col items-center justify-center w-full h-full">
-            {/* Logo container with fixed dimensions */}
+            {/* Logo container with fixed dimensions and centered content */}
             <div className="w-48 h-36 flex items-center justify-center mb-2 relative">
               <Image
                 src={partner.logo}
@@ -358,14 +406,8 @@ export default function HomePage() {
     <div className="min-h-screen bg-[#0A0A0A] dark:bg-[#0A0A0A] light:bg-[#F8F9FA]">
       <section className="relative h-screen flex items-center">
         <div className="absolute inset-0 z-0">
-          <Image
-            src="/pic1.jpg?height=1080&width=1920"
-            alt="Workers in action"
-            fill
-            className="object-cover opacity-40 dark:opacity-40 light:opacity-20"
-            priority
-          />
-          <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/50 to-[#0A0A0A] dark:from-black/70 dark:via-black/50 dark:to-[#0A0A0A] light:from-white/70 light:via-white/50 light:to-[#F8F9FA]"></div>
+          {/* Hero Carousel in the background */}
+          <HeroCarousel items={heroItems} autoplayInterval={5500} />
         </div>
 
         <div className="container mx-auto px-6 relative z-10">
@@ -422,7 +464,8 @@ export default function HomePage() {
             </p>
           </motion.div>
 
-          <div className="grid md:grid-cols-3 gap-8">
+          {/* Masonry layout for focus areas */}
+          <div className="columns-1 sm:columns-2 lg:columns-3 gap-8 w-full max-w-6xl mx-auto space-y-8">
             {[
               {
                 icon: <Shield className="h-8 w-8 text-teal-500" />,
@@ -436,8 +479,13 @@ export default function HomePage() {
               },
               {
                 icon: <Scale className="h-8 w-8 text-teal-500" />,
-                title: "Ethical Practices",
-                content: "Advocating for responsible business conduct and corporate accountability.",
+                title: "Health and Well-Being",
+                content: "Promoting access to information and services on menstrual and reproductive health enabling workers to lead healthy and productive lives.",
+              },
+              {
+                icon: <Users className="h-8 w-8 text-teal-500" />,
+                title: "Women Economic Empowerment",
+                content: "Strengthening the agency, financial skills and capacity of women to make informed decisions, participate in decision making and make sustainable choices for themselves and their communities.",
               },
             ].map((item, index) => (
               <motion.div
@@ -464,98 +512,102 @@ export default function HomePage() {
       </section>
 
       <section ref={impactRef} className="py-32 bg-[#0F0F0F] dark:bg-[#0F0F0F] light:bg-[#F0F0F0]">
-  <div className="container mx-auto px-6">
-    <motion.div
-      initial={{ opacity: 0, y: 40 }}
-      animate={isVisible.impact ? { opacity: 1, y: 0 } : {}}
-      transition={{ duration: 0.8 }}
-      className="text-center mb-20"
-    >
-      <h2 className="text-5xl font-bold mb-6 text-white dark:text-white light:text-gray-900">Our Impact</h2>
-      <p className="text-2xl text-gray-400 dark:text-gray-400 light:text-gray-700 max-w-3xl mx-auto mb-12">
-        For over two decades, we've been at the forefront of the labor rights movement in Kenya, driving meaningful change.
-      </p>
-    </motion.div>
-
-    <div className="grid md:grid-cols-3 gap-10">
-      {[
-        {
-          image: "/pic1.jpg",
-          icon: <Shield className="h-12 w-12 text-teal-500" />,
-          number: 50000,
-          title: "Workers Empowered",
-          description: "Through education, advocacy, and support, we've empowered over 50,000 workers to know and claim their rights.",
-          link: "/resources?tab=articles"
-        },
-        {
-          image: "/pic2.jpg",
-          icon: <Scale className="h-12 w-12 text-teal-500" />,
-          number: 2500,
-          title: "Legal Cases Resolved",
-          description: "We have successfully resolved over 2,500 legal cases, ensuring justice and fair treatment for workers.",
-          link: "/resources?tab=articles"
-        },
-        {
-          image: "/pic6.jpg",
-          icon: <Users className="h-12 w-12 text-teal-500" />,
-          number: 200,
-          title: "Companies Engaged",
-          description: "Over 200 companies have partnered with us to reform policies and improve workplace standards.",
-          link: "/resources?tab=articles"
-        }
-      ].map((item, index) => (
-        <Link key={index} href={item.link} className="group">
+        <div className="container mx-auto px-6">
           <motion.div
             initial={{ opacity: 0, y: 40 }}
             animate={isVisible.impact ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.8, delay: index * 0.15 }}
-            whileHover={{ y: -8 }}
-            className="overflow-hidden h-full rounded-3xl relative flex flex-col"
+            transition={{ duration: 0.8 }}
+            className="text-center mb-20"
           >
-            {/* Image Container */}
-            <div className="relative h-64 w-full overflow-hidden">
-              <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent z-10" />
-              <Image
-                src={item.image}
-                alt={item.title}
-                fill
-                className="object-cover transition-transform duration-700 group-hover:scale-110"
-              />
-            </div>
-            
-            {/* Content Container */}
-            <div className="bg-[#181818] p-8 flex-grow flex flex-col">
-              {/* Stats */}
-              <div className="flex items-center justify-between mb-5">
-                <AnimatedNumber
-                  target={item.number}
-                  isVisible={isVisible.impact}
-                  suffix="+"
-                  className="text-5xl font-extrabold text-white"
-                />
-                <div className="h-14 w-14 rounded-full bg-teal-500/10 flex items-center justify-center transition-transform duration-500 group-hover:scale-110 group-hover:bg-teal-500/20">
-                  {item.icon}
-                </div>
-              </div>
-              
-              {/* Text Content */}
-              <h3 className="text-2xl font-bold text-white mb-3">{item.title}</h3>
-              <p className="text-lg text-gray-400 mb-6 flex-grow">{item.description}</p>
-              
-              {/* Button */}
-              <div className="mt-auto">
-                <span className="inline-flex items-center text-teal-500 font-medium group-hover:underline">
-                  Read Success Stories
-                  <ArrowRight className="h-4 w-4 ml-2 transition-transform group-hover:translate-x-1" />
-                </span>
-              </div>
-            </div>
+            <h2 className="text-5xl font-bold mb-6 text-white dark:text-white light:text-gray-900">Our Impact</h2>
+            <p className="text-2xl text-gray-400 dark:text-gray-400 light:text-gray-700 max-w-3xl mx-auto mb-12">
+              For over two decades, we&apos;ve been at the forefront of the labor rights movement in Kenya, driving meaningful change.
+            </p>
           </motion.div>
-        </Link>
-      ))}
-    </div>
-  </div>
-</section>
+
+          {/* 2x2 Grid Layout - Adjusted card size and spacing */}
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-5xl mx-auto">
+            {[
+              {
+                number: 50000,
+                label: "Workers Empowered",
+                description: "Through education, awareness, advocacy and support, we have empowered over 50,000+ workers to know and claim their rights.",
+                image: "/pic1.jpg",
+                icon: <Users className="h-8 w-8 text-teal-500" />
+              },
+              {
+                number: 1500,
+                label: "Legal Cases Resolved",
+                description: "Successfully resolved over 1,500 legal cases, ensuring justice for workers across Kenya.",
+                image: "/pic2.jpg",
+                icon: <Scale className="h-8 w-8 text-teal-500" />
+              },
+              {
+                number: 50,
+                label: "Farms Engaged",
+                description: "Partnered with 50+ farms to implement fair labor practices and improve working conditions.",
+                image: "/pic3.jpg",
+                icon: <Shield className="h-8 w-8 text-teal-500" />
+              },
+              {
+                number: 5000,
+                label: "Women Trained",
+                description: "Trained over 5,000 women on Reproductive Health and Menstrual Hygiene.",
+                image: "/pic4.jpg",
+                icon: <Users className="h-8 w-8 text-teal-500" />
+              }
+            ].map((item, index) => (
+              <motion.div
+                key={index}
+                initial={{ opacity: 0, y: 40 }}
+                animate={isVisible.impact ? { opacity: 1, y: 0 } : {}}
+                transition={{ duration: 0.8, delay: index * 0.15 }}
+                whileHover={{ y: -6 }}
+                className="group relative overflow-hidden rounded-2xl bg-[#181818]"
+              >
+                {/* Image Container */}
+                <div className="relative h-52 w-full overflow-hidden">
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent z-10" />
+                  <Image
+                    src={item.image}
+                    alt={item.label}
+                    fill
+                    className="object-cover transition-transform duration-700 group-hover:scale-110"
+                  />
+                </div>
+                
+                {/* Content Container */}
+                <div className="p-6">
+                  {/* Stats and Icon */}
+                  <div className="flex items-center justify-between mb-4">
+                    <AnimatedNumber
+                      target={item.number}
+                      isVisible={isVisible.impact}
+                      suffix="+"
+                      className="text-4xl font-extrabold text-white"
+                    />
+                    <div className="h-12 w-12 rounded-full bg-teal-500/10 flex items-center justify-center transition-transform duration-500 group-hover:scale-110 group-hover:bg-teal-500/20">
+                      {item.icon}
+                    </div>
+                  </div>
+                  
+                  {/* Text Content */}
+                  <h3 className="text-xl font-bold text-white mb-3">{item.label}</h3>
+                  <p className="text-base text-gray-400">{item.description}</p>
+                  
+                  {/* Button */}
+                  <div className="mt-5">
+                    <span className="inline-flex items-center text-teal-500 font-medium group-hover:underline">
+                      Read Success Stories
+                      <ArrowRight className="h-4 w-4 ml-2 transition-transform group-hover:translate-x-1" />
+                    </span>
+                  </div>
+                </div>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
 
       {/* Photo Gallery Section */}
       <section ref={galleryRef} className="py-24 bg-[#0A0A0A] dark:bg-[#0A0A0A] light:bg-[#F8F9FA]">
@@ -841,6 +893,18 @@ export default function HomePage() {
             </p>
           </motion.div>
 
+          {/* Scroll Direction Toggle */}
+          <div className="flex justify-center mb-8">
+            <Button
+              variant="outline"
+              className="text-teal-500 dark:text-teal-500 light:text-teal-600 border-teal-500 dark:border-teal-500 light:border-teal-600 hover:bg-teal-500 hover:text-black rounded-full px-6 py-2"
+              onClick={() => setScrollDirection(scrollDirection === 'left' ? 'right' : 'left')}
+              aria-label="Toggle scroll direction"
+            >
+              <ArrowLeftRight className="h-4 w-4 mr-2" /> Scroll {scrollDirection === 'left' ? 'Right' : 'Left'}
+            </Button>
+          </div>
+
           <div className="relative mx-auto max-w-[95vw]">
             {/* Gradient fade on left side */}
             <div className="absolute left-0 top-0 bottom-0 w-24 z-10 bg-gradient-to-r from-[#0A0A0A] to-transparent pointer-events-none" />
@@ -902,15 +966,24 @@ export default function HomePage() {
 
         <style jsx>{`
           #partner-scroll {
-            animation: scroll 50s linear infinite;
+            animation: ${scrollDirection === 'left' ? 'scrollLeft' : 'scrollRight'} 50s linear infinite;
           }
           
-          @keyframes scroll {
+          @keyframes scrollLeft {
             0% {
               transform: translateX(0);
             }
             100% {
               transform: translateX(-50%);
+            }
+          }
+          
+          @keyframes scrollRight {
+            0% {
+              transform: translateX(-50%);
+            }
+            100% {
+              transform: translateX(0%);
             }
           }
           
@@ -951,6 +1024,7 @@ export default function HomePage() {
               tweetHtml={`<blockquote class=\"twitter-tweet\"><p lang=\"en\" dir=\"ltr\">At Worker&#39;s Rights Watch ,we believe in empowering workers by letting their voices lead the way.Through open,guided discussions based on what participants want to learn,we create space for workers to advocate for&amp; defend their rights confidently&amp;collectively.<a href=\"https://twitter.com/hashtag/Workersrights?src=hash&amp;ref_src=twsrc%5Etfw\">#Workersrights</a> <a href=\"https://t.co/432F1a5EkH\">pic.twitter.com/432F1a5EkH</a></p>&mdash; Workersrightswatch (@Workersrights24) <a href=\"https://twitter.com/Workersrights24/status/1921825887516811650?ref_src=twsrc%5Etfw\">May 12, 2025</a></blockquote>`}
               className="break-inside-avoid mb-8"
             />
+            {/* Add more <TwitterEmbed ... /> here for more posts */}
           </div>
 
           {/* Beautiful animated Apple-style Follow button */}
@@ -974,13 +1048,14 @@ export default function HomePage() {
               {/* Glowing animated ring */}
               <span className="absolute inset-0 pointer-events-none rounded-full
                   animate-pulse
-                  bg-teal-500/[.08] group-hover:bg-teal-500/[.19]
-                  blur-lg z-0
-                "
+                  bg-gradient-to-r from-teal-500/20 via-teal-500/10 to-transparent
+                  opacity-0 group-hover:opacity-100 transition-opacity duration-500"
               />
-              <Twitter className="h-5 w-5 mr-2 relative z-10" />
-              <span className="relative z-10">
-                Follow Us on X
+              <span className="relative flex items-center">
+                <svg className="w-5 h-5 mr-2" viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
+                </svg>
+                Follow @Workersrights24
               </span>
             </a>
           </div>

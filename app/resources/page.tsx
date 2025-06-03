@@ -11,6 +11,7 @@ import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger, Dialog
 import { Badge } from "@/components/ui/badge"
 import { FileText, Download, Search, ImageIcon, X, ChevronLeft, ChevronRight, MapPin, Filter } from "lucide-react"
 import { motion } from "framer-motion"
+import { Loading } from "@/components/ui/loading"
 
 interface Resource {
   id: number
@@ -88,6 +89,8 @@ export default function ResourcesPage() {
   const [selectedImage, setSelectedImage] = useState<ImageResource | null>(null)
   const [currentImageIndex, setCurrentImageIndex] = useState<number>(0)
   const [isSearching, setIsSearching] = useState<boolean>(false)
+  const [isDownloading, setIsDownloading] = useState<string | null>(null)
+  const [isLoading, setIsLoading] = useState(false)
 
   // Example resources data
   const resources: Resources = {
@@ -505,9 +508,9 @@ export default function ResourcesPage() {
   }
 
   // Handle report download
-  const handleDownload = (downloadUrl: string, title: string) => {
-    if (downloadUrl) {
-      // Create an anchor element and trigger download
+  const handleDownload = async (downloadUrl: string, title: string) => {
+    try {
+      setIsDownloading(title)
       const link = document.createElement("a") as HTMLAnchorElement
       if (link) {
         link.href = downloadUrl
@@ -516,6 +519,10 @@ export default function ResourcesPage() {
         link.click()
         document.body.removeChild(link)
       }
+    } catch (error) {
+      console.error("Error downloading file:", error)
+    } finally {
+      setTimeout(() => setIsDownloading(null), 1000) // Keep loading state visible briefly
     }
   }
 
@@ -1176,6 +1183,17 @@ export default function ResourcesPage() {
           </motion.div>
         </div>
       </section>
+
+      {/* Add loading overlay */}
+      {(isDownloading || isLoading) && (
+        <div className="fixed inset-0 bg-black/50 backdrop-blur-sm z-50 flex items-center justify-center">
+          <Loading 
+            size={60} 
+            color="#10bfae" 
+            message={isDownloading ? `Preparing ${isDownloading}...` : "Loading..."} 
+          />
+        </div>
+      )}
     </div>
   )
 }

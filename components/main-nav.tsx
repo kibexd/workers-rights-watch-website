@@ -16,6 +16,15 @@ import {
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu"
+import {
+  NavigationMenu,
+  NavigationMenuContent,
+  NavigationMenuItem,
+  NavigationMenuLink,
+  NavigationMenuList,
+  NavigationMenuTrigger,
+} from "@/components/ui/navigation-menu"
+import { cn } from "@/lib/utils"
 
 export default function MainNav() {
   const [isOpen, setIsOpen] = useState(false)
@@ -30,27 +39,37 @@ export default function MainNav() {
     return () => window.removeEventListener("scroll", handleScroll)
   }, [])
 
-  const navLinks = [
-    { href: "/", label: "Home" },
-    { href: "/about", label: "About" },
-    { href: "/team", label: "Our Team" },
-    { href: "/our-work", label: "Our Work" },
-    { href: "/activities", label: "Our Activities" },
-    { href: "/careers", label: "Careers" },
-    { href: "/contact", label: "Contact" },
-  ]
-
-  const resourceLinks = [
-    { href: "/resources?tab=articles", label: "Articles" },
-    { href: "/resources?tab=reports", label: "Reports" },
-    { href: "/resources?tab=videos", label: "Videos" },
-    { href: "/resources?tab=images", label: "Photo Gallery" },
+  const navItems = [
+    { name: "Home", href: "/" },
+    {
+      name: "Who We Are",
+      href: "/about",
+      items: [
+        { title: "About Us", href: "/about", description: "Learn about our mission, vision, and values" },
+        { title: "Our Team", href: "/team", description: "Meet our dedicated team members" },
+        { title: "Our Board", href: "/team?tab=board", description: "Meet our board of directors" },
+      ],
+    },
+    { name: "Our Programs", href: "/our-programs" },
+    {
+      name: "Resources",
+      href: "/resources",
+      items: [
+        { title: "Articles", href: "/resources?tab=articles", description: "Read our latest articles and news" },
+        { title: "Reports", href: "/resources?tab=reports", description: "Access our research reports and publications" },
+        { title: "Videos", href: "/resources?tab=videos", description: "Watch our videos and documentaries" },
+        { title: "Photo Gallery", href: "/resources?tab=images", description: "Browse our photo gallery" },
+      ],
+    },
+    { name: "Careers", href: "/careers" },
+    { name: "Contact", href: "/contact" },
+    { name: "Donate", href: "/donate", isButton: true },
   ]
 
   return (
     <>
       <TopHeader />
-    <header
+      <header
         className={`fixed top-10 left-0 right-0 z-50 transition-all duration-300 ${
           isScrolled ? "bg-black/80 backdrop-blur-md" : "bg-transparent"
         }`}
@@ -70,46 +89,66 @@ export default function MainNav() {
 
             {/* Desktop Navigation */}
             <div className="hidden md:flex items-center space-x-8">
-              {navLinks.map((link) => (
-                  <Link
-                  key={link.href}
-                  href={link.href}
-                  className={`text-sm font-medium transition-colors hover:text-teal-500 ${
-                    pathname === link.href ? "text-teal-500" : "text-white"
-                  }`}
-                >
-                  {link.label}
-                  </Link>
-              ))}
-              <DropdownMenu>
-                <DropdownMenuTrigger asChild>
-<Button
-  variant="ghost"
-                    className={`text-sm font-medium transition-colors hover:text-teal-500 ${
-                      pathname.startsWith("/resources") ? "text-teal-500" : "text-white"
-                    }`}
-                  >
-                    Resources <ChevronDown className="ml-1 h-4 w-4" />
-</Button>
-                </DropdownMenuTrigger>
-                <DropdownMenuContent align="end" className="w-48 bg-[#111111] border-gray-800">
-                  {resourceLinks.map((link) => (
-                    <DropdownMenuItem key={link.href} asChild>
-                      <Link
-                        href={link.href}
-                        className="text-white hover:text-teal-500 hover:bg-[#1A1A1A] cursor-pointer"
-                      >
-                        {link.label}
-                      </Link>
-                    </DropdownMenuItem>
+              <NavigationMenu>
+                <NavigationMenuList>
+                  {navItems.map((item) => (
+                    <NavigationMenuItem key={item.name}>
+                      {item.items ? (
+                        <>
+                          <NavigationMenuTrigger
+                            className={`text-sm font-medium transition-colors hover:text-teal-500 ${
+                              pathname.startsWith(item.href) ? "text-teal-500" : "text-white"
+                            }`}
+                          >
+                            {item.name}
+                          </NavigationMenuTrigger>
+                          <NavigationMenuContent>
+                            <ul className="grid w-[400px] gap-3 p-4 md:w-[500px] md:grid-cols-2 lg:w-[600px] ">
+                              {item.items.map((subItem) => (
+                                <li key={subItem.title}>
+                                  <NavigationMenuLink asChild>
+                                    <Link
+                                      href={subItem.href}
+                                      className={cn(
+                                        "block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground",
+                                        pathname === subItem.href ? "text-teal-500 bg-accent" : ""
+                                      )}
+                                    >
+                                      <div className="text-sm font-medium leading-none">{subItem.title}</div>
+                                      <p className="line-clamp-2 text-sm leading-snug text-muted-foreground">
+                                        {subItem.description}
+                                      </p>
+                                    </Link>
+                                  </NavigationMenuLink>
+                                </li>
+                              ))}
+                            </ul>
+                          </NavigationMenuContent>
+                        </>
+                      ) : item.isButton ? (
+                        <Link href={item.href} legacyBehavior passHref>
+                          <Button className="bg-teal-500 hover:bg-teal-600 text-black font-semibold rounded-full px-6 py-2 shadow-lg">
+                            {item.name}
+                          </Button>
+                        </Link>
+                      ) : (
+                        <Link href={item.href} legacyBehavior passHref>
+                          <NavigationMenuLink
+                            className={cn(
+                              "group inline-flex h-10 w-max items-center justify-center rounded-md bg-background px-4 py-2 text-sm font-medium transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground focus:outline-none disabled:pointer-events-none disabled:opacity-50 data-[active]:bg-accent/50 data-[state=open]:bg-accent/50",
+                              pathname === item.href ? "text-teal-500" : "text-white",
+                              "bg-transparent hover:bg-transparent",
+                              "border-0 focus:border-0"
+                            )}
+                          >
+                            {item.name}
+                          </NavigationMenuLink>
+                        </Link>
+                      )}
+                    </NavigationMenuItem>
                   ))}
-                </DropdownMenuContent>
-              </DropdownMenu>
-              <Link href="/donate">
-                <Button className="bg-teal-500 hover:bg-teal-600 text-black font-semibold rounded-full px-6 py-2 ml-2 shadow-lg">
-                  Donate
-            </Button>
-              </Link>
+                </NavigationMenuList>
+              </NavigationMenu>
               {/* <ThemeToggle /> */}
             </div>
 
@@ -136,40 +175,50 @@ export default function MainNav() {
             >
               <div className="container mx-auto px-6 py-4">
                 <div className="flex flex-col space-y-4">
-                  {navLinks.map((link) => (
-                    <Link
-                      key={link.href}
-                      href={link.href}
-                      className={`text-sm font-medium transition-colors hover:text-teal-500 ${
-                        pathname === link.href ? "text-teal-500" : "text-white"
-                      }`}
-                      onClick={() => setIsOpen(false)}
-                    >
-                      {link.label}
-                    </Link>
+                  {navItems.map((item) => (
+                    item.items ? (
+                      <div key={item.name} className="space-y-2">
+                        <p className="text-sm font-medium text-teal-500">{item.name}</p>
+                        {item.items.map((subItem) => (
+                          <Link
+                            key={subItem.href}
+                            href={subItem.href}
+                            className="block pl-4 text-sm text-white hover:text-teal-500"
+                            onClick={() => setIsOpen(false)}
+                          >
+                            {subItem.title}
+                          </Link>
+                        ))}
+                      </div>
+                    ) : (
+                      !item.isButton && (
+                        <Link
+                          key={item.href}
+                          href={item.href}
+                          className={`text-sm font-medium transition-colors hover:text-teal-500 ${
+                            pathname === item.href ? "text-teal-500" : "text-white"
+                          }`}
+                          onClick={() => setIsOpen(false)}
+                        >
+                          {item.name}
+                        </Link>
+                      )
+                    )
                   ))}
-                  <div className="space-y-2">
-                    <p className="text-sm font-medium text-teal-500">Resources</p>
-                    {resourceLinks.map((link) => (
-                      <Link
-                        key={link.href}
-                        href={link.href}
-                        className="block pl-4 text-sm text-white hover:text-teal-500"
-                        onClick={() => setIsOpen(false)}
-                      >
-                        {link.label}
+                  {/* Render Donate button separately in mobile menu */}
+                  {navItems.find(item => item.isButton) && (
+                    <Link href="/donate">
+                      <Button className="bg-teal-500 hover:bg-teal-600 text-black font-semibold rounded-full px-6 py-2 shadow-lg w-full">
+                        {navItems.find(item => item.isButton)?.name}
+                      </Button>
                     </Link>
-                    ))}
-                  </div>
-                  {/* <div className="pt-4">
-                    <ThemeToggle />
-                  </div> */}
+                  )}
                 </div>
               </div>
             </motion.div>
           )}
         </AnimatePresence>
-    </header>
+      </header>
       <FloatingSocial />
     </>
   )

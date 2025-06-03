@@ -1,7 +1,7 @@
 "use client"
 
 import { motion } from "framer-motion"
-import { Facebook, Instagram, Linkedin, Youtube } from "lucide-react"
+import { Facebook, Instagram, Linkedin, Youtube, Phone } from "lucide-react"
 import {
   Tooltip,
   TooltipContent,
@@ -18,33 +18,33 @@ const XLogo = () => (
 const socialLinks = [
   {
     name: "Facebook",
-    icon: Facebook,
-    href: "https://facebook.com/workersrightswatch",
-    color: "#1877F2",
-  },
-  {
-    name: "X",
-    icon: XLogo,
-    href: "https://twitter.com/workersrightswatch",
-    color: "#000000",
+    href: "https://www.facebook.com/profile.php?id=61572243038226",
+    icon: <Facebook className="h-5 w-5" />,
   },
   {
     name: "Instagram",
-    icon: Instagram,
-    href: "https://instagram.com/workersrightswatch",
-    color: "#E4405F",
+    href: "https://www.instagram.com/workersrightswatch_ke/",
+    icon: <Instagram className="h-5 w-5" />,
   },
   {
     name: "LinkedIn",
-    icon: Linkedin,
-    href: "https://linkedin.com/company/workersrightswatch",
-    color: "#0A66C2",
+    href: "https://www.linkedin.com/in/workers-rights-watch-13102931b/",
+    icon: <Linkedin className="h-5 w-5" />,
+  },
+  {
+    name: "X (Twitter)",
+    href: "https://x.com/Workersrights24",
+    icon: <XLogo />,
   },
   {
     name: "YouTube",
-    icon: Youtube,
-    href: "https://youtube.com/@workersrightswatch",
-    color: "#FF0000",
+    href: "https://www.youtube.com/@workersrightswatch254",
+    icon: <Youtube className="h-5 w-5" />,
+  },
+  {
+    name: "WhatsApp",
+    href: "https://wa.link/0t7sv7",
+    icon: <Phone className="h-5 w-5" />,
   },
 ]
 
@@ -76,11 +76,7 @@ export function FloatingSocial() {
                     color: link.name === "X" ? "#FFFFFF" : undefined,
                   }}
                 >
-                  <link.icon
-                    className={`w-6 h-6 ${
-                      link.name === "X" ? "w-7 h-7" : ""
-                    }`}
-                  />
+                  {link.icon}
                 </motion.a>
               </TooltipTrigger>
               <TooltipContent

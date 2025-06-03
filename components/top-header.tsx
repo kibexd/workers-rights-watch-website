@@ -1,4 +1,4 @@
-import { Mail, Facebook, Twitter, Instagram, Linkedin, Youtube } from "lucide-react"
+import { Mail, Facebook, Twitter, Instagram, Linkedin, Youtube, Phone } from "lucide-react"
 import { motion } from "framer-motion"
 
 const XLogo = () => (
@@ -9,12 +9,36 @@ const XLogo = () => (
 
 export default function TopHeader() {
   const socialLinks = [
-    { icon: <Facebook className="h-4 w-4" />, href: "#", label: "Facebook" },
-    { icon: <Twitter className="h-4 w-4" />, href: "#", label: "Twitter" },
-    { icon: <XLogo />, href: "#", label: "X" },
-    { icon: <Instagram className="h-4 w-4" />, href: "#", label: "Instagram" },
-    { icon: <Linkedin className="h-4 w-4" />, href: "#", label: "LinkedIn" },
-    { icon: <Youtube className="h-4 w-4" />, href: "#", label: "YouTube" },
+    {
+      name: "Facebook",
+      href: "https://www.facebook.com/profile.php?id=61572243038226",
+      icon: <Facebook className="h-4 w-4" />,
+    },
+    {
+      name: "Instagram",
+      href: "https://www.instagram.com/workersrightswatch_ke/",
+      icon: <Instagram className="h-4 w-4" />,
+    },
+    {
+      name: "LinkedIn",
+      href: "https://www.linkedin.com/in/workers-rights-watch-13102931b/",
+      icon: <Linkedin className="h-4 w-4" />,
+    },
+    {
+      name: "X (Twitter)",
+      href: "https://x.com/Workersrights24",
+      icon: <XLogo />,
+    },
+    {
+      name: "YouTube",
+      href: "https://www.youtube.com/@workersrightswatch254",
+      icon: <Youtube className="h-4 w-4" />,
+    },
+    {
+      name: "WhatsApp",
+      href: "https://wa.link/0t7sv7",
+      icon: <Phone className="h-4 w-4" />,
+    },
   ]
 
   return (
@@ -38,7 +62,7 @@ export default function TopHeader() {
           <div className="flex items-center space-x-4">
             {socialLinks.map((link, index) => (
               <motion.a
-                key={link.label}
+                key={link.name}
                 href={link.href}
                 className="text-gray-400 hover:text-teal-500 transition-colors"
                 whileHover={{ scale: 1.2, rotate: 5 }}
@@ -46,7 +70,7 @@ export default function TopHeader() {
                 initial={{ opacity: 0, y: -20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: index * 0.1 }}
-                aria-label={link.label}
+                aria-label={link.name}
               >
                 {link.icon}
               </motion.a>

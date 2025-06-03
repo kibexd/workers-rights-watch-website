@@ -1,6 +1,6 @@
 "use client"
 
-import { useState } from "react"
+import { useState, useEffect, useRef } from "react"
 import Image from "next/image"
 import Link from "next/link"
 import { Card, CardContent } from "@/components/ui/card"
@@ -10,6 +10,7 @@ import { motion } from "framer-motion"
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import { Badge } from "@/components/ui/badge"
+import { useSearchParams } from "next/navigation"
 
 interface TeamMember {
   id: number
@@ -30,6 +31,15 @@ export default function TeamPage() {
   const [activeTab, setActiveTab] = useState<string>("leadership")
   const [selectedMember, setSelectedMember] = useState<TeamMember | null>(null)
   const [dialogOpen, setDialogOpen] = useState<boolean>(false)
+  const searchParams = useSearchParams()
+
+  // Read tab parameter from URL on initial load
+  useEffect(() => {
+    const tabParam = searchParams.get("tab")
+    if (tabParam && ["leadership", "staff", "board"].includes(tabParam)) {
+      setActiveTab(tabParam)
+    }
+  }, [searchParams])
 
   // Team members data
   const leadershipTeam = [

@@ -5,8 +5,9 @@ import Image from "next/image"
 import Link from "next/link"
 import { Card, CardContent } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
-import { Eye, Users, Scale, Shield, ArrowRight } from "lucide-react"
+import { Eye, Users, Scale, Shield, ArrowRight, Mail, Linkedin, Twitter, MapPin, Calendar } from "lucide-react"
 import { motion } from "framer-motion"
+import { Badge } from "@/components/ui/badge"
 
 export default function AboutPage() {
   const [isVisible, setIsVisible] = useState({
@@ -59,24 +60,73 @@ export default function AboutPage() {
   }, [])
 
   // Team members data (matching the team page)
-  const teamMembers = [
+  // const teamMembers = [
+  //   {
+  //     name: "Eunice M. Waweru",
+  //     title: "Executive Director & Program Coordinator",
+  //     bio: "Ms. Eunice has over 20 years experience as a trade unionist, working closely with labor movements and civil society organizations.",
+  //     image: "/eunice1.jpg",
+  //     email: "eunice@workersrightswatch.org",
+  //     linkedin: "https://www.linkedin.com/in/workers-rights-watch-13102931b/",
+  //     twitter: "https://x.com/Workersrights24",
+  //     location: "Nairobi, Kenya",
+  //     joinDate: "2000",
+  //     expertise: ["Labor Rights", "Gender Equality", "Workplace Safety"],
+  //     education: "Masters in Labor Relations"
+  //   },
+  //   {
+  //     name: "Caroline Ng'endo",
+  //     title: "Program Officer for Standards & Certification",
+  //     bio: "Ms. Caroline leads the Program Office for Standards & Certification, working to ensure fair labor practices across industries.",
+  //     image: "/placeholder.svg",
+  //     email: "caroline@workersrightswatch.org",
+  //     linkedin: "https://www.linkedin.com/in/workers-rights-watch-13102931b/",
+  //     twitter: "https://x.com/Workersrights24",
+  //     location: "Nairobi, Kenya",
+  //     joinDate: "2015",
+  //     expertise: ["Standards & Certification", "Quality Assurance", "Compliance"],
+  //     education: "Bachelors in Business Administration"
+  //   },
+  //   {
+  //     name: "Steve Biko",
+  //     title: "Finance Officer",
+  //     bio: "Steve is responsible for managing funds for Workers Rights Watch. He handles the budget for project implementation, financial reporting, and expense accountability.",
+  //     image: "/placeholder.svg",
+  //     email: "steve@workersrightswatch.org",
+  //     linkedin: "https://www.linkedin.com/in/workers-rights-watch-13102931b/",
+  //     twitter: "https://x.com/Workersrights24",
+  //     location: "Nairobi, Kenya",
+  //     joinDate: "2018",
+  //     expertise: ["Financial Management", "Budgeting", "Reporting"],
+  //     education: "Bachelors in Finance"
+  //   }
+  // ]
+
+  const coreValues = [
     {
-      name: "Eunice M. Waweru",
-      title: "Executive Director & Program Coordinator",
-      bio: "Ms. Eunice has over 20 years experience as a trade unionist, working closely with labor movements and civil society organizations.",
-      image: "/eunice1.jpg?height=400&width=400",
+      title: "Dignity and respect for all workers",
+      description: "We believe every worker deserves to be treated with inherent dignity and respect, regardless of their background or role.",
+      icon: <Users className="h-10 w-10 text-teal-500" />,
     },
     {
-      name: "Caroline Ng'endo",
-      title: "Program Officer for Standards & Certification",
-      bio: "Ms. Caroline leads the Program Office for Standards & Certification, working to ensure fair labor practices across industries.",
-      image: "/placeholder.svg?height=400&width=400",
+      title: "Justice and Fairness",
+      description: "We advocate for just and fair treatment, ensuring equitable opportunities and rights for all in the workplace.",
+      icon: <Scale className="h-10 w-10 text-teal-500" />,
     },
     {
-      name: "Steve Biko",
-      title: "Finance Officer",
-      bio: "Steve is responsible for managing funds for Workers Rights Watch. He handles the budget for project implementation, financial reporting, and expense accountability.",
-      image: "/placeholder.svg?height=400&width=400",
+      title: "Transparency and Accountability",
+      description: "We are committed to operating with openness and holding ourselves and others accountable for upholding workers' rights.",
+      icon: <Eye className="h-10 w-10 text-teal-500" />,
+    },
+    {
+      title: "Solidarity and Inclusion",
+      description: "We foster strong bonds of solidarity and ensure inclusive participation for all workers in their rights advocacy.",
+      icon: <Shield className="h-10 w-10 text-teal-500" />,
+    },
+    {
+      title: "Collaboration",
+      description: "We believe in working together with workers, employers, and stakeholders to achieve meaningful and lasting change.",
+      icon: <ArrowRight className="h-10 w-10 text-teal-500" />,
     },
   ]
 
@@ -277,6 +327,7 @@ export default function AboutPage() {
         </div>
       </section>
 
+      {/* Core Values Section */}
       <section ref={teamRef} className="py-20 bg-[#0F0F0F] dark:bg-[#0F0F0F] light:bg-[#F0F0F0]">
         <div className="container mx-auto px-6">
           <motion.div
@@ -285,51 +336,34 @@ export default function AboutPage() {
             transition={{ duration: 0.8 }}
             className="text-center mb-16"
           >
-            <h2 className="text-4xl font-bold mb-4 text-white dark:text-white light:text-gray-900">Our Team</h2>
+            <h2 className="text-4xl font-bold mb-4 text-white dark:text-white light:text-gray-900">Our Core Values</h2>
             <p className="text-xl text-gray-400 dark:text-gray-400 light:text-gray-700 max-w-3xl mx-auto">
-              Meet our dedicated team of professionals working to champion workers' rights across Kenya.
+              The fundamental principles that guide our work and define who we are.
             </p>
           </motion.div>
 
-          <div className="grid md:grid-cols-3 gap-8">
-            {teamMembers.map((member, index) => (
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {coreValues.map((value, index) => (
               <motion.div
                 key={index}
                 initial={{ opacity: 0, y: 40 }}
                 animate={isVisible.team ? { opacity: 1, y: 0 } : {}}
                 transition={{ duration: 0.8, delay: index * 0.2 }}
+                whileHover={{ y: -10 }}
               >
-                <Card className="bg-[#111111] dark:bg-[#111111] light:bg-white border-0 overflow-hidden rounded-2xl hover:shadow-xl hover:shadow-teal-500/5 transition-all duration-300">
-                  <div className="relative h-80 overflow-hidden">
-                    <Image
-                      src={member.image || "/placeholder.svg"}
-                      alt={member.name}
-                      fill
-                      className="object-cover object-center"
-                    />
-                  </div>
+                <Card className="bg-[#111111] dark:bg-[#111111] light:bg-white border-0 overflow-hidden rounded-2xl hover:shadow-xl hover:shadow-teal-500/5 transition-all duration-300 h-full">
                   <CardContent className="p-8 text-center">
-                    <h3 className="text-2xl font-bold text-white dark:text-white light:text-gray-900 mb-1">
-                      {member.name}
+                    <div className="h-20 w-20 rounded-2xl bg-teal-500/10 flex items-center justify-center mx-auto mb-6">
+                      {value.icon}
+                    </div>
+                    <h3 className="text-2xl font-bold text-white dark:text-white light:text-gray-900 mb-4">
+                      {value.title}
                     </h3>
-                    <p className="text-teal-500 dark:text-teal-500 light:text-teal-600 mb-4">{member.title}</p>
-                    <p className="text-gray-400 dark:text-gray-400 light:text-gray-700">{member.bio}</p>
+                    <p className="text-gray-400 dark:text-gray-400 light:text-gray-700">{value.description}</p>
                   </CardContent>
                 </Card>
               </motion.div>
             ))}
-          </div>
-
-          <div className="text-center mt-8">
-            <Button
-              asChild
-              variant="outline"
-              className="text-teal-500 dark:text-teal-500 light:text-teal-600 border-teal-500 dark:border-teal-500 light:border-teal-600 hover:bg-teal-500 hover:text-black rounded-full px-8 py-3"
-            >
-              <Link href="/team">
-                View Full Team <ArrowRight className="ml-2 h-4 w-4" />
-              </Link>
-            </Button>
           </div>
         </div>
       </section>

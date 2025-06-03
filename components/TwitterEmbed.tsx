@@ -104,7 +104,7 @@ export default function TwitterEmbed({ tweetHtml, className = "" }: { tweetHtml:
 //
 // Example:
 //   // <div className="columns-1 sm:columns-2 lg:columns-3 gap-8 w-full max-w-6xl mx-auto space-y-8 pb-8">
-//   //   <TwitterEmbed tweetHtml={`<blockquote class=\"twitter-tweet\">...</blockquote>`} className="break-inside-avoid mb-8" />
-//   //   <TwitterEmbed tweetHtml={`<blockquote class=\"twitter-tweet\">...</blockquote>`} className="break-inside-avoid mb-8" />
+//   //   <TwitterEmbed tweetHtml={`<blockquote class="twitter-tweet">...</blockquote>`} className="break-inside-avoid mb-8" />
+//   //   <TwitterEmbed tweetHtml={`<blockquote class="twitter-tweet">...</div>`} className="break-inside-avoid mb-8" />
 //   //   {/* Add more here! */}
-//   // </div> 
+//   // </div>
