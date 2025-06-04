@@ -76,15 +76,22 @@ export default function MainNav() {
       >
         <nav className="container mx-auto px-6">
           <div className="flex items-center justify-between h-20">
-            <Link href="/" className="flex items-center space-x-3">
-              <Image
-                src="/dp.jpg"
-                alt="Workers Rights Watch Logo"
-                width={40}
-                height={40}
-                className="w-10 h-10"
-              />
-              <span className="text-xl font-bold text-white">Workers Rights Watch</span>
+            <Link href="/" className="flex items-center space-x-3 group relative">
+              {/* Logo Container with Animated Square Border */}
+              <div className="relative w-12 h-12 flex items-center justify-center overflow-hidden rounded-lg custom-logo-container">
+                <Image
+                  src="/dp.jpg"
+                  alt="Workers Rights Watch Logo"
+                  width={48} /* Increased size slightly */
+                  height={48} /* Increased size slightly */
+                  className="w-full h-full object-cover z-10 rounded-lg"
+                />
+                {/* Animated Square Glow Border - implemented via CSS */}
+              </div>
+              {/* Text with Neon Glow Effect */}
+              <span className="text-xl font-bold text-white relative inline-block custom-text-glow">
+                Workers Rights Watch
+              </span>
             </Link>
 
             {/* Desktop Navigation */}
@@ -220,6 +227,104 @@ export default function MainNav() {
         </AnimatePresence>
       </header>
       <FloatingSocial />
+
+      <style jsx>{`
+        @keyframes rotateSlow {
+          0% { transform: rotate(0deg); }
+          100% { transform: rotate(360deg); }
+        }
+
+        @keyframes rotateFast {
+          0% { transform: rotate(0deg); }
+          100% { transform: rotate(360deg); }
+        }
+
+        .custom-logo-container {
+          position: relative;
+          border-radius: 8px; /* Smoothed ends */
+        }
+
+        .custom-logo-container::before,
+        .custom-logo-container::after {
+          content: '';
+          position: absolute;
+          top: -3px; /* Adjust as needed */
+          left: -3px; /* Adjust as needed */
+          right: -3px; /* Adjust as needed */
+          bottom: -3px; /* Adjust as needed */
+          border: 3px solid transparent;
+          border-radius: 10px; /* Slightly larger rounded corners for glow */
+          animation: rotateSlow 8s linear infinite; /* Slow spin */
+          z-index: 0;
+        }
+
+        .custom-logo-container::before {
+          border-top-color: #10b981; /* Teal-500 */
+          border-right-color: #10b981; /* Teal-500 */
+          border-bottom-color: #10b981; /* Teal-500 */
+           /* border-left-color: #10b981; /* Teal-500 */ */ /* Optional: if you want full border */
+           animation-delay: 0s;
+        }
+
+         .custom-logo-container::after {
+          border-bottom-color: #10b981; /* Teal-500 */
+          border-left-color: #10b981; /* Teal-500 */
+           /* border-top-color: #10b981; /* Teal-500 */ */ /* Optional: if you want full border */
+           /* border-right-color: #10b981; /* Teal-500 */ */ /* Optional: if you want full border */
+          animation-delay: -4s; /* Offset animation */
+        }
+
+        .group:hover .custom-logo-container::before,
+        .group:hover .custom-logo-container::after {
+          animation: rotateFast 2s linear infinite; /* Faster spin on hover */
+        }
+
+        /* Neon Glow Effect for Text */
+        .custom-text-glow {
+          position: relative;
+          display: inline-block; /* Needed for pseudo-elements to position correctly */
+          color: transparent; /* Hide original text color */
+          background: linear-gradient(to right, #10b981, #34d399); /* Gradient for glow color */
+          -webkit-background-clip: text;
+          background-clip: text;
+          transition: color 0.3s ease-in-out;
+        }
+
+        .custom-text-glow::before,
+        .custom-text-glow::after {
+          content: attr(data-text); /* Use data-text attribute to show text */
+          position: absolute;
+          top: 0;
+          left: 0;
+          pointer-events: none;
+          text-shadow: 0 0 5px #10b981, 0 0 10px #10b981, 0 0 15px #10b981; /* Glow effect */
+           /* Optional: Add more shadows for stronger glow */
+           /* text-shadow: 0 0 7px #10b981, 0 0 10px #10b981, 0 0 14px #10b981, 0 0 20px #10b981, 0 0 25px #10b981; */
+          opacity: 0; /* Hidden by default */
+          transition: opacity 0.3s ease-in-out;
+           -webkit-text-stroke: 1px #10b981; /* Outline effect */
+           color: transparent; /* Hide pseudo-element text color */
+        }
+
+        .custom-text-glow::before {
+           z-index: -1; /* Behind the main text */
+        }
+
+         .custom-text-glow::after {
+            filter: blur(5px); /* Soften the glow */
+            z-index: -2; /* Further behind */
+         }
+
+        .group:hover .custom-text-glow::before,
+        .group:hover .custom-text-glow::after {
+          opacity: 1; /* Show glow on hover */
+        }
+
+         .group:hover .custom-text-glow {
+             color: transparent; /* Keep main text transparent on hover */
+         }
+
+      `}</style>
     </>
   )
 }
