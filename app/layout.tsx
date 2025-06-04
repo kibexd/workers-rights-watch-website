@@ -5,8 +5,14 @@ import { ThemeProvider } from "@/components/theme-provider"
 import MainNav from "@/components/main-nav"
 import Footer from "@/components/footer"
 import ScrollToTopButton from "@/components/scroll-to-top-button"
+import { FloatingSocial } from "@/components/floating-social"
 
 const inter = Inter({ subsets: ["latin"] })
+
+// Floating Socials Component
+// const FloatingSocial = dynamic(() => import('@/components/floating-social'), { ssr: false });
+// Scroll-to-Top Component
+// const ScrollToTop = dynamic(() => import('@/components/scroll-to-top'), { ssr: false });
 
 export const metadata: Metadata = {
   title: "Workers Rights Watch",
@@ -36,17 +42,18 @@ export default function RootLayout({
         <ThemeProvider
           defaultTheme="dark"
         >
-            <MainNav />
+          <MainNav />
           <main className="pt-32 pb-20">
             {children}
           </main>
           <ScrollToTopButton />
-            <Footer />
+          <Footer />
+          <FloatingSocial />
+          {/* <ScrollToTop /> This component does not exist */}
         </ThemeProvider>
       </body>
     </html>
   )
 }
-
 
 import './globals.css'

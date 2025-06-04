@@ -442,7 +442,8 @@ export default function HomePage() {
           </motion.div>
         </div>
 
-        <div className="absolute bottom-10 left-0 right-0 flex justify-center">
+        {/* Scroll Down Indicator */}
+        <div className="absolute bottom-10 left-0 right-0 flex justify-center z-20">
           <motion.div animate={{ y: [0, 10, 0] }} transition={{ repeat: Number.POSITIVE_INFINITY, duration: 1.5 }}>
             <ChevronRight className="h-10 w-10 text-white dark:text-white light:text-gray-900 rotate-90" />
           </motion.div>

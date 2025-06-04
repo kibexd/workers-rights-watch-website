@@ -1,6 +1,6 @@
 "use client"
 
-import { useEffect, useState } from "react"
+import { useEffect, useState, useRef } from "react"
 import Image from "next/image"
 import { motion, AnimatePresence } from "framer-motion"
 
@@ -19,19 +19,44 @@ interface HeroCarouselProps {
 export function HeroCarousel({ items, autoplayInterval = 5000 }: HeroCarouselProps) {
   const [currentIndex, setCurrentIndex] = useState(0)
   const [isPlaying, setIsPlaying] = useState(true)
+  const [isVideoLoaded, setIsVideoLoaded] = useState(false)
+  const videoRef = useRef<HTMLVideoElement>(null)
+
+  // Preload next video
+  useEffect(() => {
+    const nextIndex = (currentIndex + 1) % items.length
+    if (items[nextIndex].type === "video" && items[nextIndex].videoUrl) {
+      const video = new Audio()
+      video.src = items[nextIndex].videoUrl
+      video.load()
+    }
+  }, [currentIndex, items])
 
   useEffect(() => {
     if (!isPlaying) return
 
     const timer = setInterval(() => {
       setCurrentIndex((prev) => (prev + 1) % items.length)
-    }, autoplayInterval) // Use the prop for interval
+    }, autoplayInterval)
 
     return () => clearInterval(timer)
   }, [isPlaying, items.length, autoplayInterval])
 
   const handleMouseEnter = () => setIsPlaying(false)
   const handleMouseLeave = () => setIsPlaying(true)
+
+  const handleVideoError = () => {
+    console.error("Error loading video:", items[currentIndex].videoUrl)
+    // Move to next item if video fails to load
+    setCurrentIndex((prev) => (prev + 1) % items.length)
+  }
+
+  const handleVideoLoaded = () => {
+    setIsVideoLoaded(true)
+    if (videoRef.current) {
+      videoRef.current.play().catch(console.error)
+    }
+  }
 
   return (
     <div 
@@ -50,13 +75,21 @@ export function HeroCarousel({ items, autoplayInterval = 5000 }: HeroCarouselPro
         >
           {items[currentIndex].type === "video" ? (
             <video
+              ref={videoRef}
               autoPlay
               muted
               loop
               playsInline
+              onError={handleVideoError}
+              onLoadedData={handleVideoLoaded}
               className="w-full h-full object-cover"
+              style={{ opacity: isVideoLoaded ? 1 : 0 }}
             >
               <source src={items[currentIndex].videoUrl} type="video/mp4" />
+              <source src={items[currentIndex].videoUrl} type="video/webm" />
+              <source src={items[currentIndex].videoUrl} type="video/quicktime" />
+              <source src={items[currentIndex].videoUrl} type="video/x-matroska" />
+              Your browser does not support the video tag.
             </video>
           ) : (
             <motion.div
@@ -71,6 +104,8 @@ export function HeroCarousel({ items, autoplayInterval = 5000 }: HeroCarouselPro
                 fill
                 className="object-cover"
                 priority
+                quality={100}
+                sizes="100vw"
               />
             </motion.div>
           )}

@@ -39,11 +39,11 @@ export default function ScrollToTopButton() {
           animate={{ opacity: 1, y: 0 }}
           exit={{ opacity: 0, y: 20 }}
           transition={{ duration: 0.3 }}
-          className="fixed bottom-6 right-6 z-50"
+          className="fixed bottom-24 right-20 z-40"
         >
           <Button
             onClick={scrollToTop}
-            className="rounded-full p-3 shadow-lg bg-teal-500 hover:bg-teal-600 text-black"
+            className="rounded-full p-3 shadow-lg bg-teal-500 hover:bg-teal-600 text-black transition-all duration-300 transform hover:scale-110"
             aria-label="Scroll to top"
           >
             <ChevronUp className="h-6 w-6" />
