@@ -20,14 +20,14 @@ export default function TopHeader() {
       icon: <Instagram className="h-4 w-4" />,
     },
     {
-      name: "LinkedIn",
-      href: "https://www.linkedin.com/in/workers-rights-watch-13102931b/",
-      icon: <Linkedin className="h-4 w-4" />,
-    },
-    {
-      name: "X (Twitter)",
+      name: "X",
       href: "https://x.com/Workersrights24",
       icon: <XLogo />,
+    },
+    {
+      name: "LinkedIn",
+      href: "https://www.linkedin.com/company/106499488/admin/dashboard/",
+      icon: <Linkedin className="h-4 w-4" />,
     },
     {
       name: "YouTube",
@@ -42,35 +42,35 @@ export default function TopHeader() {
   ]
 
   return (
-    <div className="fixed top-0 left-0 right-0 z-50 bg-[#111111] border-b border-gray-800">
+    <div className="bg-[#111111] dark:bg-[#111111] light:bg-white border-b border-[#282828] dark:border-[#282828] light:border-gray-200">
       <div className="container mx-auto px-6">
-        <div className="flex items-center justify-between h-10">
-          {/* Email */}
-          <motion.a
-            href="mailto:info@workersrightswatch.org"
-            className="flex items-center text-sm text-gray-400 hover:text-teal-500 transition-colors"
-            whileHover={{ x: 5 }}
-            initial={{ opacity: 0, y: -20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.3 }}
-          >
-            <Mail className="h-4 w-4 mr-2" />
-            info@workersrightswatch.org
-          </motion.a>
-
-          {/* Social Links */}
+        <div className="flex items-center justify-between h-12">
+          <div className="flex items-center space-x-6">
+            <a
+              href="mailto:info@workersrightswatch.org"
+              className="text-gray-400 dark:text-gray-400 light:text-gray-600 hover:text-teal-500 dark:hover:text-teal-500 light:hover:text-teal-600 flex items-center text-sm"
+            >
+              <Mail className="h-4 w-4 mr-2" />
+              info@workersrightswatch.org
+            </a>
+            <a
+              href="tel:+254775366920"
+              className="text-gray-400 dark:text-gray-400 light:text-gray-600 hover:text-teal-500 dark:hover:text-teal-500 light:hover:text-teal-600 flex items-center text-sm"
+            >
+              <Phone className="h-4 w-4 mr-2" />
+              +254(0)775366920
+            </a>
+          </div>
           <div className="flex items-center space-x-4">
-            {socialLinks.map((link, index) => (
+            {socialLinks.map((link) => (
               <motion.a
                 key={link.name}
                 href={link.href}
-                className="text-gray-400 hover:text-teal-500 transition-colors"
-                whileHover={{ scale: 1.2, rotate: 5 }}
-                whileTap={{ scale: 0.9 }}
-                initial={{ opacity: 0, y: -20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: index * 0.1 }}
-                aria-label={link.name}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-gray-400 dark:text-gray-400 light:text-gray-600 hover:text-teal-500 dark:hover:text-teal-500 light:hover:text-teal-600"
+                whileHover={{ scale: 1.1 }}
+                whileTap={{ scale: 0.95 }}
               >
                 {link.icon}
               </motion.a>
