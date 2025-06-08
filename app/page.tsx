@@ -42,7 +42,7 @@ const doubledPartners = [...partners, ...partners];
 const heroItems = [
   {
     type: "image" as const,
-    src: "/pic1.jpg",
+    src: "/wfa4.jpeg",
     alt: "Workers in action",
   },
   {
@@ -53,14 +53,14 @@ const heroItems = [
   },
   {
     type: "image" as const,
-    src: "/pic2.jpg",
+    src: "/pic6.jpg",
     alt: "Community engagement",
   },
   {
     type: "video" as const,
-    src: "/video3.MP4", // Ensure this path is correct and video exists
+    src: "/Gender1.mov", // Ensure this path is correct and video exists
     alt: "Our work in action",
-    videoUrl: "/video3.MP4",
+    videoUrl: "/Gender1.mov",
   },
   {
     type: "image" as const,
@@ -69,9 +69,9 @@ const heroItems = [
   },
   {
     type: "video" as const,
-    src: "/video2.mp4", // Ensure this path is correct and video exists
+    src: "/Gender1.mov", // Ensure this path is correct and video exists
     alt: "Our work in action",
-    videoUrl: "/video2.MP4",
+    videoUrl: "/Gender1.mov",
   },
 ];
 
@@ -139,9 +139,6 @@ export default function HomePage() {
   const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
   const [scrollDirection, setScrollDirection] = useState<'left' | 'right'>('left'); // State for scroll direction
 
-  const [tweets, setTweets] = useState<Array<{ html: string }>>([])
-  const [isLoading, setIsLoading] = useState(true)
-
   useEffect(() => {
     const observer = new IntersectionObserver(
       (entries) => {
@@ -171,22 +168,6 @@ export default function HomePage() {
       if (resourcesRef.current) observer.unobserve(resourcesRef.current)
       if (galleryRef.current) observer.unobserve(galleryRef.current)
     }
-  }, [])
-
-  useEffect(() => {
-    const fetchTweets = async () => {
-      try {
-        const response = await fetch('/api/twitter')
-        const data = await response.json()
-        setTweets(data.data || [])
-      } catch (error) {
-        console.error('Error fetching tweets:', error)
-      } finally {
-        setIsLoading(false)
-      }
-    }
-
-    fetchTweets()
   }, [])
 
   // Gallery images data
@@ -263,7 +244,7 @@ export default function HomePage() {
       {
         title: "Exchange Program Success",
         content: "Participants engaging in cross-cultural learning and workers' rights advocacy.",
-        image: "/Exchange program pictures/ep1.jpg",
+        image: "/Exchange program pictures/ep2.jpg",
         category: "Exchange Program"
       },
       {
@@ -281,17 +262,17 @@ export default function HomePage() {
     ],
     reports: [
       {
-        title: "Gender Mainstreaming Report",
-        content: "Comprehensive training and awareness creation on gender mainstreaming and sexual harassment prevention.",
-        image: "/reportpic4.png",
-        downloadUrl: "/reports/gender-mainstreaming.pdf",
+        title: "Workers Rights Watch: Improving Labor Conditions in Horticulture Report",
+        content: "How Workers Rights Watch Transformed Labor Conditions Across The Horticultural Sector.",
+        image: "/reportpic5.png",
+        downloadUrl: "/How Workers Rights Watch Transformed Labor Conditions Across The Horticultural Sector. Article ..pdf",
         category: "Gender Equality"
       },
       {
-        title: "Workers' Rights Assessment",
-        content: "Detailed analysis of workers' rights implementation and challenges in agricultural sector.",
-        image: "/reportpic3.png",
-        downloadUrl: "/reports/workers-rights-assessment.pdf",
+        title: "WRW Impact Report",
+        content: "Women's Freedom to Work: Unmasking Sexual Harassment at Workplace",
+        image: "/reportpic6.png",
+        downloadUrl: "/WRW Impact Report - Final Version.pdf",
         category: "Research"
       },
     ],
@@ -540,21 +521,21 @@ export default function HomePage() {
                 number: 1500,
                 label: "Legal Cases Resolved",
                 description: "Successfully resolved over 1,500 legal cases, ensuring justice for workers across Kenya.",
-                image: "/pic2.jpg",
+                image: "/pic8.jpg",
                 icon: <Scale className="h-8 w-8 text-teal-500" />
               },
               {
                 number: 50,
                 label: "Farms Engaged",
                 description: "Partnered with 50+ farms to implement fair labor practices and improve working conditions.",
-                image: "/pic3.jpg",
+                image: "/Training and awareness creation on gender mainstreaming ,sexual harassment and leadership at Margin par -Kariki Molo farm/ta2.jpg",
                 icon: <Shield className="h-8 w-8 text-teal-500" />
               },
               {
                 number: 5000,
                 label: "Women Trained",
                 description: "Trained over 5,000 women on Reproductive Health and Menstrual Hygiene.",
-                image: "/pic4.jpg",
+                image: "/wfa4.jpeg",
                 icon: <Users className="h-8 w-8 text-teal-500" />
               }
             ].map((item, index) => (

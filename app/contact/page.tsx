@@ -140,7 +140,7 @@ export default function ContactPage() {
       <section className="relative py-32">
         <div className="absolute inset-0 z-0">
           <Image
-            src="/pic2.jpg?height=600&width=1920"
+            src="/ta5.jpg?height=600&width=1920"
             alt="Contact Us"
             fill
             className="object-cover opacity-20 dark:opacity-20 light:opacity-10"
@@ -435,12 +435,15 @@ export default function ContactPage() {
               <CardContent className="p-0">
                 <h2 className="text-2xl font-bold text-white dark:text-white light:text-gray-900 p-8">Our Location</h2>
                 <div className="relative h-[400px] w-full">
-                  <Image src="/placeholder.svg?height=400&width=1200" alt="Map" fill className="object-cover" />
-                  <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
-                    <div className="h-16 w-16 rounded-full bg-teal-500 flex items-center justify-center animate-pulse">
-                      <MapPin className="h-8 w-8 text-black" />
-                    </div>
-                  </div>
+                  <iframe 
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3988.985697429829!2d36.82515217537938!3d-1.1705576355114375!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x182f3c60950af6e7%3A0xc3a1d73136233d45!2sBiashara%20St%2C%20Kiambu!5e0!3m2!1sen!2ske!4v1749370301781!5m2!1sen!2ske" 
+                    width="100%" 
+                    height="100%" 
+                    style={{ border: 0 }} 
+                    allowFullScreen 
+                    loading="lazy" 
+                    referrerPolicy="no-referrer-when-downgrade"
+                  />
                 </div>
               </CardContent>
             </Card>

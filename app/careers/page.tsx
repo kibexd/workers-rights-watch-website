@@ -468,7 +468,7 @@ export default function CareersPage() {
       <section className="relative py-32">
         <div className="absolute inset-0 z-0">
           <Image
-            src="/placeholder.svg?height=600&width=1920"
+            src="/career.jpg?height=600&width=1920"
             alt="Careers"
             fill
             className="object-cover opacity-20 dark:opacity-20 light:opacity-10"
@@ -651,7 +651,7 @@ export default function CareersPage() {
                     </p>
                     <div className="relative h-64 rounded-2xl overflow-hidden">
                       <Image
-                        src="/placeholder.svg?height=400&width=600"
+                        src="/donate2.jpg?height=400&width=600"
                         alt="Volunteers"
                         fill
                         className="object-cover"

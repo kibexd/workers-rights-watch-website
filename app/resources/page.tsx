@@ -156,49 +156,59 @@ export default function ResourcesPage() {
     reports: [
       {
         id: 7,
-        title: "Gender Mainstreaming Report 2024",
+        title: "Workers Rights Watch: Improving Labor Conditions in Horticulture Report",
         date: "January 15, 2024",
         description: "Comprehensive analysis of gender mainstreaming initiatives and sexual harassment prevention programs.",
-        fileSize: "2.4 MB",
-        image: "/Training and awareness creation on gender mainstreaming ,sexual harassment and leadership at Margin par -Kariki Molo farm/ta1.jpg",
+        fileSize: "949.3 KB",
+        image: "/reportpic5copy.png",
         category: "Gender Equality",
-        content: "This report details our comprehensive approach to gender mainstreaming and sexual harassment prevention in agricultural workplaces. It includes case studies, best practices, and recommendations for creating safer and more inclusive work environments.",
-        downloadUrl: "/reports/gender-mainstreaming-2024.pdf"
+        content: "How Workers Rights Watch Transformed Labor Conditions Across The Horticultural Sector.",
+        downloadUrl: "/How Workers Rights Watch Transformed Labor Conditions Across The Horticultural Sector. Article ..pdf"
       },
       {
         id: 8,
-        title: "Workers' Rights Assessment 2024",
-        date: "November 30, 2023",
+        title: "WRW Impact Report",
+        date: "November 30, 2024",
         description: "Detailed analysis of workers' rights implementation and challenges in the agricultural sector.",
-        fileSize: "3.1 MB",
-        image: "/Wildfire farm awareness creation on workers rights,human rights,sexual harassment and leadership/wfa2.jpeg",
+        fileSize: "3.8 MB",
+        image: "/reportpic6copy.png",
         category: "Research",
-        content: "Our latest assessment of workers' rights implementation in the agricultural sector reveals both progress and ongoing challenges. The report provides detailed analysis and recommendations for improving working conditions and protecting workers' rights.",
-        downloadUrl: "/reports/workers-rights-assessment-2024.pdf"
+        content: "Women's Freedom to Work: Unmasking Sexual Harassment at Workplace",
+        downloadUrl: "/WRW Impact Report - Final Version.pdf",
       },
       {
         id: 9,
-        title: "Gender Equality in the Workplace",
+        title: "Addressing Sexual Harassment in Horticulture",
         date: "October 10, 2023",
         description: "Research findings on gender equality issues in Kenyan workplaces.",
-        fileSize: "1.8 MB",
-        image: "/pic2.jpg",
+        fileSize: "418.3 KB",
+        image: "/reportpic7.png",
         category: "Gender Equality",
         content:
-          "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed euismod, nisl vel ultricies lacinia, nisl nisl aliquam nisl, eu aliquam nisl nisl eu nisl.",
-        downloadUrl: "/report3.pdf",
+          "Workers' Rights Watch Report: Highlights improvements in labor conditions across the horticultural sector, focusing on worker protections and rights.",
+        downloadUrl: "/Tackling Sexual Harassment End of Project Report_final_AUGUST 2018-JULY 2019.pdf",
       },
       {
         id: 10,
-        title: "Occupational Health and Safety Report",
+        title: "Women-Owned WW 2021 Report",
         date: "August 22, 2023",
         description: "Assessment of workplace safety conditions and recommendations for improvement.",
-        fileSize: "2.7 MB",
-        image: "/pic3.jpg",
+        fileSize: "1.6 MB",
+        image: "/reportpic8.png",
         category: "Safety",
-        content:
-          "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed euismod, nisl vel ultricies lacinia, nisl nisl aliquam nisl, eu aliquam nisl nisl eu nisl.",
-        downloadUrl: "/report4.pdf",
+        content: "WW 2021 Report: Examines sexual harassment issues in the horticulture industry, presenting findings and recommendations for safer workplaces, particularly for women.",
+        downloadUrl: "/FINAL REPORT FOR WOMEN OWNED REPORT FOR WW 2021.pdf",
+      },
+      {
+        id: 11,
+        title: "Board Bios Document",
+        date: "August 22, 2023",
+        description: "Assessment of workplace safety conditions and recommendations for improvement.",
+        fileSize: "968.3 KB",
+        image: "/BoardBios.png",
+        category: "Safety",
+        content: "The Workers' Rights Watch Board consists of 12 experts who guide the organization in promoting fair and safe labor conditions.",
+        downloadUrl: "BOARD BIOS.docx",
       },
     ],
     videos: [
@@ -951,19 +961,21 @@ export default function ResourcesPage() {
                                 <Badge className="bg-teal-500/80 text-black font-medium">{report.category}</Badge>
                               </div>
                             </div>
-                            <div className="p-6 md:col-span-2">
-                              <h3 className="text-xl font-bold text-white dark:text-white light:text-gray-900 mb-2">
-                                {report.title}
-                              </h3>
-                              <p className="text-sm text-teal-500 dark:text-teal-500 light:text-teal-600 mb-4">
-                                {report.date}
-                              </p>
-                              <p className="text-gray-400 dark:text-gray-400 light:text-gray-600 mb-4">
-                                {report.description}
-                              </p>
+                            <div className="p-6 md:col-span-2 flex flex-col justify-between">
+                              <div>
+                                <h3 className="text-xl font-bold text-white dark:text-white light:text-gray-900 mb-2">
+                                  {report.title}
+                                </h3>
+                                <p className="text-sm text-teal-500 dark:text-teal-500 light:text-teal-600 mb-4">
+                                  {report.date}
+                                </p>
+                                <p className="text-gray-400 dark:text-gray-400 light:text-gray-600 mb-4 line-clamp-3">
+                                  {report.description}
+                                </p>
+                              </div>
                               <div className="flex items-center text-sm text-gray-500 dark:text-gray-500 light:text-gray-500 mb-4">
                                 <FileText className="h-4 w-4 mr-2" />
-                                <span>PDF</span>
+                                <span>{report.downloadUrl.endsWith(".docx") ? "DOCX" : "PDF"}</span>
                                 <span className="mx-2">•</span>
                                 <span>{report.fileSize}</span>
                               </div>
@@ -972,8 +984,14 @@ export default function ResourcesPage() {
                                   variant="default"
                                   className="bg-teal-500 hover:bg-teal-600 text-black font-medium rounded-full"
                                   onClick={() => handleDownload(report.downloadUrl, report.title)}
+                                  disabled={isDownloading === report.title}
                                 >
-                                  <Download className="mr-2 h-4 w-4" /> Download
+                                  {isDownloading === report.title ? (
+                                    <Loading size={20} color="black" message="" className="mr-2" />
+                                  ) : (
+                                    <Download className="mr-2 h-4 w-4" />
+                                  )}
+                                  {isDownloading === report.title ? "Downloading..." : "Download"}
                                 </Button>
                                 <Button
                                   variant="outline"

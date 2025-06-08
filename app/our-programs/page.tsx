@@ -94,7 +94,7 @@ export default function OurProgramsPage() {
                 <div className="grid md:grid-cols-2 gap-12 items-center">
                   <div className="relative h-96 rounded-2xl overflow-hidden">
                     <Image
-                      src="/placeholder.svg?height=600&width=800"
+                      src="/ta7.jpg?height=600&width=800"
                       alt="Workers Rights Watch in action"
                       fill
                       className="object-cover"
@@ -148,28 +148,28 @@ export default function OurProgramsPage() {
                 title: "Worker Education Program",
                 description:
                   "Educating workers about their rights under national and international labor laws through workshops, training sessions, and informational materials.",
-                image: "/placeholder.svg?height=400&width=600",
+                image: "/ep6.jpg?height=400&width=600",
               },
               {
                 icon: <Scale className="h-10 w-10 text-teal-500" />,
                 title: "Legal Support Services",
                 description:
                   "Providing legal assistance to workers facing rights violations, unfair treatment, or unsafe working conditions through our network of pro bono lawyers.",
-                image: "/placeholder.svg?height=400&width=600",
+                image: "/rh5.jpg?height=400&width=600",
               },
               {
                 icon: <FileText className="h-10 w-10 text-teal-500" />,
                 title: "Research & Documentation",
                 description:
                   "Conducting research on labor conditions and documenting violations to inform our advocacy and intervention strategies across various sectors.",
-                image: "/placeholder.svg?height=400&width=600",
+                image: "/rh3.jpg?height=400&width=600",
               },
               {
                 icon: <Users className="h-10 w-10 text-teal-500" />,
                 title: "Community Outreach",
                 description:
                   "Engaging with communities to raise awareness about workers' rights and build solidarity networks for collective action and support.",
-                image: "/placeholder.svg?height=400&width=600",
+                image: "/ta1.jpg?height=400&width=600",
               },
             ].map((program, index) => (
               <motion.div
@@ -227,34 +227,34 @@ export default function OurProgramsPage() {
 
           <div className="space-y-8">
             {[
+              // {
+              //   year: "2022",
+              //   title: "Improved Safety Standards in Manufacturing",
+              //   description:
+              //     "Our advocacy led to the implementation of enhanced safety protocols in 15 manufacturing plants, benefiting over 5,000 workers.",
+              //   image: "/placeholder.svg?height=400&width=800",
+              // },
               {
-                year: "2022",
-                title: "Improved Safety Standards in Manufacturing",
-                description:
-                  "Our advocacy led to the implementation of enhanced safety protocols in 15 manufacturing plants, benefiting over 5,000 workers.",
-                image: "/placeholder.svg?height=400&width=800",
-              },
-              {
-                year: "2020",
+                year: "2024",
                 title: "Fair Wages Campaign Success",
                 description:
                   "Successfully advocated for fair wage policies in the agricultural sector, resulting in wage increases for more than 3,000 farm workers.",
-                image: "/placeholder.svg?height=400&width=800",
+                image: "/pic6.jpg?height=400&width=800",
               },
               {
-                year: "2018",
+                year: "2025",
                 title: "Gender Equality in the Workplace Initiative",
                 description:
                   "Launched a comprehensive program addressing gender-based discrimination in workplaces, reaching 25 companies and impacting over 7,000 women workers.",
-                image: "/placeholder.svg?height=400&width=800",
+                image: "/ta7.jpg?height=400&width=800",
               },
-              {
-                year: "2015",
-                title: "DelMonte Campaign Research",
-                description:
-                  "Conducted groundbreaking research on labor conditions in Kenya's cut-flower industry, which informed subsequent advocacy efforts and policy changes.",
-                image: "/placeholder.svg?height=400&width=800",
-              },
+              // {
+              //   year: "2015",
+              //   title: "DelMonte Campaign Research",
+              //   description:
+              //     "Conducted groundbreaking research on labor conditions in Kenya's cut-flower industry, which informed subsequent advocacy efforts and policy changes.",
+              //   image: "/placeholder.svg?height=400&width=800",
+              // },
             ].map((achievement, index) => (
               <motion.div
                 key={index}
@@ -266,7 +266,7 @@ export default function OurProgramsPage() {
                   <div className="grid md:grid-cols-3 gap-0">
                     <div className="relative h-full md:col-span-1">
                       <Image
-                        src={achievement.image || "/placeholder.svg"}
+                        src={achievement.image || "/ep6.jpg"}
                         alt={achievement.title}
                         fill
                         className="object-cover"
@@ -366,7 +366,7 @@ export default function OurProgramsPage() {
               <div className="absolute -top-6 -right-6 h-64 w-64 rounded-full bg-teal-500/10 blur-3xl"></div>
               <div className="relative rounded-2xl overflow-hidden">
                 <Image
-                  src="/placeholder.svg?height=600&width=800"
+                  src="/ep6.jpg?height=600&width=800"
                   alt="Our methodology in action"
                   width={800}
                   height={600}
