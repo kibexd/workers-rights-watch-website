@@ -68,164 +68,166 @@ export default function MainNav() {
 
   return (
     <>
-      <TopHeader />
-      <header
-        className={`fixed top-10 left-0 right-0 z-50 transition-all duration-300 ${
-          isScrolled ? "bg-black/80 backdrop-blur-md" : "bg-transparent"
-        }`}
-      >
-        <nav className="container mx-auto px-6">
-          <div className="flex items-center justify-between h-20">
-            <Link href="/" className="flex items-center space-x-3 group relative">
-              {/* Logo Container with Animated Square Border */}
-              <div className="relative w-12 h-12 flex items-center justify-center overflow-hidden rounded-lg custom-logo-container">
-                <Image
-                  src="/dp.jpg"
-                  alt="Workers Rights Watch Logo"
-                  width={48} /* Increased size slightly */
-                  height={48} /* Increased size slightly */
-                  className="w-full h-full object-cover z-10 rounded-lg"
-                />
-                {/* Animated Square Glow Border - implemented via CSS */}
+      <div className="fixed top-0 left-0 right-0 z-50">
+        <TopHeader />
+        <header
+          className={`transition-all duration-300 ${
+            isScrolled ? "bg-black/80 backdrop-blur-md" : "bg-transparent"
+          }`}
+        >
+          <nav className="container mx-auto px-6">
+            <div className="flex items-center justify-between h-20">
+              <Link href="/" className="flex items-center space-x-3 group relative">
+                {/* Logo Container with Animated Square Border */}
+                <div className="relative w-12 h-12 flex items-center justify-center overflow-hidden rounded-lg custom-logo-container">
+                  <Image
+                    src="/dp.jpg"
+                    alt="Workers Rights Watch Logo"
+                    width={48} /* Increased size slightly */
+                    height={48} /* Increased size slightly */
+                    className="w-full h-full object-cover z-10 rounded-lg"
+                  />
+                  {/* Animated Square Glow Border - implemented via CSS */}
+                </div>
+                {/* Text with Neon Glow Effect */}
+                <span className="text-xl font-bold text-white relative inline-block custom-text-glow">
+                  Workers Rights Watch
+                </span>
+              </Link>
+
+              {/* Desktop Navigation */}
+              <div className="hidden md:flex items-center space-x-8">
+                <NavigationMenu>
+                  <NavigationMenuList>
+                    {navItems.map((item) => (
+                      <NavigationMenuItem key={item.name}>
+                        {item.items ? (
+                          <>
+                            <NavigationMenuTrigger
+                              className={`text-sm font-medium transition-colors hover:text-teal-500 ${
+                                pathname.startsWith(item.href) ? "text-teal-500" : "text-white"
+                              }`}
+                            >
+                              {item.name}
+                            </NavigationMenuTrigger>
+                            <NavigationMenuContent>
+                              <ul className="grid w-[400px] gap-3 p-4 md:w-[500px] md:grid-cols-2 lg:w-[600px] ">
+                                {item.items.map((subItem) => (
+                                  <li key={subItem.title}>
+                                    <NavigationMenuLink asChild>
+                                      <Link
+                                        href={subItem.href}
+                                        className={cn(
+                                          "block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground",
+                                          pathname === subItem.href ? "text-teal-500 bg-accent" : ""
+                                        )}
+                                      >
+                                        <div className="text-sm font-medium leading-none">{subItem.title}</div>
+                                        <p className="line-clamp-2 text-sm leading-snug text-muted-foreground">
+                                          {subItem.description}
+                                        </p>
+                                      </Link>
+                                    </NavigationMenuLink>
+                                  </li>
+                                ))}
+                              </ul>
+                            </NavigationMenuContent>
+                          </>
+                        ) : item.isButton ? (
+                          <Link href={item.href} legacyBehavior passHref>
+                            <Button className="bg-teal-500 hover:bg-teal-600 text-black font-semibold rounded-full px-6 py-2 shadow-lg">
+                              {item.name}
+                            </Button>
+                          </Link>
+                        ) : (
+                          <Link href={item.href} legacyBehavior passHref>
+                            <NavigationMenuLink
+                              className={cn(
+                                "group inline-flex h-10 w-max items-center justify-center rounded-md bg-background px-4 py-2 text-sm font-medium transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground focus:outline-none disabled:pointer-events-none disabled:opacity-50 data-[active]:bg-accent/50 data-[state=open]:bg-accent/50",
+                                pathname === item.href ? "text-teal-500" : "text-white",
+                                "bg-transparent hover:bg-transparent",
+                                "border-0 focus:border-0"
+                              )}
+                            >
+                              {item.name}
+                            </NavigationMenuLink>
+                          </Link>
+                        )}
+                      </NavigationMenuItem>
+                    ))}
+                  </NavigationMenuList>
+                </NavigationMenu>
+                {/* <ThemeToggle /> */}
               </div>
-              {/* Text with Neon Glow Effect */}
-              <span className="text-xl font-bold text-white relative inline-block custom-text-glow">
-                Workers Rights Watch
-              </span>
-            </Link>
 
-            {/* Desktop Navigation */}
-            <div className="hidden md:flex items-center space-x-8">
-              <NavigationMenu>
-                <NavigationMenuList>
-                  {navItems.map((item) => (
-                    <NavigationMenuItem key={item.name}>
-                      {item.items ? (
-                        <>
-                          <NavigationMenuTrigger
-                            className={`text-sm font-medium transition-colors hover:text-teal-500 ${
-                              pathname.startsWith(item.href) ? "text-teal-500" : "text-white"
-                            }`}
-                          >
-                            {item.name}
-                          </NavigationMenuTrigger>
-                          <NavigationMenuContent>
-                            <ul className="grid w-[400px] gap-3 p-4 md:w-[500px] md:grid-cols-2 lg:w-[600px] ">
-                              {item.items.map((subItem) => (
-                                <li key={subItem.title}>
-                                  <NavigationMenuLink asChild>
-                                    <Link
-                                      href={subItem.href}
-                                      className={cn(
-                                        "block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground",
-                                        pathname === subItem.href ? "text-teal-500 bg-accent" : ""
-                                      )}
-                                    >
-                                      <div className="text-sm font-medium leading-none">{subItem.title}</div>
-                                      <p className="line-clamp-2 text-sm leading-snug text-muted-foreground">
-                                        {subItem.description}
-                                      </p>
-                                    </Link>
-                                  </NavigationMenuLink>
-                                </li>
-                              ))}
-                            </ul>
-                          </NavigationMenuContent>
-                        </>
-                      ) : item.isButton ? (
-                        <Link href={item.href} legacyBehavior passHref>
-                          <Button className="bg-teal-500 hover:bg-teal-600 text-black font-semibold rounded-full px-6 py-2 shadow-lg">
-                            {item.name}
-                          </Button>
-                        </Link>
-                      ) : (
-                        <Link href={item.href} legacyBehavior passHref>
-                          <NavigationMenuLink
-                            className={cn(
-                              "group inline-flex h-10 w-max items-center justify-center rounded-md bg-background px-4 py-2 text-sm font-medium transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground focus:outline-none disabled:pointer-events-none disabled:opacity-50 data-[active]:bg-accent/50 data-[state=open]:bg-accent/50",
-                              pathname === item.href ? "text-teal-500" : "text-white",
-                              "bg-transparent hover:bg-transparent",
-                              "border-0 focus:border-0"
-                            )}
-                          >
-                            {item.name}
-                          </NavigationMenuLink>
-                        </Link>
-                      )}
-                    </NavigationMenuItem>
-                  ))}
-                </NavigationMenuList>
-              </NavigationMenu>
-              {/* <ThemeToggle /> */}
+              {/* Mobile Menu Button */}
+              <button
+                className="md:hidden text-white"
+                onClick={() => setIsOpen(!isOpen)}
+                aria-label="Toggle menu"
+              >
+                {isOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
+              </button>
             </div>
+          </nav>
 
-            {/* Mobile Menu Button */}
-            <button
-              className="md:hidden text-white"
-              onClick={() => setIsOpen(!isOpen)}
-              aria-label="Toggle menu"
-            >
-              {isOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
-            </button>
-          </div>
-        </nav>
-
-        {/* Mobile Navigation */}
-        <AnimatePresence>
-          {isOpen && (
-            <motion.div
-              initial={{ opacity: 0, height: 0 }}
-              animate={{ opacity: 1, height: "auto" }}
-              exit={{ opacity: 0, height: 0 }}
-              transition={{ duration: 0.2 }}
-              className="md:hidden bg-black/95 backdrop-blur-md"
-            >
-              <div className="container mx-auto px-6 py-4">
-                <div className="flex flex-col space-y-4">
-                  {navItems.map((item) => (
-                    item.items ? (
-                      <div key={item.name} className="space-y-2">
-                        <p className="text-sm font-medium text-teal-500">{item.name}</p>
-                        {item.items.map((subItem) => (
+          {/* Mobile Navigation */}
+          <AnimatePresence>
+            {isOpen && (
+              <motion.div
+                initial={{ opacity: 0, height: 0 }}
+                animate={{ opacity: 1, height: "auto" }}
+                exit={{ opacity: 0, height: 0 }}
+                transition={{ duration: 0.2 }}
+                className="md:hidden bg-black/95 backdrop-blur-md"
+              >
+                <div className="container mx-auto px-6 py-4">
+                  <div className="flex flex-col space-y-4">
+                    {navItems.map((item) => (
+                      item.items ? (
+                        <div key={item.name} className="space-y-2">
+                          <p className="text-sm font-medium text-teal-500">{item.name}</p>
+                          {item.items.map((subItem) => (
+                            <Link
+                              key={subItem.href}
+                              href={subItem.href}
+                              className="block pl-4 text-sm text-white hover:text-teal-500"
+                              onClick={() => setIsOpen(false)}
+                            >
+                              {subItem.title}
+                            </Link>
+                          ))}
+                        </div>
+                      ) : (
+                        !item.isButton && (
                           <Link
-                            key={subItem.href}
-                            href={subItem.href}
-                            className="block pl-4 text-sm text-white hover:text-teal-500"
+                            key={item.href}
+                            href={item.href}
+                            className={`text-sm font-medium transition-colors hover:text-teal-500 ${
+                              pathname === item.href ? "text-teal-500" : "text-white"
+                            }`}
                             onClick={() => setIsOpen(false)}
                           >
-                            {subItem.title}
+                            {item.name}
                           </Link>
-                        ))}
-                      </div>
-                    ) : (
-                      !item.isButton && (
-                        <Link
-                          key={item.href}
-                          href={item.href}
-                          className={`text-sm font-medium transition-colors hover:text-teal-500 ${
-                            pathname === item.href ? "text-teal-500" : "text-white"
-                          }`}
-                          onClick={() => setIsOpen(false)}
-                        >
-                          {item.name}
-                        </Link>
+                        )
                       )
-                    )
-                  ))}
-                  {/* Render Donate button separately in mobile menu */}
-                  {navItems.find(item => item.isButton) && (
-                    <Link href="/donate">
-                      <Button className="bg-teal-500 hover:bg-teal-600 text-black font-semibold rounded-full px-6 py-2 shadow-lg w-full">
-                        {navItems.find(item => item.isButton)?.name}
-                      </Button>
-                    </Link>
-                  )}
+                    ))}
+                    {/* Render Donate button separately in mobile menu */}
+                    {navItems.find(item => item.isButton) && (
+                      <Link href="/donate">
+                        <Button className="bg-teal-500 hover:bg-teal-600 text-black font-semibold rounded-full px-6 py-2 shadow-lg w-full">
+                          {navItems.find(item => item.isButton)?.name}
+                        </Button>
+                      </Link>
+                    )}
+                  </div>
                 </div>
-              </div>
-            </motion.div>
-          )}
-        </AnimatePresence>
-      </header>
+              </motion.div>
+            )}
+          </AnimatePresence>
+        </header>
+      </div>
       <FloatingSocial />
 
       <style jsx>{`
