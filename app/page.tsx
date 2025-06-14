@@ -351,7 +351,7 @@ export default function HomePage() {
             boxShadow: "0 20px 30px rgba(0,0,0,0.3)",
             borderColor: '#3a3a3a' 
           }}
-          className="w-64 h-52 bg-[#121212] rounded-2xl flex items-center justify-center px-6 cursor-pointer border border-[#282828] transition-all duration-300"
+          className="w-64 h-52 bg-card rounded-2xl flex items-center justify-center px-6 cursor-pointer border border-border transition-all duration-300"
         >
           <div className="flex flex-col items-center justify-center w-full h-full">
             {/* Logo container with fixed dimensions and centered content */}
@@ -365,14 +365,14 @@ export default function HomePage() {
               />
             </div>
             {/* Partner name always visible */}
-            <p className="text-white text-sm font-medium opacity-70 transition-opacity duration-300 hover:opacity-100 mt-auto">
+            <p className="text-foreground text-sm font-medium opacity-70 transition-opacity duration-300 hover:opacity-100 mt-auto">
               {partner.name}
             </p>
             {/* Visit button that appears on hover */}
             <motion.span
               initial={{ opacity: 0, y: 5 }}
               whileHover={{ opacity: 1, y: 0 }}
-              className="inline-flex items-center text-teal-400 text-xs font-medium mt-1"
+              className="inline-flex items-center text-teal-500 text-xs font-medium mt-1"
             >
               Visit Website
               <ArrowRight className="h-3 w-3 ml-1" />
@@ -384,7 +384,7 @@ export default function HomePage() {
   };
 
   return (
-    <div className="min-h-screen bg-[#0A0A0A] dark:bg-[#0A0A0A] light:bg-[#F8F9FA]">
+    <div className="min-h-screen bg-background">
       <section className="relative h-screen flex items-center">
         <div className="absolute inset-0 z-0">
           {/* Hero Carousel in the background */}
@@ -398,10 +398,10 @@ export default function HomePage() {
             transition={{ duration: 0.8 }}
             className="max-w-3xl"
           >
-            <h1 className="text-6xl font-bold mb-6 text-white dark:text-white light:text-gray-900 leading-tight">
+            <h1 className="text-6xl font-bold mb-6 text-foreground leading-tight">
               Championing Workers&apos; Rights in the Modern Era
             </h1>
-            <p className="text-xl mb-8 text-gray-300 dark:text-gray-300 light:text-gray-700 leading-relaxed">
+            <p className="text-xl mb-8 text-muted-foreground leading-relaxed">
               Empowering laborers, fostering ethical practices, and shaping a fair work environment since 2000.
             </p>
             <div className="flex flex-wrap gap-4">
@@ -415,7 +415,7 @@ export default function HomePage() {
               <Button
                 asChild
                 variant="outline"
-                className="text-white dark:text-white light:text-gray-700 border-white dark:border-white light:border-gray-700 hover:bg-white hover:text-black dark:hover:bg-white dark:hover:text-black light:hover:bg-gray-700 light:hover:text-white rounded-full px-8 py-6 text-base"
+                className="text-foreground border-foreground hover:bg-foreground hover:text-background rounded-full px-8 py-6 text-base"
               >
                 <Link href="/contact">Get Involved</Link>
               </Button>
@@ -426,12 +426,12 @@ export default function HomePage() {
         {/* Scroll Down Indicator */}
         <div className="absolute bottom-10 left-0 right-0 flex justify-center z-20">
           <motion.div animate={{ y: [0, 10, 0] }} transition={{ repeat: Number.POSITIVE_INFINITY, duration: 1.5 }}>
-            <ChevronRight className="h-10 w-10 text-white dark:text-white light:text-gray-900 rotate-90" />
+            <ChevronRight className="h-10 w-10 text-foreground rotate-90" />
           </motion.div>
         </div>
       </section>
 
-      <section ref={missionRef} className="py-24 bg-[#0A0A0A] dark:bg-[#0A0A0A] light:bg-[#F8F9FA]">
+      <section ref={missionRef} className="py-24 bg-background">
         <div className="container mx-auto px-6">
           <motion.div
             initial={{ opacity: 0, y: 40 }}
@@ -439,8 +439,8 @@ export default function HomePage() {
             transition={{ duration: 0.8 }}
             className="text-center mb-16"
           >
-            <h2 className="text-4xl font-bold mb-4 text-white dark:text-white light:text-gray-900">Our Focus Areas</h2>
-            <p className="text-xl text-gray-400 dark:text-gray-400 light:text-gray-700 max-w-3xl mx-auto">
+            <h2 className="text-4xl font-bold mb-4 text-foreground">Our Focus Areas</h2>
+            <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
               We&apos;re dedicated to creating a world where every worker is treated with dignity, respect, and
               fairness.
             </p>
@@ -476,15 +476,15 @@ export default function HomePage() {
                 animate={isVisible.mission ? { opacity: 1, y: 0 } : {}}
                 transition={{ duration: 0.8, delay: index * 0.2 }}
               >
-                <Card className="bg-[#111111] dark:bg-[#111111] light:bg-white border-0 overflow-hidden rounded-2xl hover:shadow-xl hover:shadow-teal-500/5 transition-all duration-300">
+                <Card className="bg-card border-0 overflow-hidden rounded-2xl hover:shadow-xl hover:shadow-teal-500/5 transition-all duration-300">
                   <CardContent className="p-8">
                     <div className="h-16 w-16 rounded-2xl bg-teal-500/10 flex items-center justify-center mb-6">
                       {item.icon}
                     </div>
-                    <h3 className="text-2xl font-bold text-white dark:text-white light:text-gray-900 mb-4">
+                    <h3 className="text-2xl font-bold text-foreground mb-4">
                       {item.title}
                     </h3>
-                    <p className="text-gray-400 dark:text-gray-400 light:text-gray-700">{item.content}</p>
+                    <p className="text-muted-foreground">{item.content}</p>
                   </CardContent>
                 </Card>
               </motion.div>
@@ -493,7 +493,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      <section ref={impactRef} className="py-32 bg-[#0F0F0F] dark:bg-[#0F0F0F] light:bg-[#F0F0F0]">
+      <section ref={impactRef} className="py-32 bg-secondary">
         <div className="container mx-auto px-6">
           <motion.div
             initial={{ opacity: 0, y: 40 }}
@@ -501,8 +501,8 @@ export default function HomePage() {
             transition={{ duration: 0.8 }}
             className="text-center mb-20"
           >
-            <h2 className="text-5xl font-bold mb-6 text-white dark:text-white light:text-gray-900">Our Impact</h2>
-            <p className="text-2xl text-gray-400 dark:text-gray-400 light:text-gray-700 max-w-3xl mx-auto mb-12">
+            <h2 className="text-5xl font-bold mb-6 text-foreground">Our Impact</h2>
+            <p className="text-2xl text-muted-foreground max-w-3xl mx-auto mb-12">
               For over two decades, we&apos;ve been at the forefront of the labor rights movement in Kenya, driving meaningful change.
             </p>
           </motion.div>
@@ -545,7 +545,7 @@ export default function HomePage() {
                 animate={isVisible.impact ? { opacity: 1, y: 0 } : {}}
                 transition={{ duration: 0.8, delay: index * 0.15 }}
                 whileHover={{ y: -6 }}
-                className="group relative overflow-hidden rounded-2xl bg-[#181818]"
+                className="group relative overflow-hidden rounded-2xl bg-card"
               >
                 {/* Image Container */}
                 <div className="relative h-52 w-full overflow-hidden">
@@ -566,7 +566,7 @@ export default function HomePage() {
                       target={item.number}
                       isVisible={isVisible.impact}
                       suffix="+"
-                      className="text-4xl font-extrabold text-white"
+                      className="text-4xl font-extrabold text-foreground"
                     />
                     <div className="h-12 w-12 rounded-full bg-teal-500/10 flex items-center justify-center transition-transform duration-500 group-hover:scale-110 group-hover:bg-teal-500/20">
                       {item.icon}
@@ -574,8 +574,8 @@ export default function HomePage() {
                   </div>
                   
                   {/* Text Content */}
-                  <h3 className="text-xl font-bold text-white mb-3">{item.label}</h3>
-                  <p className="text-base text-gray-400">{item.description}</p>
+                  <h3 className="text-xl font-bold text-foreground mb-3">{item.label}</h3>
+                  <p className="text-base text-muted-foreground">{item.description}</p>
                   
                   {/* Button */}
                   <div className="mt-5">
@@ -592,7 +592,7 @@ export default function HomePage() {
       </section>
 
       {/* Photo Gallery Section */}
-      <section ref={galleryRef} className="py-24 bg-[#0A0A0A] dark:bg-[#0A0A0A] light:bg-[#F8F9FA]">
+      <section ref={galleryRef} className="py-24 bg-background">
         <div className="container mx-auto px-6">
           <motion.div
             initial={{ opacity: 0, y: 40 }}
@@ -600,8 +600,8 @@ export default function HomePage() {
             transition={{ duration: 0.8 }}
             className="text-center mb-16"
           >
-            <h2 className="text-4xl font-bold mb-4 text-white dark:text-white light:text-gray-900">Photo Gallery</h2>
-            <p className="text-xl text-gray-400 dark:text-gray-400 light:text-gray-700 max-w-3xl mx-auto">
+            <h2 className="text-4xl font-bold mb-4 text-foreground">Photo Gallery</h2>
+            <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
               Explore images from our activities, events, and community engagements.
             </p>
           </motion.div>
@@ -636,7 +636,7 @@ export default function HomePage() {
                       </div>
                     </div>
                   </DialogTrigger>
-                  <DialogContent className="bg-[#1A1A1A] dark:bg-[#1A1A1A] light:bg-white border-0 rounded-2xl max-w-4xl p-0">
+                  <DialogContent className="bg-card border-0 rounded-2xl max-w-4xl p-0">
                     <DialogTitle className="sr-only">
                       {selectedImage?.title || "Gallery image"}
                     </DialogTitle>
@@ -649,16 +649,14 @@ export default function HomePage() {
                       />
                     </div>
                     <div className="p-6">
-                      <h3 className="text-2xl font-bold text-white dark:text-white light:text-gray-900 mb-2">
+                      <h3 className="text-2xl font-bold text-foreground mb-2">
                         {selectedImage?.title}
                       </h3>
                       <div className="flex items-center gap-4 mb-4">
-                        <p className="text-teal-500 dark:text-teal-500 light:text-teal-600">
-                          {selectedImage?.location}
-                        </p>
+                        <p className="text-teal-500">{selectedImage?.location}</p>
                         <Badge className="bg-teal-500/80 text-black font-medium">{selectedImage?.category}</Badge>
                       </div>
-                      <p className="text-gray-300 dark:text-gray-300 light:text-gray-700">
+                      <p className="text-muted-foreground">
                         {selectedImage?.description}
                       </p>
                     </div>
@@ -672,7 +670,7 @@ export default function HomePage() {
             <Button
               asChild
               variant="outline"
-              className="text-teal-500 dark:text-teal-500 light:text-teal-600 border-teal-500 dark:border-teal-500 light:border-teal-600 hover:bg-teal-500 hover:text-black rounded-full px-8 py-3"
+              className="text-teal-500 border-teal-500 hover:bg-teal-500 hover:text-black rounded-full px-8 py-3"
             >
               <Link href="/resources?tab=images">View Full Gallery</Link>
             </Button>
@@ -680,7 +678,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      <section ref={resourcesRef} className="py-24 bg-[#0F0F0F] dark:bg-[#0F0F0F] light:bg-[#F0F0F0]">
+      <section ref={resourcesRef} className="py-24 bg-secondary">
         <div className="container mx-auto px-6">
           <motion.div
             initial={{ opacity: 0, y: 40 }}
@@ -688,14 +686,14 @@ export default function HomePage() {
             transition={{ duration: 0.8 }}
             className="text-center mb-16"
           >
-            <h2 className="text-4xl font-bold mb-4 text-white dark:text-white light:text-gray-900">Latest Resources</h2>
-            <p className="text-xl text-gray-400 dark:text-gray-400 light:text-gray-700 max-w-3xl mx-auto">
+            <h2 className="text-4xl font-bold mb-4 text-foreground">Latest Resources</h2>
+            <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
               Access our collection of articles, reports, and videos on workers&apos; rights and labor issues.
             </p>
           </motion.div>
 
           <Tabs defaultValue="articles" className="w-full">
-            <TabsList className="justify-center mb-12 bg-transparent border border-gray-800 dark:border-gray-800 light:border-gray-200 rounded-full p-1 w-fit mx-auto">
+            <TabsList className="justify-center mb-12 bg-transparent border border-border rounded-full p-1 w-fit mx-auto">
               <TabsTrigger
                 value="articles"
                 className="rounded-full px-8 py-2 data-[state=active]:bg-teal-500 data-[state=active]:text-black"
@@ -725,7 +723,7 @@ export default function HomePage() {
                     animate={isVisible.resources ? { opacity: 1, y: 0 } : {}}
                     transition={{ duration: 0.8, delay: index * 0.2 }}
                   >
-                    <Card className="bg-[#111111] dark:bg-[#111111] light:bg-white border-0 overflow-hidden rounded-2xl hover:shadow-xl hover:shadow-teal-500/5 transition-all duration-300 h-full">
+                    <Card className="bg-card border-0 overflow-hidden rounded-2xl hover:shadow-xl hover:shadow-teal-500/5 transition-all duration-300 h-full">
                       <div className="h-48 overflow-hidden">
                         <Image
                           src={item.image || "/placeholder.svg"}
@@ -736,10 +734,10 @@ export default function HomePage() {
                         />
                       </div>
                       <CardContent className="p-8">
-                        <h3 className="text-2xl font-bold text-white dark:text-white light:text-gray-900 mb-4">
+                        <h3 className="text-2xl font-bold text-foreground mb-4">
                           {item.title}
                         </h3>
-                        <p className="text-gray-400 dark:text-gray-400 light:text-gray-700 mb-6">{item.content}</p>
+                        <p className="text-muted-foreground mb-6">{item.content}</p>
                         <Button variant="ghost" className="text-teal-500 hover:text-teal-400 p-0 h-auto">
                           Read More <ArrowRight className="ml-2 h-4 w-4" />
                         </Button>
@@ -759,7 +757,7 @@ export default function HomePage() {
                     animate={isVisible.resources ? { opacity: 1, y: 0 } : {}}
                     transition={{ duration: 0.8, delay: index * 0.2 }}
                   >
-                    <Card className="bg-[#111111] dark:bg-[#111111] light:bg-white border-0 overflow-hidden rounded-2xl hover:shadow-xl hover:shadow-teal-500/5 transition-all duration-300 h-full">
+                    <Card className="bg-card border-0 overflow-hidden rounded-2xl hover:shadow-xl hover:shadow-teal-500/5 transition-all duration-300 h-full">
                       <div className="h-48 overflow-hidden">
                         <Image
                           src={item.image || "/placeholder.svg"}
@@ -770,10 +768,10 @@ export default function HomePage() {
                         />
                       </div>
                       <CardContent className="p-8">
-                        <h3 className="text-2xl font-bold text-white dark:text-white light:text-gray-900 mb-4">
+                        <h3 className="text-2xl font-bold text-foreground mb-4">
                           {item.title}
                         </h3>
-                        <p className="text-gray-400 dark:text-gray-400 light:text-gray-700 mb-6">{item.content}</p>
+                        <p className="text-muted-foreground mb-6">{item.content}</p>
                         <Button
                           variant="default"
                           className="bg-teal-500 hover:bg-teal-600 text-black font-medium rounded-full"
@@ -797,7 +795,7 @@ export default function HomePage() {
                     animate={isVisible.resources ? { opacity: 1, y: 0 } : {}}
                     transition={{ duration: 0.8, delay: index * 0.2 }}
                   >
-                    <Card className="bg-[#111111] dark:bg-[#111111] light:bg-white border-0 overflow-hidden rounded-2xl hover:shadow-xl hover:shadow-teal-500/5 transition-all duration-300 h-full">
+                    <Card className="bg-card border-0 overflow-hidden rounded-2xl hover:shadow-xl hover:shadow-teal-500/5 transition-all duration-300 h-full">
                       <div
                         className="relative h-56 overflow-hidden cursor-pointer"
                         onClick={() => handleVideoClick(item.videoUrl)}
@@ -826,10 +824,10 @@ export default function HomePage() {
                         </div>
                       </div>
                       <CardContent className="p-8">
-                        <h3 className="text-2xl font-bold text-white dark:text-white light:text-gray-900 mb-4">
+                        <h3 className="text-2xl font-bold text-foreground mb-4">
                           {item.title}
                         </h3>
-                        <p className="text-gray-400 dark:text-gray-400 light:text-gray-700 mb-6">{item.content}</p>
+                        <p className="text-muted-foreground mb-6">{item.content}</p>
                         <Button
                           variant="default"
                           className="bg-teal-500 hover:bg-teal-600 text-black font-medium rounded-full"
@@ -849,7 +847,7 @@ export default function HomePage() {
             <Button
               asChild
               variant="ghost"
-              className="text-teal-500 hover:text-teal-400 dark:text-teal-500 dark:hover:text-teal-400 light:text-teal-600 light:hover:text-teal-700"
+              className="text-teal-500 hover:text-teal-400"
             >
               <Link href="/resources">
                 View All Resources <ArrowRight className="ml-2 h-4 w-4" />
@@ -860,7 +858,7 @@ export default function HomePage() {
       </section>
 
       {/* Partners Section (properly structured) */}
-      <section className="py-24 bg-[#0A0A0A] dark:bg-[#0A0A0A] light:bg-[#F8F9FA] overflow-hidden">
+      <section className="py-24 bg-background overflow-hidden">
         <div className="container mx-auto px-6">
           <motion.div 
             initial={{ opacity: 0, y: 40 }}
@@ -869,8 +867,8 @@ export default function HomePage() {
             viewport={{ once: true }}
             className="text-center mb-16"
           >
-            <h2 className="text-4xl font-bold text-white dark:text-white light:text-gray-900 mb-4">Our Partners</h2>
-            <p className="text-xl text-gray-400 dark:text-gray-400 light:text-gray-700 max-w-2xl mx-auto">
+            <h2 className="text-4xl font-bold text-foreground mb-4">Our Partners</h2>
+            <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
               Working together with leading organizations to create lasting change in workers' rights
             </p>
           </motion.div>
@@ -879,7 +877,7 @@ export default function HomePage() {
           <div className="flex justify-center mb-8">
             <Button
               variant="outline"
-              className="text-teal-500 dark:text-teal-500 light:text-teal-600 border-teal-500 dark:border-teal-500 light:border-teal-600 hover:bg-teal-500 hover:text-black rounded-full px-6 py-2"
+              className="text-teal-500 border-teal-500 hover:bg-teal-500 hover:text-black rounded-full px-6 py-2"
               onClick={() => setScrollDirection(scrollDirection === 'left' ? 'right' : 'left')}
               aria-label="Toggle scroll direction"
             >
@@ -889,10 +887,10 @@ export default function HomePage() {
 
           <div className="relative mx-auto max-w-[95vw]">
             {/* Gradient fade on left side */}
-            <div className="absolute left-0 top-0 bottom-0 w-24 z-10 bg-gradient-to-r from-[#0A0A0A] to-transparent pointer-events-none" />
+            <div className="absolute left-0 top-0 bottom-0 w-24 z-10 bg-gradient-to-r from-background to-transparent pointer-events-none" />
 
             {/* Gradient fade on right side */}
-            <div className="absolute right-0 top-0 bottom-0 w-24 z-10 bg-gradient-to-l from-[#0A0A0A] to-transparent pointer-events-none" />
+            <div className="absolute right-0 top-0 bottom-0 w-24 z-10 bg-gradient-to-l from-background to-transparent pointer-events-none" />
 
             {/* Main scrolling container */}
             <div 
@@ -902,7 +900,7 @@ export default function HomePage() {
               <div 
                 id="partner-scroll"
                 className="flex gap-8 py-8"
-                style={{ 
+                style={{
                   width: 'fit-content'
                 }}
               >
@@ -976,7 +974,7 @@ export default function HomePage() {
       </section>
 
       {/* Twitter Feed Section */}
-      <section className="py-24 bg-[#0A0A0A] dark:bg-[#0A0A0A] light:bg-[#F8F9FA]">
+      <section className="py-24 bg-background">
         <div className="container mx-auto px-6">
           <motion.div
             initial={{ opacity: 0, y: 40 }}
@@ -984,8 +982,8 @@ export default function HomePage() {
             transition={{ duration: 0.8 }}
             className="text-center mb-16"
           >
-            <h2 className="text-4xl font-bold mb-4 text-white dark:text-white light:text-gray-900">Latest Updates</h2>
-            <p className="text-xl text-gray-400 dark:text-gray-400 light:text-gray-700 max-w-3xl mx-auto">
+            <h2 className="text-4xl font-bold mb-4 text-foreground">Latest Updates</h2>
+            <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
               Follow our latest activities and updates on X (Twitter)
             </p>
           </motion.div>
@@ -995,15 +993,15 @@ export default function HomePage() {
             className="columns-1 sm:columns-2 lg:columns-3 gap-8 w-full max-w-6xl mx-auto space-y-8 pb-8"
           >
             <TwitterEmbed
-              tweetHtml={`<blockquote class=\"twitter-tweet\"><p lang=\"en\" dir=\"ltr\">🎉21 flower farms. Diverse voices with one united mission: To advocate for worker rights&amp;gender equality in the flower industry. <br>By raising awareness&amp;building capacity, workers&amp;farm managements are actively working to eradicate harassment&amp;promote safe working environments.✊ <a href=\"https://t.co/3KoN5lW9HY\">pic.twitter.com/3KoN5lW9HY</a></p>&mdash; Workersrightswatch (@Workersrights24) <a href=\"https://twitter.com/Workersrights24/status/1932696380755354058?ref_src=twsrc%5Etfw\">June 11, 2025</a></blockquote>`}
+              tweetHtml={`<blockquote class="twitter-tweet"><p lang="en" dir="ltr">🎉21 flower farms. Diverse voices with one united mission: To advocate for worker rights&amp;gender equality in the flower industry. <br>By raising awareness&amp;building capacity, workers&amp;farm managements are actively working to eradicate harassment&amp;promote safe working environments.✊ <a href="https://t.co/3KoN5lW9HY">pic.twitter.com/3KoN5lW9HY</a></p>&mdash; Workersrightswatch (@Workersrights24) <a href="https://twitter.com/Workersrights24/status/1932696380755354058?ref_src=twsrc%5Etfw">June 11, 2025</a></blockquote>`}
               className="break-inside-avoid mb-8"
             />
             <TwitterEmbed
-              tweetHtml={`<blockquote class=\"twitter-tweet\"><p lang=\"en\" dir=\"ltr\">✊Day 2 of the exchange program, allowed participants from 21 flower farms share best practices on gender mainstreaming and sexual harassment prevention,strengthening the capacity of workers&amp;management to build equitable workplaces where everyone thrives. <a href=\"https://twitter.com/hashtag/Workersrights?src=hash&amp;ref_src=twsrc%5Etfw\">#Workersrights</a> <a href=\"https://t.co/NFj6XYa4vS\">pic.twitter.com/NFj6XYa4vS</a></p>&mdash; Workersrightswatch (@Workersrights24) <a href=\"https://twitter.com/Workersrights24/status/1932322602951004583?ref_src=twsrc%5Etfw\">June 10, 2025</a></blockquote>`}
+              tweetHtml={`<blockquote class="twitter-tweet"><p lang="en" dir="ltr">✊Day 2 of the exchange program, allowed participants from 21 flower farms share best practices on gender mainstreaming and sexual harassment prevention,strengthening the capacity of workers&amp;management to build equitable workplaces where everyone thrives. <a href="https://twitter.com/hashtag/Workersrights?src=hash&amp;ref_src=twsrc%5Etfw">#Workersrights</a> <a href="https://t.co/NFj6XYa4vS">pic.twitter.com/NFj6XYa4vS</a></p>&mdash; Workersrightswatch (@Workersrights24) <a href="https://twitter.com/Workersrights24/status/1932322602951004583?ref_src=twsrc%5Etfw">June 10, 2025</a></blockquote>`}
               className="break-inside-avoid mb-8"
             />
             <TwitterEmbed
-              tweetHtml={`<blockquote class=\"twitter-tweet\"><p lang=\"en\" dir=\"ltr\">♀️We recently conducted an exchange program that brought together representatives from 21 flower farms for a powerful knowledge sharing platform .✊They shared their experiences&amp;collaboratively developed solutions to end sexual harassment&amp; improve working conditions. <a href=\"https://t.co/q1JQhhh0TH\">pic.twitter.com/q1JQhhh0TH</a></p>&mdash; Workersrightswatch (@Workersrights24) <a href=\"https://twitter.com/Workersrights24/status/1931998461647282604?ref_src=twsrc%5Etfw\">June 9, 2025</a></blockquote>`}
+              tweetHtml={`<blockquote class="twitter-tweet"><p lang="en" dir="ltr">♀️We recently conducted an exchange program that brought together representatives from 21 flower farms for a powerful knowledge sharing platform .✊They shared their experiences&amp;collaboratively developed solutions to end sexual harassment&amp; improve working conditions. <a href="https://t.co/q1JQhhh0TH">pic.twitter.com/q1JQhhh0TH</a></p>&mdash; Workersrightswatch (@Workersrights24) <a href="https://twitter.com/Workersrights24/status/1931998461647282604?ref_src=twsrc%5Etfw">June 9, 2025</a></blockquote>`}
               className="break-inside-avoid mb-8"
             />
             {/* Add more <TwitterEmbed ... /> here for more posts */}
@@ -1017,11 +1015,11 @@ export default function HomePage() {
               rel="noopener noreferrer"
               className="inline-flex items-center justify-center group
                          relative px-10 py-6 mt-3 rounded-full
-                         bg-[#101720] border border-teal-500 text-teal-400
+                         bg-primary-foreground border border-teal-500 text-teal-400
                          font-bold text-base shadow-lg overflow-hidden
                          transition-all duration-300
                          focus:outline-none
-                         hover:ring-2 hover:ring-teal-400 hover:bg-[#0a222a]
+                         hover:ring-2 hover:ring-teal-400 hover:bg-accent
                          "
               style={{
                 boxShadow: "0 0 28px 0 #10bfae46"

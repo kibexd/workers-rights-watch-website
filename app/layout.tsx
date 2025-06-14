@@ -40,7 +40,7 @@ export default function RootLayout({
     <html lang="en" suppressHydrationWarning>
       <body className={inter.className}>
         <ThemeProvider
-          defaultTheme="dark"
+          defaultTheme="light"
         >
           <MainNav />
           <main className="pt-44 pb-20">

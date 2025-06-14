@@ -244,7 +244,7 @@ export default function ResourcesPage() {
       //   thumbnail: "/pic2.jpg",
       //   category: "Safety",
       //   content:
-      //     "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed euismod, nisl vel ultricies lacinia, nisl nisl aliquam nisl, eu aliquam nisl nisl eu nisl.",
+      //     "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed euismod, nisl vel ultricies lacinia, nisl nisl aliquam nisl, eu aliquam nisl nisl aliquam nisl, eu aliquam nisl nisl eu nisl.",
       //   videoUrl: "https://www.youtube.com/watch?v=example3",
       // },
       // {
@@ -256,7 +256,7 @@ export default function ResourcesPage() {
       //   thumbnail: "/pic3.jpg",
       //   category: "Gender Equality",
       //   content:
-      //     "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed euismod, nisl vel ultricies lacinia, nisl nisl aliquam nisl, eu aliquam nisl nisl eu nisl.",
+      //     "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed euismod, nisl vel ultricies lacinia, nisl nisl aliquam nisl, eu aliquam nisl nisl aliquam nisl, eu aliquam nisl nisl eu nisl.",
       //   videoUrl: "https://www.youtube.com/watch?v=example4",
       // },
     ],
@@ -538,16 +538,16 @@ export default function ResourcesPage() {
   }
 
   return (
-    <div className="min-h-screen bg-[#0A0A0A] dark:bg-[#0A0A0A] light:bg-[#F8F9FA] transition-colors duration-300">
+    <div className="min-h-screen bg-[#0A0A0A] dark:bg-[#0A0A0A] bg-[#F8F9FA] transition-colors duration-300">
       <section className="relative py-32">
         <div className="absolute inset-0 z-0">
           <Image
             src="/pic2.jpg?height=600&width=1920"
             alt="Resources"
             fill
-            className="object-cover opacity-20 dark:opacity-20 light:opacity-10"
+            className="object-cover opacity-20 dark:opacity-20 opacity-10"
           />
-          <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/50 to-[#0A0A0A] dark:from-black/70 dark:via-black/50 dark:to-[#0A0A0A] light:from-white/70 light:via-white/50 light:to-[#F8F9FA]"></div>
+          <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/50 to-[#0A0A0A] dark:from-black/70 dark:via-black/50 dark:to-[#0A0A0A] from-white/70 via-white/50 to-[#F8F9FA]"></div>
         </div>
 
         <div className="container mx-auto px-6 relative z-10">
@@ -557,10 +557,10 @@ export default function ResourcesPage() {
             transition={{ duration: 0.8 }}
             className="text-center"
           >
-            <h1 className="text-5xl font-bold text-white dark:text-white light:text-gray-900 mb-6">
+            <h1 className="text-5xl font-bold text-white dark:text-white text-gray-900 mb-6">
               Articles & Resources
             </h1>
-            <p className="text-xl text-gray-300 dark:text-gray-300 light:text-gray-700 max-w-3xl mx-auto">
+            <p className="text-xl text-gray-300 dark:text-gray-300 text-gray-700 max-w-3xl mx-auto">
               Access our collection of articles, reports, videos, and images on workers' rights, labor laws, and
               workplace issues.
             </p>
@@ -568,7 +568,7 @@ export default function ResourcesPage() {
         </div>
       </section>
 
-      <section className="py-12 bg-[#0A0A0A] dark:bg-[#0A0A0A] light:bg-[#F8F9FA] transition-colors duration-300">
+      <section className="py-12 bg-[#0A0A0A] dark:bg-[#0A0A0A] bg-[#F8F9FA] transition-colors duration-300">
         <div className="container mx-auto px-6">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -577,18 +577,18 @@ export default function ResourcesPage() {
           >
             <div className="flex flex-col md:flex-row items-center space-y-4 md:space-y-0 md:space-x-4 mb-12 max-w-3xl mx-auto">
               <div className="relative flex-grow w-full">
-                <Search className="absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-400 dark:text-gray-400 light:text-gray-500 h-5 w-5" />
+                <Search className="absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-400 dark:text-gray-400 text-gray-500 h-5 w-5" />
                 <Input
                   value={searchQuery}
                   onChange={(e) => setSearchQuery(e.target.value)}
                   onKeyDown={handleKeyDown}
                   placeholder="Search resources..."
-                  className="pl-12 pr-10 bg-[#111111] dark:bg-[#111111] light:bg-white border-0 rounded-full h-14 text-white dark:text-white light:text-gray-900 focus:ring-2 focus:ring-teal-500 w-full"
+                  className="pl-12 pr-10 bg-[#111111] dark:bg-[#111111] bg-white border-0 rounded-full h-14 text-white dark:text-white text-gray-900 focus:ring-2 focus:ring-teal-500 w-full"
                 />
                 {searchQuery && (
                   <button
                     onClick={clearSearch}
-                    className="absolute right-4 top-1/2 transform -translate-y-1/2 text-gray-400 hover:text-white dark:text-gray-400 dark:hover:text-white light:text-gray-500 light:hover:text-gray-900"
+                    className="absolute right-4 top-1/2 transform -translate-y-1/2 text-gray-400 hover:text-white dark:text-gray-400 dark:hover:text-white text-gray-500 hover:text-gray-900"
                     aria-label="Clear search"
                   >
                     <X className="h-5 w-5" />
@@ -638,7 +638,7 @@ export default function ResourcesPage() {
             transition={{ duration: 0.8, delay: 0.4 }}
           >
             <Tabs defaultValue={activeTab} onValueChange={handleTabChange} className="w-full">
-              <TabsList className="justify-center mb-8 bg-transparent border border-gray-800 dark:border-gray-800 light:border-gray-200 rounded-full p-1 w-fit mx-auto">
+              <TabsList className="justify-center mb-8 bg-transparent border border-gray-800 dark:border-gray-800 border-gray-200 rounded-full p-1 w-fit mx-auto">
                 {tabs.map((tab) => (
                 <TabsTrigger
                     key={tab.id}
@@ -654,7 +654,7 @@ export default function ResourcesPage() {
               <div className="mb-8">
                 {activeTab === "articles" && articleCategories.length > 0 && (
                   <div className="flex flex-wrap gap-2 justify-center">
-                    <span className="flex items-center text-gray-400 dark:text-gray-400 light:text-gray-600 mr-2">
+                    <span className="flex items-center text-gray-400 dark:text-gray-400 text-gray-600 mr-2">
                       <Filter className="h-4 w-4 mr-1" /> Filter by:
                     </span>
                     {articleCategories.map((category) => (
@@ -663,7 +663,7 @@ export default function ResourcesPage() {
                         className={`cursor-pointer flex items-center ${
                           activeFilters.articles.includes(category)
                             ? "bg-teal-500 text-black"
-                            : "bg-[#1A1A1A] dark:bg-[#1A1A1A] light:bg-gray-200 text-gray-300 dark:text-gray-300 light:text-gray-700 hover:bg-teal-500/20"
+                            : "bg-[#1A1A1A] dark:bg-[#1A1A1A] bg-gray-200 text-gray-300 dark:text-gray-300 text-gray-700 hover:bg-teal-500/20"
                         }`}
                       >
                         <span onClick={() => toggleFilter(category, "articles")} className="px-2 py-1">
@@ -697,7 +697,7 @@ export default function ResourcesPage() {
 
                 {activeTab === "reports" && reportCategories.length > 0 && (
                   <div className="flex flex-wrap gap-2 justify-center">
-                    <span className="flex items-center text-gray-400 dark:text-gray-400 light:text-gray-600 mr-2">
+                    <span className="flex items-center text-gray-400 dark:text-gray-400 text-gray-600 mr-2">
                       <Filter className="h-4 w-4 mr-1" /> Filter by:
                     </span>
                     {reportCategories.map((category) => (
@@ -706,7 +706,7 @@ export default function ResourcesPage() {
                         className={`cursor-pointer flex items-center ${
                           activeFilters.reports.includes(category)
                             ? "bg-teal-500 text-black"
-                            : "bg-[#1A1A1A] dark:bg-[#1A1A1A] light:bg-gray-200 text-gray-300 dark:text-gray-300 light:text-gray-700 hover:bg-teal-500/20"
+                            : "bg-[#1A1A1A] dark:bg-[#1A1A1A] bg-gray-200 text-gray-300 dark:text-gray-300 text-gray-700 hover:bg-teal-500/20"
                         }`}
                       >
                         <span onClick={() => toggleFilter(category, "reports")} className="px-2 py-1">
@@ -740,7 +740,7 @@ export default function ResourcesPage() {
 
                 {activeTab === "videos" && videoCategories.length > 0 && (
                   <div className="flex flex-wrap gap-2 justify-center">
-                    <span className="flex items-center text-gray-400 dark:text-gray-400 light:text-gray-600 mr-2">
+                    <span className="flex items-center text-gray-400 dark:text-gray-400 text-gray-600 mr-2">
                       <Filter className="h-4 w-4 mr-1" /> Filter by:
                     </span>
                     {videoCategories.map((category) => (
@@ -749,7 +749,7 @@ export default function ResourcesPage() {
                         className={`cursor-pointer flex items-center ${
                           activeFilters.videos.includes(category)
                             ? "bg-teal-500 text-black"
-                            : "bg-[#1A1A1A] dark:bg-[#1A1A1A] light:bg-gray-200 text-gray-300 dark:text-gray-300 light:text-gray-700 hover:bg-teal-500/20"
+                            : "bg-[#1A1A1A] dark:bg-[#1A1A1A] bg-gray-200 text-gray-300 dark:text-gray-300 text-gray-700 hover:bg-teal-500/20"
                         }`}
                       >
                         <span onClick={() => toggleFilter(category, "videos")} className="px-2 py-1">
@@ -783,7 +783,7 @@ export default function ResourcesPage() {
 
                 {activeTab === "images" && imageCategories.length > 0 && (
                   <div className="flex flex-wrap gap-2 justify-center">
-                    <span className="flex items-center text-gray-400 dark:text-gray-400 light:text-gray-600 mr-2">
+                    <span className="flex items-center text-gray-400 dark:text-gray-400 text-gray-600 mr-2">
                       <Filter className="h-4 w-4 mr-1" /> Filter by:
                     </span>
                     {imageCategories.map((category) => (
@@ -792,7 +792,7 @@ export default function ResourcesPage() {
                         className={`cursor-pointer flex items-center ${
                           activeFilters.images.includes(category)
                             ? "bg-teal-500 text-black"
-                            : "bg-[#1A1A1A] dark:bg-[#1A1A1A] light:bg-gray-200 text-gray-300 dark:text-gray-300 light:text-gray-700 hover:bg-teal-500/20"
+                            : "bg-[#1A1A1A] dark:bg-[#1A1A1A] bg-gray-200 text-gray-300 dark:text-gray-300 text-gray-700 hover:bg-teal-500/20"
                         }`}
                       >
                         <span onClick={() => toggleFilter(category, "images")} className="px-2 py-1">
@@ -828,13 +828,13 @@ export default function ResourcesPage() {
               <TabsContent value="articles">
                 {filteredResources.articles.length === 0 ? (
                   <div className="text-center py-12">
-                    <div className="h-20 w-20 rounded-full bg-gray-800 dark:bg-gray-800 light:bg-gray-200 flex items-center justify-center mx-auto mb-6">
-                      <Search className="h-10 w-10 text-gray-500 dark:text-gray-500 light:text-gray-400" />
+                    <div className="h-20 w-20 rounded-full bg-gray-800 dark:bg-gray-800 bg-gray-200 flex items-center justify-center mx-auto mb-6">
+                      <Search className="h-10 w-10 text-gray-500 dark:text-gray-500 text-gray-400" />
                     </div>
-                    <h3 className="text-xl font-bold text-white dark:text-white light:text-gray-900 mb-2">
+                    <h3 className="text-xl font-bold text-white dark:text-white text-gray-900 mb-2">
                       No articles found
                     </h3>
-                    <p className="text-gray-400 dark:text-gray-400 light:text-gray-600">
+                    <p className="text-gray-400 dark:text-gray-400 text-gray-600">
                       Try adjusting your search terms or filters to find what you're looking for.
                     </p>
                   </div>
@@ -847,7 +847,7 @@ export default function ResourcesPage() {
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.5, delay: 0.6 + index * 0.1 }}
                       >
-                        <Card className="bg-[#111111] dark:bg-[#111111] light:bg-white border-0 overflow-hidden rounded-2xl hover:shadow-xl hover:shadow-teal-500/5 transition-all duration-300 h-full">
+                        <Card className="bg-[#111111] dark:bg-[#111111] bg-white border-0 overflow-hidden rounded-2xl hover:shadow-xl hover:shadow-teal-500/5 transition-all duration-300 h-full">
                           <div className="relative h-48 overflow-hidden">
                             <Image
                               src={article.image || "/placeholder.svg"}
@@ -860,34 +860,34 @@ export default function ResourcesPage() {
                             </div>
                           </div>
                           <CardHeader className="pt-6 pb-2">
-                            <CardTitle className="text-xl font-bold text-white dark:text-white light:text-gray-900">
+                            <CardTitle className="text-xl font-bold text-white dark:text-white text-gray-900">
                               {article.title}
                             </CardTitle>
-                            <p className="text-sm text-teal-500 dark:text-teal-500 light:text-teal-600">
+                            <p className="text-sm text-teal-500 dark:text-teal-500 text-teal-600">
                               {article.date}
                             </p>
                           </CardHeader>
                           <CardContent className="pb-4">
-                            <p className="text-gray-400 dark:text-gray-400 light:text-gray-600">{article.excerpt}</p>
+                            <p className="text-gray-400 dark:text-gray-400 text-gray-600">{article.excerpt}</p>
                           </CardContent>
                           <CardFooter>
                             <Dialog>
                               <DialogTrigger asChild>
                                 <Button
                                   variant="outline"
-                                  className="text-teal-500 dark:text-teal-500 light:text-teal-600 border-teal-500 dark:border-teal-500 light:border-teal-600 hover:bg-teal-500 hover:text-black rounded-full"
+                                  className="text-teal-500 dark:text-teal-500 text-teal-600 border-teal-500 dark:border-teal-500 border-teal-600 hover:bg-teal-500 hover:text-black rounded-full"
                                 >
                                   Read More
                                 </Button>
                               </DialogTrigger>
-                              <DialogContent className="bg-[#1A1A1A] dark:bg-[#1A1A1A] light:bg-white border-0 rounded-2xl max-w-3xl">
+                              <DialogContent className="bg-[#1A1A1A] dark:bg-[#1A1A1A] bg-white border-0 rounded-2xl max-w-3xl">
                                 <DialogHeader>
-                                  <DialogTitle className="text-2xl font-bold text-white dark:text-white light:text-gray-900">
+                                  <DialogTitle className="text-2xl font-bold text-white dark:text-white text-gray-900">
                                     {article.title}
                                   </DialogTitle>
-                                  <div className="text-gray-400 dark:text-gray-400 light:text-gray-600">
+                                  <div className="text-gray-400 dark:text-gray-400 text-gray-600">
                                     <div className="flex items-center gap-4 mt-2">
-                                      <span className="text-teal-500 dark:text-teal-500 light:text-teal-600">
+                                      <span className="text-teal-500 dark:text-teal-500 text-teal-600">
                                         {article.date}
                                       </span>
                                       <Badge className="bg-teal-500/80 text-black font-medium">
@@ -904,7 +904,7 @@ export default function ResourcesPage() {
                                     className="object-cover rounded-xl"
                                   />
                                 </div>
-                                <div className="text-gray-300 dark:text-gray-300 light:text-gray-700 space-y-4">
+                                <div className="text-gray-300 dark:text-gray-300 text-gray-700 space-y-4">
                                   <div>{article.excerpt}</div>
                                   <div>{article.content}</div>
                                   <div>{article.content}</div>
@@ -930,13 +930,13 @@ export default function ResourcesPage() {
               <TabsContent value="reports">
                 {filteredResources.reports.length === 0 ? (
                   <div className="text-center py-12">
-                    <div className="h-20 w-20 rounded-full bg-gray-800 dark:bg-gray-800 light:bg-gray-200 flex items-center justify-center mx-auto mb-6">
-                      <Search className="h-10 w-10 text-gray-500 dark:text-gray-500 light:text-gray-400" />
+                    <div className="h-20 w-20 rounded-full bg-gray-800 dark:bg-gray-800 bg-gray-200 flex items-center justify-center mx-auto mb-6">
+                      <Search className="h-10 w-10 text-gray-500 dark:text-gray-500 text-gray-400" />
                     </div>
-                    <h3 className="text-xl font-bold text-white dark:text-white light:text-gray-900 mb-2">
+                    <h3 className="text-xl font-bold text-white dark:text-white text-gray-900 mb-2">
                       No reports found
                     </h3>
-                    <p className="text-gray-400 dark:text-gray-400 light:text-gray-600">
+                    <p className="text-gray-400 dark:text-gray-400 text-gray-600">
                       Try adjusting your search terms or filters to find what you're looking for.
                     </p>
                   </div>
@@ -949,7 +949,7 @@ export default function ResourcesPage() {
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.5, delay: 0.6 + index * 0.1 }}
                       >
-                        <Card className="bg-[#111111] dark:bg-[#111111] light:bg-white border-0 overflow-hidden rounded-2xl hover:shadow-xl hover:shadow-teal-500/5 transition-all duration-300 h-full">
+                        <Card className="bg-[#111111] dark:bg-[#111111] bg-white border-0 overflow-hidden rounded-2xl hover:shadow-xl hover:shadow-teal-500/5 transition-all duration-300 h-full">
                           <div className="grid md:grid-cols-3 gap-0">
                             <div className="relative h-56 md:col-span-1">
                               <Image
@@ -964,17 +964,17 @@ export default function ResourcesPage() {
                             </div>
                             <div className="p-6 md:col-span-2 flex flex-col justify-between">
                               <div>
-                                <h3 className="text-xl font-bold text-white dark:text-white light:text-gray-900 mb-2">
+                                <h3 className="text-xl font-bold text-white dark:text-white text-gray-900 mb-2">
                                   {report.title}
                                 </h3>
-                                <p className="text-sm text-teal-500 dark:text-teal-500 light:text-teal-600 mb-4">
+                                <p className="text-sm text-teal-500 dark:text-teal-500 text-teal-600 mb-4">
                                   {report.date}
                                 </p>
-                                <p className="text-gray-400 dark:text-gray-400 light:text-gray-600 mb-4 line-clamp-3">
+                                <p className="text-gray-400 dark:text-gray-400 text-gray-600 mb-4 line-clamp-3">
                                   {report.description}
                                 </p>
                               </div>
-                              <div className="flex items-center text-sm text-gray-500 dark:text-gray-500 light:text-gray-500 mb-4">
+                              <div className="flex items-center text-sm text-gray-500 dark:text-gray-500 text-gray-500 mb-4">
                                 <FileText className="h-4 w-4 mr-2" />
                                 <span>{report.downloadUrl.endsWith(".docx") ? "DOCX" : "PDF"}</span>
                                 <span className="mx-2">•</span>
@@ -996,7 +996,7 @@ export default function ResourcesPage() {
                                 </Button>
                                 <Button
                                   variant="outline"
-                                  className="text-white dark:text-white light:text-gray-900 border-gray-700 dark:border-gray-700 light:border-gray-300 hover:bg-gray-800 dark:hover:bg-gray-800 light:hover:bg-gray-100 rounded-full"
+                                  className="text-white dark:text-white text-gray-900 border-gray-700 dark:border-gray-700 border-gray-300 hover:bg-gray-800 dark:hover:bg-gray-800 hover:bg-gray-100 rounded-full"
                                   onClick={() => window.open(report.downloadUrl, "_blank")}
                                 >
                                   View Online
@@ -1014,13 +1014,13 @@ export default function ResourcesPage() {
               <TabsContent value="videos">
                 {filteredResources.videos.length === 0 ? (
                   <div className="text-center py-12">
-                    <div className="h-20 w-20 rounded-full bg-gray-800 dark:bg-gray-800 light:bg-gray-200 flex items-center justify-center mx-auto mb-6">
-                      <Search className="h-10 w-10 text-gray-500 dark:text-gray-500 light:text-gray-400" />
+                    <div className="h-20 w-20 rounded-full bg-gray-800 dark:bg-gray-800 bg-gray-200 flex items-center justify-center mx-auto mb-6">
+                      <Search className="h-10 w-10 text-gray-500 dark:text-gray-500 text-gray-400" />
                     </div>
-                    <h3 className="text-xl font-bold text-white dark:text-white light:text-gray-900 mb-2">
+                    <h3 className="text-xl font-bold text-white dark:text-white text-gray-900 mb-2">
                       No videos found
                     </h3>
-                    <p className="text-gray-400 dark:text-gray-400 light:text-gray-600">
+                    <p className="text-gray-400 dark:text-gray-400 text-gray-600">
                       Try adjusting your search terms or filters to find what you're looking for.
                     </p>
                   </div>
@@ -1033,7 +1033,7 @@ export default function ResourcesPage() {
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.5, delay: 0.6 + index * 0.1 }}
                       >
-                        <Card className="bg-[#111111] dark:bg-[#111111] light:bg-white border-0 overflow-hidden rounded-2xl hover:shadow-xl hover:shadow-teal-500/5 transition-all duration-300 h-full">
+                        <Card className="bg-[#111111] dark:bg-[#111111] bg-white border-0 overflow-hidden rounded-2xl hover:shadow-xl hover:shadow-teal-500/5 transition-all duration-300 h-full">
                           <div
                             className="relative h-64 overflow-hidden cursor-pointer"
                             onClick={() => handleVideoClick(video.videoUrl)}
@@ -1064,13 +1064,13 @@ export default function ResourcesPage() {
                             </div>
                           </div>
                           <CardContent className="p-6">
-                            <h3 className="text-xl font-bold text-white dark:text-white light:text-gray-900 mb-2">
+                            <h3 className="text-xl font-bold text-white dark:text-white text-gray-900 mb-2">
                               {video.title}
                             </h3>
-                            <p className="text-sm text-teal-500 dark:text-teal-500 light:text-teal-600 mb-4">
+                            <p className="text-sm text-teal-500 dark:text-teal-500 text-teal-600 mb-4">
                               {video.date}
                             </p>
-                            <p className="text-gray-400 dark:text-gray-400 light:text-gray-600 mb-6">
+                            <p className="text-gray-400 dark:text-gray-400 text-gray-600 mb-6">
                               {video.description}
                             </p>
                             <Button
@@ -1091,13 +1091,13 @@ export default function ResourcesPage() {
               <TabsContent value="images">
                 {filteredResources.images.length === 0 ? (
                   <div className="text-center py-12">
-                    <div className="h-20 w-20 rounded-full bg-gray-800 dark:bg-gray-800 light:bg-gray-200 flex items-center justify-center mx-auto mb-6">
-                      <Search className="h-10 w-10 text-gray-500 dark:text-gray-500 light:text-gray-400" />
+                    <div className="h-20 w-20 rounded-full bg-gray-800 dark:bg-gray-800 bg-gray-200 flex items-center justify-center mx-auto mb-6">
+                      <Search className="h-10 w-10 text-gray-500 dark:text-gray-500 text-gray-400" />
                     </div>
-                    <h3 className="text-xl font-bold text-white dark:text-white light:text-gray-900 mb-2">
+                    <h3 className="text-xl font-bold text-white dark:text-white text-gray-900 mb-2">
                       No images found
                     </h3>
-                    <p className="text-gray-400 dark:text-gray-400 light:text-gray-600">
+                    <p className="text-gray-400 dark:text-gray-400 text-gray-600">
                       Try adjusting your search terms or filters to find what you're looking for.
                     </p>
                   </div>
@@ -1132,7 +1132,7 @@ export default function ResourcesPage() {
                               </div>
                             </div>
                           </DialogTrigger>
-                          <DialogContent className="bg-[#1A1A1A] dark:bg-[#1A1A1A] light:bg-white border-0 rounded-2xl max-w-5xl p-0">
+                          <DialogContent className="bg-[#1A1A1A] dark:bg-[#1A1A1A] bg-white border-0 rounded-2xl max-w-5xl p-0">
                             <DialogHeader>
                               <DialogTitle className="sr-only">Image Gallery</DialogTitle>
                             </DialogHeader>
@@ -1171,21 +1171,21 @@ export default function ResourcesPage() {
                               )}
                             </div>
                             <div className="p-6">
-                              <h3 className="text-2xl font-bold text-white dark:text-white light:text-gray-900 mb-2">
+                              <h3 className="text-2xl font-bold text-white dark:text-white text-gray-900 mb-2">
                                 {selectedImage?.title}
                               </h3>
                               <div className="flex items-center gap-4 mb-4">
-                                <span className="text-teal-500 dark:text-teal-500 light:text-teal-600">
+                                <span className="text-teal-500 dark:text-teal-500 text-teal-600">
                                   {selectedImage?.date}
                                 </span>
                                 <Badge className="bg-teal-500/80 text-black font-medium">
                                   {selectedImage?.category}
                                 </Badge>
                               </div>
-                              <div className="text-gray-300 dark:text-gray-300 light:text-gray-700">
+                              <div className="text-gray-300 dark:text-gray-300 text-gray-700">
                                 {selectedImage?.description}
                               </div>
-                              <div className="text-gray-500 dark:text-gray-500 light:text-gray-500 mt-2 flex items-center">
+                              <div className="text-gray-500 dark:text-gray-500 text-gray-500 mt-2 flex items-center">
                                 <MapPin className="h-4 w-4 mr-1" />
                                 <span>{selectedImage?.location}</span>
                               </div>
@@ -1215,4 +1215,4 @@ export default function ResourcesPage() {
       )}
     </div>
   )
-}
+} 

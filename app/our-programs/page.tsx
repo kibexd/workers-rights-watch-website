@@ -54,16 +54,16 @@ export default function OurProgramsPage() {
   }, [])
 
   return (
-    <div className="min-h-screen bg-[#0A0A0A] dark:bg-[#0A0A0A] light:bg-[#F8F9FA]">
+    <div className="min-h-screen bg-background">
       <section className="relative py-32">
         <div className="absolute inset-0 z-0">
           <Image
             src="/pic6.jpg?height=600&width=1920"
             alt="Our Programs"
             fill
-            className="object-cover opacity-20 dark:opacity-20 light:opacity-10"
+            className="object-cover opacity-20"
           />
-          <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/50 to-[#0A0A0A] dark:from-black/70 dark:via-black/50 dark:to-[#0A0A0A] light:from-white/70 light:via-white/50 light:to-[#F8F9FA]"></div>
+          <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/50 to-background"></div>
         </div>
 
         <div className="container mx-auto px-6 relative z-10">
@@ -73,8 +73,8 @@ export default function OurProgramsPage() {
             transition={{ duration: 0.8 }}
             className="text-center"
           >
-            <h1 className="text-5xl font-bold text-white dark:text-white light:text-gray-900 mb-6">Our Programs</h1>
-            <p className="text-xl text-gray-300 dark:text-gray-300 light:text-gray-700 max-w-3xl mx-auto">
+            <h1 className="text-5xl font-bold text-foreground mb-6">Our Programs</h1>
+            <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
               Discover how Workers Rights Watch is making a difference in the lives of workers across Kenya through our
               various programs and initiatives.
             </p>
@@ -82,14 +82,14 @@ export default function OurProgramsPage() {
         </div>
       </section>
 
-      <section ref={introRef} className="py-20 bg-[#0A0A0A] dark:bg-[#0A0A0A] light:bg-[#F8F9FA]">
+      <section ref={introRef} className="py-20 bg-background">
         <div className="container mx-auto px-6">
           <motion.div
             initial={{ opacity: 0, y: 40 }}
             animate={isVisible.intro ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.8 }}
           >
-            <Card className="bg-[#111111] dark:bg-[#111111] light:bg-white border-0 overflow-hidden rounded-2xl shadow-xl">
+            <Card className="bg-card border-0 overflow-hidden rounded-2xl shadow-xl">
               <CardContent className="p-8 md:p-12">
                 <div className="grid md:grid-cols-2 gap-12 items-center">
                   <div className="relative h-96 rounded-2xl overflow-hidden">
@@ -101,20 +101,20 @@ export default function OurProgramsPage() {
                     />
                   </div>
                   <div>
-                    <h2 className="text-3xl font-bold text-white dark:text-white light:text-gray-900 mb-6">
+                    <h2 className="text-3xl font-bold text-foreground mb-6">
                       Our Commitment to Workers' Rights
                     </h2>
-                    <p className="text-gray-300 dark:text-gray-300 light:text-gray-700 mb-6 leading-relaxed">
+                    <p className="text-muted-foreground mb-6 leading-relaxed">
                       Since our establishment in 2000, Workers Rights Watch has been at the forefront of advocating for
                       workers' rights in Kenya. Our work is guided by a rights-based approach that emphasizes dignity,
                       equality, and justice for all workers.
                     </p>
-                    <p className="text-gray-300 dark:text-gray-300 light:text-gray-700 mb-6 leading-relaxed">
+                    <p className="text-muted-foreground mb-6 leading-relaxed">
                       We believe that every worker deserves fair treatment, safe working conditions, and the opportunity
                       to voice their concerns without fear of reprisal. Through our various programs and initiatives, we
                       strive to create a more equitable workplace environment for all.
                     </p>
-                    <p className="text-gray-300 dark:text-gray-300 light:text-gray-700 leading-relaxed">
+                    <p className="text-muted-foreground leading-relaxed">
                       Our approach combines direct support to workers, advocacy for policy change, research on labor
                       conditions, and education on workers' rights. By addressing these multiple dimensions, we aim to
                       create sustainable improvements in the lives of workers across Kenya.
@@ -127,7 +127,7 @@ export default function OurProgramsPage() {
         </div>
       </section>
 
-      <section ref={programsRef} className="py-20 bg-[#0F0F0F] dark:bg-[#0F0F0F] light:bg-[#F0F0F0]">
+      <section ref={programsRef} className="py-20 bg-secondary">
         <div className="container mx-auto px-6">
           <motion.div
             initial={{ opacity: 0, y: 40 }}
@@ -135,8 +135,8 @@ export default function OurProgramsPage() {
             transition={{ duration: 0.8 }}
             className="text-center mb-16"
           >
-            <h2 className="text-4xl font-bold mb-4 text-white dark:text-white light:text-gray-900">Our Programs</h2>
-            <p className="text-xl text-gray-400 dark:text-gray-400 light:text-gray-700 max-w-3xl mx-auto">
+            <h2 className="text-4xl font-bold mb-4 text-foreground">Our Programs</h2>
+            <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
               We implement a range of programs designed to address different aspects of workers' rights and needs.
             </p>
           </motion.div>
@@ -192,7 +192,7 @@ export default function OurProgramsPage() {
                 animate={isVisible.programs ? { opacity: 1, y: 0 } : {}}
                 transition={{ duration: 0.8, delay: index * 0.2 }}
               >
-                <Card className="bg-[#111111] dark:bg-[#111111] light:bg-white border-0 overflow-hidden rounded-2xl hover:shadow-xl hover:shadow-teal-500/5 transition-all duration-300 h-full">
+                <Card className="bg-card border-0 overflow-hidden rounded-2xl hover:shadow-xl hover:shadow-teal-500/5 transition-all duration-300 h-full">
                   <div className="relative h-48 overflow-hidden">
                     <Image
                       src={program.image || "/placeholder.svg"}
@@ -206,14 +206,14 @@ export default function OurProgramsPage() {
                       <div className="h-12 w-12 rounded-full bg-teal-500/10 flex items-center justify-center mr-4">
                         {program.icon}
                       </div>
-                      <h3 className="text-xl font-bold text-white dark:text-white light:text-gray-900">
+                      <h3 className="text-xl font-bold text-foreground">
                         {program.title}
                       </h3>
                     </div>
-                    <p className="text-gray-400 dark:text-gray-400 light:text-gray-700 mb-6">{program.description}</p>
+                    <p className="text-muted-foreground mb-6">{program.description}</p>
                     <Button
                       variant="outline"
-                      className="text-teal-500 dark:text-teal-500 light:text-teal-600 border-teal-500 dark:border-teal-500 light:border-teal-600 hover:bg-teal-500 hover:text-black rounded-full"
+                      className="text-teal-500 border-teal-500 hover:bg-teal-500 hover:text-black rounded-full"
                     >
                       Learn More <ArrowRight className="ml-2 h-4 w-4" />
                     </Button>
@@ -225,7 +225,7 @@ export default function OurProgramsPage() {
         </div>
       </section>
 
-      <section ref={achievementsRef} className="py-20 bg-[#0A0A0A] dark:bg-[#0A0A0A] light:bg-[#F8F9FA]">
+      <section ref={achievementsRef} className="py-20 bg-background">
         <div className="container mx-auto px-6">
           <motion.div
             initial={{ opacity: 0, y: 40 }}
@@ -233,8 +233,8 @@ export default function OurProgramsPage() {
             transition={{ duration: 0.8 }}
             className="text-center mb-16"
           >
-            <h2 className="text-4xl font-bold mb-4 text-white dark:text-white light:text-gray-900">Key Achievements</h2>
-            <p className="text-xl text-gray-400 dark:text-gray-400 light:text-gray-700 max-w-3xl mx-auto">
+            <h2 className="text-4xl font-bold mb-4 text-foreground">Key Achievements</h2>
+            <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
               Over the years, our work has led to significant improvements in workers' rights and conditions.
             </p>
           </motion.div>
@@ -276,7 +276,7 @@ export default function OurProgramsPage() {
                 animate={isVisible.achievements ? { opacity: 1, y: 0 } : {}}
                 transition={{ duration: 0.8, delay: index * 0.2 }}
               >
-                <Card className="bg-[#111111] dark:bg-[#111111] light:bg-white border-0 overflow-hidden rounded-2xl hover:shadow-xl hover:shadow-teal-500/5 transition-all duration-300">
+                <Card className="bg-card border-0 overflow-hidden rounded-2xl hover:shadow-xl hover:shadow-teal-500/5 transition-all duration-300">
                   <div className="grid md:grid-cols-3 gap-0">
                     <div className="relative h-full md:col-span-1">
                       <Image
@@ -292,15 +292,15 @@ export default function OurProgramsPage() {
                       </div>
                     </div>
                     <div className="p-8 md:col-span-2">
-                      <h3 className="text-2xl font-bold text-white dark:text-white light:text-gray-900 mb-4">
+                      <h3 className="text-2xl font-bold text-foreground mb-4">
                         {achievement.title}
                       </h3>
-                      <p className="text-gray-300 dark:text-gray-300 light:text-gray-700 mb-6">
+                      <p className="text-muted-foreground mb-6">
                         {achievement.description}
                       </p>
                       <Button
                         variant="outline"
-                        className="text-teal-500 dark:text-teal-500 light:text-teal-600 border-teal-500 dark:border-teal-500 light:border-teal-600 hover:bg-teal-500 hover:text-black rounded-full"
+                        className="text-teal-500 border-teal-500 hover:bg-teal-500 hover:text-black rounded-full"
                       >
                         Read Case Study <ArrowRight className="ml-2 h-4 w-4" />
                       </Button>
@@ -313,7 +313,7 @@ export default function OurProgramsPage() {
         </div>
       </section>
 
-      <section ref={methodologyRef} className="py-20 bg-[#0F0F0F] dark:bg-[#0F0F0F] light:bg-[#F0F0F0]">
+      <section ref={methodologyRef} className="py-20 bg-secondary">
         <div className="container mx-auto px-6">
           <motion.div
             initial={{ opacity: 0, y: 40 }}
@@ -321,8 +321,8 @@ export default function OurProgramsPage() {
             transition={{ duration: 0.8 }}
             className="text-center mb-16"
           >
-            <h2 className="text-4xl font-bold mb-4 text-white dark:text-white light:text-gray-900">Our Methodology</h2>
-            <p className="text-xl text-gray-400 dark:text-gray-400 light:text-gray-700 max-w-3xl mx-auto">
+            <h2 className="text-4xl font-bold mb-4 text-foreground">Our Methodology</h2>
+            <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
               Our approach combines research, advocacy, education, and direct support to create lasting change.
             </p>
           </motion.div>
@@ -361,10 +361,10 @@ export default function OurProgramsPage() {
                       {index + 1}
                     </div>
                     <div>
-                      <h3 className="text-xl font-bold text-white dark:text-white light:text-gray-900 mb-2">
+                      <h3 className="text-xl font-bold text-foreground mb-2">
                         {item.title}
                       </h3>
-                      <p className="text-gray-300 dark:text-gray-300 light:text-gray-700">{item.description}</p>
+                      <p className="text-muted-foreground">{item.description}</p>
                     </div>
                   </div>
                 ))}
