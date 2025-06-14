@@ -104,54 +104,54 @@ export default function ResourcesPage() {
         category: "Exchange Program",
         content: "Our exchange program has successfully facilitated cross-cultural learning and workers' rights advocacy. Participants from different regions came together to share their experiences, challenges, and solutions in promoting workers' rights. The program included workshops, site visits, and collaborative projects that strengthened the workers' rights movement across different communities."
       },
-      {
-        id: 2,
-        title: "Wildfire Farm Training Initiative",
-        date: "February 28, 2024",
-        excerpt: "Comprehensive training program addressing workers' rights, human rights, and leadership development.",
-        image: "/Wildfire farm awareness creation on workers rights,human rights,sexual harassment and leadership/wfa1.jpeg",
-        category: "Training",
-        content: "The Wildfire Farm training initiative has been instrumental in raising awareness about workers' rights, human rights, and leadership. Through interactive sessions and practical workshops, participants gained valuable insights into their rights and responsibilities, while developing essential leadership skills to advocate for better working conditions."
-      },
-      {
-        id: 3,
-        title: "Reproductive Health Workshop",
-        date: "January 20, 2024",
-        excerpt: "Empowering women workers through comprehensive reproductive health and menstrual hygiene training.",
-        image: "/Reproductive health and menstrual hygiene training at Black petal farm/rh1.jpg",
-        category: "Health",
-        content: "Our reproductive health workshop at Black Petal Farm has been a significant step in promoting women's health and well-being in the workplace. The program covered essential topics including menstrual hygiene, reproductive health rights, and workplace accommodations for women's health needs."
-      },
-      {
-        id: 4,
-        title: "The Future of Labor Unions",
-        date: "December 12, 2023",
-        excerpt: "Exploring the evolving role of unions in the modern workplace and economy.",
-        image: "/pic1.jpg",
-        category: "Unions",
-        content:
-          "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed euismod, nisl vel ultricies lacinia, nisl nisl aliquam nisl, eu aliquam nisl nisl eu nisl.",
-      },
-      {
-        id: 5,
-        title: "Workplace Safety Standards",
-        date: "November 5, 2023",
-        excerpt: "An overview of essential safety standards that every workplace should implement.",
-        image: "/pic2.jpg",
-        category: "Safety",
-        content:
-          "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed euismod, nisl vel ultricies lacinia, nisl nisl aliquam nisl, eu aliquam nisl nisl eu nisl.",
-      },
-      {
-        id: 6,
-        title: "Fair Wages Campaign",
-        date: "October 18, 2023",
-        excerpt: "Advocating for fair compensation and benefits for workers across all sectors.",
-        image: "/pic3.jpg",
-        category: "Campaigns",
-        content:
-          "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed euismod, nisl vel ultricies lacinia, nisl nisl aliquam nisl, eu aliquam nisl nisl eu nisl.",
-      },
+      // {
+      //   id: 2,
+      //   title: "Wildfire Farm Training Initiative",
+      //   date: "February 28, 2024",
+      //   excerpt: "Comprehensive training program addressing workers' rights, human rights, and leadership development.",
+      //   image: "/Wildfire farm awareness creation on workers rights,human rights,sexual harassment and leadership/wfa1.jpeg",
+      //   category: "Training",
+      //   content: "The Wildfire Farm training initiative has been instrumental in raising awareness about workers' rights, human rights, and leadership. Through interactive sessions and practical workshops, participants gained valuable insights into their rights and responsibilities, while developing essential leadership skills to advocate for better working conditions."
+      // },
+      // {
+      //   id: 3,
+      //   title: "Reproductive Health Workshop",
+      //   date: "January 20, 2024",
+      //   excerpt: "Empowering women workers through comprehensive reproductive health and menstrual hygiene training.",
+      //   image: "/Reproductive health and menstrual hygiene training at Black petal farm/rh1.jpg",
+      //   category: "Health",
+      //   content: "Our reproductive health workshop at Black Petal Farm has been a significant step in promoting women's health and well-being in the workplace. The program covered essential topics including menstrual hygiene, reproductive health rights, and workplace accommodations for women's health needs."
+      // },
+      // {
+      //   id: 4,
+      //   title: "The Future of Labor Unions",
+      //   date: "December 12, 2023",
+      //   excerpt: "Exploring the evolving role of unions in the modern workplace and economy.",
+      //   image: "/pic1.jpg",
+      //   category: "Unions",
+      //   content:
+      //     "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed euismod, nisl vel ultricies lacinia, nisl nisl aliquam nisl, eu aliquam nisl nisl eu nisl.",
+      // },
+      // {
+      //   id: 5,
+      //   title: "Workplace Safety Standards",
+      //   date: "November 5, 2023",
+      //   excerpt: "An overview of essential safety standards that every workplace should implement.",
+      //   image: "/pic2.jpg",
+      //   category: "Safety",
+      //   content:
+      //     "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed euismod, nisl vel ultricies lacinia, nisl nisl aliquam nisl, eu aliquam nisl nisl eu nisl.",
+      // },
+      // {
+      //   id: 6,
+      //   title: "Fair Wages Campaign",
+      //   date: "October 18, 2023",
+      //   excerpt: "Advocating for fair compensation and benefits for workers across all sectors.",
+      //   image: "/pic3.jpg",
+      //   category: "Campaigns",
+      //   content:
+      //     "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed euismod, nisl vel ultricies lacinia, nisl nisl aliquam nisl, eu aliquam nisl nisl eu nisl.",
+      // },
     ],
     reports: [
       {
@@ -199,65 +199,66 @@ export default function ResourcesPage() {
         content: "WW 2021 Report: Examines sexual harassment issues in the horticulture industry, presenting findings and recommendations for safer workplaces, particularly for women.",
         downloadUrl: "/FINAL REPORT FOR WOMEN OWNED REPORT FOR WW 2021.pdf",
       },
-      {
-        id: 11,
-        title: "Board Bios Document",
-        date: "August 22, 2023",
-        description: "Assessment of workplace safety conditions and recommendations for improvement.",
-        fileSize: "968.3 KB",
-        image: "/BoardBios.png",
-        category: "Safety",
-        content: "The Workers' Rights Watch Board consists of 12 experts who guide the organization in promoting fair and safe labor conditions.",
-        downloadUrl: "BOARD BIOS.docx",
-      },
+      // {
+      //   id: 11,
+      //   title: "Board Bios Document",
+      //   date: "August 22, 2023",
+      //   description: "Assessment of workplace safety conditions and recommendations for improvement.",
+      //   fileSize: "968.3 KB",
+      //   image: "/BoardBios.png",
+      //   category: "Safety",
+      //   content: "The Workers' Rights Watch Board consists of 12 experts who guide the organization in promoting fair and safe labor conditions.",
+      //   downloadUrl: "BOARD BIOS.docx",
+      // },
     ],
     videos: [
       {
+        
         id: 11,
-        title: "Leadership Training Session Highlights",
+          title: "Sexual harassment life in the horticultural industry",
         date: "February 5, 2024",
-        description: "Interactive leadership training session with farm workers and management.",
+        description: "Documentary exploring the challenges and experiences of sexual harassment in the horticultural industry.",
         duration: "45:30",
         thumbnail: "/Training and awareness creation on gender mainstreaming ,sexual harassment and leadership at Margin par -Kariki Molo farm/ta2.jpg",
-        category: "Training",
+        category: "Gender Equality",
         content: "This video captures the highlights of our leadership training session, showcasing the interactive workshops and discussions that helped participants develop essential leadership skills for advocating workers' rights.",
         videoUrl: "https://www.youtube.com/watch?v=example1"
       },
-      {
-        id: 12,
-        title: "Exchange Program Documentary",
-        date: "December 18, 2023",
-        description: "Documentary showcasing the impact of our exchange program on workers' rights advocacy.",
-        duration: "32:15",
-        thumbnail: "/Exchange program pictures/ep2.jpg",
-        category: "Exchange Program",
-        content: "This documentary follows the journey of participants in our exchange program, highlighting how cross-cultural learning and collaboration have strengthened the workers' rights movement across different regions.",
-        videoUrl: "https://www.youtube.com/watch?v=example2"
-      },
-      {
-        id: 13,
-        title: "Workplace Safety Training",
-        date: "October 5, 2023",
-        description: "A comprehensive guide to workplace safety protocols and best practices.",
-        duration: "22:10",
-        thumbnail: "/pic2.jpg",
-        category: "Safety",
-        content:
-          "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed euismod, nisl vel ultricies lacinia, nisl nisl aliquam nisl, eu aliquam nisl nisl eu nisl.",
-        videoUrl: "https://www.youtube.com/watch?v=example3",
-      },
-      {
-        id: 14,
-        title: "Gender Equality in the Workplace",
-        date: "September 12, 2023",
-        description: "Addressing gender discrimination and promoting equality in professional settings.",
-        duration: "19:35",
-        thumbnail: "/pic3.jpg",
-        category: "Gender Equality",
-        content:
-          "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed euismod, nisl vel ultricies lacinia, nisl nisl aliquam nisl, eu aliquam nisl nisl eu nisl.",
-        videoUrl: "https://www.youtube.com/watch?v=example4",
-      },
+      // {
+      //   id: 12,
+      //   title: "Exchange Program Documentary",
+      //   date: "December 18, 2023",
+      //   description: "Documentary showcasing the impact of our exchange program on workers' rights advocacy.",
+      //   duration: "32:15",
+      //   thumbnail: "/Exchange program pictures/ep2.jpg",
+      //   category: "Exchange Program",
+      //   content: "This documentary follows the journey of participants in our exchange program, highlighting how cross-cultural learning and collaboration have strengthened the workers' rights movement across different regions.",
+      //   videoUrl: "https://www.youtube.com/watch?v=example2"
+      // },
+      // {
+      //   id: 13,
+      //   title: "Workplace Safety Training",
+      //   date: "October 5, 2023",
+      //   description: "A comprehensive guide to workplace safety protocols and best practices.",
+      //   duration: "22:10",
+      //   thumbnail: "/pic2.jpg",
+      //   category: "Safety",
+      //   content:
+      //     "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed euismod, nisl vel ultricies lacinia, nisl nisl aliquam nisl, eu aliquam nisl nisl eu nisl.",
+      //   videoUrl: "https://www.youtube.com/watch?v=example3",
+      // },
+      // {
+      //   id: 14,
+      //   title: "Gender Equality in the Workplace",
+      //   date: "September 12, 2023",
+      //   description: "Addressing gender discrimination and promoting equality in professional settings.",
+      //   duration: "19:35",
+      //   thumbnail: "/pic3.jpg",
+      //   category: "Gender Equality",
+      //   content:
+      //     "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed euismod, nisl vel ultricies lacinia, nisl nisl aliquam nisl, eu aliquam nisl nisl eu nisl.",
+      //   videoUrl: "https://www.youtube.com/watch?v=example4",
+      // },
     ],
     images: [
       {
@@ -305,15 +306,15 @@ export default function ResourcesPage() {
         category: "Legal Support",
         location: "Nakuru, Kenya",
       },
-      {
-        id: 20,
-        title: "Advocacy Campaign Launch",
-        date: "September 18, 2023",
-        description: "Launch of our new advocacy campaign for fair wages across all sectors.",
-        image: "/eunice.jpg",
-        category: "Campaigns",
-        location: "Nairobi, Kenya",
-      },
+      // {
+      //   id: 20,
+      //   title: "Advocacy Campaign Launch",
+      //   date: "September 18, 2023",
+      //   description: "Launch of our new advocacy campaign for fair wages across all sectors.",
+      //   image: "/eunice.jpg",
+      //   category: "Campaigns",
+      //   location: "Nairobi, Kenya",
+      // },
     ],
   }
 
@@ -950,12 +951,12 @@ export default function ResourcesPage() {
                       >
                         <Card className="bg-[#111111] dark:bg-[#111111] light:bg-white border-0 overflow-hidden rounded-2xl hover:shadow-xl hover:shadow-teal-500/5 transition-all duration-300 h-full">
                           <div className="grid md:grid-cols-3 gap-0">
-                            <div className="relative h-full md:col-span-1">
+                            <div className="relative h-56 md:col-span-1">
                               <Image
                                 src={report.image || "/placeholder.svg"}
                                 alt={report.title}
                                 fill
-                                className="object-cover"
+                                className="object-contain"
                               />
                               <div className="absolute top-3 right-3">
                                 <Badge className="bg-teal-500/80 text-black font-medium">{report.category}</Badge>

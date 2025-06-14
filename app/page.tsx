@@ -204,38 +204,38 @@ export default function HomePage() {
       category: "Gender Equality",
       location: "Margin Par-Kariki Molo Farm, Kenya"
     },
-    {
-      id: 5,
-      title: "Exchange Program Group Activity",
-      description: "Participants collaborating during the exchange program workshop.",
-      image: "/Exchange program pictures/ep2.jpg",
-      category: "Exchange Program",
-      location: "Nairobi, Kenya"
-    },
-    {
-      id: 6,
-      title: "Leadership Development Session",
-      description: "Farm workers engaging in leadership and rights awareness training.",
-      image: "/Wildfire farm awareness creation on workers rights,human rights,sexual harassment and leadership/wfa2.jpeg",
-      category: "Training",
-      location: "Wildfire Farm, Kenya"
-    },
-    {
-      id: 7,
-      title: "Health Education Workshop",
-      description: "Interactive session on reproductive health and workplace wellness.",
-      image: "/Reproductive health and menstrual hygiene training at Black petal farm/rh2.jpg",
-      category: "Health",
-      location: "Black Petal Farm, Kenya"
-    },
-    {
-      id: 8,
-      title: "Gender Equality Training",
-      description: "Workshop focusing on gender mainstreaming and workplace equality.",
-      image: "/Training and awareness creation on gender mainstreaming ,sexual harassment and leadership at Margin par -Kariki Molo farm/ta2.jpg",
-      category: "Gender Equality",
-      location: "Margin Par-Kariki Molo Farm, Kenya"
-    }
+    // {
+    //   id: 5,
+    //   title: "Exchange Program Group Activity",
+    //   description: "Participants collaborating during the exchange program workshop.",
+    //   image: "/Exchange program pictures/ep2.jpg",
+    //   category: "Exchange Program",
+    //   location: "Nairobi, Kenya"
+    // },
+    // {
+    //   id: 6,
+    //   title: "Leadership Development Session",
+    //   description: "Farm workers engaging in leadership and rights awareness training.",
+    //   image: "/Wildfire farm awareness creation on workers rights,human rights,sexual harassment and leadership/wfa2.jpeg",
+    //   category: "Training",
+    //   location: "Wildfire Farm, Kenya"
+    // },
+    // {
+    //   id: 7,
+    //   title: "Health Education Workshop",
+    //   description: "Interactive session on reproductive health and workplace wellness.",
+    //   image: "/Reproductive health and menstrual hygiene training at Black petal farm/rh2.jpg",
+    //   category: "Health",
+    //   location: "Black Petal Farm, Kenya"
+    // },
+    // {
+    //   id: 8,
+    //   title: "Gender Equality Training",
+    //   description: "Workshop focusing on gender mainstreaming and workplace equality.",
+    //   image: "/Training and awareness creation on gender mainstreaming ,sexual harassment and leadership at Margin par -Kariki Molo farm/ta2.jpg",
+    //   category: "Gender Equality",
+    //   location: "Margin Par-Kariki Molo Farm, Kenya"
+    // }
   ]
 
   // Example resource data for homepage preview (ensure images and downloadUrls are correct)
@@ -278,12 +278,12 @@ export default function HomePage() {
     ],
     videos: [
       {
-        title: "Leadership Training Session",
+        title: "Sexual harassment life in the horticultural industry",
         content: "Interactive leadership training session with farm workers and management.",
         image: "/Training and awareness creation on gender mainstreaming ,sexual harassment and leadership at Margin par -Kariki Molo farm/ta2.jpg",
         duration: "45:30",
         videoUrl: "https://www.youtube.com/watch?v=example1",
-        category: "Training"
+        category: "Gender Equality"
       },
       {
         title: "Exchange Program Highlights",
@@ -995,15 +995,15 @@ export default function HomePage() {
             className="columns-1 sm:columns-2 lg:columns-3 gap-8 w-full max-w-6xl mx-auto space-y-8 pb-8"
           >
             <TwitterEmbed
-              tweetHtml={`<blockquote class=\"twitter-tweet\" data-media-max-width=\"560\"><p lang=\"en\" dir=\"ltr\">Other activities we do;<br>✓Advocating for fair compensation benefits and working hours for all workers.<br>✓Combating workplace discrimination based on gender,ethnicity,disability or other factors.<a href=\"https://twitter.com/hashtag/Endviolence?src=hash&amp;ref_src=twsrc%5Etfw\">#Endviolence</a><a href=\"https://twitter.com/hashtag/workersrights?src=hash&amp;ref_src=twsrc%5Etfw\">#workersrights</a> <a href=\"https://twitter.com/hashtag/WomensRightsAreHumanRights?src=hash&amp;ref_src=twsrc%5Etfw\">#WomensRightsAreHumanRights</a> <a href=\"https://t.co/AezPwhRa9h\">pic.twitter.com/AezPwhRa9h</a></p>&mdash; Workersrightswatch (@Workersrights24) <a href=\"https://twitter.com/Workersrights24/status/1927265182041899063?ref_src=twsrc%5Etfw\">May 27, 2025</a></blockquote>`}
+              tweetHtml={`<blockquote class=\"twitter-tweet\"><p lang=\"en\" dir=\"ltr\">🎉21 flower farms. Diverse voices with one united mission: To advocate for worker rights&amp;gender equality in the flower industry. <br>By raising awareness&amp;building capacity, workers&amp;farm managements are actively working to eradicate harassment&amp;promote safe working environments.✊ <a href=\"https://t.co/3KoN5lW9HY\">pic.twitter.com/3KoN5lW9HY</a></p>&mdash; Workersrightswatch (@Workersrights24) <a href=\"https://twitter.com/Workersrights24/status/1932696380755354058?ref_src=twsrc%5Etfw\">June 11, 2025</a></blockquote>`}
               className="break-inside-avoid mb-8"
             />
             <TwitterEmbed
-              tweetHtml={`<blockquote class=\"twitter-tweet\"><p lang=\"en\" dir=\"ltr\">Talking about periods matters🩸🩸🩸🩸💃✨<br><br>When women learn about their bodies&amp;their rights ,they are more likely to take care of themselves with confidence&amp;dignity.♀️🩸<br>We create awareness on menstrual health hygiene management to women in flower farms.🩸🩸<a href=\"https://twitter.com/hashtag/periodpositive?src=hash&amp;ref_src=twsrc%5Etfw\">#periodpositive</a> <a href=\"https://t.co/vaAvUkyczd\">pic.twitter.com/vaAvUkyczd</a></p>&mdash; Workersrightswatch (@Workersrights24) <a href=\"https://twitter.com/Workersrights24/status/1925454159983055129?ref_src=twsrc%5Etfw\">May 22, 2025</a></blockquote>`}
+              tweetHtml={`<blockquote class=\"twitter-tweet\"><p lang=\"en\" dir=\"ltr\">✊Day 2 of the exchange program, allowed participants from 21 flower farms share best practices on gender mainstreaming and sexual harassment prevention,strengthening the capacity of workers&amp;management to build equitable workplaces where everyone thrives. <a href=\"https://twitter.com/hashtag/Workersrights?src=hash&amp;ref_src=twsrc%5Etfw\">#Workersrights</a> <a href=\"https://t.co/NFj6XYa4vS\">pic.twitter.com/NFj6XYa4vS</a></p>&mdash; Workersrightswatch (@Workersrights24) <a href=\"https://twitter.com/Workersrights24/status/1932322602951004583?ref_src=twsrc%5Etfw\">June 10, 2025</a></blockquote>`}
               className="break-inside-avoid mb-8"
             />
             <TwitterEmbed
-              tweetHtml={`<blockquote class=\"twitter-tweet\"><p lang=\"en\" dir=\"ltr\">At Worker&#39;s Rights Watch ,we believe in empowering workers by letting their voices lead the way.Through open,guided discussions based on what participants want to learn,we create space for workers to advocate for&amp; defend their rights confidently&amp;collectively.<a href=\"https://twitter.com/hashtag/Workersrights?src=hash&amp;ref_src=twsrc%5Etfw\">#Workersrights</a> <a href=\"https://t.co/432F1a5EkH\">pic.twitter.com/432F1a5EkH</a></p>&mdash; Workersrightswatch (@Workersrights24) <a href=\"https://twitter.com/Workersrights24/status/1921825887516811650?ref_src=twsrc%5Etfw\">May 12, 2025</a></blockquote>`}
+              tweetHtml={`<blockquote class=\"twitter-tweet\"><p lang=\"en\" dir=\"ltr\">♀️We recently conducted an exchange program that brought together representatives from 21 flower farms for a powerful knowledge sharing platform .✊They shared their experiences&amp;collaboratively developed solutions to end sexual harassment&amp; improve working conditions. <a href=\"https://t.co/q1JQhhh0TH\">pic.twitter.com/q1JQhhh0TH</a></p>&mdash; Workersrightswatch (@Workersrights24) <a href=\"https://twitter.com/Workersrights24/status/1931998461647282604?ref_src=twsrc%5Etfw\">June 9, 2025</a></blockquote>`}
               className="break-inside-avoid mb-8"
             />
             {/* Add more <TwitterEmbed ... /> here for more posts */}

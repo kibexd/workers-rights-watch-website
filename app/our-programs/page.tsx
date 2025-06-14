@@ -148,7 +148,7 @@ export default function OurProgramsPage() {
                 title: "Worker Education Program",
                 description:
                   "Educating workers about their rights under national and international labor laws through workshops, training sessions, and informational materials.",
-                image: "/ep6.jpg?height=400&width=600",
+                image: "/ep6copy.jpg?height=400&width=600",
               },
               {
                 icon: <Scale className="h-10 w-10 text-teal-500" />,
@@ -170,6 +170,20 @@ export default function OurProgramsPage() {
                 description:
                   "Engaging with communities to raise awareness about workers' rights and build solidarity networks for collective action and support.",
                 image: "/ta1.jpg?height=400&width=600",
+              },
+              {
+                icon: <Users className="h-10 w-10 text-teal-500" />,
+                title: "Women's Economic Empowerment",
+                description:
+                  "Strengthening the agency, financial skills and capacity of women to make informed decisions, participate in decision making and make sustainable choices for themselves and their communities.",
+                image: "/wfa4.jpeg?height=400&width=600",
+              },
+              {
+                icon: <Shield className="h-10 w-10 text-teal-500" />,
+                title: "Reproductive Health Program",
+                description:
+                  "Promoting access to information and services on menstrual and reproductive health enabling workers to lead healthy and productive lives.",
+                image: "/rh6.jpg?height=400&width=600",
               },
             ].map((program, index) => (
               <motion.div

@@ -21,10 +21,10 @@ interface TeamMember {
   email?: string
   linkedin?: string
   twitter?: string
-  location: string
-  joinDate: string
-  expertise: string[]
-  education: string
+  location?: string
+  joinDate?: string
+  expertise?: string[]
+  education?: string
 }
 
 export default function TeamPage() {
@@ -45,17 +45,17 @@ export default function TeamPage() {
   const leadershipTeam = [
     {
       id: 1,
-      name: "Eunice M. Waweru",
-      title: "Executive Director & Program Coordinator",
+      name: "Mrs. Eunice Waweru",
+      title: "Chief Executive Officer",
       image: "/eunice1.jpg?height=400&width=400",
-      bio: "Ms. Eunice has over 20 years experience as a trade unionist, working closely with labor movements and civil society organizations. She has been instrumental in establishing Workers Rights Watch as a leading advocate for workers' rights in Kenya.",
+      bio: "Mrs. Waweru is renowned human rights activist and an established social worker with a passion for addressing societal injustice. She has vast experience in matters human rights and social justice.",
       email: "eunice@workersrightswatch.org",
       linkedin: "https://www.linkedin.com/in/eunice-waweru/",
       twitter: "https://twitter.com/eunicewaweru",
-      location: "Nairobi, Kenya",
-      joinDate: "January 2000",
-      expertise: ["Labor Rights", "Advocacy", "Program Management"],
-      education: "Master's in Labor Relations, University of Nairobi",
+      //location: "Nairobi, Kenya",
+      //joinDate: "January 2000",
+      //expertise: ["Labor Rights", "Advocacy", "Program Management"],
+      //education: "Master's in Labor Relations, University of Nairobi",
     },
     {
       id: 2,
@@ -66,10 +66,10 @@ export default function TeamPage() {
       email: "caroline@workersrightswatch.org",
       linkedin: "https://www.linkedin.com/in/caroline-ngendo/",
       twitter: "https://twitter.com/carolinengendo",
-      location: "Nairobi, Kenya",
-      joinDate: "March 2015",
-      expertise: ["Labor Standards", "Certification", "Legal Compliance"],
-      education: "Bachelor of Laws, University of Nairobi",
+      //location: "Nairobi, Kenya",
+      //joinDate: "March 2015",
+      //expertise: ["Labor Standards", "Certification", "Legal Compliance"],
+      //education: "Bachelor of Laws, University of Nairobi",
     },
     {
       id: 3,
@@ -80,10 +80,10 @@ export default function TeamPage() {
       email: "steve@workersrightswatch.org",
       linkedin: "https://www.linkedin.com/in/steve-biko/",
       twitter: "https://twitter.com/stevebiko",
-      location: "Nairobi, Kenya",
-      joinDate: "June 2013",
-      expertise: ["Financial Management", "Budgeting", "Non-profit Accounting"],
-      education: "CPA, Strathmore University",
+      //location: "Nairobi, Kenya",
+      // joinDate: "June 2013",
+      // expertise: ["Financial Management", "Budgeting", "Non-profit Accounting"],
+      // education: "CPA, Strathmore University",
     },
   ]
 
@@ -96,10 +96,10 @@ export default function TeamPage() {
       bio: "James provides legal support to workers facing rights violations. He has a law degree from the University of Nairobi and has been practicing labor law for 5 years.",
       email: "james@workersrightswatch.org",
       linkedin: "https://www.linkedin.com/in/james-odhiambo/",
-      location: "Nairobi, Kenya",
-      joinDate: "August 2019",
-      expertise: ["Labor Law", "Legal Advocacy", "Case Management"],
-      education: "Bachelor of Laws, University of Nairobi",
+      // location: "Nairobi, Kenya",
+      // joinDate: "August 2019",
+      // expertise: ["Labor Law", "Legal Advocacy", "Case Management"],
+      // education: "Bachelor of Laws, University of Nairobi",
     },
     {
       id: 5,
@@ -109,10 +109,10 @@ export default function TeamPage() {
       bio: "Mercy manages our communications strategy, social media presence, and public relations. She has a background in journalism and has been with the organization for 3 years.",
       email: "mercy@workersrightswatch.org",
       twitter: "https://twitter.com/mercywanjiku",
-      location: "Nairobi, Kenya",
-      joinDate: "February 2021",
-      expertise: ["Communications", "Social Media", "Public Relations"],
-      education: "Bachelor's in Communication, Daystar University",
+      // location: "Nairobi, Kenya",
+      // joinDate: "February 2021",
+      // expertise: ["Communications", "Social Media", "Public Relations"],
+      // education: "Bachelor's in Communication, Daystar University",
     },
     {
       id: 6,
@@ -122,100 +122,99 @@ export default function TeamPage() {
       bio: "Daniel leads our research initiatives on labor conditions and rights violations. He has a Master's degree in Social Research and has published several papers on labor rights in Kenya.",
       email: "daniel@workersrightswatch.org",
       linkedin: "https://www.linkedin.com/in/daniel-kimani/",
-      location: "Kisumu, Kenya",
-      joinDate: "May 2020",
-      expertise: ["Research Methodology", "Data Analysis", "Labor Studies"],
-      education: "Master's in Social Research, University of Nairobi",
+      // location: "Kisumu, Kenya",
+      // joinDate: "May 2020",
+      // expertise: ["Research Methodology", "Data Analysis", "Labor Studies"],
+      // education: "Master's in Social Research, University of Nairobi",
     },
-    {
-      id: 7,
-      name: "Faith Muthoni",
-      title: "Community Outreach Officer",
-      image: "/placeholder.svg?height=400&width=400",
-      bio: "Faith coordinates our community engagement programs and awareness campaigns. She has extensive experience working with grassroots organizations and has been with us for 4 years.",
-      email: "faith@workersrightswatch.org",
-      twitter: "https://twitter.com/faithmuthoni",
-      location: "Mombasa, Kenya",
-      joinDate: "January 2020",
-      expertise: ["Community Engagement", "Grassroots Organizing", "Awareness Campaigns"],
-      education: "Bachelor's in Sociology, Kenyatta University",
-    },
-    {
-      id: 8,
-      name: "Peter Otieno",
-      title: "Training Coordinator",
-      image: "/placeholder.svg?height=400&width=400",
-      bio: "Peter develops and implements our worker education and training programs. He has a background in adult education and has trained over 2,000 workers on their rights.",
-      email: "peter@workersrightswatch.org",
-      linkedin: "https://www.linkedin.com/in/peter-otieno/",
-      location: "Nakuru, Kenya",
-      joinDate: "March 2019",
-      expertise: ["Training & Development", "Adult Education", "Curriculum Design"],
-      education: "Bachelor's in Education, Kenyatta University",
-    },
-    {
-      id: 9,
-      name: "Sarah Njeri",
-      title: "Administrative Assistant",
-      image: "/placeholder.svg?height=400&width=400",
-      bio: "Sarah provides administrative support to the team, managing office operations and logistics. She has a diploma in office administration and has been with the organization for 2 years.",
-      email: "sarah@workersrightswatch.org",
-      location: "Nairobi, Kenya",
-      joinDate: "June 2022",
-      expertise: ["Office Administration", "Logistics", "Event Planning"],
-      education: "Diploma in Office Administration, Kenya Polytechnic",
-    },
+    // {
+    //   id: 7,
+    //   name: "Faith Muthoni",
+    //   title: "Community Outreach Officer",
+    //   image: "/placeholder.svg?height=400&width=400",
+    //   bio: "Faith coordinates our community engagement programs and awareness campaigns. She has extensive experience working with grassroots organizations and has been with us for 4 years.",
+    //   email: "faith@workersrightswatch.org",
+    //   twitter: "https://twitter.com/faithmuthoni",
+    //   location: "Mombasa, Kenya",
+    //   joinDate: "January 2020",
+    //   expertise: ["Community Engagement", "Grassroots Organizing", "Awareness Campaigns"],
+    //   education: "Bachelor's in Sociology, Kenyatta University",
+    // },
+    // {
+    //   id: 8,
+    //   name: "Peter Otieno",
+    //   title: "Training Coordinator",
+    //   image: "/placeholder.svg?height=400&width=400",
+    //   bio: "Peter develops and implements our worker education and training programs. He has a background in adult education and has trained over 2,000 workers on their rights.",
+    //   email: "peter@workersrightswatch.org",
+    //   linkedin: "https://www.linkedin.com/in/peter-otieno/",
+    //   location: "Nakuru, Kenya",
+    //   joinDate: "March 2019",
+    //   expertise: ["Training & Development", "Adult Education", "Curriculum Design"],
+    //   education: "Bachelor's in Education, Kenyatta University",
+    // },
+    // {
+    //   id: 9,
+    //   name: "Sarah Njeri",
+    //   title: "Administrative Assistant",
+    //   image: "/placeholder.svg?height=400&width=400",
+    //   bio: "Sarah provides administrative support to the team, managing office operations and logistics. She has a diploma in office administration and has been with the organization for 2 years.",
+    //   email: "sarah@workersrightswatch.org",
+    //   location: "Nairobi, Kenya",
+    //   joinDate: "June 2022",
+    //   expertise: ["Office Administration", "Logistics", "Event Planning"],
+    //   education: "Diploma in Office Administration, Kenya Polytechnic",
+    // },
   ]
 
   const boardMembers = [
     {
       id: 10,
-      name: "Dr. Joseph Mwangi",
-      title: "Board Chairperson",
-      image: "/placeholder.svg?height=400&width=400",
-      bio: "Dr. Mwangi is a professor of Labor Economics at the University of Nairobi. He has published extensively on labor markets and workers' rights in East Africa.",
-      linkedin: "https://www.linkedin.com/in/joseph-mwangi/",
-      location: "Nairobi, Kenya",
-      joinDate: "January 2018",
-      expertise: ["Labor Economics", "Policy Development", "Academic Research"],
-      education: "PhD in Economics, University of Cambridge",
+      name: "Mr. Edward Inzofu Indimuli",
+      title: "Chairman",
+      image: "/edward.png?height=400&width=400",
+      bio: "Mr. Indimuli is a senior shop steward of the workers union at the branch level and is responsible for representing the workers' rights at the branch level. He is an experienced social worker and a seasoned activist with diverse background covering social and community development. Mr. Indimuli is currently serving as the Kakamega County Ombudsman defending the vulnerable workers and fighting corruption.",
+      // linkedin: "https://www.linkedin.com/in/joseph-mwangi/",
+      // location: "Nairobi, Kenya",
+      // joinDate: "January 2018",
+      // expertise: ["Labor Economics", "Policy Development", "Academic Research"],
+      // education: "PhD in Economics, University of Cambridge",
     },
     {
       id: 11,
-      name: "Hon. Jane Akinyi",
-      title: "Board Member",
-      image: "/placeholder.svg?height=400&width=400",
-      bio: "Hon. Akinyi is a former Member of Parliament and has been a vocal advocate for workers' rights throughout her political career.",
-      twitter: "https://twitter.com/janeakinyi",
-      location: "Kisumu, Kenya",
-      joinDate: "March 2019",
-      expertise: ["Policy Advocacy", "Government Relations", "Political Strategy"],
-      education: "Bachelor's in Political Science, University of Nairobi",
+      name: "Mrs. Eunice Waweru",
+      title: "Chief Executive Officer",
+      image: "/eunice2.png?height=400&width=400",
+      bio: "Mrs. Waweru is renowned human rights activist and an established social worker with a passion for addressing societal injustice. She has vast experience in matters human rights and social justice.",
+      // twitter: "https://twitter.com/janeakinyi",
+      // location: "Kisumu, Kenya",
+      // joinDate: "March 2019",
+      // expertise: ["Policy Advocacy", "Government Relations", "Political Strategy"],
+      // education: "Bachelor's in Political Science, University of Nairobi",
     },
     {
       id: 12,
-      name: "Mr. David Omondi",
-      title: "Board Treasurer",
-      image: "/placeholder.svg?height=400&width=400",
-      bio: "Mr. Omondi is a certified public accountant with over 15 years of experience in financial management for non-profit organizations.",
-      linkedin: "https://www.linkedin.com/in/david-omondi/",
-      location: "Nairobi, Kenya",
-      joinDate: "February 2020",
-      expertise: ["Financial Management", "Non-profit Accounting", "Auditing"],
-      education: "CPA-K, Strathmore University",
+      name: "Miss Monica Wanjiku",
+      title: "Treasurer",
+      image: "/monica.png?height=400&width=400",
+      bio: "Miss Monica Wanjiku is a chief shop steward of the workers union at the industry level. She is responsible for negotiation for Collective Bargain Agreements& dispute resolution at the industry level. His role is critical in creating harmony and mobilization of workers within the industry.",
+      // location: "Nairobi, Kenya",
+      // joinDate: "February 2020",
+      // expertise: ["Financial Management", "Non-profit Accounting", "Auditing"],
+      // education: "CPA-K, Strathmore University",
     },
-    {
-      id: 13,
-      name: "Ms. Elizabeth Wangari",
-      title: "Board Secretary",
-      image: "/placeholder.svg?height=400&width=400",
-      bio: "Ms. Wangari is a human rights lawyer with a focus on labor rights. She has represented numerous workers in landmark cases in Kenya.",
-      email: "elizabeth@lawfirm.com",
-      location: "Nairobi, Kenya",
-      joinDate: "May 2021",
-      expertise: ["Human Rights Law", "Labor Litigation", "Legal Strategy"],
-      education: "Master of Laws, Harvard Law School",
-    },
+    // {
+    //   id: 13,
+    //   name: "Ms. Elizabeth Wangari",
+    //   title: "Board Secretary",
+    //   image: "/placeholder.svg?height=400&width=400",
+    //   bio: "Ms. Wangari is a human rights lawyer with a focus on labor rights. She has represented numerous workers in landmark cases in Kenya.",
+    //   email: "elizabeth@lawfirm.com",
+    //   location: "Nairobi, Kenya",
+    //   joinDate: "May 2021",
+    //   expertise: ["Human Rights Law", "Labor Litigation", "Legal Strategy"],
+    //   education: "Master of Laws, Harvard Law School",
+    // },
   ]
 
   const handleTabChange = (value: string) => {
@@ -341,16 +340,16 @@ export default function TeamPage() {
                 Leadership
               </TabsTrigger>
               <TabsTrigger
-                value="staff"
-                className="rounded-full px-8 py-2 data-[state=active]:bg-teal-500 data-[state=active]:text-black"
-              >
-                Staff
-              </TabsTrigger>
-              <TabsTrigger
                 value="board"
                 className="rounded-full px-8 py-2 data-[state=active]:bg-teal-500 data-[state=active]:text-black"
               >
                 Board
+              </TabsTrigger>
+              <TabsTrigger
+                value="staff"
+                className="rounded-full px-8 py-2 data-[state=active]:bg-teal-500 data-[state=active]:text-black"
+              >
+                Staff
               </TabsTrigger>
             </TabsList>
 
@@ -358,12 +357,12 @@ export default function TeamPage() {
               {renderTeamMembers(leadershipTeam)}
             </TabsContent>
 
-            <TabsContent value="staff" className="mt-8">
-              {renderTeamMembers(staffMembers)}
-            </TabsContent>
-
             <TabsContent value="board" className="mt-8">
               {renderTeamMembers(boardMembers)}
+            </TabsContent>
+
+            <TabsContent value="staff" className="mt-8">
+              {renderTeamMembers(staffMembers)}
             </TabsContent>
           </Tabs>
         </div>
@@ -484,7 +483,7 @@ export default function TeamPage() {
                     </div>
                   )}
 
-                  <div>
+                  {/* <div>
                     <h4 className="text-xl font-semibold text-white mb-3">Role at Workers Rights Watch</h4>
                     <p className="text-gray-300 leading-relaxed">
                       As {selectedMember.title}, {selectedMember.name.split(" ")[0]} plays a crucial role in our
@@ -498,7 +497,7 @@ export default function TeamPage() {
                       {selectedMember.title.includes("Board") &&
                         " As part of our governance structure, they provide oversight and guidance to ensure our organization operates with integrity and effectiveness."}
                     </p>
-                  </div>
+                  </div> */}
                 </div>
               </div>
 
