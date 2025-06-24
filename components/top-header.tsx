@@ -42,7 +42,7 @@ export default function TopHeader() {
   ]
 
   return (
-    <div className="bg-[#111111] dark:bg-[#111111] light:bg-white border-b border-[#282828] dark:border-[#282828] light:border-gray-200">
+    <div className="bg-[#111111] dark:bg-[#111111] light:bg-white border-b border-[#282828] dark:border-[#282828] light:border-gray-200 w-full">
       <div className="container mx-auto px-6">
         <div className="flex items-center justify-between h-12">
           <div className="flex items-center space-x-6">

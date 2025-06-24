@@ -1,5 +1,5 @@
 import type { Metadata } from "next"
-import { Inter } from "next/font/google"
+// import { Inter } from "next/font/google"
 import "./globals.css"
 import { ThemeProvider } from "@/components/theme-provider"
 import MainNav from "@/components/main-nav"
@@ -7,7 +7,7 @@ import Footer from "@/components/footer"
 import ScrollToTopButton from "@/components/scroll-to-top-button"
 import { FloatingSocial } from "@/components/floating-social"
 
-const inter = Inter({ subsets: ["latin"] })
+// const inter = Inter({ subsets: ["latin"] })
 
 // Floating Socials Component
 // const FloatingSocial = dynamic(() => import('@/components/floating-social'), { ssr: false });
@@ -38,12 +38,14 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body className={inter.className}>
+      {/* Inter font is loaded via globals.css. To use next/font/google, uncomment below: */}
+      {/* <body className={inter.className}> */}
+      <body>
         <ThemeProvider
           defaultTheme="light"
         >
           <MainNav />
-          <main className="pt-44 pb-20">
+          <main className="pt-28">
             {children}
           </main>
           <ScrollToTopButton />

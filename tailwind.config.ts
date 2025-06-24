@@ -10,6 +10,9 @@ const config: Config = {
   ],
   theme: {
   	extend: {
+  		fontFamily: {
+  			sans: ["Inter", "Arial", "Helvetica", "sans-serif"],
+  		},
   		colors: {
   			background: 'hsl(var(--background))',
   			foreground: 'hsl(var(--foreground))',
@@ -60,12 +63,31 @@ const config: Config = {
   				'accent-foreground': 'hsl(var(--sidebar-accent-foreground))',
   				border: 'hsl(var(--sidebar-border))',
   				ring: 'hsl(var(--sidebar-ring))'
-  			}
+  			},
+  			teal: { DEFAULT: '#009890' },
+  			orange: { DEFAULT: '#CB3818' },
+  			peach: { DEFAULT: '#EDCEC5' },
+  			bluegray: { DEFAULT: '#A8BFC1' },
+  			white: { DEFAULT: '#FFFFFF' },
+  			navy: { DEFAULT: '#2F2A27' },
+  			lavender: { DEFAULT: '#6A5EC3' },
+  			aqua: { DEFAULT: '#D6E9E9' },
+  		},
+  		backgroundImage: {
+  			'gradient-hero': 'linear-gradient(135deg, #D6E9E9 0%, #EDCEC5 60%, #009890 100%)',
+  			'gradient-card': 'linear-gradient(120deg, #FFFFFF 60%, #A8BFC1 100%)',
+  			'gradient-button': 'linear-gradient(90deg, #009890 0%, #CB3818 100%)',
+  			'gradient-badge': 'linear-gradient(90deg, #CB3818 0%, #009890 100%)',
+  		},
+  		boxShadow: {
+  			'elevated': '0 4px 24px 0 rgba(168,191,193,0.12), 0 1.5px 4px 0 rgba(0,0,0,0.04)',
   		},
   		borderRadius: {
   			lg: 'var(--radius)',
   			md: 'calc(var(--radius) - 2px)',
-  			sm: 'calc(var(--radius) - 4px)'
+  			sm: 'calc(var(--radius) - 4px)',
+  			xl: '0.75rem',
+  			'2xl': '1rem',
   		},
   		keyframes: {
   			'accordion-down': {

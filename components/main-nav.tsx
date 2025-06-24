@@ -68,15 +68,13 @@ export default function MainNav() {
 
   return (
     <>
-      <div className="fixed top-0 left-0 right-0 z-50">
+      <div className="fixed top-0 left-0 right-0 z-50 w-full">
         <TopHeader />
         <header
-          className={`transition-all duration-300 ${
-            isScrolled ? "bg-background/80 backdrop-blur-md" : "bg-transparent"
-          }`}
+          className="bg-background"
         >
-          <nav className="container mx-auto px-6">
-            <div className="flex items-center justify-between h-20">
+          <nav className="container mx-auto px-6 pb-0">
+            <div className="flex items-center justify-between h-16">
               <Link href="/" className="flex items-center space-x-3 group relative">
                 {/* Logo Container with Animated Square Border */}
                 <div className="relative w-12 h-12 flex items-center justify-center overflow-hidden rounded-lg custom-logo-container">
@@ -111,7 +109,7 @@ export default function MainNav() {
                               {item.name}
                             </NavigationMenuTrigger>
                             <NavigationMenuContent>
-                              <ul className="grid w-[400px] gap-3 p-4 md:w-[500px] md:grid-cols-2 lg:w-[600px] bg-card text-card-foreground">
+                              <ul className="grid w-[400px] gap-3 p-4 md:w-[500px] md:grid-cols-2 lg:w-[600px] bg-background text-card-foreground">
                                 {item.items.map((subItem) => (
                                   <li key={subItem.title}>
                                     <NavigationMenuLink asChild>

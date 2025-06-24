@@ -384,13 +384,10 @@ export default function HomePage() {
   };
 
   return (
-    <div className="min-h-screen bg-background">
-      <section className="relative h-screen flex items-center">
-        <div className="absolute inset-0 z-0">
-          {/* Hero Carousel in the background */}
-          <HeroCarousel items={heroItems} autoplayInterval={5500} />
-        </div>
-
+    <div className="min-h-screen bg-background font-sans">
+      {/* Hero Section with Gradient */}
+      <section className="relative h-screen flex items-center gradient-hero shadow-elevated">
+        <div className="absolute inset-0 z-0 gradient-hero" />
         <div className="container mx-auto px-6 relative z-10">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -398,7 +395,7 @@ export default function HomePage() {
             transition={{ duration: 0.8 }}
             className="max-w-3xl"
           >
-            <h1 className="text-6xl font-bold mb-6 text-foreground leading-tight">
+            <h1 className="text-6xl font-bold mb-6 text-foreground leading-tight drop-shadow-sm" style={{letterSpacing: '-0.01em'}}>
               Championing Workers&apos; Rights in the Modern Era
             </h1>
             <p className="text-xl mb-8 text-muted-foreground leading-relaxed">
@@ -408,30 +405,29 @@ export default function HomePage() {
               <Button
                 asChild
                 variant="default"
-                className="bg-teal-500 hover:bg-teal-600 text-black font-medium rounded-full px-8 py-6 text-base"
+                className="gradient-button text-white font-medium rounded-2xl px-8 py-6 text-base shadow-elevated transition-all duration-300 hover:scale-105 hover:shadow-lg"
               >
                 <Link href="/about">Our Mission</Link>
               </Button>
               <Button
                 asChild
                 variant="outline"
-                className="text-foreground border-foreground hover:bg-foreground hover:text-background rounded-full px-8 py-6 text-base"
+                className="text-teal border-teal-500 hover:bg-peach hover:text-orange rounded-2xl px-8 py-6 text-base border-2 transition-all duration-300 hover:scale-105"
               >
                 <Link href="/contact">Get Involved</Link>
               </Button>
             </div>
           </motion.div>
         </div>
-
         {/* Scroll Down Indicator */}
         <div className="absolute bottom-10 left-0 right-0 flex justify-center z-20">
           <motion.div animate={{ y: [0, 10, 0] }} transition={{ repeat: Number.POSITIVE_INFINITY, duration: 1.5 }}>
-            <ChevronRight className="h-10 w-10 text-foreground rotate-90" />
+            <ChevronRight className="h-10 w-10 text-foreground/60 rotate-90" />
           </motion.div>
         </div>
       </section>
 
-      <section ref={missionRef} className="py-24 bg-background">
+      <section ref={missionRef} className="py-24 bg-background mb-0 pb-0">
         <div className="container mx-auto px-6">
           <motion.div
             initial={{ opacity: 0, y: 40 }}
@@ -493,7 +489,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      <section ref={impactRef} className="py-32 bg-secondary">
+      <section ref={impactRef} className="py-32 bg-secondary mb-0 pb-0">
         <div className="container mx-auto px-6">
           <motion.div
             initial={{ opacity: 0, y: 40 }}
@@ -592,7 +588,7 @@ export default function HomePage() {
       </section>
 
       {/* Photo Gallery Section */}
-      <section ref={galleryRef} className="py-24 bg-background">
+      <section ref={galleryRef} className="py-24 bg-background mb-0 pb-0">
         <div className="container mx-auto px-6">
           <motion.div
             initial={{ opacity: 0, y: 40 }}
@@ -678,7 +674,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      <section ref={resourcesRef} className="py-24 bg-secondary">
+      <section ref={resourcesRef} className="py-24 bg-secondary mb-0 pb-0">
         <div className="container mx-auto px-6">
           <motion.div
             initial={{ opacity: 0, y: 40 }}
@@ -858,7 +854,7 @@ export default function HomePage() {
       </section>
 
       {/* Partners Section (properly structured) */}
-      <section className="py-24 bg-background overflow-hidden">
+      <section className="py-24 bg-background mb-0 pb-0">
         <div className="container mx-auto px-6">
           <motion.div 
             initial={{ opacity: 0, y: 40 }}
@@ -974,7 +970,7 @@ export default function HomePage() {
       </section>
 
       {/* Twitter Feed Section */}
-      <section className="py-24 bg-background">
+      <section className="py-24 bg-background mb-0 pb-0">
         <div className="container mx-auto px-6">
           <motion.div
             initial={{ opacity: 0, y: 40 }}
@@ -990,25 +986,25 @@ export default function HomePage() {
 
           {/* X/Twitter embed, beautifully styled with dynamic widget script */}
           <div
-            className="columns-1 sm:columns-2 lg:columns-3 gap-8 w-full max-w-6xl mx-auto space-y-8 pb-8"
+            className="grid grid-cols-1 md:grid-cols-3 gap-8 w-full max-w-6xl mx-auto pb-8"
           >
             <TwitterEmbed
               tweetHtml={`<blockquote class="twitter-tweet"><p lang="en" dir="ltr">🎉21 flower farms. Diverse voices with one united mission: To advocate for worker rights&amp;gender equality in the flower industry. <br>By raising awareness&amp;building capacity, workers&amp;farm managements are actively working to eradicate harassment&amp;promote safe working environments.✊ <a href="https://t.co/3KoN5lW9HY">pic.twitter.com/3KoN5lW9HY</a></p>&mdash; Workersrightswatch (@Workersrights24) <a href="https://twitter.com/Workersrights24/status/1932696380755354058?ref_src=twsrc%5Etfw">June 11, 2025</a></blockquote>`}
-              className="break-inside-avoid mb-8"
+              className="min-h-[420px] break-inside-avoid mb-8"
             />
             <TwitterEmbed
               tweetHtml={`<blockquote class="twitter-tweet"><p lang="en" dir="ltr">✊Day 2 of the exchange program, allowed participants from 21 flower farms share best practices on gender mainstreaming and sexual harassment prevention,strengthening the capacity of workers&amp;management to build equitable workplaces where everyone thrives. <a href="https://twitter.com/hashtag/Workersrights?src=hash&amp;ref_src=twsrc%5Etfw">#Workersrights</a> <a href="https://t.co/NFj6XYa4vS">pic.twitter.com/NFj6XYa4vS</a></p>&mdash; Workersrightswatch (@Workersrights24) <a href="https://twitter.com/Workersrights24/status/1932322602951004583?ref_src=twsrc%5Etfw">June 10, 2025</a></blockquote>`}
-              className="break-inside-avoid mb-8"
+              className="min-h-[420px] break-inside-avoid mb-8"
             />
             <TwitterEmbed
               tweetHtml={`<blockquote class="twitter-tweet"><p lang="en" dir="ltr">♀️We recently conducted an exchange program that brought together representatives from 21 flower farms for a powerful knowledge sharing platform .✊They shared their experiences&amp;collaboratively developed solutions to end sexual harassment&amp; improve working conditions. <a href="https://t.co/q1JQhhh0TH">pic.twitter.com/q1JQhhh0TH</a></p>&mdash; Workersrightswatch (@Workersrights24) <a href="https://twitter.com/Workersrights24/status/1931998461647282604?ref_src=twsrc%5Etfw">June 9, 2025</a></blockquote>`}
-              className="break-inside-avoid mb-8"
+              className="min-h-[420px] break-inside-avoid mb-8"
             />
             {/* Add more <TwitterEmbed ... /> here for more posts */}
           </div>
 
           {/* Beautiful animated Apple-style Follow button */}
-          <div className="text-center mt-12">
+          <div className="text-center mt-12 mb-12">
             <a
               href="https://x.com/Workersrights24"
               target="_blank"
@@ -1042,7 +1038,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      <section className="py-24 bg-teal-500 text-black">
+      <section className="py-24 bg-teal-500 text-black mt-12">
         <div className="container mx-auto px-6 text-center">
           <motion.div
             initial={{ opacity: 0, scale: 0.9 }}
