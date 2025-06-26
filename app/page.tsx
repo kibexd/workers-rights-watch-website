@@ -427,7 +427,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      <section ref={missionRef} className="py-24 bg-background mb-0 pb-0">
+      <section ref={missionRef} className="py-24 bg-background mb-16">
         <div className="container mx-auto px-6">
           <motion.div
             initial={{ opacity: 0, y: 40 }}
@@ -489,7 +489,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      <section ref={impactRef} className="py-32 bg-secondary mb-0 pb-0">
+      <section ref={impactRef} className="py-32 bg-secondary mb-16">
         <div className="container mx-auto px-6">
           <motion.div
             initial={{ opacity: 0, y: 40 }}
@@ -588,7 +588,7 @@ export default function HomePage() {
       </section>
 
       {/* Photo Gallery Section */}
-      <section ref={galleryRef} className="py-24 bg-background mb-0 pb-0">
+      <section ref={galleryRef} className="py-24 bg-background mb-16">
         <div className="container mx-auto px-6">
           <motion.div
             initial={{ opacity: 0, y: 40 }}
@@ -674,7 +674,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      <section ref={resourcesRef} className="py-24 bg-secondary mb-0 pb-0">
+      <section ref={resourcesRef} className="py-24 bg-secondary mb-16">
         <div className="container mx-auto px-6">
           <motion.div
             initial={{ opacity: 0, y: 40 }}
@@ -854,7 +854,7 @@ export default function HomePage() {
       </section>
 
       {/* Partners Section (properly structured) */}
-      <section className="py-24 bg-background mb-0 pb-0">
+      <section className="py-24 bg-background mb-16">
         <div className="container mx-auto px-6">
           <motion.div 
             initial={{ opacity: 0, y: 40 }}
@@ -970,7 +970,7 @@ export default function HomePage() {
       </section>
 
       {/* Twitter Feed Section */}
-      <section className="py-24 bg-background mb-0 pb-0">
+      <section className="py-24 bg-background">
         <div className="container mx-auto px-6">
           <motion.div
             initial={{ opacity: 0, y: 40 }}
@@ -990,15 +990,15 @@ export default function HomePage() {
           >
             <TwitterEmbed
               tweetHtml={`<blockquote class="twitter-tweet"><p lang="en" dir="ltr">🎉21 flower farms. Diverse voices with one united mission: To advocate for worker rights&amp;gender equality in the flower industry. <br>By raising awareness&amp;building capacity, workers&amp;farm managements are actively working to eradicate harassment&amp;promote safe working environments.✊ <a href="https://t.co/3KoN5lW9HY">pic.twitter.com/3KoN5lW9HY</a></p>&mdash; Workersrightswatch (@Workersrights24) <a href="https://twitter.com/Workersrights24/status/1932696380755354058?ref_src=twsrc%5Etfw">June 11, 2025</a></blockquote>`}
-              className="min-h-[420px] break-inside-avoid mb-8"
+              className="min-h-[420px] w-full"
             />
             <TwitterEmbed
               tweetHtml={`<blockquote class="twitter-tweet"><p lang="en" dir="ltr">✊Day 2 of the exchange program, allowed participants from 21 flower farms share best practices on gender mainstreaming and sexual harassment prevention,strengthening the capacity of workers&amp;management to build equitable workplaces where everyone thrives. <a href="https://twitter.com/hashtag/Workersrights?src=hash&amp;ref_src=twsrc%5Etfw">#Workersrights</a> <a href="https://t.co/NFj6XYa4vS">pic.twitter.com/NFj6XYa4vS</a></p>&mdash; Workersrightswatch (@Workersrights24) <a href="https://twitter.com/Workersrights24/status/1932322602951004583?ref_src=twsrc%5Etfw">June 10, 2025</a></blockquote>`}
-              className="min-h-[420px] break-inside-avoid mb-8"
+              className="min-h-[420px] w-full"
             />
             <TwitterEmbed
               tweetHtml={`<blockquote class="twitter-tweet"><p lang="en" dir="ltr">♀️We recently conducted an exchange program that brought together representatives from 21 flower farms for a powerful knowledge sharing platform .✊They shared their experiences&amp;collaboratively developed solutions to end sexual harassment&amp; improve working conditions. <a href="https://t.co/q1JQhhh0TH">pic.twitter.com/q1JQhhh0TH</a></p>&mdash; Workersrightswatch (@Workersrights24) <a href="https://twitter.com/Workersrights24/status/1931998461647282604?ref_src=twsrc%5Etfw">June 9, 2025</a></blockquote>`}
-              className="min-h-[420px] break-inside-avoid mb-8"
+              className="min-h-[420px] w-full"
             />
             {/* Add more <TwitterEmbed ... /> here for more posts */}
           </div>
@@ -1038,7 +1038,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      <section className="py-24 bg-teal-500 text-black mt-12">
+      <section className="py-24 bg-teal-500 text-black mt-16">
         <div className="container mx-auto px-6 text-center">
           <motion.div
             initial={{ opacity: 0, scale: 0.9 }}
