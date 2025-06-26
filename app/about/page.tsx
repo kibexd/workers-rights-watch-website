@@ -131,18 +131,17 @@ export default function AboutPage() {
   ]
 
   return (
-    <div className="min-h-screen bg-[#0A0A0A] dark:bg-[#0A0A0A] light:bg-[#F8F9FA]">
-      <section className="relative py-32">
+    <div className="min-h-screen bg-background font-sans">
+      <section className="relative py-32 mb-16">
         <div className="absolute inset-0 z-0">
           <Image
             src="/pic7.jpg?height=600&width=1920"
             alt="About Us"
             fill
-            className="object-cover opacity-20 dark:opacity-20 light:opacity-10"
+            className="object-cover opacity-10"
           />
-          <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/50 to-[#0A0A0A] dark:from-black/70 dark:via-black/50 dark:to-[#0A0A0A] light:from-white/70 light:via-white/50 light:to-[#F8F9FA]"></div>
+          <div className="absolute inset-0 gradient-hero" />
         </div>
-
         <div className="container mx-auto px-6 relative z-10">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -150,8 +149,8 @@ export default function AboutPage() {
             transition={{ duration: 0.8 }}
             className="text-center"
           >
-            <h1 className="text-5xl font-bold text-white dark:text-white light:text-gray-900 mb-6">About Us</h1>
-            <p className="text-xl text-gray-300 dark:text-gray-300 light:text-gray-700 max-w-3xl mx-auto">
+            <h1 className="text-5xl font-bold text-foreground mb-6">About Us</h1>
+            <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
               Workers' Rights Watch (WRW) is a Non-governmental Organization established in 2000, dedicated to
               championing workers' rights across Kenya.
             </p>
@@ -159,7 +158,7 @@ export default function AboutPage() {
         </div>
       </section>
 
-      <section ref={visionRef} className="py-20 bg-[#0A0A0A] dark:bg-[#0A0A0A] light:bg-[#F8F9FA]">
+      <section ref={visionRef} className="py-20 bg-background mb-16">
         <div className="container mx-auto px-6">
           <div className="grid md:grid-cols-2 gap-12">
             <motion.div
@@ -167,15 +166,15 @@ export default function AboutPage() {
               animate={isVisible.vision ? { opacity: 1, x: 0 } : {}}
               transition={{ duration: 0.8 }}
             >
-              <Card className="bg-gradient-to-br from-[#111111] to-[#0D0D0D] dark:from-[#111111] dark:to-[#0D0D0D] light:from-white light:to-gray-50 border-0 overflow-hidden rounded-2xl h-full">
+              <Card className="bg-card border-0 overflow-hidden rounded-2xl h-full">
                 <CardContent className="p-10">
                   <div className="flex items-center mb-6">
                     <div className="h-16 w-16 rounded-2xl bg-teal-500/10 flex items-center justify-center mr-6">
                       <Eye className="h-8 w-8 text-teal-500" />
                     </div>
-                    <h2 className="text-3xl font-bold text-white dark:text-white light:text-gray-900">Our Vision</h2>
+                    <h2 className="text-3xl font-bold text-foreground">Our Vision</h2>
                   </div>
-                  <p className="text-gray-300 dark:text-gray-300 light:text-gray-700 text-lg leading-relaxed">
+                  <p className="text-muted-foreground text-lg leading-relaxed">
                     To have a workplace in which workers' rights are fully realized and their rights respected.
                   </p>
                 </CardContent>
@@ -187,15 +186,15 @@ export default function AboutPage() {
               animate={isVisible.vision ? { opacity: 1, x: 0 } : {}}
               transition={{ duration: 0.8 }}
             >
-              <Card className="bg-gradient-to-br from-[#111111] to-[#0D0D0D] dark:from-[#111111] dark:to-[#0D0D0D] light:from-white light:to-gray-50 border-0 overflow-hidden rounded-2xl h-full">
+              <Card className="bg-card border-0 overflow-hidden rounded-2xl h-full">
                 <CardContent className="p-10">
                   <div className="flex items-center mb-6">
                     <div className="h-16 w-16 rounded-2xl bg-teal-500/10 flex items-center justify-center mr-6">
                       <Eye className="h-8 w-8 text-teal-500" />
                     </div>
-                    <h2 className="text-3xl font-bold text-white dark:text-white light:text-gray-900">Our Mission</h2>
+                    <h2 className="text-3xl font-bold text-foreground">Our Mission</h2>
                   </div>
-                  <p className="text-gray-300 dark:text-gray-300 light:text-gray-700 text-lg leading-relaxed">
+                  <p className="text-muted-foreground text-lg leading-relaxed">
                     To provide workers and neighboring community with rights-based approach founded on dignity,
                     equality, welfare and justice for all.
                   </p>
@@ -206,7 +205,7 @@ export default function AboutPage() {
         </div>
       </section>
 
-      <section ref={whatWeDoRef} className="py-20 bg-[#0F0F0F] dark:bg-[#0F0F0F] light:bg-[#F0F0F0]">
+      <section ref={whatWeDoRef} className="py-20 bg-secondary mb-16">
         <div className="container mx-auto px-6">
           <motion.div
             initial={{ opacity: 0, y: 40 }}
@@ -214,13 +213,13 @@ export default function AboutPage() {
             transition={{ duration: 0.8 }}
             className="text-center mb-16"
           >
-            <h2 className="text-4xl font-bold mb-4 text-white dark:text-white light:text-gray-900">What We Do</h2>
-            <p className="text-xl text-gray-400 dark:text-gray-400 light:text-gray-700 max-w-3xl mx-auto">
+            <h2 className="text-4xl font-bold mb-4 text-foreground">What We Do</h2>
+            <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
               Our work spans across multiple areas to ensure comprehensive protection of workers' rights.
             </p>
           </motion.div>
 
-          <Card className="bg-[#111111] dark:bg-[#111111] light:bg-white border-0 rounded-2xl overflow-hidden">
+          <Card className="bg-card border-0 rounded-2xl overflow-hidden">
             <CardContent className="p-0">
               <div className="grid md:grid-cols-3 gap-0">
                 <motion.div
@@ -245,19 +244,19 @@ export default function AboutPage() {
                   className="md:col-span-2 p-10"
                 >
                   <div className="space-y-6">
-                    <p className="text-gray-300 dark:text-gray-300 light:text-gray-700 leading-relaxed">
+                    <p className="text-muted-foreground leading-relaxed">
                       Workers' Rights Watch (WRW) is a Non-governmental organization established as an association of
                       shop stewards in 2000. Our mandate is to foster collaborative dialogue between workers and actors
                       who affect and those affected by their work. In promoting this dialogue, we have always believed
                       that complementary roles exist between non-governmental organizations and other stakeholders.
                     </p>
-                    <p className="text-gray-300 dark:text-gray-300 light:text-gray-700 leading-relaxed">
+                    <p className="text-muted-foreground leading-relaxed">
                       WRW runs training workshops, conducts research, and provides legal assistance to workers whose
                       rights have been violated. We also facilitate accessible and provide monitoring mechanisms within
                       the private sector that may be applicable to other working institutions, promote decent work,
                       efficiency and accountability as part of our mission.
                     </p>
-                    <p className="text-gray-300 dark:text-gray-300 light:text-gray-700 leading-relaxed">
+                    <p className="text-muted-foreground leading-relaxed">
                       We believe that workers should be given the opportunity to consult and promote corporate
                       citizenship and good working conditions. Our interest is to equip workers with tools, skills and
                       tactics that would enable them to expand the horizon of organizing and create critical
@@ -278,7 +277,7 @@ export default function AboutPage() {
         </div>
       </section>
 
-      <section ref={objectivesRef} className="py-20 bg-[#0A0A0A] dark:bg-[#0A0A0A] light:bg-[#F8F9FA]">
+      <section ref={objectivesRef} className="py-20 bg-background mb-16">
         <div className="container mx-auto px-6">
           <motion.div
             initial={{ opacity: 0, y: 40 }}
@@ -286,13 +285,13 @@ export default function AboutPage() {
             transition={{ duration: 0.8 }}
             className="text-center mb-16"
           >
-            <h2 className="text-4xl font-bold mb-4 text-white dark:text-white light:text-gray-900">Our Objectives</h2>
-            <p className="text-xl text-gray-400 dark:text-gray-400 light:text-gray-700 max-w-3xl mx-auto">
+            <h2 className="text-4xl font-bold mb-4 text-foreground">Our Objectives</h2>
+            <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
               The guiding principles that drive our work and initiatives.
             </p>
           </motion.div>
 
-          <Card className="bg-[#111111] dark:bg-[#111111] light:bg-white border-0 rounded-2xl overflow-hidden">
+          <Card className="bg-card border-0 rounded-2xl overflow-hidden">
             <CardContent className="p-10">
               <div className="grid md:grid-cols-2 gap-8">
                 {[
@@ -318,7 +317,7 @@ export default function AboutPage() {
                     <div className="h-6 w-6 rounded-full bg-teal-500 flex items-center justify-center text-black font-bold mr-4 mt-1 flex-shrink-0">
                       {index + 1}
                     </div>
-                    <p className="text-gray-300 dark:text-gray-300 light:text-gray-700">{objective}</p>
+                    <p className="text-muted-foreground">{objective}</p>
                   </motion.div>
                 ))}
               </div>
@@ -328,7 +327,7 @@ export default function AboutPage() {
       </section>
 
       {/* Core Values Section */}
-      <section ref={teamRef} className="py-20 bg-[#0F0F0F] dark:bg-[#0F0F0F] light:bg-[#F0F0F0]">
+      <section ref={teamRef} className="py-20 bg-secondary mb-16">
         <div className="container mx-auto px-6">
           <motion.div
             initial={{ opacity: 0, y: 40 }}
@@ -336,8 +335,8 @@ export default function AboutPage() {
             transition={{ duration: 0.8 }}
             className="text-center mb-16"
           >
-            <h2 className="text-4xl font-bold mb-4 text-white dark:text-white light:text-gray-900">Our Core Values</h2>
-            <p className="text-xl text-gray-400 dark:text-gray-400 light:text-gray-700 max-w-3xl mx-auto">
+            <h2 className="text-4xl font-bold mb-4 text-foreground">Our Core Values</h2>
+            <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
               The fundamental principles that guide our work and define who we are.
             </p>
           </motion.div>
@@ -351,15 +350,15 @@ export default function AboutPage() {
                 transition={{ duration: 0.8, delay: index * 0.2 }}
                 whileHover={{ y: -10 }}
               >
-                <Card className="bg-[#111111] dark:bg-[#111111] light:bg-white border-0 overflow-hidden rounded-2xl hover:shadow-xl hover:shadow-teal-500/5 transition-all duration-300 h-full">
+                <Card className="bg-card border-0 overflow-hidden rounded-2xl hover:shadow-xl hover:shadow-teal-500/5 transition-all duration-300 h-full">
                   <CardContent className="p-8 text-center">
                     <div className="h-20 w-20 rounded-2xl bg-teal-500/10 flex items-center justify-center mx-auto mb-6">
                       {value.icon}
                     </div>
-                    <h3 className="text-2xl font-bold text-white dark:text-white light:text-gray-900 mb-4">
+                    <h3 className="text-2xl font-bold text-foreground mb-4">
                       {value.title}
                     </h3>
-                    <p className="text-gray-400 dark:text-gray-400 light:text-gray-700">{value.description}</p>
+                    <p className="text-muted-foreground">{value.description}</p>
                   </CardContent>
                 </Card>
               </motion.div>
@@ -368,7 +367,7 @@ export default function AboutPage() {
         </div>
       </section>
 
-      <section ref={approachRef} className="py-20 bg-[#0A0A0A] dark:bg-[#0A0A0A] light:bg-[#F8F9FA]">
+      <section ref={approachRef} className="py-20 bg-background mt-16">
         <div className="container mx-auto px-6">
           <motion.div
             initial={{ opacity: 0, y: 40 }}
@@ -376,8 +375,8 @@ export default function AboutPage() {
             transition={{ duration: 0.8 }}
             className="text-center mb-16"
           >
-            <h2 className="text-4xl font-bold mb-4 text-white dark:text-white light:text-gray-900">Our Approach</h2>
-            <p className="text-xl text-gray-400 dark:text-gray-400 light:text-gray-700 max-w-3xl mx-auto">
+            <h2 className="text-4xl font-bold mb-4 text-foreground">Our Approach</h2>
+            <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
               To foster a dialogue between workers and the various actors who affect their working lives.
             </p>
           </motion.div>
@@ -408,15 +407,15 @@ export default function AboutPage() {
                 animate={isVisible.approach ? { opacity: 1, y: 0 } : {}}
                 transition={{ duration: 0.8, delay: index * 0.2 }}
               >
-                <Card className="bg-[#111111] dark:bg-[#111111] light:bg-white border-0 overflow-hidden rounded-2xl hover:shadow-xl hover:shadow-teal-500/5 transition-all duration-300 h-full">
+                <Card className="bg-card border-0 overflow-hidden rounded-2xl hover:shadow-xl hover:shadow-teal-500/5 transition-all duration-300 h-full">
                   <CardContent className="p-8 text-center">
                     <div className="h-20 w-20 rounded-2xl bg-teal-500/10 flex items-center justify-center mx-auto mb-6">
                       {approach.icon}
                     </div>
-                    <h3 className="text-2xl font-bold text-white dark:text-white light:text-gray-900 mb-4">
+                    <h3 className="text-2xl font-bold text-foreground mb-4">
                       {approach.title}
                     </h3>
-                    <p className="text-gray-400 dark:text-gray-400 light:text-gray-700">{approach.description}</p>
+                    <p className="text-muted-foreground">{approach.description}</p>
                   </CardContent>
                 </Card>
               </motion.div>
