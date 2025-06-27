@@ -55,15 +55,15 @@ export default function OurProgramsPage() {
 
   return (
     <div className="min-h-screen bg-background">
-      <section className="relative py-32">
+      <section className="relative py-32 mb-16">
         <div className="absolute inset-0 z-0">
           <Image
             src="/pic6.jpg?height=600&width=1920"
             alt="Our Programs"
             fill
-            className="object-cover opacity-20"
+            className="object-cover opacity-10"
           />
-          <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/50 to-background"></div>
+          <div className="absolute inset-0 gradient-hero"></div>
         </div>
 
         <div className="container mx-auto px-6 relative z-10">
@@ -82,14 +82,14 @@ export default function OurProgramsPage() {
         </div>
       </section>
 
-      <section ref={introRef} className="py-20 bg-background">
+      <section ref={introRef} className="py-24 bg-background mb-16">
         <div className="container mx-auto px-6">
           <motion.div
             initial={{ opacity: 0, y: 40 }}
             animate={isVisible.intro ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.8 }}
           >
-            <Card className="bg-card border-0 overflow-hidden rounded-2xl shadow-xl">
+            <Card className="bg-card border-0 overflow-hidden rounded-2xl shadow-elevated">
               <CardContent className="p-8 md:p-12">
                 <div className="grid md:grid-cols-2 gap-12 items-center">
                   <div className="relative h-96 rounded-2xl overflow-hidden">
@@ -127,7 +127,7 @@ export default function OurProgramsPage() {
         </div>
       </section>
 
-      <section ref={programsRef} className="py-20 bg-secondary">
+      <section ref={programsRef} className="py-24 bg-secondary mb-16">
         <div className="container mx-auto px-6">
           <motion.div
             initial={{ opacity: 0, y: 40 }}
@@ -225,7 +225,7 @@ export default function OurProgramsPage() {
         </div>
       </section>
 
-      <section ref={achievementsRef} className="py-20 bg-background">
+      <section ref={achievementsRef} className="py-24 bg-background mb-16">
         <div className="container mx-auto px-6">
           <motion.div
             initial={{ opacity: 0, y: 40 }}
@@ -241,13 +241,6 @@ export default function OurProgramsPage() {
 
           <div className="space-y-8">
             {[
-              // {
-              //   year: "2022",
-              //   title: "Improved Safety Standards in Manufacturing",
-              //   description:
-              //     "Our advocacy led to the implementation of enhanced safety protocols in 15 manufacturing plants, benefiting over 5,000 workers.",
-              //   image: "/placeholder.svg?height=400&width=800",
-              // },
               {
                 year: "2024",
                 title: "Fair Wages Campaign Success",
@@ -262,13 +255,6 @@ export default function OurProgramsPage() {
                   "Launched a comprehensive program addressing gender-based discrimination in workplaces, reaching 25 companies and impacting over 7,000 women workers.",
                 image: "/ta7.jpg?height=400&width=800",
               },
-              // {
-              //   year: "2015",
-              //   title: "DelMonte Campaign Research",
-              //   description:
-              //     "Conducted groundbreaking research on labor conditions in Kenya's cut-flower industry, which informed subsequent advocacy efforts and policy changes.",
-              //   image: "/placeholder.svg?height=400&width=800",
-              // },
             ].map((achievement, index) => (
               <motion.div
                 key={index}
@@ -313,7 +299,7 @@ export default function OurProgramsPage() {
         </div>
       </section>
 
-      <section ref={methodologyRef} className="py-20 bg-secondary">
+      <section ref={methodologyRef} className="py-24 bg-secondary mb-16">
         <div className="container mx-auto px-6">
           <motion.div
             initial={{ opacity: 0, y: 40 }}
@@ -392,7 +378,7 @@ export default function OurProgramsPage() {
         </div>
       </section>
 
-      <section className="py-20 bg-teal-500 text-black">
+      <section className="py-24 bg-teal-500 text-black">
         <div className="container mx-auto px-6 text-center">
           <motion.div
             initial={{ opacity: 0, scale: 0.9 }}

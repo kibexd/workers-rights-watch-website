@@ -464,16 +464,16 @@ export default function CareersPage() {
   ]
 
   return (
-    <div className="min-h-screen bg-[#0A0A0A] dark:bg-[#0A0A0A] light:bg-[#F8F9FA]">
-      <section className="relative py-32">
+    <div className="min-h-screen bg-background">
+      <section className="relative py-32 mb-16">
         <div className="absolute inset-0 z-0">
           <Image
             src="/career.jpg?height=600&width=1920"
             alt="Careers"
             fill
-            className="object-cover opacity-20 dark:opacity-20 light:opacity-10"
+            className="object-cover opacity-10"
           />
-          <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/50 to-[#0A0A0A] dark:from-black/70 dark:via-black/50 dark:to-[#0A0A0A] light:from-white/70 light:via-white/50 light:to-[#F8F9FA]"></div>
+          <div className="absolute inset-0 gradient-hero"></div>
         </div>
 
         <div className="container mx-auto px-6 relative z-10">
@@ -483,8 +483,8 @@ export default function CareersPage() {
             transition={{ duration: 0.8 }}
             className="text-center"
           >
-            <h1 className="text-5xl font-bold text-white dark:text-white light:text-gray-900 mb-6">Careers</h1>
-            <p className="text-xl text-gray-300 dark:text-gray-300 light:text-gray-700 max-w-3xl mx-auto">
+            <h1 className="text-5xl font-bold text-foreground mb-6">Careers</h1>
+            <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
               Join our team at Workers Rights Watch and make a difference in the lives of workers across Kenya and
               beyond.
             </p>
@@ -492,17 +492,17 @@ export default function CareersPage() {
         </div>
       </section>
 
-      <section className="py-12 bg-[#0A0A0A] dark:bg-[#0A0A0A] light:bg-[#F8F9FA]">
+      <section className="py-24 bg-background mb-16">
         <div className="container mx-auto px-6">
           <motion.div initial={{ opacity: 0, y: 40 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8 }}>
-            <Card className="bg-[#111111] dark:bg-[#111111] light:bg-white border-0 overflow-hidden rounded-2xl mb-16 shadow-xl">
+            <Card className="bg-card border-0 overflow-hidden rounded-2xl mb-16 shadow-elevated">
               <CardContent className="p-8">
-                <h2 className="text-3xl font-bold text-white dark:text-white light:text-gray-900 mb-8">
+                <h2 className="text-3xl font-bold text-foreground mb-8">
                   Available Positions
                 </h2>
 
                 <Tabs defaultValue="vacancies">
-                  <TabsList className="bg-transparent border border-gray-800 dark:border-gray-800 light:border-gray-200 rounded-full p-1 w-fit mb-8">
+                  <TabsList className="bg-transparent border border-border rounded-full p-1 w-fit mb-8">
                     <TabsTrigger
                       value="vacancies"
                       className="rounded-full px-8 py-2 data-[state=active]:bg-teal-500 data-[state=active]:text-black"
@@ -522,7 +522,7 @@ export default function CareersPage() {
                       {jobListings.map((job) => (
                         <Card
                           key={job.id}
-                          className={`bg-[#1A1A1A] dark:bg-[#1A1A1A] light:bg-gray-50 border-0 overflow-hidden rounded-xl transition-all duration-300 hover:shadow-md ${
+                          className={`bg-card border-0 overflow-hidden rounded-xl transition-all duration-300 hover:shadow-md ${
                             job.status === "Closed" ? "opacity-70" : ""
                           }`}
                         >
@@ -530,14 +530,14 @@ export default function CareersPage() {
                             <div className="flex flex-col md:flex-row md:items-center md:justify-between">
                               <div>
                                 <div className="flex items-center mb-2">
-                                  <h3 className="text-xl font-bold text-white dark:text-white light:text-gray-900 mr-3">
+                                  <h3 className="text-xl font-bold text-foreground mr-3">
                                     {job.title}
                                   </h3>
-                                  <Badge className={job.status === "Open" ? "bg-green-500" : "bg-gray-500"}>
+                                  <Badge className={job.status === "Open" ? "bg-green-500" : "bg-muted-foreground bg-opacity-40"}>
                                     {job.status}
                                   </Badge>
                                 </div>
-                                <div className="flex flex-wrap gap-4 text-sm text-gray-400 dark:text-gray-400 light:text-gray-600">
+                                <div className="flex flex-wrap gap-4 text-sm text-muted-foreground">
                                   <div className="flex items-center">
                                     <MapPin className="h-4 w-4 mr-1" />
                                     <span>{job.location}</span>
@@ -578,7 +578,7 @@ export default function CareersPage() {
                       {internshipListings.map((internship) => (
                         <Card
                           key={internship.id}
-                          className={`bg-[#1A1A1A] dark:bg-[#1A1A1A] light:bg-gray-50 border-0 overflow-hidden rounded-xl transition-all duration-300 hover:shadow-md ${
+                          className={`bg-card border-0 overflow-hidden rounded-xl transition-all duration-300 hover:shadow-md ${
                             internship.status === "Closed" ? "opacity-70" : ""
                           }`}
                         >
@@ -586,14 +586,14 @@ export default function CareersPage() {
                             <div className="flex flex-col md:flex-row md:items-center md:justify-between">
                               <div>
                                 <div className="flex items-center mb-2">
-                                  <h3 className="text-xl font-bold text-white dark:text-white light:text-gray-900 mr-3">
+                                  <h3 className="text-xl font-bold text-foreground mr-3">
                                     {internship.title}
                                   </h3>
-                                  <Badge className={internship.status === "Open" ? "bg-green-500" : "bg-gray-500"}>
+                                  <Badge className={internship.status === "Open" ? "bg-green-500" : "bg-muted-foreground bg-opacity-40"}>
                                     {internship.status}
                                   </Badge>
                                 </div>
-                                <div className="flex flex-wrap gap-4 text-sm text-gray-400 dark:text-gray-400 light:text-gray-600">
+                                <div className="flex flex-wrap gap-4 text-sm text-muted-foreground">
                                   <div className="flex items-center">
                                     <MapPin className="h-4 w-4 mr-1" />
                                     <span>{internship.location}</span>
@@ -638,14 +638,14 @@ export default function CareersPage() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.3 }}
           >
-            <Card className="bg-[#111111] dark:bg-[#111111] light:bg-white border-0 overflow-hidden rounded-2xl shadow-xl">
+            <Card className="bg-card border-0 overflow-hidden rounded-2xl shadow-elevated">
               <CardContent className="p-8">
                 <div className="grid md:grid-cols-2 gap-12 items-center">
                   <div>
-                    <h2 className="text-3xl font-bold text-white dark:text-white light:text-gray-900 mb-4">
+                    <h2 className="text-3xl font-bold text-foreground mb-4">
                       Volunteer With Us
                     </h2>
-                    <p className="text-gray-300 dark:text-gray-300 light:text-gray-700 mb-8 leading-relaxed">
+                    <p className="text-muted-foreground mb-8 leading-relaxed">
                       One way for you to help out is by volunteering your skills and time towards our cause. Join our
                       team of dedicated volunteers and make a real difference in the lives of workers across Kenya.
                     </p>
@@ -665,10 +665,10 @@ export default function CareersPage() {
                         <div className="h-20 w-20 rounded-full bg-green-500/20 flex items-center justify-center mx-auto mb-6">
                           <CheckCircle className="h-10 w-10 text-green-500" />
                         </div>
-                        <h3 className="text-2xl font-bold text-white dark:text-white light:text-gray-900 mb-4">
+                        <h3 className="text-2xl font-bold text-foreground mb-4">
                           Thank You for Volunteering!
                         </h3>
-                        <p className="text-gray-400 dark:text-gray-400 light:text-gray-600 mb-6">
+                        <p className="text-muted-foreground mb-6">
                           Your application has been submitted successfully. We appreciate your interest in volunteering
                           with us. Our team will review your information and contact you soon.
                         </p>
@@ -676,7 +676,7 @@ export default function CareersPage() {
                     ) : (
                       <form onSubmit={handleSubmit} className="space-y-6">
                         <div className="space-y-2">
-                          <Label htmlFor="fullName" className="text-white dark:text-white light:text-gray-900">
+                          <Label htmlFor="fullName" className="text-foreground">
                             Full Name *
                           </Label>
                           <Input
@@ -684,7 +684,7 @@ export default function CareersPage() {
                             value={formState.fullName}
                             onChange={handleChange}
                             placeholder="Your full name"
-                            className={`bg-[#1A1A1A] dark:bg-[#1A1A1A] light:bg-white border-0 rounded-xl h-12 focus:ring-2 focus:ring-teal-500 text-white dark:text-white light:text-gray-900 ${
+                            className={`bg-card border-0 rounded-xl h-12 focus:ring-2 focus:ring-teal-500 ${
                               formErrors.fullName ? "border-2 border-red-500" : ""
                             }`}
                             required
@@ -694,7 +694,7 @@ export default function CareersPage() {
 
                         <div className="grid grid-cols-2 gap-4">
                           <div className="space-y-2">
-                            <Label htmlFor="email" className="text-white dark:text-white light:text-gray-900">
+                            <Label htmlFor="email" className="text-foreground">
                               Email *
                             </Label>
                             <Input
@@ -703,7 +703,7 @@ export default function CareersPage() {
                               value={formState.email}
                               onChange={handleChange}
                               placeholder="you@example.com"
-                              className={`bg-[#1A1A1A] dark:bg-[#1A1A1A] light:bg-white border-0 rounded-xl h-12 focus:ring-2 focus:ring-teal-500 text-white dark:text-white light:text-gray-900 ${
+                              className={`bg-card border-0 rounded-xl h-12 focus:ring-2 focus:ring-teal-500 ${
                                 formErrors.email ? "border-2 border-red-500" : ""
                               }`}
                               required
@@ -711,7 +711,7 @@ export default function CareersPage() {
                             {formErrors.email && <p className="text-red-500 text-sm mt-1">{formErrors.email}</p>}
                           </div>
                           <div className="space-y-2">
-                            <Label htmlFor="phone" className="text-white dark:text-white light:text-gray-900">
+                            <Label htmlFor="phone" className="text-foreground">
                               Phone Number *
                             </Label>
                             <Input
@@ -719,7 +719,7 @@ export default function CareersPage() {
                               value={formState.phone}
                               onChange={handleChange}
                               placeholder="+254..."
-                              className={`bg-[#1A1A1A] dark:bg-[#1A1A1A] light:bg-white border-0 rounded-xl h-12 focus:ring-2 focus:ring-teal-500 text-white dark:text-white light:text-gray-900 ${
+                              className={`bg-card border-0 rounded-xl h-12 focus:ring-2 focus:ring-teal-500 ${
                                 formErrors.phone ? "border-2 border-red-500" : ""
                               }`}
                               required
@@ -729,7 +729,7 @@ export default function CareersPage() {
                         </div>
 
                         <div className="space-y-2">
-                          <Label htmlFor="country" className="text-white dark:text-white light:text-gray-900">
+                          <Label htmlFor="country" className="text-foreground">
                             Country *
                           </Label>
                           <Select
@@ -737,13 +737,13 @@ export default function CareersPage() {
                             onValueChange={(value) => handleSelectChange("country", value)}
                           >
                             <SelectTrigger
-                              className={`bg-[#1A1A1A] dark:bg-[#1A1A1A] light:bg-white border-0 rounded-xl h-12 focus:ring-2 focus:ring-teal-500 text-white dark:text-white light:text-gray-900 ${
+                              className={`bg-card border-0 rounded-xl h-12 focus:ring-2 focus:ring-teal-500 ${
                                 formErrors.country ? "border-2 border-red-500" : ""
                               }`}
                             >
                               <SelectValue placeholder="Select a country" />
                             </SelectTrigger>
-                            <SelectContent className="bg-[#1A1A1A] dark:bg-[#1A1A1A] light:bg-white border border-gray-800 dark:border-gray-800 light:border-gray-200 text-white dark:text-white light:text-gray-900">
+                            <SelectContent className="bg-card border border-border text-foreground">
                               <SelectItem value="kenya">Kenya</SelectItem>
                               <SelectItem value="uganda">Uganda</SelectItem>
                               <SelectItem value="tanzania">Tanzania</SelectItem>
@@ -754,7 +754,7 @@ export default function CareersPage() {
                         </div>
 
                         <div className="space-y-2">
-                          <Label htmlFor="about" className="text-white dark:text-white light:text-gray-900">
+                          <Label htmlFor="about" className="text-foreground">
                             Tell us about yourself *
                           </Label>
                           <Textarea
@@ -762,7 +762,7 @@ export default function CareersPage() {
                             value={formState.about}
                             onChange={handleChange}
                             placeholder="Your skills, experience, and why you want to volunteer"
-                            className={`bg-[#1A1A1A] dark:bg-[#1A1A1A] light:bg-white border-0 rounded-xl min-h-[150px] focus:ring-2 focus:ring-teal-500 text-white dark:text-white light:text-gray-900 ${
+                            className={`bg-card border-0 rounded-xl min-h-[150px] focus:ring-2 focus:ring-teal-500 ${
                               formErrors.about ? "border-2 border-red-500" : ""
                             }`}
                             rows={5}
@@ -772,7 +772,7 @@ export default function CareersPage() {
                         </div>
 
                         <div className="space-y-2">
-                          <Label htmlFor="workType" className="text-white dark:text-white light:text-gray-900">
+                          <Label htmlFor="workType" className="text-foreground">
                             Voluntary Work Type *
                           </Label>
                           <Select
@@ -780,13 +780,13 @@ export default function CareersPage() {
                             onValueChange={(value) => handleSelectChange("workType", value)}
                           >
                             <SelectTrigger
-                              className={`bg-[#1A1A1A] dark:bg-[#1A1A1A] light:bg-white border-0 rounded-xl h-12 focus:ring-2 focus:ring-teal-500 text-white dark:text-white light:text-gray-900 ${
+                              className={`bg-card border-0 rounded-xl h-12 focus:ring-2 focus:ring-teal-500 ${
                                 formErrors.workType ? "border-2 border-red-500" : ""
                               }`}
                             >
                               <SelectValue placeholder="Select work type" />
                             </SelectTrigger>
-                            <SelectContent className="bg-[#1A1A1A] dark:bg-[#1A1A1A] light:bg-white border border-gray-800 dark:border-gray-800 light:border-gray-200 text-white dark:text-white light:text-gray-900">
+                            <SelectContent className="bg-card border border-border text-foreground">
                               <SelectItem value="legal">Legal Support</SelectItem>
                               <SelectItem value="research">Research</SelectItem>
                               <SelectItem value="education">Worker Education</SelectItem>
@@ -798,38 +798,38 @@ export default function CareersPage() {
                         </div>
 
                         <div className="space-y-2">
-                          <Label htmlFor="volunteerCv" className="text-white dark:text-white light:text-gray-900">
+                          <Label htmlFor="volunteerCv" className="text-foreground">
                             Upload CV/Resume *
                           </Label>
                           <div className="flex items-center justify-center w-full">
                             <label
-                              className={`flex flex-col items-center justify-center w-full h-32 border-2 border-dashed rounded-xl cursor-pointer bg-[#1A1A1A] dark:bg-[#1A1A1A] light:bg-gray-50 hover:bg-[#252525] dark:hover:bg-[#252525] light:hover:bg-gray-100 ${
+                              className={`flex flex-col items-center justify-center w-full h-32 border-2 border-dashed rounded-xl cursor-pointer bg-card hover:bg-card-foreground ${
                                 formErrors.volunteerCvFile
                                   ? "border-red-500"
-                                  : "border-gray-700 dark:border-gray-700 light:border-gray-300"
+                                  : "border-border"
                               }`}
                             >
                               <div className="flex flex-col items-center justify-center pt-5 pb-6">
                                 {volunteerCvUploaded ? (
                                   <>
                                     <CheckCircle className="w-8 h-8 mb-3 text-green-500" />
-                                    <p className="mb-2 text-sm text-gray-400 dark:text-gray-400 light:text-gray-600">
+                                    <p className="mb-2 text-sm text-muted-foreground">
                                       <span className="font-semibold">CV uploaded successfully</span>
                                     </p>
-                                    <p className="text-xs text-gray-500 dark:text-gray-500 light:text-gray-500">
+                                    <p className="text-xs text-muted-foreground">
                                       {formState.cvFile?.name} ({formState.cvFile?.size ? Math.round(formState.cvFile.size / 1024) : 0} KB)
                                     </p>
-                                    <p className="text-xs text-gray-500 dark:text-gray-500 light:text-gray-500 mt-1">
+                                    <p className="text-xs text-muted-foreground mt-1">
                                       Click to change file
                                     </p>
                                   </>
                                 ) : (
                                   <>
-                                    <Upload className="w-8 h-8 mb-3 text-gray-500 dark:text-gray-500 light:text-gray-400" />
-                                    <p className="mb-2 text-sm text-gray-400 dark:text-gray-400 light:text-gray-600">
+                                    <Upload className="w-8 h-8 mb-3 text-muted-foreground" />
+                                    <p className="mb-2 text-sm text-muted-foreground">
                                       <span className="font-semibold">Click to upload</span> or drag and drop
                                     </p>
-                                    <p className="text-xs text-gray-500 dark:text-gray-500 light:text-gray-500">
+                                    <p className="text-xs text-muted-foreground">
                                       PDF or DOCX (MAX. 5MB)
                                     </p>
                                   </>
@@ -902,15 +902,15 @@ export default function CareersPage() {
 
       {/* Job Details Dialog */}
       <Dialog open={isDialogOpen} onOpenChange={setIsDialogOpen}>
-        <DialogContent className="bg-[#1A1A1A] dark:bg-[#1A1A1A] light:bg-white border-0 rounded-2xl max-w-3xl max-h-[90vh] overflow-y-auto">
+        <DialogContent className="bg-card border-0 rounded-2xl max-w-3xl max-h-[90vh] overflow-y-auto">
           <DialogHeader>
-            <DialogTitle className="text-2xl font-bold text-white dark:text-white light:text-gray-900 flex items-center gap-2">
+            <DialogTitle className="text-2xl font-bold text-foreground flex items-center gap-2">
               {selectedJob?.title}
-              <Badge className={selectedJob?.status === "Open" ? "bg-green-500" : "bg-gray-500"}>
+              <Badge className={selectedJob?.status === "Open" ? "bg-green-500" : "bg-muted-foreground bg-opacity-40"}>
                 {selectedJob?.status}
               </Badge>
             </DialogTitle>
-            <div className="text-gray-400 dark:text-gray-400 light:text-gray-600">
+            <div className="text-muted-foreground">
               <div className="flex flex-wrap gap-4 mt-2">
                 <div className="flex items-center">
                   <MapPin className="h-4 w-4 mr-1" />
@@ -934,26 +934,26 @@ export default function CareersPage() {
 
           <div className="mt-6 space-y-6">
             <div>
-              <h4 className="text-lg font-semibold text-white dark:text-white light:text-gray-900 mb-2">
+              <h4 className="text-lg font-semibold text-foreground mb-2">
                 {selectedJob?.salary ? "Salary Range" : "Stipend"}
               </h4>
-              <p className="text-gray-300 dark:text-gray-300 light:text-gray-700">
+              <p className="text-muted-foreground">
                 {selectedJob?.salary || selectedJob?.stipend}
               </p>
             </div>
 
             <div>
-              <h4 className="text-lg font-semibold text-white dark:text-white light:text-gray-900 mb-2">
+              <h4 className="text-lg font-semibold text-foreground mb-2">
                 {selectedJob?.salary ? "Job Description" : "Internship Description"}
               </h4>
-              <p className="text-gray-300 dark:text-gray-300 light:text-gray-700">{selectedJob?.description}</p>
+              <p className="text-muted-foreground">{selectedJob?.description}</p>
             </div>
 
             <div>
-              <h4 className="text-lg font-semibold text-white dark:text-white light:text-gray-900 mb-2">
+              <h4 className="text-lg font-semibold text-foreground mb-2">
                 Key Responsibilities
               </h4>
-              <ul className="list-disc pl-5 space-y-1 text-gray-300 dark:text-gray-300 light:text-gray-700">
+              <ul className="list-disc pl-5 space-y-1 text-muted-foreground">
                 {selectedJob?.responsibilities.map((item, index) => (
                   <li key={index}>{item}</li>
                 ))}
@@ -961,39 +961,39 @@ export default function CareersPage() {
             </div>
 
             <div>
-              <h4 className="text-lg font-semibold text-white dark:text-white light:text-gray-900 mb-2">
+              <h4 className="text-lg font-semibold text-foreground mb-2">
                 Requirements
               </h4>
-              <ul className="list-disc pl-5 space-y-1 text-gray-300 dark:text-gray-300 light:text-gray-700">
+              <ul className="list-disc pl-5 space-y-1 text-muted-foreground">
                 {selectedJob?.requirements.map((item, index) => (
                   <li key={index}>{item}</li>
                 ))}
               </ul>
             </div>
 
-            <div className="pt-4 border-t border-gray-800 dark:border-gray-800 light:border-gray-200">
+            <div className="pt-4 border-t border-border">
               {jobFormSubmitted ? (
                 <div className="text-center py-8">
                   <div className="h-16 w-16 rounded-full bg-green-500/20 flex items-center justify-center mx-auto mb-4">
                     <CheckCircle className="h-8 w-8 text-green-500" />
                   </div>
-                  <h4 className="text-xl font-semibold text-white dark:text-white light:text-gray-900 mb-2">
+                  <h4 className="text-xl font-semibold text-foreground mb-2">
                     Application Submitted!
                   </h4>
-                  <p className="text-gray-400 dark:text-gray-400 light:text-gray-600">
+                  <p className="text-muted-foreground">
                     Thank you for your application. We will review it and get back to you soon.
                   </p>
                 </div>
               ) : (
                 <>
-                  <h4 className="text-lg font-semibold text-white dark:text-white light:text-gray-900 mb-4">
+                  <h4 className="text-lg font-semibold text-foreground mb-4">
                     Apply for this {selectedJob?.salary ? "Position" : "Internship"}
                   </h4>
 
                   <form onSubmit={handleJobApplication} className="space-y-4">
                     <div className="grid grid-cols-2 gap-4">
                       <div className="space-y-2">
-                        <Label htmlFor="fullName" className="text-white dark:text-white light:text-gray-900">
+                        <Label htmlFor="fullName" className="text-foreground">
                           Full Name *
                         </Label>
                         <Input
@@ -1001,7 +1001,7 @@ export default function CareersPage() {
                           value={jobApplicationState.fullName}
                           onChange={handleJobApplicationChange}
                           placeholder="Your full name"
-                          className={`bg-[#252525] dark:bg-[#252525] light:bg-white border-0 rounded-xl h-12 focus:ring-2 focus:ring-teal-500 text-white dark:text-white light:text-gray-900 ${
+                          className={`bg-card border-0 rounded-xl h-12 focus:ring-2 focus:ring-teal-500 ${
                             formErrors.fullName ? "border-2 border-red-500" : ""
                           }`}
                           required
@@ -1009,7 +1009,7 @@ export default function CareersPage() {
                         {formErrors.fullName && <p className="text-red-500 text-sm mt-1">{formErrors.fullName}</p>}
                       </div>
                       <div className="space-y-2">
-                        <Label htmlFor="email" className="text-white dark:text-white light:text-gray-900">
+                        <Label htmlFor="email" className="text-foreground">
                           Email *
                         </Label>
                         <Input
@@ -1018,7 +1018,7 @@ export default function CareersPage() {
                           value={jobApplicationState.email}
                           onChange={handleJobApplicationChange}
                           placeholder="Your email address"
-                          className={`bg-[#252525] dark:bg-[#252525] light:bg-white border-0 rounded-xl h-12 focus:ring-2 focus:ring-teal-500 text-white dark:text-white light:text-gray-900 ${
+                          className={`bg-card border-0 rounded-xl h-12 focus:ring-2 focus:ring-teal-500 ${
                             formErrors.email ? "border-2 border-red-500" : ""
                           }`}
                           required
@@ -1028,7 +1028,7 @@ export default function CareersPage() {
                     </div>
 
                     <div className="space-y-2">
-                      <Label htmlFor="phone" className="text-white dark:text-white light:text-gray-900">
+                      <Label htmlFor="phone" className="text-foreground">
                         Phone Number *
                       </Label>
                       <Input
@@ -1036,7 +1036,7 @@ export default function CareersPage() {
                         value={jobApplicationState.phone}
                         onChange={handleJobApplicationChange}
                         placeholder="Your phone number"
-                        className={`bg-[#252525] dark:bg-[#252525] light:bg-white border-0 rounded-xl h-12 focus:ring-2 focus:ring-teal-500 text-white dark:text-white light:text-gray-900 ${
+                        className={`bg-card border-0 rounded-xl h-12 focus:ring-2 focus:ring-teal-500 ${
                           formErrors.phone ? "border-2 border-red-500" : ""
                         }`}
                         required
@@ -1045,7 +1045,7 @@ export default function CareersPage() {
                     </div>
 
                     <div className="space-y-2">
-                      <Label htmlFor="coverLetter" className="text-white dark:text-white light:text-gray-900">
+                      <Label htmlFor="coverLetter" className="text-foreground">
                         Cover Letter *
                       </Label>
                       <Textarea
@@ -1053,7 +1053,7 @@ export default function CareersPage() {
                         value={jobApplicationState.coverLetter}
                         onChange={handleJobApplicationChange}
                         placeholder="Tell us why you're interested in this position and what makes you a good fit"
-                        className={`bg-[#252525] dark:bg-[#252525] light:bg-white border-0 rounded-xl min-h-[150px] focus:ring-2 focus:ring-teal-500 text-white dark:text-white light:text-gray-900 ${
+                        className={`bg-card border-0 rounded-xl min-h-[150px] focus:ring-2 focus:ring-teal-500 ${
                           formErrors.coverLetter ? "border-2 border-red-500" : ""
                         }`}
                         rows={5}
@@ -1063,38 +1063,38 @@ export default function CareersPage() {
                     </div>
 
                     <div className="space-y-2">
-                      <Label htmlFor="cv" className="text-white dark:text-white light:text-gray-900">
+                      <Label htmlFor="cv" className="text-foreground">
                         Upload CV/Resume *
                       </Label>
                       <div className="flex items-center justify-center w-full">
                         <label
-                          className={`flex flex-col items-center justify-center w-full h-32 border-2 border-dashed rounded-xl cursor-pointer bg-[#252525] dark:bg-[#252525] light:bg-gray-50 hover:bg-[#2A2A2A] dark:hover:bg-[#2A2A2A] light:hover:bg-gray-100 ${
+                          className={`flex flex-col items-center justify-center w-full h-32 border-2 border-dashed rounded-xl cursor-pointer bg-card hover:bg-card-foreground ${
                             formErrors.cvFile
                               ? "border-red-500"
-                              : "border-gray-700 dark:border-gray-700 light:border-gray-300"
+                              : "border-border"
                           }`}
                         >
                           <div className="flex flex-col items-center justify-center pt-5 pb-6">
                             {cvUploaded ? (
                               <>
                                 <CheckCircle className="w-8 h-8 mb-3 text-green-500" />
-                                <p className="mb-2 text-sm text-gray-400 dark:text-gray-400 light:text-gray-600">
+                                <p className="mb-2 text-sm text-muted-foreground">
                                   <span className="font-semibold">CV uploaded successfully</span>
                                 </p>
-                                <p className="text-xs text-gray-500 dark:text-gray-500 light:text-gray-500">
+                                <p className="text-xs text-muted-foreground">
                                   {jobApplicationState.cvFile?.name} ({jobApplicationState.cvFile?.size ? Math.round(jobApplicationState.cvFile.size / 1024) : 0} KB)
                                 </p>
-                                <p className="text-xs text-gray-500 dark:text-gray-500 light:text-gray-500 mt-1">
+                                <p className="text-xs text-muted-foreground mt-1">
                                   Click to change file
                                 </p>
                               </>
                             ) : (
                               <>
-                                <Upload className="w-8 h-8 mb-3 text-gray-500 dark:text-gray-500 light:text-gray-400" />
-                                <p className="mb-2 text-sm text-gray-400 dark:text-gray-400 light:text-gray-600">
+                                <Upload className="w-8 h-8 mb-3 text-muted-foreground" />
+                                <p className="mb-2 text-sm text-muted-foreground">
                                   <span className="font-semibold">Click to upload</span> or drag and drop
                                 </p>
-                                <p className="text-xs text-gray-500 dark:text-gray-500 light:text-gray-500">
+                                <p className="text-xs text-muted-foreground">
                                   PDF or DOCX (MAX. 5MB)
                                 </p>
                               </>
@@ -1162,7 +1162,7 @@ export default function CareersPage() {
           <DialogFooter className="mt-6">
             <Button
               variant="outline"
-              className="text-gray-400 border-gray-700 hover:bg-gray-800 hover:text-white rounded-full"
+              className="text-muted-foreground border-border hover:bg-card hover:text-foreground rounded-full"
               onClick={() => setIsDialogOpen(false)}
             >
               Close

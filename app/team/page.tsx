@@ -241,7 +241,7 @@ export default function TeamPage() {
             transition={{ duration: 0.5, delay: index * 0.1 }}
           >
             <Card
-              className="bg-[#111111] dark:bg-[#111111] light:bg-white border-0 overflow-hidden rounded-2xl hover:shadow-xl hover:shadow-teal-500/5 transition-all duration-300 cursor-pointer"
+              className="bg-card border-0 overflow-hidden rounded-2xl hover:shadow-xl hover:shadow-teal-500/5 transition-all duration-300 cursor-pointer"
               onClick={() => openMemberProfile(member)}
             >
               <div className="relative h-80 overflow-hidden">
@@ -253,10 +253,10 @@ export default function TeamPage() {
                 />
               </div>
               <CardContent className="p-8 text-center">
-                <h3 className="text-2xl font-bold text-white dark:text-white light:text-gray-900 mb-1">
+                <h3 className="text-2xl font-bold text-foreground mb-1">
                   {member.name}
                 </h3>
-                <p className="text-teal-500 dark:text-teal-500 light:text-teal-600 mb-4">{member.title}</p>
+                <p className="text-teal-500 mb-4">{member.title}</p>
                 <div className="flex justify-center space-x-3">
                   {member.email && (
                     <a
@@ -302,18 +302,17 @@ export default function TeamPage() {
   }
 
   return (
-    <div className="min-h-screen bg-[#0A0A0A] dark:bg-[#0A0A0A] light:bg-[#F8F9FA]">
-      <section className="relative py-32">
+    <div className="min-h-screen bg-background font-sans">
+      <section className="relative py-32 mb-16">
         <div className="absolute inset-0 z-0">
           <Image
             src="/pic8.jpg?height=600&width=1920"
             alt="Our Team"
             fill
-            className="object-cover opacity-20 dark:opacity-20 light:opacity-10"
+            className="object-cover opacity-10"
           />
-          <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/50 to-[#0A0A0A] dark:from-black/70 dark:via-black/50 dark:to-[#0A0A0A] light:from-white/70 light:via-white/50 light:to-[#F8F9FA]"></div>
+          <div className="absolute inset-0 gradient-hero" />
         </div>
-
         <div className="container mx-auto px-6 relative z-10">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -321,18 +320,18 @@ export default function TeamPage() {
             transition={{ duration: 0.8 }}
             className="text-center"
           >
-            <h1 className="text-5xl font-bold text-white dark:text-white light:text-gray-900 mb-6">Our Team</h1>
-            <p className="text-xl text-gray-300 dark:text-gray-300 light:text-gray-700 max-w-3xl mx-auto">
+            <h1 className="text-5xl font-bold text-foreground mb-6">Our Team</h1>
+            <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
               Meet the dedicated professionals working to protect and promote workers' rights across Kenya.
             </p>
           </motion.div>
         </div>
       </section>
 
-      <section className="py-12 bg-[#0A0A0A] dark:bg-[#0A0A0A] light:bg-[#F8F9FA]">
+      <section className="py-24 bg-background mb-16">
         <div className="container mx-auto px-6">
           <Tabs defaultValue="leadership" onValueChange={handleTabChange} className="w-full">
-            <TabsList className="justify-center mb-12 bg-transparent border border-gray-800 dark:border-gray-800 light:border-gray-200 rounded-full p-1 w-fit mx-auto">
+            <TabsList className="justify-center mb-12 bg-transparent border border-border rounded-full p-1 w-fit mx-auto">
               <TabsTrigger
                 value="leadership"
                 className="rounded-full px-8 py-2 data-[state=active]:bg-teal-500 data-[state=active]:text-black"
@@ -370,14 +369,14 @@ export default function TeamPage() {
 
       {/* Member Profile Dialog */}
       <Dialog open={dialogOpen} onOpenChange={setDialogOpen}>
-        <DialogContent className="bg-[#1A1A1A] dark:bg-[#1A1A1A] light:bg-white border-0 rounded-2xl max-w-4xl p-0 overflow-hidden">
+        <DialogContent className="bg-card border-0 rounded-2xl max-w-4xl p-0 overflow-hidden">
           <DialogTitle className="sr-only">
             {selectedMember?.name || "Team Member"}
           </DialogTitle>
           {selectedMember && (
             <div className="flex flex-col md:flex-row h-full">
               {/* Left sidebar with image and contact info */}
-              <div className="md:w-1/3 bg-[#111111] p-6 flex flex-col">
+              <div className="md:w-1/3 bg-card p-6 flex flex-col">
                 <div className="relative h-64 w-full rounded-xl overflow-hidden mb-6">
                   <Image
                     src={selectedMember.image || "/placeholder.svg"}
@@ -387,10 +386,10 @@ export default function TeamPage() {
                   />
                 </div>
 
-                <h3 className="text-2xl font-bold text-white mb-1">{selectedMember.name}</h3>
+                <h3 className="text-2xl font-bold text-foreground mb-1">{selectedMember.name}</h3>
                 <p className="text-teal-500 font-medium mb-4">{selectedMember.title}</p>
 
-                <div className="space-y-4 mt-2 text-gray-300">
+                <div className="space-y-4 mt-2 text-muted-foreground">
                   {selectedMember.location && (
                     <div className="flex items-start">
                       <MapPin className="h-5 w-5 text-teal-500 mr-3 mt-0.5 flex-shrink-0" />
@@ -405,7 +404,7 @@ export default function TeamPage() {
                   )}
                   {selectedMember.education && (
                     <div className="flex items-start">
-                      <Briefcase className="h-5 w-5 text-teal-500 mr-3 mt-0.5 flex-shrink-0" />
+                      <ArrowRight className="h-5 w-5 text-teal-500 mr-3 mt-0.5 flex-shrink-0" />
                       <span>{selectedMember.education}</span>
                     </div>
                   )}
@@ -415,7 +414,7 @@ export default function TeamPage() {
                   {selectedMember.email && (
                     <a
                       href={`mailto:${selectedMember.email}`}
-                      className="flex items-center text-gray-300 hover:text-teal-500 transition-colors"
+                      className="flex items-center text-muted-foreground hover:text-teal-500 transition-colors"
                     >
                       <Mail className="h-5 w-5 mr-3 text-teal-500" />
                       <span className="truncate">{selectedMember.email}</span>
@@ -426,11 +425,11 @@ export default function TeamPage() {
                       href={selectedMember.linkedin}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="flex items-center text-gray-300 hover:text-teal-500 transition-colors"
+                      className="flex items-center text-muted-foreground hover:text-teal-500 transition-colors"
                     >
                       <Linkedin className="h-5 w-5 mr-3 text-teal-500" />
                       <span>LinkedIn Profile</span>
-                      <ExternalLink className="h-3 w-3 ml-1" />
+                      <ArrowRight className="h-3 w-3 ml-1" />
                     </a>
                   )}
                   {selectedMember.twitter && (
@@ -438,11 +437,11 @@ export default function TeamPage() {
                       href={selectedMember.twitter}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="flex items-center text-gray-300 hover:text-teal-500 transition-colors"
+                      className="flex items-center text-muted-foreground hover:text-teal-500 transition-colors"
                     >
                       <Twitter className="h-5 w-5 mr-3 text-teal-500" />
                       <span>Twitter Profile</span>
-                      <ExternalLink className="h-3 w-3 ml-1" />
+                      <ArrowRight className="h-3 w-3 ml-1" />
                     </a>
                   )}
                 </div>
@@ -461,18 +460,18 @@ export default function TeamPage() {
               {/* Right content area */}
               <div className="md:w-2/3 p-8 max-h-[80vh] overflow-y-auto">
                 <DialogHeader className="mb-6">
-                  <DialogTitle className="text-3xl font-bold text-white">About {selectedMember.name}</DialogTitle>
+                  <DialogTitle className="text-3xl font-bold text-foreground">About {selectedMember.name}</DialogTitle>
                 </DialogHeader>
 
                 <div className="space-y-8">
                   <div>
-                    <h4 className="text-xl font-semibold text-white mb-3">Biography</h4>
-                    <p className="text-gray-300 leading-relaxed">{selectedMember.bio}</p>
+                    <h4 className="text-xl font-semibold text-foreground mb-3">Biography</h4>
+                    <p className="text-muted-foreground leading-relaxed">{selectedMember.bio}</p>
                   </div>
 
                   {selectedMember.expertise && selectedMember.expertise.length > 0 && (
                     <div>
-                      <h4 className="text-xl font-semibold text-white mb-3">Areas of Expertise</h4>
+                      <h4 className="text-xl font-semibold text-foreground mb-3">Areas of Expertise</h4>
                       <div className="flex flex-wrap gap-2">
                         {selectedMember.expertise.map((skill: string, index: number) => (
                           <Badge key={index} className="bg-teal-500/20 text-teal-500 hover:bg-teal-500/30 px-3 py-1">
@@ -482,27 +481,11 @@ export default function TeamPage() {
                       </div>
                     </div>
                   )}
-
-                  {/* <div>
-                    <h4 className="text-xl font-semibold text-white mb-3">Role at Workers Rights Watch</h4>
-                    <p className="text-gray-300 leading-relaxed">
-                      As {selectedMember.title}, {selectedMember.name.split(" ")[0]} plays a crucial role in our
-                      organization's mission to protect and promote workers' rights across Kenya.
-                      {selectedMember.title.includes("Director") &&
-                        " Their leadership guides our strategic direction and ensures we remain focused on our core values and objectives."}
-                      {selectedMember.title.includes("Officer") &&
-                        " They are responsible for implementing our programs and initiatives, ensuring they meet the highest standards of quality and impact."}
-                      {selectedMember.title.includes("Coordinator") &&
-                        " They oversee the coordination of our various activities, ensuring effective collaboration between different teams and stakeholders."}
-                      {selectedMember.title.includes("Board") &&
-                        " As part of our governance structure, they provide oversight and guidance to ensure our organization operates with integrity and effectiveness."}
-                    </p>
-                  </div> */}
                 </div>
               </div>
 
               <button
-                className="absolute top-4 right-4 rounded-full p-2 bg-gray-800 text-gray-400 hover:text-white hover:bg-gray-700 transition-colors"
+                className="absolute top-4 right-4 rounded-full p-2 bg-background text-muted-foreground hover:text-foreground hover:bg-muted transition-colors"
                 onClick={closeDialog}
                 aria-label="Close dialog"
               >
@@ -514,101 +497,84 @@ export default function TeamPage() {
       </Dialog>
 
       {/* Who We Work With Section */}
-<section className="py-28 bg-[#181818] dark:bg-[#181818] light:bg-[#F8F9FA] overflow-hidden">
-  <div className="container mx-auto px-6">
-    <motion.div
-      initial={{ opacity: 0, y: 40 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.8 }}
-      className="text-center mb-20"
-    >
-      <h2 className="text-5xl font-bold text-white dark:text-white light:text-gray-900 mb-6">
-        Who We Work With
-      </h2>
-      <p className="text-xl text-gray-400 dark:text-gray-400 light:text-gray-700 max-w-3xl mx-auto leading-relaxed">
-        Workers Rights Watch collaborates with a diverse network of individuals and groups who support our mission in many ways.
-      </p>
-    </motion.div>
+      <section className="py-24 bg-secondary mb-16 overflow-hidden">
+        <div className="container mx-auto px-6">
+          <motion.div
+            initial={{ opacity: 0, y: 40 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+            className="text-center mb-16"
+          >
+            <h2 className="text-4xl font-bold text-foreground mb-4">
+              Who We Work With
+            </h2>
+            <p className="text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
+              Workers Rights Watch collaborates with a diverse network of individuals and groups who support our mission in many ways.
+            </p>
+          </motion.div>
 
-    <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-10">
-      {[
-        {
-          icon: <Users className="h-10 w-10 text-teal-500" />,
-          title: "Workers' Assemblies",
-          description: "Grassroots groups of workers who provide insights, feedback, and mobilize for collective action.",
-          image: "/pic2.jpg",
-          gradient: "from-teal-500/30 to-transparent"
-        },
-        {
-          icon: <Scale className="h-10 w-10 text-teal-500" />,
-          title: "Community Leaders",
-          description: "Local champions who help us reach and empower workers in their communities.",
-          image: "/pic7.jpg",
-          gradient: "from-blue-500/30 to-transparent"
-        },
-        {
-          icon: <FileText className="h-10 w-10 text-teal-500" />,
-          title: "Legal Advisors",
-          description: "A network of legal professionals who provide guidance and representation for workers' rights cases.",
-          image: "/pic3.jpg",
-          gradient: "from-purple-500/30 to-transparent"
-        },
-        {
-          icon: <Shield className="h-10 w-10 text-teal-500" />,
-          title: "Partner Organizations",
-          description: "We collaborate with NGOs, unions, and advocacy groups to amplify our impact and reach.",
-          image: "/pic4.jpg",
-          gradient: "from-pink-500/30 to-transparent"
-        }
-      ].map((item, index) => (
-        <motion.div
-          key={index}
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: index * 0.1 }}
-          className="relative group"
-        >
-          <div className="h-full rounded-3xl shadow-xl overflow-hidden bg-[#232526] flex flex-col">
-            {/* Image Section with Gradient Overlay */}
-            <div className="relative h-48 overflow-hidden">
-              <div className={`absolute inset-0 bg-gradient-to-tr ${item.gradient} z-10 opacity-70`}></div>
-              <Image
-                src={item.image}
-                alt={item.title}
-                fill
-                className="object-cover transition-transform duration-700 group-hover:scale-105"
-              />
-              {/* Icon positioned on the image */}
-              <div className="absolute bottom-5 right-0 m-4 z-20 h-14 w-14 rounded-2xl bg-[#181818]/70 backdrop-blur-sm flex items-center justify-center transform translate-y-1/2 group-hover:-translate-y-2 transition-transform duration-500">
-                {item.icon}
-              </div>
-            </div>
-
-            {/* Content Section */}
-            <div className="p-8 pt-10 flex-grow flex flex-col">
-              <h3 className="text-2xl font-bold text-white mb-4">{item.title}</h3>
-              <p className="text-gray-400 text-lg leading-relaxed">{item.description}</p>
-              
-              {/* Hidden details that appear on hover */}
-              <motion.div 
-                initial={{ opacity: 0, height: 0 }}
-                whileHover={{ opacity: 1, height: "auto" }}
-                className="mt-4 overflow-hidden"
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-10">
+            {[
+              {
+                icon: <Users className="h-10 w-10 text-teal-500" />, title: "Workers' Assemblies", description: "Grassroots groups of workers who provide insights, feedback, and mobilize for collective action.", image: "/pic2.jpg", gradient: "from-teal-500/30 to-transparent"
+              },
+              {
+                icon: <Scale className="h-10 w-10 text-teal-500" />, title: "Community Leaders", description: "Local champions who help us reach and empower workers in their communities.", image: "/pic7.jpg", gradient: "from-blue-500/30 to-transparent"
+              },
+              {
+                icon: <FileText className="h-10 w-10 text-teal-500" />, title: "Legal Advisors", description: "A network of legal professionals who provide guidance and representation for workers' rights cases.", image: "/pic3.jpg", gradient: "from-purple-500/30 to-transparent"
+              },
+              {
+                icon: <Shield className="h-10 w-10 text-teal-500" />, title: "Partner Organizations", description: "We collaborate with NGOs, unions, and advocacy groups to amplify our impact and reach.", image: "/pic4.jpg", gradient: "from-pink-500/30 to-transparent"
+              }
+            ].map((item, index) => (
+              <motion.div
+                key={index}
+                initial={{ opacity: 0, y: 30 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: index * 0.1 }}
+                className="relative group"
               >
-                <span className="inline-flex items-center text-teal-500 font-medium mt-4">
-                  Learn more
-                  <ArrowRight className="ml-2 h-4 w-4" />
-                </span>
-              </motion.div>
-            </div>
-          </div>
-        </motion.div>
-      ))}
-    </div>
-  </div>
-</section>
+                <div className="h-full rounded-2xl shadow-elevated overflow-hidden bg-card flex flex-col">
+                  {/* Image Section with Gradient Overlay */}
+                  <div className="relative h-48 overflow-hidden">
+                    <div className={`absolute inset-0 bg-gradient-to-tr ${item.gradient} z-10 opacity-70`}></div>
+                    <Image
+                      src={item.image}
+                      alt={item.title}
+                      fill
+                      className="object-cover transition-transform duration-700 group-hover:scale-105"
+                    />
+                    {/* Icon positioned on the image */}
+                    <div className="absolute bottom-5 right-0 m-4 z-20 h-14 w-14 rounded-2xl bg-background/70 backdrop-blur-sm flex items-center justify-center transform translate-y-1/2 group-hover:-translate-y-2 transition-transform duration-500">
+                      {item.icon}
+                    </div>
+                  </div>
 
-      <section className="py-16 bg-[#0F0F0F] dark:bg-[#0F0F0F] light:bg-[#F0F0F0]">
+                  {/* Content Section */}
+                  <div className="p-8 pt-10 flex-grow flex flex-col">
+                    <h3 className="text-2xl font-bold text-foreground mb-4">{item.title}</h3>
+                    <p className="text-muted-foreground text-lg leading-relaxed">{item.description}</p>
+                    {/* Hidden details that appear on hover */}
+                    <motion.div 
+                      initial={{ opacity: 0, height: 0 }}
+                      whileHover={{ opacity: 1, height: "auto" }}
+                      className="mt-4 overflow-hidden"
+                    >
+                      <span className="inline-flex items-center text-teal-500 font-medium mt-4">
+                        Learn more
+                        <ArrowRight className="ml-2 h-4 w-4" />
+                      </span>
+                    </motion.div>
+                  </div>
+                </div>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="py-24 bg-background">
         <div className="container mx-auto px-6 text-center">
           <motion.div
             initial={{ opacity: 0, y: 40 }}
@@ -616,10 +582,9 @@ export default function TeamPage() {
             transition={{ duration: 0.8 }}
             className="max-w-3xl mx-auto"
           >
-            <h2 className="text-3xl font-bold text-white dark:text-white light:text-gray-900 mb-6">Join Our Team</h2>
-            <p className="text-xl text-gray-300 dark:text-gray-300 light:text-gray-700 mb-8">
-              We're always looking for passionate individuals to join our mission of protecting workers' rights in
-              Kenya.
+            <h2 className="text-3xl font-bold text-foreground mb-6">Join Our Team</h2>
+            <p className="text-xl text-muted-foreground mb-8">
+              We're always looking for passionate individuals to join our mission of protecting workers' rights in Kenya.
             </p>
             <Button
               asChild

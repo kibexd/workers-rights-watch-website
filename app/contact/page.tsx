@@ -136,16 +136,16 @@ export default function ContactPage() {
   }
 
   return (
-    <div className="min-h-screen bg-[#0A0A0A] dark:bg-[#0A0A0A] light:bg-[#F8F9FA]">
-      <section className="relative py-32">
+    <div className="min-h-screen bg-background">
+      <section className="relative py-32 mb-16">
         <div className="absolute inset-0 z-0">
           <Image
             src="/ta5.jpg?height=600&width=1920"
             alt="Contact Us"
             fill
-            className="object-cover opacity-20 dark:opacity-20 light:opacity-10"
+            className="object-cover opacity-10"
           />
-          <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/50 to-[#0A0A0A] dark:from-black/70 dark:via-black/50 dark:to-[#0A0A0A] light:from-white/70 light:via-white/50 light:to-[#F8F9FA]"></div>
+          <div className="absolute inset-0 gradient-hero"></div>
         </div>
 
         <div className="container mx-auto px-6 relative z-10">
@@ -155,15 +155,15 @@ export default function ContactPage() {
             transition={{ duration: 0.8 }}
             className="text-center"
           >
-            <h1 className="text-5xl font-bold text-white dark:text-white light:text-gray-900 mb-6">Contact Us</h1>
-            <p className="text-xl text-gray-300 dark:text-gray-300 light:text-gray-700 max-w-3xl mx-auto">
+            <h1 className="text-5xl font-bold text-foreground mb-6">Contact Us</h1>
+            <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
               Get in touch with our team for inquiries, partnerships, or support.
             </p>
           </motion.div>
         </div>
       </section>
 
-      <section className="py-12 bg-[#0A0A0A] dark:bg-[#0A0A0A] light:bg-[#F8F9FA] relative">
+      <section className="py-24 bg-background mb-16 relative">
         <div className="container mx-auto px-6">
           <div className="grid md:grid-cols-3 gap-8">
             <motion.div
@@ -172,9 +172,9 @@ export default function ContactPage() {
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.8 }}
             >
-              <Card className="bg-[#111111] dark:bg-[#111111] light:bg-white border-0 overflow-hidden rounded-2xl shadow-xl">
+              <Card className="bg-card border-0 overflow-hidden rounded-2xl shadow-elevated">
                 <CardContent className="p-8">
-                  <h2 className="text-3xl font-bold text-white dark:text-white light:text-gray-900 mb-8">
+                  <h2 className="text-3xl font-bold text-foreground mb-8">
                     Send Us a Message
                   </h2>
 
@@ -183,10 +183,10 @@ export default function ContactPage() {
                       <div className="h-20 w-20 rounded-full bg-teal-500/10 flex items-center justify-center mb-6">
                         <CheckCircle className="h-10 w-10 text-teal-500" />
                       </div>
-                      <h3 className="text-2xl font-bold text-white dark:text-white light:text-gray-900 mb-2">
+                      <h3 className="text-2xl font-bold text-foreground mb-2">
                         Message Sent!
                       </h3>
-                      <p className="text-gray-400 dark:text-gray-400 light:text-gray-600 text-center max-w-md">
+                      <p className="text-muted-foreground text-center max-w-md">
                         Thank you for reaching out. We've received your message and will get back to you as soon as
                         possible.
                       </p>
@@ -195,7 +195,7 @@ export default function ContactPage() {
                     <form onSubmit={handleSubmit} className="space-y-6">
                       <div className="grid md:grid-cols-2 gap-6">
                         <div className="space-y-2">
-                          <Label htmlFor="name" className="text-white dark:text-white light:text-gray-900">
+                          <Label htmlFor="name" className="text-foreground">
                             Your Name *
                           </Label>
                           <Input
@@ -203,7 +203,7 @@ export default function ContactPage() {
                             value={formState.name}
                             onChange={handleChange}
                             placeholder="John Doe"
-                            className={`bg-[#1A1A1A] dark:bg-[#1A1A1A] light:bg-white border-0 rounded-xl h-12 focus:ring-2 focus:ring-teal-500 text-white dark:text-white light:text-gray-900 ${
+                            className={`bg-card border-0 rounded-xl h-12 focus:ring-2 focus:ring-teal-500 ${
                               formErrors.name ? "border-2 border-red-500" : ""
                             }`}
                             required
@@ -211,7 +211,7 @@ export default function ContactPage() {
                           {formErrors.name && <p className="text-red-500 text-sm mt-1">{formErrors.name}</p>}
                         </div>
                         <div className="space-y-2">
-                          <Label htmlFor="email" className="text-white dark:text-white light:text-gray-900">
+                          <Label htmlFor="email" className="text-foreground">
                             Your Email *
                           </Label>
                           <Input
@@ -220,7 +220,7 @@ export default function ContactPage() {
                             value={formState.email}
                             onChange={handleChange}
                             placeholder="john@example.com"
-                            className={`bg-[#1A1A1A] dark:bg-[#1A1A1A] light:bg-white border-0 rounded-xl h-12 focus:ring-2 focus:ring-teal-500 text-white dark:text-white light:text-gray-900 ${
+                            className={`bg-card border-0 rounded-xl h-12 focus:ring-2 focus:ring-teal-500 ${
                               formErrors.email ? "border-2 border-red-500" : ""
                             }`}
                             required
@@ -229,7 +229,7 @@ export default function ContactPage() {
                         </div>
                       </div>
                       <div className="space-y-2">
-                        <Label htmlFor="subject" className="text-white dark:text-white light:text-gray-900">
+                        <Label htmlFor="subject" className="text-foreground">
                           Subject *
                         </Label>
                         <Input
@@ -237,7 +237,7 @@ export default function ContactPage() {
                           value={formState.subject}
                           onChange={handleChange}
                           placeholder="How can we help you?"
-                          className={`bg-[#1A1A1A] dark:bg-[#1A1A1A] light:bg-white border-0 rounded-xl h-12 focus:ring-2 focus:ring-teal-500 text-white dark:text-white light:text-gray-900 ${
+                          className={`bg-card border-0 rounded-xl h-12 focus:ring-2 focus:ring-teal-500 ${
                             formErrors.subject ? "border-2 border-red-500" : ""
                           }`}
                           required
@@ -245,7 +245,7 @@ export default function ContactPage() {
                         {formErrors.subject && <p className="text-red-500 text-sm mt-1">{formErrors.subject}</p>}
                       </div>
                       <div className="space-y-2">
-                        <Label htmlFor="message" className="text-white dark:text-white light:text-gray-900">
+                        <Label htmlFor="message" className="text-foreground">
                           Message *
                         </Label>
                         <Textarea
@@ -253,7 +253,7 @@ export default function ContactPage() {
                           value={formState.message}
                           onChange={handleChange}
                           placeholder="Your message here..."
-                          className={`bg-[#1A1A1A] dark:bg-[#1A1A1A] light:bg-white border-0 rounded-xl min-h-[150px] focus:ring-2 focus:ring-teal-500 text-white dark:text-white light:text-gray-900 ${
+                          className={`bg-card border-0 rounded-xl min-h-[150px] focus:ring-2 focus:ring-teal-500 ${
                             formErrors.message ? "border-2 border-red-500" : ""
                           }`}
                           rows={6}
@@ -312,9 +312,9 @@ export default function ContactPage() {
             </motion.div>
 
             <motion.div initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.8 }}>
-              <Card className="bg-[#111111] dark:bg-[#111111] light:bg-white border-0 overflow-hidden rounded-2xl mb-8 shadow-xl">
+              <Card className="bg-card border-0 overflow-hidden rounded-2xl mb-8 shadow-elevated">
                 <CardContent className="p-8">
-                  <h2 className="text-2xl font-bold text-white dark:text-white light:text-gray-900 mb-6">
+                  <h2 className="text-2xl font-bold text-foreground mb-6">
                     Contact Information
                   </h2>
                   <div className="space-y-6">
@@ -323,8 +323,8 @@ export default function ContactPage() {
                         <MapPin className="h-6 w-6 text-teal-500" />
                       </div>
                       <div>
-                        <h3 className="text-white dark:text-white light:text-gray-900 font-bold mb-1">Address</h3>
-                        <p className="text-gray-400 dark:text-gray-400 light:text-gray-600">
+                        <h3 className="text-foreground font-bold mb-1">Address</h3>
+                        <p className="text-muted-foreground">
                           P.O. Box 00232-1516, Ruiru, Kenya
                         </p>
                       </div>
@@ -334,9 +334,9 @@ export default function ContactPage() {
                         <Phone className="h-6 w-6 text-teal-500" />
                       </div>
                       <div>
-                        <h3 className="text-white dark:text-white light:text-gray-900 font-bold mb-1">Phone</h3>
-                        <p className="text-gray-400 dark:text-gray-400 light:text-gray-600">+254(0)20-2605660</p>
-                        <p className="text-gray-400 dark:text-gray-400 light:text-gray-600">+254(0)775366920</p>
+                        <h3 className="text-foreground font-bold mb-1">Phone</h3>
+                        <p className="text-muted-foreground">+254(0)20-2605660</p>
+                        <p className="text-muted-foreground">+254(0)775366920</p>
                       </div>
                     </div>
                     <div className="flex items-start space-x-4">
@@ -344,8 +344,8 @@ export default function ContactPage() {
                         <Mail className="h-6 w-6 text-teal-500" />
                       </div>
                       <div>
-                        <h3 className="text-white dark:text-white light:text-gray-900 font-bold mb-1">Email</h3>
-                        <p className="text-gray-400 dark:text-gray-400 light:text-gray-600">
+                        <h3 className="text-foreground font-bold mb-1">Email</h3>
+                        <p className="text-muted-foreground">
                           info@workersrightswatch.org
                         </p>
                       </div>
@@ -355,11 +355,11 @@ export default function ContactPage() {
                         <Clock className="h-6 w-6 text-teal-500" />
                       </div>
                       <div>
-                        <h3 className="text-white dark:text-white light:text-gray-900 font-bold mb-1">Working Hours</h3>
-                        <p className="text-gray-400 dark:text-gray-400 light:text-gray-600">
+                        <h3 className="text-foreground font-bold mb-1">Working Hours</h3>
+                        <p className="text-muted-foreground">
                           Monday - Friday: 8:00 AM - 5:00 PM
                         </p>
-                        <p className="text-gray-400 dark:text-gray-400 light:text-gray-600">
+                        <p className="text-muted-foreground">
                           Saturday - Sunday: Closed
                         </p>
                       </div>
@@ -368,9 +368,9 @@ export default function ContactPage() {
                 </CardContent>
               </Card>
 
-              <Card className="bg-[#111111] dark:bg-[#111111] light:bg-white border-0 overflow-hidden rounded-2xl shadow-xl">
+              <Card className="bg-card border-0 overflow-hidden rounded-2xl shadow-elevated">
                 <CardContent className="p-8">
-                  <h2 className="text-2xl font-bold text-white dark:text-white light:text-gray-900 mb-6">
+                  <h2 className="text-2xl font-bold text-foreground mb-6">
                     Connect With Us
                   </h2>
                   <div className="flex flex-wrap gap-4">
@@ -431,9 +431,9 @@ export default function ContactPage() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.4 }}
           >
-            <Card className="bg-[#111111] dark:bg-[#111111] light:bg-white border-0 overflow-hidden rounded-2xl shadow-xl">
+            <Card className="bg-card border-0 overflow-hidden rounded-2xl shadow-elevated">
               <CardContent className="p-0">
-                <h2 className="text-2xl font-bold text-white dark:text-white light:text-gray-900 p-8">Our Location</h2>
+                <h2 className="text-2xl font-bold text-foreground p-8">Our Location</h2>
                 <div className="relative h-[400px] w-full">
                   <iframe 
                     src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3988.985697429829!2d36.82515217537938!3d-1.1705576355114375!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x182f3c60950af6e7%3A0xc3a1d73136233d45!2sBiashara%20St%2C%20Kiambu!5e0!3m2!1sen!2ske!4v1749370301781!5m2!1sen!2ske" 

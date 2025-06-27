@@ -391,17 +391,17 @@ export default function DonatePage() {
   const showMpesa = currency.code === "KES"
 
   return (
-    <div className="min-h-screen bg-[#0A0A0A] dark:bg-[#0A0A0A] light:bg-[#F8F9FA] text-white dark:text-white light:text-gray-900 flex flex-col">
+    <div className="min-h-screen bg-background text-foreground flex flex-col">
       {/* Header section */}
-      <section className="relative py-32">
+      <section className="relative py-32 mb-16">
         <div className="absolute inset-0 z-0">
           <Image
             src="/Donate.jpg?height=600&width=1920"
             alt="Donate to Workers Rights Watch"
             fill
-            className="object-cover opacity-20 dark:opacity-20 light:opacity-10"
+            className="object-cover opacity-10"
           />
-          <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/50 to-[#0A0A0A] dark:from-black/70 dark:via-black/50 dark:to-[#0A0A0A] light:from-white/70 light:via-white/50 light:to-[#F8F9FA]"></div>
+          <div className="absolute inset-0 gradient-hero"></div>
         </div>
 
         <div className="container mx-auto px-6 relative z-10 text-center">
@@ -411,7 +411,7 @@ export default function DonatePage() {
             transition={{ duration: 0.8 }}
           >
             <h1 className="text-5xl font-bold mb-6">Support Workers' Rights</h1>
-            <p className="text-xl text-gray-300 dark:text-gray-300 light:text-gray-700 max-w-3xl mx-auto">
+            <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
               Your generous contribution helps us champion workers' rights, provide legal aid, and educate communities across Kenya.
             </p>
           </motion.div>
@@ -419,114 +419,17 @@ export default function DonatePage() {
       </section>
 
       {/* Main content section */}
-      <section className="flex-grow py-16 bg-[#0F0F0F] dark:bg-[#0F0F0F] light:bg-[#F0F0F0] flex items-center justify-center">
+      <section className="flex-grow py-24 bg-background flex items-center justify-center">
         <div className="container mx-auto px-6">
           <div className="text-center">
-            <h2 className="text-3xl font-bold text-white dark:text-white light:text-gray-900 mb-6">Donation Page Under Construction</h2>
-            <p className="text-xl text-gray-400 dark:text-gray-400 light:text-gray-700 max-w-2xl mx-auto">
+            <h2 className="text-3xl font-bold text-foreground mb-6">Donation Page Under Construction</h2>
+            <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
               We are currently working on our online donation system.
             </p>
-            <p className="text-xl text-gray-400 dark:text-gray-400 light:text-gray-700 max-w-2xl mx-auto mt-4">
+            <p className="text-xl text-muted-foreground max-w-2xl mx-auto mt-4">
               It will be live soon. Thank you for your patience!
             </p>
-            {/* Optionally add a link to contact page or physical donation info */}
-            {/* <div className="mt-8">
-              <Button asChild variant="outline" className="text-teal-500 border-teal-500 hover:bg-teal-500 hover:text-black rounded-full">
-                <Link href="/contact">Contact Us</Link>
-              </Button>
-            </div> */}
           </div>
-
-          {/* Existing form/payment elements commented out */}
-          {/*
-          {isLoading ? (
-            <div className="text-center">
-              <Loading size={60} color="#10bfae" message="Loading donation options..." />
-            </div>
-          ) : (
-            <div className="max-w-md mx-auto bg-[#1A1A1A] dark:bg-[#1A1A1A] light:bg-white rounded-2xl shadow-xl p-8">
-              <h2 className="text-3xl font-bold text-white dark:text-white light:text-gray-900 mb-8 text-center">Make a Donation</h2>
-
-              <form onSubmit={handleSubmit}>
-                {/* Amount selection *
-                <div className="mb-8">
-                  <label className="block text-gray-400 dark:text-gray-400 light:text-gray-700 text-sm font-medium mb-3">Select Amount ({currency})</label>
-                  <div className="grid grid-cols-3 gap-4">
-                    {amountOptions.map((optionAmount) => ( // amounts are in USD base
-                      <Button
-                        key={optionAmount}
-                        variant={amount === convertAmount(optionAmount) ? "default" : "outline"}
-                        className={`${
-                          amount === convertAmount(optionAmount)
-                            ? "bg-teal-500 text-black hover:bg-teal-600"
-                            : "text-teal-500 border-teal-500 hover:bg-teal-500/10"
-                        } rounded-full`}
-                        onClick={() => handleAmountChange(convertAmount(optionAmount).toString())}
-                        type="button"
-                      >
-                        {formatAmount(convertAmount(optionAmount))}
-                      </Button>
-                    ))}
-                  </div>
-
-                  {/* Custom Amount *
-                  <div className="mt-6">
-                    <label htmlFor="custom-amount" className="block text-gray-400 dark:text-gray-400 light:text-gray-700 text-sm font-medium mb-3">Or Enter Custom Amount ({currency})</label>
-                    <Input
-                      id="custom-amount"
-                      type="number"
-                      placeholder="e.g., 200"
-                      value={customAmount}
-                      onChange={handleCustomAmountChange}
-                      className="w-full px-4 py-3 bg-[#111111] dark:bg-[#111111] light:bg-gray-100 border border-gray-700 dark:border-gray-700 light:border-gray-300 rounded-full text-white dark:text-white light:text-gray-900 focus:ring-teal-500 focus:border-teal-500"
-                    />
-                  </div>
-                </div>
-
-                {/* Currency Selection *
-                <div className="mb-8">
-                  <label className="block text-gray-400 dark:text-gray-400 light:text-gray-700 text-sm font-medium mb-3">Select Currency</label>
-                  <select
-                    value={currency}
-                    onChange={(e) => handleCurrencyChange(e.target.value)}
-                    className="w-full px-4 py-3 bg-[#111111] dark:bg-[#111111] light:bg-gray-100 border border-gray-700 dark:border-gray-700 light:border-gray-300 rounded-full text-white dark:text-white light:text-gray-900 focus:ring-teal-500 focus:border-teal-500 appearance-none"
-                  >
-                    {Object.keys(availableCurrencies).map((code) => (
-                      <option key={code} value={code}>{code}</option>
-                    ))}
-                  </select>
-                </div>
-
-                {/* Stripe Payment Element *
-                {clientSecret && elements && (
-                  <div className="mb-8">
-                    <PaymentElement />
-                  </div>
-                )}
-
-                {/* Submit Button *
-                <Button
-                  type="submit"
-                  className="w-full bg-teal-500 hover:bg-teal-600 text-black font-medium rounded-full py-6 text-lg"
-                  disabled={isSubmitting || !stripe || !elements || getActualAmount() <= 0}
-                >
-                  {isSubmitting ? (
-                    <div className="flex items-center">
-                      <svg className="animate-spin -ml-1 mr-3 h-5 w-5 text-black" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
-                        <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
-                        <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
-                      </svg>
-                      Processing...
-                    </div>
-                  ) : (
-                    `Donate ${getActualAmount() > 0 ? formatAmount(getActualAmount()) : ''}`
-                  )}
-                </Button>
-              </form>
-            </div>
-          )}
-          */}
-
         </div>
       </section>
     </div>
