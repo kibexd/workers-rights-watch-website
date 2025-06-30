@@ -54,6 +54,39 @@ body {
   --glass-border: 1px solid rgba(168,191,193,0.25);
 }
 
+/* Dark theme overrides */
+:root.dark {
+  --background: 222 47% 8%; /* #0A0A0A */
+  --foreground: 0 0% 98%; /* #FAFAFA */
+  --card: 222 30% 12%; /* #181A1B */
+  --card-foreground: 0 0% 98%; /* #FAFAFA */
+  --popover: 222 30% 12%; /* #181A1B */
+  --popover-foreground: 0 0% 98%; /* #FAFAFA */
+  --primary: 172 100% 38%; /* #10bfae */
+  --primary-foreground: 0 0% 100%; /* #fff */
+  --secondary: 222 16% 18%; /* #23272A */
+  --secondary-foreground: 0 0% 98%; /* #FAFAFA */
+  --muted: 222 16% 24%; /* #2C3136 */
+  --muted-foreground: 0 0% 70%; /* #B0B0B0 */
+  --accent: 13 77% 55%; /* #FF5733 */
+  --accent-foreground: 0 0% 100%; /* #fff */
+  --border: 222 16% 24%; /* #2C3136 */
+  --input: 222 16% 24%; /* #2C3136 */
+  --ring: 172 100% 38%; /* #10bfae */
+  --radius: 0.75rem;
+
+  /* Gradients */
+  --gradient-hero: linear-gradient(135deg, #181A1B 0%, #23272A 60%, #10bfae 100%);
+  --gradient-card: linear-gradient(120deg, #23272A 60%, #2C3136 100%);
+  --gradient-button: linear-gradient(90deg, #10bfae 0%, #FF5733 100%);
+  --gradient-badge: linear-gradient(90deg, #FF5733 0%, #10bfae 100%);
+
+  /* Glassmorphism */
+  --glass-bg: rgba(24,26,27,0.7);
+  --glass-blur: 16px;
+  --glass-border: 1px solid rgba(44,49,54,0.25);
+}
+
 @layer utilities {
   .text-balance {
     text-wrap: balance;

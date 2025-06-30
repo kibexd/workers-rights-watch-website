@@ -498,81 +498,81 @@ export default function TeamPage() {
 
       {/* Who We Work With Section */}
       <section className="py-24 bg-secondary mb-16 overflow-hidden">
-        <div className="container mx-auto px-6">
-          <motion.div
-            initial={{ opacity: 0, y: 40 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
+  <div className="container mx-auto px-6">
+    <motion.div
+      initial={{ opacity: 0, y: 40 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.8 }}
             className="text-center mb-16"
-          >
+    >
             <h2 className="text-4xl font-bold text-foreground mb-4">
-              Who We Work With
-            </h2>
+        Who We Work With
+      </h2>
             <p className="text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
-              Workers Rights Watch collaborates with a diverse network of individuals and groups who support our mission in many ways.
-            </p>
-          </motion.div>
+        Workers Rights Watch collaborates with a diverse network of individuals and groups who support our mission in many ways.
+      </p>
+    </motion.div>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-10">
-            {[
-              {
+    <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-10">
+      {[
+        {
                 icon: <Users className="h-10 w-10 text-teal-500" />, title: "Workers' Assemblies", description: "Grassroots groups of workers who provide insights, feedback, and mobilize for collective action.", image: "/pic2.jpg", gradient: "from-teal-500/30 to-transparent"
-              },
-              {
+        },
+        {
                 icon: <Scale className="h-10 w-10 text-teal-500" />, title: "Community Leaders", description: "Local champions who help us reach and empower workers in their communities.", image: "/pic7.jpg", gradient: "from-blue-500/30 to-transparent"
-              },
-              {
+        },
+        {
                 icon: <FileText className="h-10 w-10 text-teal-500" />, title: "Legal Advisors", description: "A network of legal professionals who provide guidance and representation for workers' rights cases.", image: "/pic3.jpg", gradient: "from-purple-500/30 to-transparent"
-              },
-              {
+        },
+        {
                 icon: <Shield className="h-10 w-10 text-teal-500" />, title: "Partner Organizations", description: "We collaborate with NGOs, unions, and advocacy groups to amplify our impact and reach.", image: "/pic4.jpg", gradient: "from-pink-500/30 to-transparent"
-              }
-            ].map((item, index) => (
-              <motion.div
-                key={index}
-                initial={{ opacity: 0, y: 30 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: index * 0.1 }}
-                className="relative group"
-              >
+        }
+      ].map((item, index) => (
+        <motion.div
+          key={index}
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5, delay: index * 0.1 }}
+          className="relative group"
+        >
                 <div className="h-full rounded-2xl shadow-elevated overflow-hidden bg-card flex flex-col">
-                  {/* Image Section with Gradient Overlay */}
-                  <div className="relative h-48 overflow-hidden">
-                    <div className={`absolute inset-0 bg-gradient-to-tr ${item.gradient} z-10 opacity-70`}></div>
-                    <Image
-                      src={item.image}
-                      alt={item.title}
-                      fill
-                      className="object-cover transition-transform duration-700 group-hover:scale-105"
-                    />
-                    {/* Icon positioned on the image */}
+            {/* Image Section with Gradient Overlay */}
+            <div className="relative h-48 overflow-hidden">
+              <div className={`absolute inset-0 bg-gradient-to-tr ${item.gradient} z-10 opacity-70`}></div>
+              <Image
+                src={item.image}
+                alt={item.title}
+                fill
+                className="object-cover transition-transform duration-700 group-hover:scale-105"
+              />
+              {/* Icon positioned on the image */}
                     <div className="absolute bottom-5 right-0 m-4 z-20 h-14 w-14 rounded-2xl bg-background/70 backdrop-blur-sm flex items-center justify-center transform translate-y-1/2 group-hover:-translate-y-2 transition-transform duration-500">
-                      {item.icon}
-                    </div>
-                  </div>
+                {item.icon}
+              </div>
+            </div>
 
-                  {/* Content Section */}
-                  <div className="p-8 pt-10 flex-grow flex flex-col">
+            {/* Content Section */}
+            <div className="p-8 pt-10 flex-grow flex flex-col">
                     <h3 className="text-2xl font-bold text-foreground mb-4">{item.title}</h3>
                     <p className="text-muted-foreground text-lg leading-relaxed">{item.description}</p>
-                    {/* Hidden details that appear on hover */}
-                    <motion.div 
-                      initial={{ opacity: 0, height: 0 }}
-                      whileHover={{ opacity: 1, height: "auto" }}
-                      className="mt-4 overflow-hidden"
-                    >
-                      <span className="inline-flex items-center text-teal-500 font-medium mt-4">
-                        Learn more
-                        <ArrowRight className="ml-2 h-4 w-4" />
-                      </span>
-                    </motion.div>
-                  </div>
-                </div>
+              {/* Hidden details that appear on hover */}
+              <motion.div 
+                initial={{ opacity: 0, height: 0 }}
+                whileHover={{ opacity: 1, height: "auto" }}
+                className="mt-4 overflow-hidden"
+              >
+                <span className="inline-flex items-center text-teal-500 font-medium mt-4">
+                  Learn more
+                  <ArrowRight className="ml-2 h-4 w-4" />
+                </span>
               </motion.div>
-            ))}
+            </div>
           </div>
-        </div>
-      </section>
+        </motion.div>
+      ))}
+    </div>
+  </div>
+</section>
 
       <section className="py-24 bg-background">
         <div className="container mx-auto px-6 text-center">

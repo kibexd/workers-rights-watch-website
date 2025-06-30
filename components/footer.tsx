@@ -141,7 +141,7 @@ export default function Footer() {
             <div className="text-sm text-center mb-4 md:mb-0">
               Designed and built by{' '}
               <a
-                href="https://github.com/kife"
+                href="https://kife254.netlify.app"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-teal-500 hover:text-teal-400"

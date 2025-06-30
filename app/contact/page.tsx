@@ -32,109 +32,6 @@ interface FormErrors {
 }
 
 export default function ContactPage() {
-  const [formState, setFormState] = useState({
-    name: "",
-    email: "",
-    subject: "",
-    message: "",
-  })
-
-  const [isSubmitting, setIsSubmitting] = useState(false)
-  const [isSubmitted, setIsSubmitted] = useState(false)
-  const [formErrors, setFormErrors] = useState<FormErrors>({})
-
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-    const { id, value } = e.target
-    setFormState((prev) => ({ ...prev, [id]: value }))
-
-    // Clear error for this field if it exists
-    if (formErrors[id as keyof FormErrors]) {
-      setFormErrors((prev) => {
-        const newErrors = { ...prev }
-        delete newErrors[id as keyof FormErrors]
-        return newErrors
-      })
-    }
-  }
-
-  const validateForm = () => {
-    const errors: FormErrors = {}
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
-
-    if (!formState.name.trim()) errors.name = "Name is required"
-    if (!formState.email.trim()) errors.email = "Email is required"
-    else if (!emailRegex.test(formState.email)) errors.email = "Invalid email format"
-    if (!formState.subject.trim()) errors.subject = "Subject is required"
-    if (!formState.message.trim()) errors.message = "Message is required"
-
-    return errors
-  }
-
-  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault()
-
-    // Validate form
-    const errors = validateForm()
-    if (Object.keys(errors).length > 0) {
-      setFormErrors(errors)
-      return
-    }
-
-    setIsSubmitting(true)
-
-    try {
-      // Create form data to send
-      const formData = new FormData()
-      formData.append("name", formState.name)
-      formData.append("email", formState.email)
-      formData.append("subject", formState.subject)
-      formData.append("message", formState.message)
-
-      // In a real implementation, you would send this to your server
-      // For now, we'll simulate a successful submission
-      console.log("Contact form submitted:", formState)
-
-      // Simulate sending an email notification
-      console.log("Sending notification email to: kibeenock7390@gmail.com")
-
-      // Send email using API route
-      const response = await fetch("/api/send-email", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          name: formState.name,
-          email: formState.email,
-          subject: formState.subject,
-          message: formState.message,
-        }),
-      })
-
-      if (!response.ok) {
-        throw new Error("Failed to send email")
-      }
-
-      setIsSubmitted(true)
-
-      // Reset form after 5 seconds
-      setTimeout(() => {
-        setIsSubmitted(false)
-        setFormState({
-          name: "",
-          email: "",
-          subject: "",
-          message: "",
-        })
-      }, 5000)
-    } catch (error) {
-      console.error("Error submitting form:", error)
-      setFormErrors({ submit: "Failed to submit form. Please try again." })
-    } finally {
-      setIsSubmitting(false)
-    }
-  }
-
   return (
     <div className="min-h-screen bg-background">
       <section className="relative py-32 mb-16">
@@ -157,7 +54,7 @@ export default function ContactPage() {
           >
             <h1 className="text-5xl font-bold text-foreground mb-6">Contact Us</h1>
             <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-              Get in touch with our team for inquiries, partnerships, or support.
+              Workers Rights Watch is here to support, inform, and empower workers across Kenya. Reach out to us for questions, partnerships, or support. We look forward to hearing from you!
             </p>
           </motion.div>
         </div>
@@ -165,220 +62,69 @@ export default function ContactPage() {
 
       <section className="py-24 bg-background mb-16 relative">
         <div className="container mx-auto px-6">
-          <div className="grid md:grid-cols-3 gap-8">
+          <div className="grid md:grid-cols-4 gap-8">
             <motion.div
-              className="md:col-span-2"
-              initial={{ opacity: 0, x: -20 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.8 }}
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.7 }}
             >
-              <Card className="bg-card border-0 overflow-hidden rounded-2xl shadow-elevated">
-                <CardContent className="p-8">
-                  <h2 className="text-3xl font-bold text-foreground mb-8">
-                    Send Us a Message
-                  </h2>
-
-                  {isSubmitted ? (
-                    <div className="flex flex-col items-center justify-center py-12">
-                      <div className="h-20 w-20 rounded-full bg-teal-500/10 flex items-center justify-center mb-6">
-                        <CheckCircle className="h-10 w-10 text-teal-500" />
+              <div className="glass p-8 rounded-2xl flex flex-col items-center text-center shadow-elevated h-full">
+                <div className="h-14 w-14 rounded-full bg-teal-500/10 flex items-center justify-center mb-4">
+                  <MapPin className="h-7 w-7 text-teal-500" />
                       </div>
-                      <h3 className="text-2xl font-bold text-foreground mb-2">
-                        Message Sent!
-                      </h3>
-                      <p className="text-muted-foreground text-center max-w-md">
-                        Thank you for reaching out. We've received your message and will get back to you as soon as
-                        possible.
-                      </p>
+                <h3 className="text-lg font-bold text-foreground mb-2">Address</h3>
+                <p className="text-muted-foreground">P.O. Box 00232-1516, Ruiru, Kenya</p>
                     </div>
-                  ) : (
-                    <form onSubmit={handleSubmit} className="space-y-6">
-                      <div className="grid md:grid-cols-2 gap-6">
-                        <div className="space-y-2">
-                          <Label htmlFor="name" className="text-foreground">
-                            Your Name *
-                          </Label>
-                          <Input
-                            id="name"
-                            value={formState.name}
-                            onChange={handleChange}
-                            placeholder="John Doe"
-                            className={`bg-card border-0 rounded-xl h-12 focus:ring-2 focus:ring-teal-500 ${
-                              formErrors.name ? "border-2 border-red-500" : ""
-                            }`}
-                            required
-                          />
-                          {formErrors.name && <p className="text-red-500 text-sm mt-1">{formErrors.name}</p>}
-                        </div>
-                        <div className="space-y-2">
-                          <Label htmlFor="email" className="text-foreground">
-                            Your Email *
-                          </Label>
-                          <Input
-                            id="email"
-                            type="email"
-                            value={formState.email}
-                            onChange={handleChange}
-                            placeholder="john@example.com"
-                            className={`bg-card border-0 rounded-xl h-12 focus:ring-2 focus:ring-teal-500 ${
-                              formErrors.email ? "border-2 border-red-500" : ""
-                            }`}
-                            required
-                          />
-                          {formErrors.email && <p className="text-red-500 text-sm mt-1">{formErrors.email}</p>}
-                        </div>
-                      </div>
-                      <div className="space-y-2">
-                        <Label htmlFor="subject" className="text-foreground">
-                          Subject *
-                        </Label>
-                        <Input
-                          id="subject"
-                          value={formState.subject}
-                          onChange={handleChange}
-                          placeholder="How can we help you?"
-                          className={`bg-card border-0 rounded-xl h-12 focus:ring-2 focus:ring-teal-500 ${
-                            formErrors.subject ? "border-2 border-red-500" : ""
-                          }`}
-                          required
-                        />
-                        {formErrors.subject && <p className="text-red-500 text-sm mt-1">{formErrors.subject}</p>}
-                      </div>
-                      <div className="space-y-2">
-                        <Label htmlFor="message" className="text-foreground">
-                          Message *
-                        </Label>
-                        <Textarea
-                          id="message"
-                          value={formState.message}
-                          onChange={handleChange}
-                          placeholder="Your message here..."
-                          className={`bg-card border-0 rounded-xl min-h-[150px] focus:ring-2 focus:ring-teal-500 ${
-                            formErrors.message ? "border-2 border-red-500" : ""
-                          }`}
-                          rows={6}
-                          required
-                        />
-                        {formErrors.message && <p className="text-red-500 text-sm mt-1">{formErrors.message}</p>}
-                      </div>
-
-                      {formErrors.submit && (
-                        <div className="bg-red-500/20 p-3 rounded-lg flex items-start">
-                          <AlertCircle className="h-5 w-5 text-red-500 mr-2 mt-0.5 flex-shrink-0" />
-                          <p className="text-red-500 text-sm">{formErrors.submit}</p>
-                        </div>
-                      )}
-
-                      <Button
-                        type="submit"
-                        className="w-full bg-teal-500 hover:bg-teal-600 text-black font-medium rounded-full h-12 flex items-center justify-center"
-                        disabled={isSubmitting}
-                      >
-                        {isSubmitting ? (
-                          <div className="flex items-center">
-                            <svg
-                              className="animate-spin -ml-1 mr-3 h-5 w-5 text-black"
-                              xmlns="http://www.w3.org/2000/svg"
-                              fill="none"
-                              viewBox="0 0 24 24"
-                            >
-                              <circle
-                                className="opacity-25"
-                                cx="12"
-                                cy="12"
-                                r="10"
-                                stroke="currentColor"
-                                strokeWidth="4"
-                              ></circle>
-                              <path
-                                className="opacity-75"
-                                fill="currentColor"
-                                d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
-                              ></path>
-                            </svg>
-                            Sending...
-                          </div>
-                        ) : (
-                          <div className="flex items-center">
-                            <Send className="mr-2 h-5 w-5" />
-                            Send Message
-                          </div>
-                        )}
-                      </Button>
-                    </form>
-                  )}
-                </CardContent>
-              </Card>
             </motion.div>
-
-            <motion.div initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.8 }}>
-              <Card className="bg-card border-0 overflow-hidden rounded-2xl mb-8 shadow-elevated">
-                <CardContent className="p-8">
-                  <h2 className="text-2xl font-bold text-foreground mb-6">
-                    Contact Information
-                  </h2>
-                  <div className="space-y-6">
-                    <div className="flex items-start space-x-4">
-                      <div className="h-12 w-12 rounded-full bg-teal-500/10 flex items-center justify-center flex-shrink-0">
-                        <MapPin className="h-6 w-6 text-teal-500" />
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.7, delay: 0.1 }}
+            >
+              <div className="glass p-8 rounded-2xl flex flex-col items-center text-center shadow-elevated h-full">
+                <div className="h-14 w-14 rounded-full bg-teal-500/10 flex items-center justify-center mb-4">
+                  <Phone className="h-7 w-7 text-teal-500" />
+                        </div>
+                <h3 className="text-lg font-bold text-foreground mb-2">Phone</h3>
+                <a href="tel:+254202605660" className="text-teal-500 hover:underline block">+254(0)20-2605660</a>
+                <a href="tel:+254775366920" className="text-teal-500 hover:underline block">+254(0)775366920</a>
+                        </div>
+            </motion.div>
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.7, delay: 0.2 }}
+            >
+              <div className="glass p-8 rounded-2xl flex flex-col items-center text-center shadow-elevated h-full">
+                <div className="h-14 w-14 rounded-full bg-teal-500/10 flex items-center justify-center mb-4">
+                  <Mail className="h-7 w-7 text-teal-500" />
                       </div>
-                      <div>
-                        <h3 className="text-foreground font-bold mb-1">Address</h3>
-                        <p className="text-muted-foreground">
-                          P.O. Box 00232-1516, Ruiru, Kenya
-                        </p>
+                <h3 className="text-lg font-bold text-foreground mb-2">Email</h3>
+                <a href="mailto:info@workersrightswatch.org" className="text-teal-500 hover:underline block">info@workersrightswatch.org</a>
                       </div>
-                    </div>
-                    <div className="flex items-start space-x-4">
-                      <div className="h-12 w-12 rounded-full bg-teal-500/10 flex items-center justify-center flex-shrink-0">
-                        <Phone className="h-6 w-6 text-teal-500" />
-                      </div>
-                      <div>
-                        <h3 className="text-foreground font-bold mb-1">Phone</h3>
-                        <p className="text-muted-foreground">+254(0)20-2605660</p>
-                        <p className="text-muted-foreground">+254(0)775366920</p>
-                      </div>
-                    </div>
-                    <div className="flex items-start space-x-4">
-                      <div className="h-12 w-12 rounded-full bg-teal-500/10 flex items-center justify-center flex-shrink-0">
-                        <Mail className="h-6 w-6 text-teal-500" />
-                      </div>
-                      <div>
-                        <h3 className="text-foreground font-bold mb-1">Email</h3>
-                        <p className="text-muted-foreground">
-                          info@workersrightswatch.org
-                        </p>
-                      </div>
-                    </div>
-                    <div className="flex items-start space-x-4">
-                      <div className="h-12 w-12 rounded-full bg-teal-500/10 flex items-center justify-center flex-shrink-0">
-                        <Clock className="h-6 w-6 text-teal-500" />
-                      </div>
-                      <div>
-                        <h3 className="text-foreground font-bold mb-1">Working Hours</h3>
-                        <p className="text-muted-foreground">
-                          Monday - Friday: 8:00 AM - 5:00 PM
-                        </p>
-                        <p className="text-muted-foreground">
-                          Saturday - Sunday: Closed
-                        </p>
-                      </div>
-                    </div>
+            </motion.div>
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.7, delay: 0.3 }}
+            >
+              <div className="glass p-8 rounded-2xl flex flex-col items-center text-center shadow-elevated h-full">
+                <div className="h-14 w-14 rounded-full bg-teal-500/10 flex items-center justify-center mb-4">
+                  <Clock className="h-7 w-7 text-teal-500" />
+                          </div>
+                <h3 className="text-lg font-bold text-foreground mb-2">Working Hours</h3>
+                <p className="text-muted-foreground">Mon - Fri: 8:00 AM - 5:00 PM</p>
+                <p className="text-muted-foreground">Sat - Sun: Closed</p>
+                          </div>
+            </motion.div>
                   </div>
-                </CardContent>
-              </Card>
 
-              <Card className="bg-card border-0 overflow-hidden rounded-2xl shadow-elevated">
-                <CardContent className="p-8">
-                  <h2 className="text-2xl font-bold text-foreground mb-6">
-                    Connect With Us
-                  </h2>
-                  <div className="flex flex-wrap gap-4">
+          <div className="flex flex-wrap gap-4 justify-center mt-12">
                     <a
                       href="https://web.facebook.com/people/Workersrightswatchke/61572243038226/"
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="h-12 w-12 rounded-full bg-teal-500/10 flex items-center justify-center text-teal-500 hover:bg-teal-500 hover:text-black transition-colors"
+              className="h-12 w-12 rounded-full glass flex items-center justify-center text-teal-500 hover:bg-teal-500 hover:text-black transition-colors"
                       aria-label="Facebook"
                     >
                       <Facebook className="h-6 w-6" />
@@ -387,7 +133,7 @@ export default function ContactPage() {
                       href="https://x.com/Workersrights24"
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="h-12 w-12 rounded-full bg-teal-500/10 flex items-center justify-center text-teal-500 hover:bg-teal-500 hover:text-black transition-colors"
+              className="h-12 w-12 rounded-full glass flex items-center justify-center text-teal-500 hover:bg-teal-500 hover:text-black transition-colors"
                       aria-label="Twitter"
                     >
                       <Twitter className="h-6 w-6" />
@@ -396,7 +142,7 @@ export default function ContactPage() {
                       href="https://www.instagram.com/workersrightswatch_ke/"
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="h-12 w-12 rounded-full bg-teal-500/10 flex items-center justify-center text-teal-500 hover:bg-teal-500 hover:text-black transition-colors"
+              className="h-12 w-12 rounded-full glass flex items-center justify-center text-teal-500 hover:bg-teal-500 hover:text-black transition-colors"
                       aria-label="Instagram"
                     >
                       <Instagram className="h-6 w-6" />
@@ -405,7 +151,7 @@ export default function ContactPage() {
                       href="https://www.linkedin.com/company/106499488/admin/dashboard/"
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="h-12 w-12 rounded-full bg-teal-500/10 flex items-center justify-center text-teal-500 hover:bg-teal-500 hover:text-black transition-colors"
+              className="h-12 w-12 rounded-full glass flex items-center justify-center text-teal-500 hover:bg-teal-500 hover:text-black transition-colors"
                       aria-label="LinkedIn"
                     >
                       <LinkedIn className="h-6 w-6" />
@@ -414,26 +160,21 @@ export default function ContactPage() {
                       href="https://www.youtube.com/@workersrightswatch254"
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="h-12 w-12 rounded-full bg-teal-500/10 flex items-center justify-center text-teal-500 hover:bg-teal-500 hover:text-black transition-colors"
+              className="h-12 w-12 rounded-full glass flex items-center justify-center text-teal-500 hover:bg-teal-500 hover:text-black transition-colors"
                       aria-label="YouTube"
                     >
                       <Youtube className="h-6 w-6" />
                     </a>
-                  </div>
-                </CardContent>
-              </Card>
-            </motion.div>
           </div>
 
           <motion.div
-            className="mt-12"
+            className="mt-16"
             initial={{ opacity: 0, y: 40 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.4 }}
           >
-            <Card className="bg-card border-0 overflow-hidden rounded-2xl shadow-elevated">
-              <CardContent className="p-0">
-                <h2 className="text-2xl font-bold text-foreground p-8">Our Location</h2>
+            <div className="glass rounded-2xl overflow-hidden shadow-elevated">
+              <h2 className="text-2xl font-bold text-foreground p-8 text-center">Our Location</h2>
                 <div className="relative h-[400px] w-full">
                   <iframe 
                     src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3988.985697429829!2d36.82515217537938!3d-1.1705576355114375!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x182f3c60950af6e7%3A0xc3a1d73136233d45!2sBiashara%20St%2C%20Kiambu!5e0!3m2!1sen!2ske!4v1749370301781!5m2!1sen!2ske" 
@@ -445,8 +186,40 @@ export default function ContactPage() {
                     referrerPolicy="no-referrer-when-downgrade"
                   />
                 </div>
-              </CardContent>
-            </Card>
+            </div>
+          </motion.div>
+
+          <motion.div
+            className="mt-20 max-w-3xl mx-auto"
+            initial={{ opacity: 0, y: 40 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.6 }}
+          >
+            <div className="glass rounded-2xl shadow-elevated p-8">
+              <h2 className="text-2xl font-bold text-foreground mb-6 text-center">Frequently Asked Questions</h2>
+              <div className="space-y-6">
+                <div>
+                  <h3 className="font-semibold text-foreground mb-1">Who can contact Workers Rights Watch?</h3>
+                  <p className="text-muted-foreground">Any worker, employer, or stakeholder in Kenya interested in labor rights, workplace fairness, or seeking support can reach out to us.</p>
+                </div>
+                <div>
+                  <h3 className="font-semibold text-foreground mb-1">Do you provide legal assistance to workers?</h3>
+                  <p className="text-muted-foreground">Yes, we offer guidance and support for workers facing workplace violations, including referrals to legal aid where appropriate.</p>
+                </div>
+                <div>
+                  <h3 className="font-semibold text-foreground mb-1">Is your support confidential?</h3>
+                  <p className="text-muted-foreground">Absolutely. All inquiries and cases are handled with strict confidentiality and respect for your privacy.</p>
+                </div>
+                <div>
+                  <h3 className="font-semibold text-foreground mb-1">Can you help with workplace discrimination or harassment?</h3>
+                  <p className="text-muted-foreground">Yes, we assist workers experiencing discrimination, harassment, or unfair treatment, and can connect you with the right resources.</p>
+                </div>
+                <div>
+                  <h3 className="font-semibold text-foreground mb-1">How can I get involved or support your work?</h3>
+                  <p className="text-muted-foreground">You can support us by volunteering, partnering, or donating. Reach out via the contact details above to learn more.</p>
+                </div>
+              </div>
+            </div>
           </motion.div>
         </div>
       </section>

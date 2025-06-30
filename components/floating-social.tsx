@@ -55,9 +55,26 @@ export function FloatingSocial() {
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5 }}
-        className="fixed bottom-8 right-8 z-50"
+        className="fixed bottom-0 right-0 z-50"
+        style={{ pointerEvents: 'none' }}
       >
-        <div className="flex flex-col space-y-4">
+        {/* Glassmorphic Dock with animation and border, attached to edge */}
+        <motion.div
+          className="glass flex flex-col items-center justify-center gap-2 px-3 py-4 rounded-full shadow-elevated border"
+          style={{
+            minHeight: '320px',
+            minWidth: '64px',
+            boxShadow: '0 8px 32px 0 rgba(168,191,193,0.18)',
+            borderRadius: '2.5rem 0 0 2.5rem',
+            backdropFilter: 'blur(16px)',
+            border: '2px solid rgba(255,255,255,0.45)',
+            borderRight: 'none',
+            pointerEvents: 'auto',
+          }}
+          initial={{ y: 0 }}
+          animate={{ y: [0, -8, 0] }}
+          transition={{ duration: 3, repeat: Infinity, repeatType: 'loop', ease: 'easeInOut' }}
+        >
           {socialLinks.map((link, index) => (
             <Tooltip key={link.name}>
               <TooltipTrigger asChild>
@@ -65,16 +82,12 @@ export function FloatingSocial() {
                   href={link.href}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="w-12 h-12 rounded-full bg-white dark:bg-gray-800 shadow-lg flex items-center justify-center text-gray-700 dark:text-gray-200 hover:scale-110 transition-transform"
-                  whileHover={{ scale: 1.1, rotate: 5 }}
-                  whileTap={{ scale: 0.95 }}
+                  className="flex items-center justify-center w-11 h-11 rounded-full text-foreground hover:bg-teal-500/10 transition-all duration-200 hover:scale-110 focus:outline-none focus:ring-2 focus:ring-teal-400"
+                  whileHover={{ scale: 1.13, y: -2 }}
+                  whileTap={{ scale: 0.97 }}
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: index * 0.1 }}
-                  style={{
-                    backgroundColor: link.name === "X" ? "#000000" : undefined,
-                    color: link.name === "X" ? "#FFFFFF" : undefined,
-                  }}
+                  transition={{ delay: index * 0.08 }}
                 >
                   {link.icon}
                 </motion.a>
@@ -87,7 +100,7 @@ export function FloatingSocial() {
               </TooltipContent>
             </Tooltip>
           ))}
-        </div>
+        </motion.div>
       </motion.div>
     </TooltipProvider>
   )

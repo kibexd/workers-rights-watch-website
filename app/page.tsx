@@ -14,6 +14,7 @@ import { Badge } from "@/components/ui/badge"
 import { Input } from "@/components/ui/input"
 import dynamic from "next/dynamic"
 import { HeroCarousel } from "@/components/hero-carousel"
+import { Tweet } from 'react-tweet';
 
 const partners = [
   { name: "Anti-Slavery International", logo: "/asi.jpg", url: "https://www.antislavery.org/" },
@@ -111,6 +112,108 @@ function AnimatedNumber({ target, isVisible, suffix = '', className = '' }: Anim
 
 const TwitterEmbed = dynamic(() => import('@/components/TwitterEmbed'), { ssr: false });
 
+// Place this above the HomePage function
+const tweetBlockquotes = [
+  `<blockquote class="twitter-tweet"><p lang="en" dir="ltr">We work closely with flower farms to promote fair wages, safe working conditions,&amp;respect for workers’ dignity.<br>Through this partnership, we have seen improved workplace safety standards@empowered workers to advocate for their rights. <a href="https://twitter.com/hivosroea?ref_src=twsrc%5Etfw">@hivosroea</a> <a href="https://twitter.com/Women_Win?ref_src=twsrc%5Etfw">@Women_Win</a> <a href="https://twitter.com/equalitynow?ref_src=twsrc%5Etfw">@equalitynow</a> <a href="https://twitter.com/hashtag/rights?src=hash&amp;ref_src=twsrc%5Etfw">#rights</a> <a href="https://t.co/0TdQfJ7vCX">pic.twitter.com/0TdQfJ7vCX</a></p>&mdash; Workersrightswatch (@Workersrights24) <a href="https://twitter.com/Workersrights24/status/1937408354214904151?ref_src=twsrc%5Etfw">June 24, 2025</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>`,
+  `<blockquote class="twitter-tweet"><p lang="en" dir="ltr">Behind every flower picked is a woman who deserves dignity, respect &amp;protection. Workers Rights Watch is helping Gender Based Violence survivors on Kenya's flower farms reclaim their voices&amp;their rights through partnering with pro-bono lawyers for legal support.<a href="https://twitter.com/hashtag/workersrights?src=hash&amp;ref_src=twsrc%5Etfw">#workersrights</a> <a href="https://t.co/dhY1ThfC1I">pic.twitter.com/dhY1ThfC1I</a></p>&mdash; Workersrightswatch (@Workersrights24) <a href="https://twitter.com/Workersrights24/status/1937041562208207145?ref_src=twsrc%5Etfw">June 23, 2025</a></blockquote>`,
+  `<blockquote class="twitter-tweet"><p lang="en" dir="ltr">Workers Rights Watch conducts legal awareness sessions where female and male workers are empowered with confidence and knowledge to advocate for their rights and seek legal support without fear of retaliation.<a href="https://twitter.com/hashtag/Workersrights?src=hash&amp;ref_src=twsrc%5Etfw">#Workersrights</a><a href="https://twitter.com/hashtag/Endsexualharassment?src=hash&amp;ref_src=twsrc%5Etfw">#Endsexualharassment</a><a href="https://twitter.com/hashtag/Womenrights?src=hash&amp;ref_src=twsrc%5Etfw">#Womenrights</a><a href="https://twitter.com/hashtag/EndVAWG?src=hash&amp;ref_src=twsrc%5Etfw">#EndVAWG</a> <a href="https://t.co/Uv07A8n2kD">pic.twitter.com/Uv07A8n2kD</a></p>&mdash; Workersrightswatch (@Workersrights24) <a href="https://twitter.com/Workersrights24/status/1935238546622697572?ref_src=twsrc%5Etfw">June 18, 2025</a></blockquote>`,
+  `<blockquote class="twitter-tweet"><p lang="en" dir="ltr">🎉21 flower farms. Diverse voices with one united mission: To advocate for worker rights&amp;gender equality in the flower industry. <br>By raising awareness&amp;building capacity, workers&amp;farm managements are actively working to eradicate harassment&amp;promote safe working environments.✊ <a href="https://t.co/3KoN5lW9HY">pic.twitter.com/3KoN5lW9HY</a></p>&mdash; Workersrightswatch (@Workersrights24) <a href="https://twitter.com/Workersrights24/status/1932696380755354058?ref_src=twsrc%5Etfw">June 11, 2025</a></blockquote>`,
+  `<blockquote class="twitter-tweet"><p lang="en" dir="ltr">✊Day 2 of the exchange program, allowed participants from 21 flower farms share best practices on gender mainstreaming and sexual harassment prevention,strengthening the capacity of workers&amp;management to build equitable workplaces where everyone thrives. <a href="https://twitter.com/hashtag/Workersrights?src=hash&amp;ref_src=twsrc%5Etfw">#Workersrights</a> <a href="https://t.co/NFj6XYa4vS">pic.twitter.com/NFj6XYa4vS</a></p>&mdash; Workersrightswatch (@Workersrights24) <a href="https://twitter.com/Workersrights24/status/1932322602951004583?ref_src=twsrc%5Etfw">June 10, 2025</a></blockquote>`,
+  `<blockquote class="twitter-tweet"><p lang="en" dir="ltr">♀️We recently conducted an exchange program that brought together representatives from 21 flower farms for a powerful knowledge sharing platform .✊They shared their experiences&amp;collaboratively developed solutions to end sexual harassment&amp; improve working conditions. <a href="https://t.co/q1JQhhh0TH">pic.twitter.com/q1JQhhh0TH</a></p>&mdash; Workersrightswatch (@Workersrights24) <a href="https://twitter.com/Workersrights24/status/1931998461647282604?ref_src=twsrc%5Etfw">June 9, 2025</a></blockquote>`,
+];
+
+function TweetCard({ author, handle, avatar, date, text, image, tweetUrl, blockquote }: {
+  author: string;
+  handle: string;
+  avatar: string;
+  date: string;
+  text: string;
+  image?: string;
+  tweetUrl: string;
+  blockquote?: string;
+}) {
+  return (
+    <div className="glass shadow-elevated rounded-2xl p-6 flex flex-col items-start max-w-[370px] min-h-[420px] relative">
+      <div className="flex items-center mb-3">
+        <img src={avatar} alt={author} className="h-10 w-10 rounded-full mr-3 border border-muted" />
+        <div>
+          <div className="font-bold text-foreground leading-tight">{author}</div>
+          <div className="text-muted-foreground text-sm">{handle}</div>
+        </div>
+      </div>
+      <div className="text-muted-foreground text-xs mb-2">{date}</div>
+      <div className="text-foreground text-base mb-3 flex-1 whitespace-pre-line">{text}</div>
+      {image && (
+        <img src={image} alt="Tweet media" className="rounded-xl w-full object-cover mb-3 max-h-40" />
+      )}
+      <a
+        href={tweetUrl}
+        target="_blank"
+        rel="noopener noreferrer"
+        className="w-full text-center py-2 text-teal-500 font-medium hover:underline rounded-xl bg-teal-500/10 mt-auto"
+      >
+        View on X
+      </a>
+      {/* Hidden blockquote for SEO */}
+      {blockquote && (
+        <div style={{ display: 'none' }} dangerouslySetInnerHTML={{ __html: blockquote }} />
+      )}
+    </div>
+  );
+}
+
+// Place this above the HomePage function, outside of any other function
+
+const tweetData = [
+  {
+    author: 'Workersrightswatch',
+    handle: '@Workersrights24',
+    avatar: '/placeholder-logo.png',
+    date: 'Jun 11, 2025',
+    text: `🎉21 flower farms. Diverse voices with one united mission: To advocate for worker rights & gender equality in the flower industry.\nBy raising awareness & building capacity, workers & farm managements are actively working to eradicate harassment & promote safe working environments.`,
+    image: '/tweet1.jpg', // Replace with actual image or leave undefined
+    tweetUrl: 'https://twitter.com/Workersrights24/status/1932696380755354058',
+    blockquote: `<blockquote class=\"twitter-tweet\"><p lang=\"en\" dir=\"ltr\">🎉21 flower farms. Diverse voices with one united mission: To advocate for worker rights&amp;gender equality in the flower industry. <br>By raising awareness&amp;building capacity, workers&amp;farm managements are actively working to eradicate harassment&amp;promote safe working environments.✊ <a href=\"https://t.co/3KoN5lW9HY\">pic.twitter.com/3KoN5lW9HY</a></p>&mdash; Workersrightswatch (@Workersrights24) <a href=\"https://twitter.com/Workersrights24/status/1932696380755354058?ref_src=twsrc%5Etfw\">June 11, 2025</a></blockquote>`
+  },
+  {
+    author: 'Workersrightswatch',
+    handle: '@Workersrights24',
+    avatar: '/placeholder-logo.png',
+    date: 'Jun 10, 2025',
+    text: `✊Day 2 of the exchange program, allowed participants from 21 flower farms share best practices on gender mainstreaming and sexual harassment prevention, strengthening the capacity of workers & management to build equitable workplaces where everyone thrives. #Workersrights`,
+    image: '/tweet2.jpg',
+    tweetUrl: 'https://twitter.com/Workersrights24/status/1932322602951004583',
+    blockquote: `<blockquote class=\"twitter-tweet\"><p lang=\"en\" dir=\"ltr\">✊Day 2 of the exchange program, allowed participants from 21 flower farms share best practices on gender mainstreaming and sexual harassment prevention,strengthening the capacity of workers&amp;management to build equitable workplaces where everyone thrives. <a href=\"https://twitter.com/hashtag/Workersrights?src=hash&amp;ref_src=twsrc%5Etfw\">#Workersrights</a> <a href=\"https://t.co/NFj6XYa4vS\">pic.twitter.com/NFj6XYa4vS</a></p>&mdash; Workersrightswatch (@Workersrights24) <a href=\"https://twitter.com/Workersrights24/status/1932322602951004583?ref_src=twsrc%5Etfw\">June 10, 2025</a></blockquote>`
+  },
+  {
+    author: 'Workersrightswatch',
+    handle: '@Workersrights24',
+    avatar: '/placeholder-logo.png',
+    date: 'Jun 9, 2025',
+    text: `♀️We recently conducted an exchange program that brought together representatives from 21 flower farms for a powerful knowledge sharing platform.✊ They shared their experiences & collaboratively developed solutions to end sexual harassment & improve working conditions.`,
+    image: '/tweet3.jpg',
+    tweetUrl: 'https://twitter.com/Workersrights24/status/1931998461647282604',
+    blockquote: `<blockquote class=\"twitter-tweet\"><p lang=\"en\" dir=\"ltr\">♀️We recently conducted an exchange program that brought together representatives from 21 flower farms for a powerful knowledge sharing platform .✊They shared their experiences&amp;collaboratively developed solutions to end sexual harassment&amp; improve working conditions. <a href=\"https://t.co/q1JQhhh0TH\">pic.twitter.com/q1JQhhh0TH</a></p>&mdash; Workersrightswatch (@Workersrights24) <a href=\"https://twitter.com/Workersrights24/status/1931998461647282604?ref_src=twsrc%5Etfw\">June 9, 2025</a></blockquote>`
+  },
+  // Add more tweets as needed
+];
+
+// Map tweet IDs to their dates (ISO format for easy sorting)
+const tweetIdDateMap = [
+  { id: '1937408354214904151', date: '2025-06-24' },
+  { id: '1937041562208207145', date: '2025-06-23' },
+  { id: '1932696380755354058', date: '2025-06-11' },
+  { id: '1932322602951004583', date: '2025-06-10' },
+  { id: '1931998461647282604', date: '2025-06-09' },
+  { id: '1935238546622697572', date: '2025-06-18' },
+  // Add more as needed
+];
+
+// Sort by date descending (latest first)
+const tweetIds = tweetIdDateMap
+  .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime())
+  .map((item) => item.id);
+
 export default function HomePage() {
   const [isVisible, setIsVisible] = useState({
     mission: false,
@@ -138,6 +241,10 @@ export default function HomePage() {
   const [scrollPaused, setScrollPaused] = useState(false);
   const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
   const [scrollDirection, setScrollDirection] = useState<'left' | 'right'>('left'); // State for scroll direction
+
+  // Add state for visible tweets
+  const [visibleTweets, setVisibleTweets] = useState(3);
+  const tweetSectionRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -381,6 +488,18 @@ export default function HomePage() {
         </motion.div>
       </div>
     );
+  };
+
+  // Handler for Load More
+  const handleLoadMore = () => {
+    setVisibleTweets((prev) => Math.min(prev + 3, tweetIds.length));
+  };
+  // Handler for Clear
+  const handleClearTweets = () => {
+    setVisibleTweets(3);
+    if (tweetSectionRef.current) {
+      tweetSectionRef.current.scrollIntoView({ behavior: 'smooth' });
+    }
   };
 
   return (
@@ -970,7 +1089,7 @@ export default function HomePage() {
       </section>
 
       {/* Twitter Feed Section */}
-      <section className="py-24 bg-background">
+      <section className="py-24 bg-background" ref={tweetSectionRef}>
         <div className="container mx-auto px-6">
           <motion.div
             initial={{ opacity: 0, y: 40 }}
@@ -984,56 +1103,32 @@ export default function HomePage() {
             </p>
           </motion.div>
 
-          {/* X/Twitter embed, beautifully styled with dynamic widget script */}
-          <div
-            className="grid grid-cols-1 md:grid-cols-3 gap-8 w-full max-w-6xl mx-auto pb-8"
-          >
-            <TwitterEmbed
-              tweetHtml={`<blockquote class="twitter-tweet"><p lang="en" dir="ltr">🎉21 flower farms. Diverse voices with one united mission: To advocate for worker rights&amp;gender equality in the flower industry. <br>By raising awareness&amp;building capacity, workers&amp;farm managements are actively working to eradicate harassment&amp;promote safe working environments.✊ <a href="https://t.co/3KoN5lW9HY">pic.twitter.com/3KoN5lW9HY</a></p>&mdash; Workersrightswatch (@Workersrights24) <a href="https://twitter.com/Workersrights24/status/1932696380755354058?ref_src=twsrc%5Etfw">June 11, 2025</a></blockquote>`}
-              className="min-h-[420px] w-full"
-            />
-            <TwitterEmbed
-              tweetHtml={`<blockquote class="twitter-tweet"><p lang="en" dir="ltr">✊Day 2 of the exchange program, allowed participants from 21 flower farms share best practices on gender mainstreaming and sexual harassment prevention,strengthening the capacity of workers&amp;management to build equitable workplaces where everyone thrives. <a href="https://twitter.com/hashtag/Workersrights?src=hash&amp;ref_src=twsrc%5Etfw">#Workersrights</a> <a href="https://t.co/NFj6XYa4vS">pic.twitter.com/NFj6XYa4vS</a></p>&mdash; Workersrightswatch (@Workersrights24) <a href="https://twitter.com/Workersrights24/status/1932322602951004583?ref_src=twsrc%5Etfw">June 10, 2025</a></blockquote>`}
-              className="min-h-[420px] w-full"
-            />
-            <TwitterEmbed
-              tweetHtml={`<blockquote class="twitter-tweet"><p lang="en" dir="ltr">♀️We recently conducted an exchange program that brought together representatives from 21 flower farms for a powerful knowledge sharing platform .✊They shared their experiences&amp;collaboratively developed solutions to end sexual harassment&amp; improve working conditions. <a href="https://t.co/q1JQhhh0TH">pic.twitter.com/q1JQhhh0TH</a></p>&mdash; Workersrightswatch (@Workersrights24) <a href="https://twitter.com/Workersrights24/status/1931998461647282604?ref_src=twsrc%5Etfw">June 9, 2025</a></blockquote>`}
-              className="min-h-[420px] w-full"
-            />
-            {/* Add more <TwitterEmbed ... /> here for more posts */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8 w-full max-w-6xl mx-auto pb-8">
+            {tweetIds.slice(0, visibleTweets).map((id) => (
+              <div key={id} className="glass shadow-elevated rounded-2xl p-4 flex flex-col items-center max-w-[370px] min-h-[420px] mx-auto">
+                <Tweet id={id} />
+              </div>
+            ))}
           </div>
 
-          {/* Beautiful animated Apple-style Follow button */}
-          <div className="text-center mt-12 mb-12">
-            <a
-              href="https://x.com/Workersrights24"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center justify-center group
-                         relative px-10 py-6 mt-3 rounded-full
-                         bg-primary-foreground border border-teal-500 text-teal-400
-                         font-bold text-base shadow-lg overflow-hidden
-                         transition-all duration-300
-                         focus:outline-none
-                         hover:ring-2 hover:ring-teal-400 hover:bg-accent
-                         "
-              style={{
-                boxShadow: "0 0 28px 0 #10bfae46"
-              }}
-            >
-              {/* Glowing animated ring */}
-              <span className="absolute inset-0 pointer-events-none rounded-full
-                  animate-pulse
-                  bg-gradient-to-r from-teal-500/20 via-teal-500/10 to-transparent
-                  opacity-0 group-hover:opacity-100 transition-opacity duration-500"
-              />
-              <span className="relative flex items-center">
-                <svg className="w-5 h-5 mr-2" viewBox="0 0 24 24" fill="currentColor">
-                  <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
-                </svg>
-                Follow @Workersrights24
-              </span>
-            </a>
+          <div className="flex flex-col sm:flex-row justify-center items-center gap-4 mt-8">
+            {visibleTweets < tweetIds.length && (
+              <Button
+                onClick={handleLoadMore}
+                className="bg-teal-500 hover:bg-teal-600 text-black font-medium rounded-full px-8 py-3 shadow-elevated"
+              >
+                Load More
+              </Button>
+            )}
+            {visibleTweets > 3 && (
+              <Button
+                onClick={handleClearTweets}
+                variant="outline"
+                className="border-teal-500 text-teal-500 hover:bg-teal-500 hover:text-black rounded-full px-8 py-3 shadow-elevated"
+              >
+                Clear Tweets
+              </Button>
+            )}
           </div>
         </div>
       </section>

@@ -6,6 +6,7 @@ import MainNav from "@/components/main-nav"
 import Footer from "@/components/footer"
 import ScrollToTopButton from "@/components/scroll-to-top-button"
 import { FloatingSocial } from "@/components/floating-social"
+import { SpeedInsights } from "@vercel/speed-insights/next"
 
 // const inter = Inter({ subsets: ["latin"] })
 
@@ -53,9 +54,8 @@ export default function RootLayout({
           <FloatingSocial />
           {/* <ScrollToTop /> This component does not exist */}
         </ThemeProvider>
+        <SpeedInsights />
       </body>
     </html>
   )
 }
-
-import './globals.css'
