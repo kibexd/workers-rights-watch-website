@@ -495,14 +495,14 @@ export default function CareersPage() {
       <section className="py-24 bg-background mb-16">
         <div className="container mx-auto px-6">
           <motion.div initial={{ opacity: 0, y: 40 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8 }}>
-            <Card className="bg-card border-0 overflow-hidden rounded-2xl mb-16 shadow-elevated">
+            <Card className="bg-card border-2 border-neutral-900 overflow-hidden rounded-2xl mb-16 shadow-elevated">
               <CardContent className="p-8">
                 <h2 className="text-3xl font-bold text-foreground mb-8">
                   Available Positions
                 </h2>
 
                 <Tabs defaultValue="vacancies">
-                  <TabsList className="bg-transparent border border-border rounded-full p-1 w-fit mb-8">
+                  <TabsList className="bg-transparent border-2 border-neutral-900 rounded-full p-1 w-fit mb-8">
                     <TabsTrigger
                       value="vacancies"
                       className="rounded-full px-8 py-2 data-[state=active]:bg-teal-500 data-[state=active]:text-black"
@@ -522,7 +522,7 @@ export default function CareersPage() {
                       {jobListings.map((job) => (
                         <Card
                           key={job.id}
-                          className={`bg-card border-0 overflow-hidden rounded-xl transition-all duration-300 hover:shadow-md ${
+                          className={`bg-card border-2 border-neutral-900 overflow-hidden rounded-xl transition-all duration-300 hover:shadow-md ${
                             job.status === "Closed" ? "opacity-70" : ""
                           }`}
                         >
@@ -578,7 +578,7 @@ export default function CareersPage() {
                       {internshipListings.map((internship) => (
                         <Card
                           key={internship.id}
-                          className={`bg-card border-0 overflow-hidden rounded-xl transition-all duration-300 hover:shadow-md ${
+                          className={`bg-card border-2 border-neutral-900 overflow-hidden rounded-xl transition-all duration-300 hover:shadow-md ${
                             internship.status === "Closed" ? "opacity-70" : ""
                           }`}
                         >
@@ -638,7 +638,7 @@ export default function CareersPage() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.3 }}
           >
-            <Card className="bg-card border-0 overflow-hidden rounded-2xl shadow-elevated">
+            <Card className="bg-card border-2 border-neutral-900 overflow-hidden rounded-2xl shadow-elevated">
               <CardContent className="p-8">
                 <div className="grid md:grid-cols-2 gap-12 items-center">
                   <div>
@@ -654,7 +654,7 @@ export default function CareersPage() {
                         src="/donate2.jpg?height=400&width=600"
                         alt="Volunteers"
                         fill
-                        className="object-cover"
+                        className="object-cover border-2 border-neutral-900"
                       />
                     </div>
                   </div>
@@ -684,7 +684,7 @@ export default function CareersPage() {
                             value={formState.fullName}
                             onChange={handleChange}
                             placeholder="Your full name"
-                            className={`bg-card border-0 rounded-xl h-12 focus:ring-2 focus:ring-teal-500 ${
+                            className={`bg-card border-2 border-neutral-900 rounded-xl h-12 focus:ring-2 focus:ring-teal-500 ${
                               formErrors.fullName ? "border-2 border-red-500" : ""
                             }`}
                             required
@@ -703,7 +703,7 @@ export default function CareersPage() {
                               value={formState.email}
                               onChange={handleChange}
                               placeholder="you@example.com"
-                              className={`bg-card border-0 rounded-xl h-12 focus:ring-2 focus:ring-teal-500 ${
+                              className={`bg-card border-2 border-neutral-900 rounded-xl h-12 focus:ring-2 focus:ring-teal-500 ${
                                 formErrors.email ? "border-2 border-red-500" : ""
                               }`}
                               required
@@ -719,7 +719,7 @@ export default function CareersPage() {
                               value={formState.phone}
                               onChange={handleChange}
                               placeholder="+254..."
-                              className={`bg-card border-0 rounded-xl h-12 focus:ring-2 focus:ring-teal-500 ${
+                              className={`bg-card border-2 border-neutral-900 rounded-xl h-12 focus:ring-2 focus:ring-teal-500 ${
                                 formErrors.phone ? "border-2 border-red-500" : ""
                               }`}
                               required
@@ -737,7 +737,7 @@ export default function CareersPage() {
                             onValueChange={(value) => handleSelectChange("country", value)}
                           >
                             <SelectTrigger
-                              className={`bg-card border-0 rounded-xl h-12 focus:ring-2 focus:ring-teal-500 ${
+                              className={`bg-card border-2 border-neutral-900 rounded-xl h-12 focus:ring-2 focus:ring-teal-500 ${
                                 formErrors.country ? "border-2 border-red-500" : ""
                               }`}
                             >
@@ -762,7 +762,7 @@ export default function CareersPage() {
                             value={formState.about}
                             onChange={handleChange}
                             placeholder="Your skills, experience, and why you want to volunteer"
-                            className={`bg-card border-0 rounded-xl min-h-[150px] focus:ring-2 focus:ring-teal-500 ${
+                            className={`bg-card border-2 border-neutral-900 rounded-xl min-h-[150px] focus:ring-2 focus:ring-teal-500 ${
                               formErrors.about ? "border-2 border-red-500" : ""
                             }`}
                             rows={5}
@@ -780,7 +780,7 @@ export default function CareersPage() {
                             onValueChange={(value) => handleSelectChange("workType", value)}
                           >
                             <SelectTrigger
-                              className={`bg-card border-0 rounded-xl h-12 focus:ring-2 focus:ring-teal-500 ${
+                              className={`bg-card border-2 border-neutral-900 rounded-xl h-12 focus:ring-2 focus:ring-teal-500 ${
                                 formErrors.workType ? "border-2 border-red-500" : ""
                               }`}
                             >
@@ -902,7 +902,7 @@ export default function CareersPage() {
 
       {/* Job Details Dialog */}
       <Dialog open={isDialogOpen} onOpenChange={setIsDialogOpen}>
-        <DialogContent className="bg-card border-0 rounded-2xl max-w-3xl max-h-[90vh] overflow-y-auto">
+        <DialogContent className="bg-card border-2 border-neutral-900 rounded-2xl max-w-3xl max-h-[90vh] overflow-y-auto">
           <DialogHeader>
             <DialogTitle className="text-2xl font-bold text-foreground flex items-center gap-2">
               {selectedJob?.title}
@@ -1001,7 +1001,7 @@ export default function CareersPage() {
                           value={jobApplicationState.fullName}
                           onChange={handleJobApplicationChange}
                           placeholder="Your full name"
-                          className={`bg-card border-0 rounded-xl h-12 focus:ring-2 focus:ring-teal-500 ${
+                          className={`bg-card border-2 border-neutral-900 rounded-xl h-12 focus:ring-2 focus:ring-teal-500 ${
                             formErrors.fullName ? "border-2 border-red-500" : ""
                           }`}
                           required
@@ -1018,7 +1018,7 @@ export default function CareersPage() {
                           value={jobApplicationState.email}
                           onChange={handleJobApplicationChange}
                           placeholder="Your email address"
-                          className={`bg-card border-0 rounded-xl h-12 focus:ring-2 focus:ring-teal-500 ${
+                          className={`bg-card border-2 border-neutral-900 rounded-xl h-12 focus:ring-2 focus:ring-teal-500 ${
                             formErrors.email ? "border-2 border-red-500" : ""
                           }`}
                           required
@@ -1036,7 +1036,7 @@ export default function CareersPage() {
                         value={jobApplicationState.phone}
                         onChange={handleJobApplicationChange}
                         placeholder="Your phone number"
-                        className={`bg-card border-0 rounded-xl h-12 focus:ring-2 focus:ring-teal-500 ${
+                        className={`bg-card border-2 border-neutral-900 rounded-xl h-12 focus:ring-2 focus:ring-teal-500 ${
                           formErrors.phone ? "border-2 border-red-500" : ""
                         }`}
                         required
@@ -1053,7 +1053,7 @@ export default function CareersPage() {
                         value={jobApplicationState.coverLetter}
                         onChange={handleJobApplicationChange}
                         placeholder="Tell us why you're interested in this position and what makes you a good fit"
-                        className={`bg-card border-0 rounded-xl min-h-[150px] focus:ring-2 focus:ring-teal-500 ${
+                        className={`bg-card border-2 border-neutral-900 rounded-xl min-h-[150px] focus:ring-2 focus:ring-teal-500 ${
                           formErrors.coverLetter ? "border-2 border-red-500" : ""
                         }`}
                         rows={5}
@@ -1170,6 +1170,9 @@ export default function CareersPage() {
           </DialogFooter>
         </DialogContent>
       </Dialog>
+
+      {/* Force space before footer */}
+      <div className="min-h-[5px]" />
     </div>
   )
 }

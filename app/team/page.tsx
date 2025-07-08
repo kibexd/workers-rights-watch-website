@@ -46,9 +46,9 @@ export default function TeamPage() {
     {
       id: 1,
       name: "Mrs. Eunice Waweru",
-      title: "Chief Executive Officer",
+      title: "Founder & Executive Director",
       image: "/eunice1.jpg?height=400&width=400",
-      bio: "Mrs. Waweru is renowned human rights activist and an established social worker with a passion for addressing societal injustice. She has vast experience in matters human rights and social justice.",
+      bio: "Mrs. Waweru is the founder and Executive Director at Workers Rights Watch. She is a renowned human rights activist, an established social worker with passion addressing societal injustice, she has over 20 years of experience in matters human rights and social justice. She has been instrumental in providing the organization's strategic leadership and oversight of the organizations mission. Her extensive experience and dedication to advocating for women and workers rights has scaled participatory social audits, launched rights-based campaigns, and strengthened legal and policy frameworks that benefit vulnerable workers especially women and youth.",
       email: "eunice@workersrightswatch.org",
       linkedin: "https://www.linkedin.com/in/eunice-waweru/",
       twitter: "https://twitter.com/eunicewaweru",
@@ -57,26 +57,26 @@ export default function TeamPage() {
       //expertise: ["Labor Rights", "Advocacy", "Program Management"],
       //education: "Master's in Labor Relations, University of Nairobi",
     },
-    {
-      id: 2,
-      name: "Caroline Ng'endo",
-      title: "Program Officer for Standards & Certification",
-      image: "/placeholder.svg?height=400&width=400",
-      bio: "Ms. Caroline leads the Program Office for Standards & Certification, working to ensure fair labor practices across industries. She has a background in labor law and has been with the organization for over 8 years.",
-      email: "caroline@workersrightswatch.org",
-      linkedin: "https://www.linkedin.com/in/caroline-ngendo/",
-      twitter: "https://twitter.com/carolinengendo",
-      //location: "Nairobi, Kenya",
-      //joinDate: "March 2015",
-      //expertise: ["Labor Standards", "Certification", "Legal Compliance"],
-      //education: "Bachelor of Laws, University of Nairobi",
-    },
+    // {
+    //   // id: 2,
+    //   // name: "Caroline Ng'endo",
+    //   // title: "Program Officer for Standards & Certification",
+    //   // image: "/placeholder.svg?height=400&width=400",
+    //   // bio: "Ms. Caroline leads the Program Office for Standards & Certification, working to ensure fair labor practices across industries. She has a background in labor law and has been with the organization for over 8 years.",
+    //   // email: "caroline@workersrightswatch.org",
+    //   // linkedin: "https://www.linkedin.com/in/caroline-ngendo/",
+    //   // twitter: "https://twitter.com/carolinengendo",
+    //   //location: "Nairobi, Kenya",
+    //   //joinDate: "March 2015",
+    //   //expertise: ["Labor Standards", "Certification", "Legal Compliance"],
+    //   //education: "Bachelor of Laws, University of Nairobi",
+    // },
     {
       id: 3,
       name: "Steve Biko",
-      title: "Finance Officer",
+      title: "Accountant",
       image: "/placeholder.svg?height=400&width=400",
-      bio: "Steve is responsible for managing funds for Workers Rights Watch. He handles the budget for project implementation, financial reporting, and expense accountability. He has a background in finance and accounting with over 10 years of experience in the non-profit sector.",
+      bio: "Steve is a qualified finance professional with a Bachelors Degree in Commerce (Accounting), CPA II and over 6 years of experience in nonprofit financial management, compliance, and accountability. As the organization's Accountant, he ensures sound financial stewardship, transparency, and alignment with donor requirements and organizational values.\n\nSteve is instrumental in budgeting, reporting, and supporting program teams to manage resources effectively for initiatives in workers' rights, health and safety, legal aid, and women's economic empowerment. His dedication and expertise in financial management have been instrumental in driving our mission forward and ensuring the effective allocation of resources to our programs.",
       email: "steve@workersrightswatch.org",
       linkedin: "https://www.linkedin.com/in/steve-biko/",
       twitter: "https://twitter.com/stevebiko",
@@ -85,11 +85,20 @@ export default function TeamPage() {
       // expertise: ["Financial Management", "Budgeting", "Non-profit Accounting"],
       // education: "CPA, Strathmore University",
     },
+    {
+      id: 4,
+      name: "Cynthia Akomo",
+      title: "Programs Officer",
+      image: "/placeholder.svg?height=400&width=400",
+      bio: "Cynthia is the Programs Officer at Workers Rights Watch, with over 6 years experience in program design, coordination, monitoring and community engagement across the areas of labour rights, health, gender equality, and access to justice. As Programs Officer, she leads the implementation and monitoring of rights-based interventions that empower workers and their communities.\n\nCynthia has a strong background in education and commitment to empowering vulnerable communities. She has been instrumental in designing and implementing effective programs that address unique challenges for workers and women. Her leadership ensures that our initiatives are impactful and that we continue to safeguard the rights and wellbeing of women and workers.",
+      // Old bio: N/A
+      // email, linkedin, twitter, etc. can be added if available
+    },
   ]
 
   const staffMembers = [
     {
-      id: 4,
+      id: 5,
       name: "James Odhiambo",
       title: "Legal Officer",
       image: "/placeholder.svg?height=400&width=400",
@@ -102,7 +111,7 @@ export default function TeamPage() {
       // education: "Bachelor of Laws, University of Nairobi",
     },
     {
-      id: 5,
+      id: 6,
       name: "Mercy Wanjiku",
       title: "Communications Officer",
       image: "/placeholder.svg?height=400&width=400",
@@ -115,7 +124,7 @@ export default function TeamPage() {
       // education: "Bachelor's in Communication, Daystar University",
     },
     {
-      id: 6,
+      id: 7,
       name: "Daniel Kimani",
       title: "Research Coordinator",
       image: "/placeholder.svg?height=400&width=400",
@@ -128,7 +137,7 @@ export default function TeamPage() {
       // education: "Master's in Social Research, University of Nairobi",
     },
     // {
-    //   id: 7,
+    //   id: 8,
     //   name: "Faith Muthoni",
     //   title: "Community Outreach Officer",
     //   image: "/placeholder.svg?height=400&width=400",
@@ -141,7 +150,7 @@ export default function TeamPage() {
     //   education: "Bachelor's in Sociology, Kenyatta University",
     // },
     // {
-    //   id: 8,
+    //   id: 9,
     //   name: "Peter Otieno",
     //   title: "Training Coordinator",
     //   image: "/placeholder.svg?height=400&width=400",
@@ -154,7 +163,7 @@ export default function TeamPage() {
     //   education: "Bachelor's in Education, Kenyatta University",
     // },
     // {
-    //   id: 9,
+    //   id: 10,
     //   name: "Sarah Njeri",
     //   title: "Administrative Assistant",
     //   image: "/placeholder.svg?height=400&width=400",
@@ -169,7 +178,7 @@ export default function TeamPage() {
 
   const boardMembers = [
     {
-      id: 10,
+      id: 11,
       name: "Mr. Edward Inzofu Indimuli",
       title: "Chairman",
       image: "/edward.png?height=400&width=400",
@@ -181,7 +190,7 @@ export default function TeamPage() {
       // education: "PhD in Economics, University of Cambridge",
     },
     {
-      id: 11,
+      id: 12,
       name: "Mrs. Eunice Waweru",
       title: "Chief Executive Officer",
       image: "/eunice2.png?height=400&width=400",
@@ -193,18 +202,18 @@ export default function TeamPage() {
       // education: "Bachelor's in Political Science, University of Nairobi",
     },
     {
-      id: 12,
+      id: 13,
       name: "Miss Monica Wanjiku",
       title: "Treasurer",
       image: "/monica.png?height=400&width=400",
-      bio: "Miss Monica Wanjiku is a chief shop steward of the workers union at the industry level. She is responsible for negotiation for Collective Bargain Agreements& dispute resolution at the industry level. His role is critical in creating harmony and mobilization of workers within the industry.",
+      bio: "Miss Monica Wanjiku is a chief shop steward of the workers union at the industry level. She is responsible for negotiation for Collective Bargain Agreements& dispute resolution at the industry level. Her role is critical in creating harmony and mobilization of workers within the industry.",
       // location: "Nairobi, Kenya",
       // joinDate: "February 2020",
       // expertise: ["Financial Management", "Non-profit Accounting", "Auditing"],
       // education: "CPA-K, Strathmore University",
     },
     // {
-    //   id: 13,
+    //   id: 14,
     //   name: "Ms. Elizabeth Wangari",
     //   title: "Board Secretary",
     //   image: "/placeholder.svg?height=400&width=400",
@@ -241,7 +250,7 @@ export default function TeamPage() {
             transition={{ duration: 0.5, delay: index * 0.1 }}
           >
             <Card
-              className="bg-card border-0 overflow-hidden rounded-2xl hover:shadow-xl hover:shadow-teal-500/5 transition-all duration-300 cursor-pointer"
+              className="bg-card border-2 border-neutral-900 overflow-hidden rounded-2xl hover:shadow-xl hover:shadow-teal-500/5 transition-all duration-300 cursor-pointer"
               onClick={() => openMemberProfile(member)}
             >
               <div className="relative h-80 overflow-hidden">
@@ -331,7 +340,7 @@ export default function TeamPage() {
       <section className="py-24 bg-background mb-16">
         <div className="container mx-auto px-6">
           <Tabs defaultValue="leadership" onValueChange={handleTabChange} className="w-full">
-            <TabsList className="justify-center mb-12 bg-transparent border border-border rounded-full p-1 w-fit mx-auto">
+            <TabsList className="justify-center mb-12 bg-transparent border-2 border-neutral-900 rounded-full p-1 w-fit mx-auto">
               <TabsTrigger
                 value="leadership"
                 className="rounded-full px-8 py-2 data-[state=active]:bg-teal-500 data-[state=active]:text-black"
@@ -344,12 +353,14 @@ export default function TeamPage() {
               >
                 Board
               </TabsTrigger>
+              {/*
               <TabsTrigger
                 value="staff"
                 className="rounded-full px-8 py-2 data-[state=active]:bg-teal-500 data-[state=active]:text-black"
               >
                 Staff
               </TabsTrigger>
+              */}
             </TabsList>
 
             <TabsContent value="leadership" className="mt-8">
@@ -360,9 +371,11 @@ export default function TeamPage() {
               {renderTeamMembers(boardMembers)}
             </TabsContent>
 
+            {/*
             <TabsContent value="staff" className="mt-8">
               {renderTeamMembers(staffMembers)}
             </TabsContent>
+            */}
           </Tabs>
         </div>
       </section>
@@ -535,7 +548,7 @@ export default function TeamPage() {
           transition={{ duration: 0.5, delay: index * 0.1 }}
           className="relative group"
         >
-                <div className="h-full rounded-2xl shadow-elevated overflow-hidden bg-card flex flex-col">
+                <div className="h-full rounded-2xl shadow-elevated overflow-hidden bg-card flex flex-col border-2 border-neutral-900">
             {/* Image Section with Gradient Overlay */}
             <div className="relative h-48 overflow-hidden">
               <div className={`absolute inset-0 bg-gradient-to-tr ${item.gradient} z-10 opacity-70`}></div>

@@ -40,7 +40,7 @@ export default function ContactPage() {
             src="/ta5.jpg?height=600&width=1920"
             alt="Contact Us"
             fill
-            className="object-cover opacity-10"
+            className="object-cover opacity-10 border-2 border-neutral-900"
           />
           <div className="absolute inset-0 gradient-hero"></div>
         </div>
@@ -68,7 +68,7 @@ export default function ContactPage() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.7 }}
             >
-              <div className="glass p-8 rounded-2xl flex flex-col items-center text-center shadow-elevated h-full">
+              <div className="p-8 rounded-2xl flex flex-col items-center text-center shadow-elevated h-full border-2 border-neutral-900">
                 <div className="h-14 w-14 rounded-full bg-teal-500/10 flex items-center justify-center mb-4">
                   <MapPin className="h-7 w-7 text-teal-500" />
                       </div>
@@ -81,7 +81,7 @@ export default function ContactPage() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.7, delay: 0.1 }}
             >
-              <div className="glass p-8 rounded-2xl flex flex-col items-center text-center shadow-elevated h-full">
+              <div className="p-8 rounded-2xl flex flex-col items-center text-center shadow-elevated h-full border-2 border-neutral-900">
                 <div className="h-14 w-14 rounded-full bg-teal-500/10 flex items-center justify-center mb-4">
                   <Phone className="h-7 w-7 text-teal-500" />
                         </div>
@@ -95,7 +95,7 @@ export default function ContactPage() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.7, delay: 0.2 }}
             >
-              <div className="glass p-8 rounded-2xl flex flex-col items-center text-center shadow-elevated h-full">
+              <div className="p-8 rounded-2xl flex flex-col items-center text-center shadow-elevated h-full border-2 border-neutral-900">
                 <div className="h-14 w-14 rounded-full bg-teal-500/10 flex items-center justify-center mb-4">
                   <Mail className="h-7 w-7 text-teal-500" />
                       </div>
@@ -108,7 +108,7 @@ export default function ContactPage() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.7, delay: 0.3 }}
             >
-              <div className="glass p-8 rounded-2xl flex flex-col items-center text-center shadow-elevated h-full">
+              <div className="p-8 rounded-2xl flex flex-col items-center text-center shadow-elevated h-full border-2 border-neutral-900">
                 <div className="h-14 w-14 rounded-full bg-teal-500/10 flex items-center justify-center mb-4">
                   <Clock className="h-7 w-7 text-teal-500" />
                           </div>
@@ -173,19 +173,19 @@ export default function ContactPage() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.4 }}
           >
-            <div className="glass rounded-2xl overflow-hidden shadow-elevated">
+            <div className="rounded-2xl overflow-hidden shadow-elevated border-2 border-neutral-900 bg-white/70 backdrop-blur-md flex flex-col items-center">
               <h2 className="text-2xl font-bold text-foreground p-8 text-center">Our Location</h2>
-                <div className="relative h-[400px] w-full">
-                  <iframe 
-                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3988.985697429829!2d36.82515217537938!3d-1.1705576355114375!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x182f3c60950af6e7%3A0xc3a1d73136233d45!2sBiashara%20St%2C%20Kiambu!5e0!3m2!1sen!2ske!4v1749370301781!5m2!1sen!2ske" 
-                    width="100%" 
-                    height="100%" 
-                    style={{ border: 0 }} 
-                    allowFullScreen 
-                    loading="lazy" 
-                    referrerPolicy="no-referrer-when-downgrade"
-                  />
-                </div>
+              <div className="relative w-full max-w-3xl mx-auto h-[400px] p-4 pb-8 flex items-center justify-center">
+                <iframe 
+                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3988.985697429829!2d36.82515217537938!3d-1.1705576355114375!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x182f3c60950af6e7%3A0xc3a1d73136233d45!2sBiashara%20St%2C%20Kiambu!5e0!3m2!1sen!2ske!4v1749370301781!5m2!1sen!2ske" 
+                  width="100%" 
+                  height="100%" 
+                  style={{ border: 0, borderRadius: '1rem', minHeight: '350px' }} 
+                  allowFullScreen 
+                  loading="lazy" 
+                  referrerPolicy="no-referrer-when-downgrade"
+                />
+              </div>
             </div>
           </motion.div>
 
@@ -195,7 +195,7 @@ export default function ContactPage() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.6 }}
           >
-            <div className="glass rounded-2xl shadow-elevated p-8">
+            <div className="rounded-2xl shadow-elevated p-8 border-2 border-neutral-900">
               <h2 className="text-2xl font-bold text-foreground mb-6 text-center">Frequently Asked Questions</h2>
               <div className="space-y-6">
                 <div>
@@ -221,8 +221,12 @@ export default function ContactPage() {
               </div>
             </div>
           </motion.div>
+
+          <div className="h-24 md:h-32" />
         </div>
       </section>
+      {/* Force space before footer */}
+      <div className="min-h-[120px] md:min-h-[5px]" />
     </div>
   )
 }

@@ -89,7 +89,7 @@ export default function OurProgramsPage() {
             animate={isVisible.intro ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.8 }}
           >
-            <Card className="bg-card border-0 overflow-hidden rounded-2xl shadow-elevated">
+            <Card className="bg-card border-2 border-neutral-900 overflow-hidden rounded-2xl shadow-elevated">
               <CardContent className="p-8 md:p-12">
                 <div className="grid md:grid-cols-2 gap-12 items-center">
                   <div className="relative h-96 rounded-2xl overflow-hidden">
@@ -97,7 +97,7 @@ export default function OurProgramsPage() {
                       src="/ta7.jpg?height=600&width=800"
                       alt="Workers Rights Watch in action"
                       fill
-                      className="object-cover"
+                      className="object-cover border-2 border-neutral-900"
                     />
                   </div>
                   <div>
@@ -192,7 +192,7 @@ export default function OurProgramsPage() {
                 animate={isVisible.programs ? { opacity: 1, y: 0 } : {}}
                 transition={{ duration: 0.8, delay: index * 0.2 }}
               >
-                <Card className="bg-card border-0 overflow-hidden rounded-2xl hover:shadow-xl hover:shadow-teal-500/5 transition-all duration-300 h-full">
+                <Card className="bg-card border-2 border-neutral-900 overflow-hidden rounded-2xl hover:shadow-xl hover:shadow-teal-500/5 transition-all duration-300 h-full">
                   <div className="relative h-48 overflow-hidden">
                     <Image
                       src={program.image || "/placeholder.svg"}
@@ -262,14 +262,14 @@ export default function OurProgramsPage() {
                 animate={isVisible.achievements ? { opacity: 1, y: 0 } : {}}
                 transition={{ duration: 0.8, delay: index * 0.2 }}
               >
-                <Card className="bg-card border-0 overflow-hidden rounded-2xl hover:shadow-xl hover:shadow-teal-500/5 transition-all duration-300">
+                <Card className="bg-card border-2 border-neutral-900 overflow-hidden rounded-2xl hover:shadow-xl hover:shadow-teal-500/5 transition-all duration-300">
                   <div className="grid md:grid-cols-3 gap-0">
                     <div className="relative h-full md:col-span-1">
                       <Image
                         src={achievement.image || "/ep6.jpg"}
                         alt={achievement.title}
                         fill
-                        className="object-cover"
+                        className="object-cover border-2 border-neutral-900"
                       />
                       <div className="absolute top-4 left-4">
                         <Badge className="bg-teal-500 text-black font-medium px-3 py-1 text-sm">
@@ -299,7 +299,7 @@ export default function OurProgramsPage() {
         </div>
       </section>
 
-      <section ref={methodologyRef} className="py-24 bg-secondary mb-16">
+      <section ref={methodologyRef} className="py-24 bg-secondary">
         <div className="container mx-auto px-6">
           <motion.div
             initial={{ opacity: 0, y: 40 }}
@@ -378,7 +378,10 @@ export default function OurProgramsPage() {
         </div>
       </section>
 
-      <section className="py-24 bg-teal-500 text-black">
+      <div className="min-h-[1px]" />
+
+      {/* //<section className="py-24 bg-teal-500 text-black"></section> */}
+      <section className="py-12 bg-teal-500 text-black">
         <div className="container mx-auto px-6 text-center">
           <motion.div
             initial={{ opacity: 0, scale: 0.9 }}
@@ -409,6 +412,7 @@ export default function OurProgramsPage() {
           </motion.div>
         </div>
       </section>
+      
     </div>
   )
 } 

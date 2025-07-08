@@ -59,6 +59,7 @@ interface ActiveFilters {
   reports: string[]
   videos: string[]
   images: string[]
+  reportsSort?: string
 }
 
 type Image = ImageResource;
@@ -339,7 +340,8 @@ export default function ResourcesPage() {
   // Clear filter function
   const clearFilter = (category: string, resourceType: keyof ActiveFilters) => {
     setActiveFilters((prev) => {
-      const currentFilters = [...prev[resourceType]]
+      // const currentFilters = [...prev[resourceType]]
+      const currentFilters = Array.isArray(prev[resourceType]) ? [...prev[resourceType]] : [];
       const updatedFilters = currentFilters.filter((filter) => filter !== category)
       const newFilters = { ...prev, [resourceType]: updatedFilters }
 
@@ -452,7 +454,7 @@ export default function ResourcesPage() {
 
   const toggleFilter = (category: string, resourceType: keyof ActiveFilters) => {
     setActiveFilters((prev) => {
-      const currentFilters = [...prev[resourceType]]
+      const currentFilters = Array.isArray(prev[resourceType]) ? [...prev[resourceType]] : [];
 
       if (currentFilters.includes(category)) {
         // Remove the filter if it's already active
@@ -583,7 +585,7 @@ export default function ResourcesPage() {
                   onChange={(e) => setSearchQuery(e.target.value)}
                   onKeyDown={handleKeyDown}
                   placeholder="Search resources..."
-                  className="pl-12 pr-10 bg-card border-0 rounded-full h-14 text-foreground focus:ring-2 focus:ring-teal-500 w-full"
+                  className="pl-12 pr-10 bg-card border-2 border-neutral-900 rounded-full h-14 text-foreground focus:ring-2 focus:ring-teal-500 w-full"
                 />
                 {searchQuery && (
                   <button
@@ -638,7 +640,7 @@ export default function ResourcesPage() {
             transition={{ duration: 0.8, delay: 0.4 }}
           >
             <Tabs defaultValue={activeTab} onValueChange={handleTabChange} className="w-full">
-              <TabsList className="justify-center mb-8 bg-transparent border border-border rounded-full p-1 w-fit mx-auto">
+              <TabsList className="justify-center mb-8 bg-transparent border-2 border-neutral-900 rounded-full p-1 w-fit mx-auto">
                 {tabs.map((tab) => (
                 <TabsTrigger
                     key={tab.id}
@@ -847,7 +849,7 @@ export default function ResourcesPage() {
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.5, delay: 0.6 + index * 0.1 }}
                       >
-                        <Card className="bg-card border-0 overflow-hidden rounded-2xl hover:shadow-xl hover:shadow-teal-500/5 transition-all duration-300 h-full">
+                        <Card className="bg-card border-2 border-neutral-900 overflow-hidden rounded-2xl hover:shadow-xl hover:shadow-teal-500/5 transition-all duration-300 h-full">
                           <div className="relative h-48 overflow-hidden">
                             <Image
                               src={article.image || "/placeholder.svg"}
@@ -880,7 +882,7 @@ export default function ResourcesPage() {
                                   Read More
                                 </Button>
                               </DialogTrigger>
-                              <DialogContent className="bg-card border-0 rounded-2xl max-w-3xl">
+                              <DialogContent className="bg-card border-2 border-neutral-900 rounded-2xl max-w-3xl">
                                 <DialogHeader>
                                   <DialogTitle className="text-2xl font-bold text-foreground">
                                     {article.title}
@@ -928,6 +930,30 @@ export default function ResourcesPage() {
               </TabsContent>
 
               <TabsContent value="reports">
+                {/* Date sort filter */}
+                <div className="flex justify-end mb-4">
+                  <label className="flex items-center gap-2 text-sm text-muted-foreground">
+                    Sort by date:
+                    <select
+                      className="border border-neutral-900 rounded px-2 py-1 bg-card text-foreground"
+                      value={activeFilters.reportsSort || 'latest'}
+                      onChange={e => {
+                        const sort = e.target.value;
+                        setActiveFilters(prev => ({ ...prev, reportsSort: sort }));
+                        // Sort and re-apply filters
+                        const sorted = [...filteredResources.reports].sort((a, b) => {
+                          const dateA = new Date(a.date).getTime();
+                          const dateB = new Date(b.date).getTime();
+                          return sort === 'oldest' ? dateA - dateB : dateB - dateA;
+                        });
+                        setFilteredResources(r => ({ ...r, reports: sorted }));
+                      }}
+                    >
+                      <option value="latest">Latest</option>
+                      <option value="oldest">Oldest</option>
+                    </select>
+                  </label>
+                </div>
                 {filteredResources.reports.length === 0 ? (
                   <div className="text-center py-12">
                     <div className="h-20 w-20 rounded-full bg-muted flex items-center justify-center mx-auto mb-6">
@@ -949,7 +975,7 @@ export default function ResourcesPage() {
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.5, delay: 0.6 + index * 0.1 }}
                       >
-                        <Card className="bg-card border-0 overflow-hidden rounded-2xl hover:shadow-xl hover:shadow-teal-500/5 transition-all duration-300 h-full">
+                        <Card className="bg-card border-2 border-neutral-900 overflow-hidden rounded-2xl hover:shadow-xl hover:shadow-teal-500/5 transition-all duration-300 h-full">
                           <div className="grid md:grid-cols-3 gap-0">
                             <div className="relative h-56 md:col-span-1">
                               <Image
@@ -1033,7 +1059,7 @@ export default function ResourcesPage() {
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.5, delay: 0.6 + index * 0.1 }}
                       >
-                        <Card className="bg-card border-0 overflow-hidden rounded-2xl hover:shadow-xl hover:shadow-teal-500/5 transition-all duration-300 h-full">
+                        <Card className="bg-card border-2 border-neutral-900 overflow-hidden rounded-2xl hover:shadow-xl hover:shadow-teal-500/5 transition-all duration-300 h-full">
                           <div
                             className="relative h-64 overflow-hidden cursor-pointer"
                             onClick={() => handleVideoClick(video.videoUrl)}
@@ -1042,7 +1068,7 @@ export default function ResourcesPage() {
                               src={video.thumbnail || "/placeholder.svg"}
                               alt={video.title}
                               fill
-                              className="object-cover"
+                              className="object-cover border-2 border-neutral-900"
                             />
                             <div className="absolute inset-0 bg-black/40 flex items-center justify-center">
                               <div className="h-20 w-20 rounded-full bg-teal-500 flex items-center justify-center cursor-pointer hover:scale-110 transition-transform">
@@ -1113,7 +1139,7 @@ export default function ResourcesPage() {
                         <Dialog>
                           <DialogTrigger asChild>
                             <div
-                              className="relative h-64 rounded-xl overflow-hidden cursor-pointer group"
+                              className="relative h-64 rounded-xl overflow-hidden cursor-pointer group border-2 border-neutral-900"
                               onClick={() => handleImageClick(image, index)}
                             >
                               <Image
@@ -1132,7 +1158,7 @@ export default function ResourcesPage() {
                               </div>
                             </div>
                           </DialogTrigger>
-                          <DialogContent className="bg-card border-0 rounded-2xl max-w-5xl p-0">
+                          <DialogContent className="bg-card border-2 border-neutral-900 rounded-2xl max-w-5xl p-0">
                             <DialogHeader>
                               <DialogTitle className="sr-only">Image Gallery</DialogTitle>
                             </DialogHeader>
@@ -1213,6 +1239,9 @@ export default function ResourcesPage() {
           />
         </div>
       )}
+
+      {/* Force space before footer */}
+      <div className="min-h-[5px]" />
     </div>
   )
 } 

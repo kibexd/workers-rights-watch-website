@@ -114,7 +114,7 @@ const TwitterEmbed = dynamic(() => import('@/components/TwitterEmbed'), { ssr: f
 
 // Place this above the HomePage function
 const tweetBlockquotes = [
-  `<blockquote class="twitter-tweet"><p lang="en" dir="ltr">We work closely with flower farms to promote fair wages, safe working conditions,&amp;respect for workers’ dignity.<br>Through this partnership, we have seen improved workplace safety standards@empowered workers to advocate for their rights. <a href="https://twitter.com/hivosroea?ref_src=twsrc%5Etfw">@hivosroea</a> <a href="https://twitter.com/Women_Win?ref_src=twsrc%5Etfw">@Women_Win</a> <a href="https://twitter.com/equalitynow?ref_src=twsrc%5Etfw">@equalitynow</a> <a href="https://twitter.com/hashtag/rights?src=hash&amp;ref_src=twsrc%5Etfw">#rights</a> <a href="https://t.co/0TdQfJ7vCX">pic.twitter.com/0TdQfJ7vCX</a></p>&mdash; Workersrightswatch (@Workersrights24) <a href="https://twitter.com/Workersrights24/status/1937408354214904151?ref_src=twsrc%5Etfw">June 24, 2025</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>`,
+  `<blockquote class="twitter-tweet"><p lang="en" dir="ltr">We work closely with flower farms to promote fair wages, safe working conditions,&amp;respect for workers' dignity.<br>Through this partnership, we have seen improved workplace safety standards@empowered workers to advocate for their rights. <a href="https://twitter.com/hivosroea?ref_src=twsrc%5Etfw">@hivosroea</a> <a href="https://twitter.com/Women_Win?ref_src=twsrc%5Etfw">@Women_Win</a> <a href="https://twitter.com/equalitynow?ref_src=twsrc%5Etfw">@equalitynow</a> <a href="https://twitter.com/hashtag/rights?src=hash&amp;ref_src=twsrc%5Etfw">#rights</a> <a href="https://t.co/0TdQfJ7vCX">pic.twitter.com/0TdQfJ7vCX</a></p>&mdash; Workersrightswatch (@Workersrights24) <a href="https://twitter.com/Workersrights24/status/1937408354214904151?ref_src=twsrc%5Etfw">June 24, 2025</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>`,
   `<blockquote class="twitter-tweet"><p lang="en" dir="ltr">Behind every flower picked is a woman who deserves dignity, respect &amp;protection. Workers Rights Watch is helping Gender Based Violence survivors on Kenya's flower farms reclaim their voices&amp;their rights through partnering with pro-bono lawyers for legal support.<a href="https://twitter.com/hashtag/workersrights?src=hash&amp;ref_src=twsrc%5Etfw">#workersrights</a> <a href="https://t.co/dhY1ThfC1I">pic.twitter.com/dhY1ThfC1I</a></p>&mdash; Workersrightswatch (@Workersrights24) <a href="https://twitter.com/Workersrights24/status/1937041562208207145?ref_src=twsrc%5Etfw">June 23, 2025</a></blockquote>`,
   `<blockquote class="twitter-tweet"><p lang="en" dir="ltr">Workers Rights Watch conducts legal awareness sessions where female and male workers are empowered with confidence and knowledge to advocate for their rights and seek legal support without fear of retaliation.<a href="https://twitter.com/hashtag/Workersrights?src=hash&amp;ref_src=twsrc%5Etfw">#Workersrights</a><a href="https://twitter.com/hashtag/Endsexualharassment?src=hash&amp;ref_src=twsrc%5Etfw">#Endsexualharassment</a><a href="https://twitter.com/hashtag/Womenrights?src=hash&amp;ref_src=twsrc%5Etfw">#Womenrights</a><a href="https://twitter.com/hashtag/EndVAWG?src=hash&amp;ref_src=twsrc%5Etfw">#EndVAWG</a> <a href="https://t.co/Uv07A8n2kD">pic.twitter.com/Uv07A8n2kD</a></p>&mdash; Workersrightswatch (@Workersrights24) <a href="https://twitter.com/Workersrights24/status/1935238546622697572?ref_src=twsrc%5Etfw">June 18, 2025</a></blockquote>`,
   `<blockquote class="twitter-tweet"><p lang="en" dir="ltr">🎉21 flower farms. Diverse voices with one united mission: To advocate for worker rights&amp;gender equality in the flower industry. <br>By raising awareness&amp;building capacity, workers&amp;farm managements are actively working to eradicate harassment&amp;promote safe working environments.✊ <a href="https://t.co/3KoN5lW9HY">pic.twitter.com/3KoN5lW9HY</a></p>&mdash; Workersrightswatch (@Workersrights24) <a href="https://twitter.com/Workersrights24/status/1932696380755354058?ref_src=twsrc%5Etfw">June 11, 2025</a></blockquote>`,
@@ -162,7 +162,7 @@ function TweetCard({ author, handle, avatar, date, text, image, tweetUrl, blockq
   );
 }
 
-// Place this above the HomePage function, outside of any other function
+// Place this above the HomePage function
 
 const tweetData = [
   {
@@ -504,39 +504,95 @@ export default function HomePage() {
 
   return (
     <div className="min-h-screen bg-background font-sans">
-      {/* Hero Section with Gradient */}
-      <section className="relative h-screen flex items-center gradient-hero shadow-elevated">
-        <div className="absolute inset-0 z-0 gradient-hero" />
-        <div className="container mx-auto px-6 relative z-10">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            className="max-w-3xl"
-          >
-            <h1 className="text-6xl font-bold mb-6 text-foreground leading-tight drop-shadow-sm" style={{letterSpacing: '-0.01em'}}>
-              Championing Workers&apos; Rights in the Modern Era
-            </h1>
-            <p className="text-xl mb-8 text-muted-foreground leading-relaxed">
-              Empowering laborers, fostering ethical practices, and shaping a fair work environment since 2000.
-            </p>
-            <div className="flex flex-wrap gap-4">
-              <Button
-                asChild
-                variant="default"
-                className="gradient-button text-white font-medium rounded-2xl px-8 py-6 text-base shadow-elevated transition-all duration-300 hover:scale-105 hover:shadow-lg"
+      {/* 1. Marquee just below the main nav */}
+      <div className="w-full bg-gradient-to-r from-teal-400 via-white to-orange-400 py-2 border-b-2 border-neutral-900 overflow-hidden relative z-30">
+        <div className="relative w-full h-10">
+          <div className="absolute top-0 left-0 w-full h-full flex items-center whitespace-nowrap animate-marquee-continuous">
+            <span className="font-bold text-xl md:text-2xl tracking-wide text-black mx-8">
+              Workers Rights Watch • Empowering Workers • Dignity • Equality • Justice • WRW Impact • Safe Workplaces • Gender Equality • Legal Support • Community • Advocacy •
+            </span>
+            <span className="font-bold text-xl md:text-2xl tracking-wide text-black mx-8">
+              Workers Rights Watch • Empowering Workers • Dignity • Equality • Justice • WRW Impact • Safe Workplaces • Gender Equality • Legal Support • Community • Advocacy •
+            </span>
+          </div>
+        </div>
+      </div>
+
+      {/* Hero Section with full background bands */}
+      <section className="relative h-screen flex items-center overflow-hidden">
+        <div className="container mx-auto px-6 max-w-7xl relative z-20 flex flex-row items-center justify-between w-full h-full">
+          {/* Hero Text Left */}
+          <div className="flex-1 flex flex-col justify-center items-start max-w-2xl">
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8 }}
+            >
+              <h1 className="text-6xl font-bold mb-6 text-foreground leading-tight drop-shadow-sm" style={{letterSpacing: '-0.01em'}}>
+                Championing Workers&apos; Rights in the Modern Era
+              </h1>
+              <p className="text-xl mb-8 text-muted-foreground leading-relaxed">
+                Empowering laborers, fostering ethical practices, and shaping a fair work environment since 2000.
+              </p>
+              <div className="flex flex-wrap gap-4">
+                <Button
+                  asChild
+                  variant="default"
+                  className="gradient-button text-white font-medium rounded-2xl px-8 py-6 text-base shadow-elevated transition-all duration-300 hover:scale-105 hover:shadow-lg"
+                >
+                  <Link href="/about">Our Mission</Link>
+                </Button>
+                <Button
+                  asChild
+                  variant="outline"
+                  className="text-teal border-teal-500 hover:bg-peach hover:text-orange rounded-2xl px-8 py-6 text-base border-2 transition-all duration-300 hover:scale-105"
+                >
+                  <Link href="/contact">Get Involved</Link>
+                </Button>
+              </div>
+            </motion.div>
+          </div>
+          {/* Sliding Bands Box Right */}
+          <div className="flex-shrink-0 w-full max-w-[900px] h-[480px] md:h-[600px] border-2 border-neutral-900 rounded-2xl bg-white/60 backdrop-blur-md overflow-hidden flex flex-col justify-between ml-8">
+            {/* Top Band */}
+            <div className="flex-1 overflow-hidden opacity-90">
+              <div
+                className="flex items-center h-full animate-slide-ltr will-change-transform"
+                style={{ animationDuration: '8s', animationPlayState: 'running' }}
+                onMouseEnter={e => (e.currentTarget.style.animationPlayState = 'paused')}
+                onMouseLeave={e => (e.currentTarget.style.animationPlayState = 'running')}
               >
-                <Link href="/about">Our Mission</Link>
-              </Button>
-              <Button
-                asChild
-                variant="outline"
-                className="text-teal border-teal-500 hover:bg-peach hover:text-orange rounded-2xl px-8 py-6 text-base border-2 transition-all duration-300 hover:scale-105"
-              >
-                <Link href="/contact">Get Involved</Link>
-              </Button>
+                {[...heroItems, ...heroItems, ...heroItems].map((item, idx) => (
+                  <div key={idx} className="mx-2 flex-shrink-0 rounded-xl overflow-hidden border border-neutral-900 bg-black/10">
+                    {item.type === 'image' ? (
+                      <img src={item.src} alt={item.alt} className="h-40 md:h-56 w-auto object-cover" />
+                    ) : (
+                      <video src={item.src} className="h-40 md:h-56 w-auto object-cover" autoPlay loop muted playsInline />
+                    )}
+                  </div>
+                ))}
+              </div>
             </div>
-          </motion.div>
+            {/* Bottom Band */}
+            <div className="flex-1 overflow-hidden opacity-90 border-t border-neutral-900">
+              <div
+                className="flex items-center h-full animate-slide-rtl will-change-transform"
+                style={{ animationDuration: '8s', animationPlayState: 'running' }}
+                onMouseEnter={e => (e.currentTarget.style.animationPlayState = 'paused')}
+                onMouseLeave={e => (e.currentTarget.style.animationPlayState = 'running')}
+              >
+                {[...heroItems, ...heroItems, ...heroItems].map((item, idx) => (
+                  <div key={idx} className="mx-2 flex-shrink-0 rounded-xl overflow-hidden border border-neutral-900 bg-black/10">
+                    {item.type === 'image' ? (
+                      <img src={item.src} alt={item.alt} className="h-40 md:h-56 w-auto object-cover" />
+                    ) : (
+                      <video src={item.src} className="h-40 md:h-56 w-auto object-cover" autoPlay loop muted playsInline />
+                    )}
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
         </div>
         {/* Scroll Down Indicator */}
         <div className="absolute bottom-10 left-0 right-0 flex justify-center z-20">
@@ -580,7 +636,7 @@ export default function HomePage() {
                 content: "Promoting access to information and services on menstrual and reproductive health enabling workers to lead healthy and productive lives.",
               },
               {
-                icon: <Users className="h-8 w-8 text-teal-500" />,
+                icon: <ArrowRight className="h-8 w-8 text-teal-500" />,
                 title: "Women Economic Empowerment",
                 content: "Strengthening the agency, financial skills and capacity of women to make informed decisions, participate in decision making and make sustainable choices for themselves and their communities.",
               },
@@ -591,7 +647,7 @@ export default function HomePage() {
                 animate={isVisible.mission ? { opacity: 1, y: 0 } : {}}
                 transition={{ duration: 0.8, delay: index * 0.2 }}
               >
-                <Card className="bg-card border-0 overflow-hidden rounded-2xl hover:shadow-xl hover:shadow-teal-500/5 transition-all duration-300">
+                <Card className="bg-card border-2 border-neutral-900 overflow-hidden rounded-2xl hover:shadow-xl hover:shadow-teal-500/5 transition-all duration-300">
                   <CardContent className="p-8">
                     <div className="h-16 w-16 rounded-2xl bg-teal-500/10 flex items-center justify-center mb-6">
                       {item.icon}
@@ -604,6 +660,28 @@ export default function HomePage() {
                 </Card>
               </motion.div>
             ))}
+            {/* Separate Legal Support and Access to Justice as its own card/row */}
+            <motion.div
+              key="legal-support-access-justice"
+              initial={{ opacity: 0, y: 40 }}
+              animate={isVisible.mission ? { opacity: 1, y: 0 } : {}}
+              transition={{ duration: 0.8, delay: 4 * 0.2 }}
+              className="lg:col-span-3"
+            >
+              <Card className="bg-card border-2 border-neutral-900 overflow-hidden rounded-2xl hover:shadow-xl hover:shadow-teal-500/5 transition-all duration-300 mt-8">
+                <CardContent className="p-8">
+                  <div className="h-16 w-16 rounded-2xl bg-teal-500/10 flex items-center justify-center mb-6">
+                    <FileText className="h-8 w-8 text-teal-500" />
+                  </div>
+                  <h3 className="text-2xl font-bold text-foreground mb-4">
+                    Legal Support and Access to Justice
+                  </h3>
+                  <p className="text-muted-foreground">
+                    Providing legal awareness, representation, and support to ensure justice and protection of workers rights. Focusing on access to legal remedies for violations such as unfair dismissal, discrimination, gender-based violence/sexual harassment, and land or property rights violations. Strengthening legal literacy, links communities to justice systems, and promotes accountability and rule of law.
+                  </p>
+                </CardContent>
+              </Card>
+            </motion.div>
           </div>
         </div>
       </section>
@@ -660,7 +738,7 @@ export default function HomePage() {
                 animate={isVisible.impact ? { opacity: 1, y: 0 } : {}}
                 transition={{ duration: 0.8, delay: index * 0.15 }}
                 whileHover={{ y: -6 }}
-                className="group relative overflow-hidden rounded-2xl bg-card"
+                className="group relative overflow-hidden rounded-2xl bg-card border-2 border-neutral-900"
               >
                 {/* Image Container */}
                 <div className="relative h-52 w-full overflow-hidden">
@@ -732,7 +810,7 @@ export default function HomePage() {
                 <Dialog>
                   <DialogTrigger asChild>
                     <div
-                      className="relative h-64 rounded-xl overflow-hidden cursor-pointer group"
+                      className="relative h-64 rounded-xl overflow-hidden cursor-pointer group border-2 border-neutral-900"
                       onClick={() => handleImageClick(image)}
                     >
                       <Image
@@ -838,14 +916,14 @@ export default function HomePage() {
                     animate={isVisible.resources ? { opacity: 1, y: 0 } : {}}
                     transition={{ duration: 0.8, delay: index * 0.2 }}
                   >
-                    <Card className="bg-card border-0 overflow-hidden rounded-2xl hover:shadow-xl hover:shadow-teal-500/5 transition-all duration-300 h-full">
+                    <Card className="bg-card border-2 border-neutral-900 overflow-hidden rounded-2xl hover:shadow-xl hover:shadow-teal-500/5 transition-all duration-300 h-full">
                       <div className="h-48 overflow-hidden">
                         <Image
                           src={item.image || "/placeholder.svg"}
                           alt={item.title}
                           width={500}
                           height={300}
-                          className="w-full h-full object-cover transition-transform hover:scale-105 duration-500"
+                          className="w-full h-full object-cover transition-transform hover:scale-105 duration-500 border-2 border-neutral-900"
                         />
                       </div>
                       <CardContent className="p-8">
@@ -872,14 +950,14 @@ export default function HomePage() {
                     animate={isVisible.resources ? { opacity: 1, y: 0 } : {}}
                     transition={{ duration: 0.8, delay: index * 0.2 }}
                   >
-                    <Card className="bg-card border-0 overflow-hidden rounded-2xl hover:shadow-xl hover:shadow-teal-500/5 transition-all duration-300 h-full">
+                    <Card className="bg-card border-2 border-neutral-900 overflow-hidden rounded-2xl hover:shadow-xl hover:shadow-teal-500/5 transition-all duration-300 h-full">
                       <div className="h-48 overflow-hidden">
                         <Image
                           src={item.image || "/placeholder.svg"}
                           alt={item.title}
                           width={500}
                           height={300}
-                          className="w-full h-full object-cover transition-transform hover:scale-105 duration-500"
+                          className="w-full h-full object-cover transition-transform hover:scale-105 duration-500 border-2 border-neutral-900"
                         />
                       </div>
                       <CardContent className="p-8">
@@ -910,7 +988,7 @@ export default function HomePage() {
                     animate={isVisible.resources ? { opacity: 1, y: 0 } : {}}
                     transition={{ duration: 0.8, delay: index * 0.2 }}
                   >
-                    <Card className="bg-card border-0 overflow-hidden rounded-2xl hover:shadow-xl hover:shadow-teal-500/5 transition-all duration-300 h-full">
+                    <Card className="bg-card border-2 border-neutral-900 overflow-hidden rounded-2xl hover:shadow-xl hover:shadow-teal-500/5 transition-all duration-300 h-full">
                       <div
                         className="relative h-56 overflow-hidden cursor-pointer"
                         onClick={() => handleVideoClick(item.videoUrl)}
@@ -1058,34 +1136,6 @@ export default function HomePage() {
             </div>
           </div>
         </div>
-
-        <style jsx>{`
-          #partner-scroll {
-            animation: ${scrollDirection === 'left' ? 'scrollLeft' : 'scrollRight'} 50s linear infinite;
-          }
-          
-          @keyframes scrollLeft {
-            0% {
-              transform: translateX(0);
-            }
-            100% {
-              transform: translateX(-50%);
-            }
-          }
-          
-          @keyframes scrollRight {
-            0% {
-              transform: translateX(-50%);
-            }
-            100% {
-              transform: translateX(0%);
-            }
-          }
-          
-          #partner-scroll.paused {
-            animation-play-state: paused;
-          }
-        `}</style>
       </section>
 
       {/* Twitter Feed Section */}

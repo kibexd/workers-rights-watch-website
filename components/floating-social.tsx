@@ -60,15 +60,13 @@ export function FloatingSocial() {
       >
         {/* Glassmorphic Dock with animation and border, attached to edge */}
         <motion.div
-          className="glass flex flex-col items-center justify-center gap-2 px-3 py-4 rounded-full shadow-elevated border"
+          className="glass flex flex-col items-center justify-center gap-2 px-3 py-4 rounded-full shadow-elevated border-2 border-neutral-900"
           style={{
             minHeight: '320px',
             minWidth: '64px',
             boxShadow: '0 8px 32px 0 rgba(168,191,193,0.18)',
             borderRadius: '2.5rem 0 0 2.5rem',
             backdropFilter: 'blur(16px)',
-            border: '2px solid rgba(255,255,255,0.45)',
-            borderRight: 'none',
             pointerEvents: 'auto',
           }}
           initial={{ y: 0 }}

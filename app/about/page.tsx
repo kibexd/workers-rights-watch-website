@@ -151,7 +151,7 @@ export default function AboutPage() {
           >
             <h1 className="text-5xl font-bold text-foreground mb-6">About Us</h1>
             <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-              Workers' Rights Watch (WRW) is a Non-governmental Organization established in 2000, dedicated to
+              Workers' Rights Watch (WRW) is a Non-governmental Organization established in 2009, dedicated to
               championing workers' rights across Kenya.
             </p>
           </motion.div>
@@ -166,7 +166,7 @@ export default function AboutPage() {
               animate={isVisible.vision ? { opacity: 1, x: 0 } : {}}
               transition={{ duration: 0.8 }}
             >
-              <Card className="bg-card border-0 overflow-hidden rounded-2xl h-full">
+              <Card className="bg-card border-2 border-neutral-900 overflow-hidden rounded-2xl h-full">
                 <CardContent className="p-10">
                   <div className="flex items-center mb-6">
                     <div className="h-16 w-16 rounded-2xl bg-teal-500/10 flex items-center justify-center mr-6">
@@ -186,7 +186,7 @@ export default function AboutPage() {
               animate={isVisible.vision ? { opacity: 1, x: 0 } : {}}
               transition={{ duration: 0.8 }}
             >
-              <Card className="bg-card border-0 overflow-hidden rounded-2xl h-full">
+              <Card className="bg-card border-2 border-neutral-900 overflow-hidden rounded-2xl h-full">
                 <CardContent className="p-10">
                   <div className="flex items-center mb-6">
                     <div className="h-16 w-16 rounded-2xl bg-teal-500/10 flex items-center justify-center mr-6">
@@ -219,7 +219,7 @@ export default function AboutPage() {
             </p>
           </motion.div>
 
-          <Card className="bg-card border-0 rounded-2xl overflow-hidden">
+          <Card className="bg-card border-2 border-neutral-900 rounded-2xl overflow-hidden">
             <CardContent className="p-0">
               <div className="grid md:grid-cols-3 gap-0">
                 <motion.div
@@ -291,21 +291,15 @@ export default function AboutPage() {
             </p>
           </motion.div>
 
-          <Card className="bg-card border-0 rounded-2xl overflow-hidden">
+          <Card className="bg-card border-2 border-neutral-900 rounded-2xl overflow-hidden">
             <CardContent className="p-10">
               <div className="grid md:grid-cols-2 gap-8">
                 {[
-                  "To promote, protect and enhance the enjoyment of workers' labour rights.",
-                  "Rights education and ignorance within the labour movement through workers education.",
-                  "Promote active participation in global changes affecting workers rights.",
-                  "Advocates for the improvement of the living conditions of the workers through campaigns.",
-                  "Training of trainers to build a vibrant and empowered workers constituency in Kenya.",
-                  "Increase workers and community participation in development and empower them to fully participate on participatory social audits.",
-                  "Establish a reputable and well governed trade union movement in Kenya.",
-                  "To hold employers and institutions accountable on Corporate Citizenship (CSR).",
-                  "Initiate dialogue amongst stakeholders locally, nationally and internationally.",
-                  "Help workers to develop HIV/AIDS policies that protect workers at work place.",
-                  "Gender equality and domestic violence at work place.",
+                  "Promote and protect workers’ rights and decent work by advocating for fair, safe, and equitable working conditions and enforcing labour standards.",
+                  "Enhance health, safety, and well-being of workers and communities through improved access to health services, workplace safety measures, and holistic wellness initiatives.",
+                  "Advance gender equality and women’s economic empowerment by eliminating discrimination, supporting women’s leadership, and expanding access to economic opportunities.",
+                  "Empower workers through rights education, capacity-building, and active participation in decision-making, including training programs and participatory social audits.",
+                  "Foster accountable, inclusive, and well-governed labour institutions through stakeholder dialogue, corporate social responsibility, and strong, transparent trade union movements.",
                 ].map((objective, index) => (
                   <motion.div
                     key={index}
@@ -350,7 +344,7 @@ export default function AboutPage() {
                 transition={{ duration: 0.8, delay: index * 0.2 }}
                 whileHover={{ y: -10 }}
               >
-                <Card className="bg-card border-0 overflow-hidden rounded-2xl hover:shadow-xl hover:shadow-teal-500/5 transition-all duration-300 h-full">
+                <Card className="bg-card border-2 border-neutral-900 overflow-hidden rounded-2xl hover:shadow-xl hover:shadow-teal-500/5 transition-all duration-300 h-full">
                   <CardContent className="p-8 text-center">
                     <div className="h-20 w-20 rounded-2xl bg-teal-500/10 flex items-center justify-center mx-auto mb-6">
                       {value.icon}
@@ -407,7 +401,7 @@ export default function AboutPage() {
                 animate={isVisible.approach ? { opacity: 1, y: 0 } : {}}
                 transition={{ duration: 0.8, delay: index * 0.2 }}
               >
-                <Card className="bg-card border-0 overflow-hidden rounded-2xl hover:shadow-xl hover:shadow-teal-500/5 transition-all duration-300 h-full">
+                <Card className="bg-card border-2 border-neutral-900 overflow-hidden rounded-2xl hover:shadow-xl hover:shadow-teal-500/5 transition-all duration-300 h-full">
                   <CardContent className="p-8 text-center">
                     <div className="h-20 w-20 rounded-2xl bg-teal-500/10 flex items-center justify-center mx-auto mb-6">
                       {approach.icon}
