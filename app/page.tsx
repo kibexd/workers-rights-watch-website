@@ -14,6 +14,7 @@ import { Badge } from "@/components/ui/badge"
 import { Input } from "@/components/ui/input"
 import dynamic from "next/dynamic"
 import { HeroCarousel } from "@/components/hero-carousel"
+import { ParallaxCarousel } from "@/components/parallax-carousel"
 import { Tweet } from 'react-tweet';
 
 const partners = [
@@ -39,40 +40,49 @@ const partners = [
 // Double the partners array to create seamless loop
 const doubledPartners = [...partners, ...partners];
 
-// Define Hero Carousel items
+// Define Hero Carousel items with enhanced data for parallax carousel
 const heroItems = [
   {
     type: "image" as const,
     src: "/wfa4.jpeg",
     alt: "Workers in action",
+    title: "Workers Empowerment",
+    description: "Empowering farm workers with knowledge and rights awareness"
   },
   {
     type: "video" as const,
-    src: "/video1.MP4", // Ensure this path is correct and video exists
+    src: "/video1.MP4",
     alt: "Our work in action",
-    videoUrl: "/video1.MP4",
+    title: "Training Sessions",
+    description: "Interactive training on workers' rights and leadership"
   },
   {
     type: "image" as const,
     src: "/pic6.jpg",
     alt: "Community engagement",
+    title: "Community Engagement",
+    description: "Building strong partnerships with local communities"
   },
   {
     type: "video" as const,
-    src: "/Gender1.mov", // Ensure this path is correct and video exists
-    alt: "Our work in action",
-    videoUrl: "/Gender1.mov",
+    src: "/Gender1.mov",
+    alt: "Gender equality training",
+    title: "Gender Equality",
+    description: "Promoting gender mainstreaming and equality in workplaces"
   },
   {
     type: "image" as const,
     src: "/pic3.jpg",
     alt: "Training session",
+    title: "Leadership Development",
+    description: "Developing leadership skills among workers"
   },
   {
-    type: "video" as const,
-    src: "/Gender1.mov", // Ensure this path is correct and video exists
-    alt: "Our work in action",
-    videoUrl: "/Gender1.mov",
+    type: "image" as const,
+    src: "/Exchange program pictures/ep1.jpg",
+    alt: "Exchange program",
+    title: "Exchange Programs",
+    description: "Cross-cultural learning and knowledge sharing"
   },
 ];
 
@@ -552,45 +562,14 @@ export default function HomePage() {
               </div>
             </motion.div>
           </div>
-          {/* Sliding Bands Box Right */}
-          <div className="flex-shrink-0 w-full max-w-[900px] h-[480px] md:h-[600px] border-2 border-neutral-900 rounded-2xl bg-white/60 backdrop-blur-md overflow-hidden flex flex-col justify-between ml-8">
-            {/* Top Band */}
-            <div className="flex-1 overflow-hidden opacity-90">
-              <div
-                className="flex items-center h-full animate-slide-ltr will-change-transform"
-                style={{ animationDuration: '8s', animationPlayState: 'running' }}
-                onMouseEnter={e => (e.currentTarget.style.animationPlayState = 'paused')}
-                onMouseLeave={e => (e.currentTarget.style.animationPlayState = 'running')}
-              >
-                {[...heroItems, ...heroItems, ...heroItems].map((item, idx) => (
-                  <div key={idx} className="mx-2 flex-shrink-0 rounded-xl overflow-hidden border border-neutral-900 bg-black/10">
-                    {item.type === 'image' ? (
-                      <img src={item.src} alt={item.alt} className="h-40 md:h-56 w-auto object-cover" />
-                    ) : (
-                      <video src={item.src} className="h-40 md:h-56 w-auto object-cover" autoPlay loop muted playsInline />
-                    )}
-                  </div>
-                ))}
-              </div>
-            </div>
-            {/* Bottom Band */}
-            <div className="flex-1 overflow-hidden opacity-90 border-t border-neutral-900">
-              <div
-                className="flex items-center h-full animate-slide-rtl will-change-transform"
-                style={{ animationDuration: '8s', animationPlayState: 'running' }}
-                onMouseEnter={e => (e.currentTarget.style.animationPlayState = 'paused')}
-                onMouseLeave={e => (e.currentTarget.style.animationPlayState = 'running')}
-              >
-                {[...heroItems, ...heroItems, ...heroItems].map((item, idx) => (
-                  <div key={idx} className="mx-2 flex-shrink-0 rounded-xl overflow-hidden border border-neutral-900 bg-black/10">
-                    {item.type === 'image' ? (
-                      <img src={item.src} alt={item.alt} className="h-40 md:h-56 w-auto object-cover" />
-                    ) : (
-                      <video src={item.src} className="h-40 md:h-56 w-auto object-cover" autoPlay loop muted playsInline />
-                    )}
-                  </div>
-                ))}
-              </div>
+          {/* Parallax Carousel Box Right */}
+          <div className="flex-shrink-0 w-full max-w-[900px] h-[480px] md:h-[600px] border-2 border-neutral-900 rounded-2xl bg-white/60 backdrop-blur-md overflow-hidden flex items-center justify-center ml-8">
+            <div className="relative w-full h-full flex items-center justify-center">
+              <ParallaxCarousel 
+                items={heroItems}
+                autoAdvance={true}
+                interval={4000}
+              />
             </div>
           </div>
         </div>
