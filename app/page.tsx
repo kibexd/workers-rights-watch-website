@@ -49,13 +49,13 @@ const heroItems = [
     title: "Workers Empowerment",
     description: "Empowering farm workers with knowledge and rights awareness"
   },
-  {
-    type: "video" as const,
-    src: "/video1.MP4",
-    alt: "Our work in action",
-    title: "Training Sessions",
-    description: "Interactive training on workers' rights and leadership"
-  },
+  // {
+  //   type: "video" as const,
+  //   src: "/video1.MP4",
+  //   alt: "Our work in action",
+  //   title: "Training Sessions",
+  //   description: "Interactive training on workers' rights and leadership"
+  // },
   {
     type: "image" as const,
     src: "/pic6.jpg",
@@ -63,23 +63,23 @@ const heroItems = [
     title: "Community Engagement",
     description: "Building strong partnerships with local communities"
   },
-  {
-    type: "video" as const,
-    src: "/Gender1.mov",
-    alt: "Gender equality training",
-    title: "Gender Equality",
-    description: "Promoting gender mainstreaming and equality in workplaces"
-  },
+  // {
+  //   type: "video" as const,
+  //   src: "/Gender1.mov",
+  //   alt: "Gender equality training",
+  //   title: "Gender Equality",
+  //   description: "Promoting gender mainstreaming and equality in workplaces"
+  // },
   {
     type: "image" as const,
-    src: "/pic3.jpg",
+    src: "/pic4.jpg",
     alt: "Training session",
     title: "Leadership Development",
     description: "Developing leadership skills among workers"
   },
   {
     type: "image" as const,
-    src: "/Exchange program pictures/ep1.jpg",
+    src: "/ep3.jpg",
     alt: "Exchange program",
     title: "Exchange Programs",
     description: "Cross-cultural learning and knowledge sharing"
@@ -124,6 +124,8 @@ const TwitterEmbed = dynamic(() => import('@/components/TwitterEmbed'), { ssr: f
 
 // Place this above the HomePage function
 const tweetBlockquotes = [
+  '<blockquote class="twitter-tweet"><p lang="en" dir="ltr">We’re working with farms to prevent sexual harassment and GBV by raising awareness, training managers ,supervisors&amp;workers on addressing sexual harassment. Every worker deserves a workplace free from violence.Together, we can stop harassment before it starts.<a href="https://twitter.com/hashtag/workersrights?src=hash&amp;ref_src=twsrc%5Etfw">#workersrights</a> <a href="https://t.co/9hhmWrHQc7">pic.twitter.com/9hhmWrHQc7</a></p>&mdash; Workersrightswatch (@Workersrights24) <a href="https://twitter.com/Workersrights24/status/1943561978108117248?ref_src=twsrc%5Etfw">July 11, 2025</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>',
+  '<blockquote class="twitter-tweet"><p lang="en" dir="ltr">We partner with flower farms to create inclusive workplaces where everyone regardless of gender has equal opportunity to learn, lead,&amp;thrive. Through training, policy support, &amp;ongoing dialogue, we promote fair treatment, prevent discrimination,&amp;strengthen worker voices. <a href="https://t.co/aeVMlFdFc3">pic.twitter.com/aeVMlFdFc3</a></p>&mdash; Workersrightswatch (@Workersrights24) <a href="https://twitter.com/Workersrights24/status/1943215204394778639?ref_src=twsrc%5Etfw">July 10, 2025</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>',
   `<blockquote class="twitter-tweet"><p lang="en" dir="ltr">We work closely with flower farms to promote fair wages, safe working conditions,&amp;respect for workers' dignity.<br>Through this partnership, we have seen improved workplace safety standards@empowered workers to advocate for their rights. <a href="https://twitter.com/hivosroea?ref_src=twsrc%5Etfw">@hivosroea</a> <a href="https://twitter.com/Women_Win?ref_src=twsrc%5Etfw">@Women_Win</a> <a href="https://twitter.com/equalitynow?ref_src=twsrc%5Etfw">@equalitynow</a> <a href="https://twitter.com/hashtag/rights?src=hash&amp;ref_src=twsrc%5Etfw">#rights</a> <a href="https://t.co/0TdQfJ7vCX">pic.twitter.com/0TdQfJ7vCX</a></p>&mdash; Workersrightswatch (@Workersrights24) <a href="https://twitter.com/Workersrights24/status/1937408354214904151?ref_src=twsrc%5Etfw">June 24, 2025</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>`,
   `<blockquote class="twitter-tweet"><p lang="en" dir="ltr">Behind every flower picked is a woman who deserves dignity, respect &amp;protection. Workers Rights Watch is helping Gender Based Violence survivors on Kenya's flower farms reclaim their voices&amp;their rights through partnering with pro-bono lawyers for legal support.<a href="https://twitter.com/hashtag/workersrights?src=hash&amp;ref_src=twsrc%5Etfw">#workersrights</a> <a href="https://t.co/dhY1ThfC1I">pic.twitter.com/dhY1ThfC1I</a></p>&mdash; Workersrightswatch (@Workersrights24) <a href="https://twitter.com/Workersrights24/status/1937041562208207145?ref_src=twsrc%5Etfw">June 23, 2025</a></blockquote>`,
   `<blockquote class="twitter-tweet"><p lang="en" dir="ltr">Workers Rights Watch conducts legal awareness sessions where female and male workers are empowered with confidence and knowledge to advocate for their rights and seek legal support without fear of retaliation.<a href="https://twitter.com/hashtag/Workersrights?src=hash&amp;ref_src=twsrc%5Etfw">#Workersrights</a><a href="https://twitter.com/hashtag/Endsexualharassment?src=hash&amp;ref_src=twsrc%5Etfw">#Endsexualharassment</a><a href="https://twitter.com/hashtag/Womenrights?src=hash&amp;ref_src=twsrc%5Etfw">#Womenrights</a><a href="https://twitter.com/hashtag/EndVAWG?src=hash&amp;ref_src=twsrc%5Etfw">#EndVAWG</a> <a href="https://t.co/Uv07A8n2kD">pic.twitter.com/Uv07A8n2kD</a></p>&mdash; Workersrightswatch (@Workersrights24) <a href="https://twitter.com/Workersrights24/status/1935238546622697572?ref_src=twsrc%5Etfw">June 18, 2025</a></blockquote>`,
@@ -210,6 +212,8 @@ const tweetData = [
 
 // Map tweet IDs to their dates (ISO format for easy sorting)
 const tweetIdDateMap = [
+  { id: '1943561978108117248', date: '2025-07-11' },
+  { id: '1943215204394778639', date: '2025-07-10' },
   { id: '1937408354214904151', date: '2025-06-24' },
   { id: '1937041562208207145', date: '2025-06-23' },
   { id: '1932696380755354058', date: '2025-06-11' },
@@ -1071,7 +1075,7 @@ export default function HomePage() {
             >
               <div 
                 id="partner-scroll"
-                className="flex gap-8 py-8"
+                className={`flex gap-8 py-8 ${scrollDirection === 'left' ? 'animate-scroll-partners' : 'animate-scroll-partners-reverse'}`}
                 style={{
                   width: 'fit-content'
                 }}

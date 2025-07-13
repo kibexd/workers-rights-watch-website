@@ -201,3 +201,21 @@ body {
 .text-shadow-md {
   text-shadow: 0 1px 4px rgba(0,0,0,0.4);
 }
+@keyframes scroll-partners {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+@keyframes scroll-partners-reverse {
+  0% { transform: translateX(-50%); }
+  100% { transform: translateX(0); }
+}
+.animate-scroll-partners {
+  animation: scroll-partners 40s linear infinite;
+}
+.animate-scroll-partners-reverse {
+  animation: scroll-partners-reverse 40s linear infinite;
+}
+.animate-scroll-partners.paused,
+.animate-scroll-partners-reverse.paused {
+  animation-play-state: paused;
+}
