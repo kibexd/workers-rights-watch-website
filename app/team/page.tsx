@@ -75,7 +75,7 @@ export default function TeamPage() {
       id: 3,
       name: "Steve Biko",
       title: "Accountant",
-      image: "/placeholder.svg?height=400&width=400",
+      image: "/biko.jpeg?height=400&width=400",
       bio: "Steve is a qualified finance professional with a Bachelors Degree in Commerce (Accounting), CPA II and over 6 years of experience in nonprofit financial management, compliance, and accountability. As the organization's Accountant, he ensures sound financial stewardship, transparency, and alignment with donor requirements and organizational values.\n\nSteve is instrumental in budgeting, reporting, and supporting program teams to manage resources effectively for initiatives in workers' rights, health and safety, legal aid, and women's economic empowerment. His dedication and expertise in financial management have been instrumental in driving our mission forward and ensuring the effective allocation of resources to our programs.",
       email: "steve@workersrightswatch.org",
       linkedin: "https://www.linkedin.com/in/steve-biko/",
@@ -89,7 +89,7 @@ export default function TeamPage() {
       id: 4,
       name: "Cynthia Akomo",
       title: "Programs Officer",
-      image: "/placeholder.svg?height=400&width=400",
+      image: "/cynthia.jpeg?height=400&width=400",
       bio: "Cynthia is the Programs Officer at Workers Rights Watch, with over 6 years experience in program design, coordination, monitoring and community engagement across the areas of labour rights, health, gender equality, and access to justice. As Programs Officer, she leads the implementation and monitoring of rights-based interventions that empower workers and their communities.\n\nCynthia has a strong background in education and commitment to empowering vulnerable communities. She has been instrumental in designing and implementing effective programs that address unique challenges for workers and women. Her leadership ensures that our initiatives are impactful and that we continue to safeguard the rights and wellbeing of women and workers.",
       // Old bio: N/A
       // email, linkedin, twitter, etc. can be added if available
