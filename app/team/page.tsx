@@ -91,6 +91,9 @@ export default function TeamPage() {
       title: "Programs Officer",
       image: "/cynthia.jpeg?height=400&width=400",
       bio: "Cynthia is the Programs Officer at Workers Rights Watch, with over 6 years experience in program design, coordination, monitoring and community engagement across the areas of labour rights, health, gender equality, and access to justice. As Programs Officer, she leads the implementation and monitoring of rights-based interventions that empower workers and their communities.\n\nCynthia has a strong background in education and commitment to empowering vulnerable communities. She has been instrumental in designing and implementing effective programs that address unique challenges for workers and women. Her leadership ensures that our initiatives are impactful and that we continue to safeguard the rights and wellbeing of women and workers.",
+      email: "steve@workersrightswatch.org",
+      linkedin: "https://www.linkedin.com/in/steve-biko/",
+      twitter: "https://twitter.com/stevebiko",
       // Old bio: N/A
       // email, linkedin, twitter, etc. can be added if available
     },
