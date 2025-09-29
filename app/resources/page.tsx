@@ -33,6 +33,13 @@ interface Report extends Resource {
   downloadUrl: string
 }
 
+interface Manual extends Resource {
+  description: string
+  fileSize: string
+  image: string
+  downloadUrl: string
+}
+
 interface Video extends Resource {
   description: string
   duration: string
@@ -52,6 +59,7 @@ interface Resources {
   reports: Report[]
   videos: Video[]
   images: ImageResource[]
+  manuals: Manual[]
 }
 
 interface ActiveFilters {
@@ -60,6 +68,8 @@ interface ActiveFilters {
   videos: string[]
   images: string[]
   reportsSort?: string
+  manuals: string[]
+  manualsSort?: string
 }
 
 type Image = ImageResource;
@@ -68,6 +78,7 @@ const tabs = [
   { id: "articles", label: "Articles" },
   { id: "reports", label: "Reports" },
   { id: "videos", label: "Videos" },
+  { id: "manuals", label: "Training Manuals" },
   { id: "images", label: "Photo Gallery" },
 ]
 
@@ -80,12 +91,14 @@ export default function ResourcesPage() {
     reports: [],
     videos: [],
     images: [],
+    manuals: [],
   })
   const [filteredResources, setFilteredResources] = useState<Resources>({
     articles: [],
     reports: [],
     videos: [],
     images: [],
+    manuals: [],
   })
   const [selectedImage, setSelectedImage] = useState<ImageResource | null>(null)
   const [currentImageIndex, setCurrentImageIndex] = useState<number>(0)
@@ -316,6 +329,73 @@ export default function ResourcesPage() {
       //   category: "Campaigns",
       //   location: "Nairobi, Kenya",
       // },
+      {
+        id: 20,
+        title: "WRW Activity – Group Session",
+        date: "September 15, 2025",
+        description: "Recent Workers Rights Watch activity group session.",
+        image: "/rephotosfromrecentworkersrightswatchactivities/IMG-20250915-WA0027.jpg",
+        category: "Activities",
+        location: "Kenya"
+      },
+      {
+        id: 21,
+        title: "WRW Activity – Training Highlight",
+        date: "September 15, 2025",
+        description: "Highlights from a recent training event.",
+        image: "/rephotosfromrecentworkersrightswatchactivities/IMG-20250915-WA0030.jpg",
+        category: "Activities",
+        location: "Kenya"
+      },
+      {
+        id: 22,
+        title: "WRW Activity – Participant Engagement",
+        date: "September 15, 2025",
+        description: "Participants engaging during WRW activities.",
+        image: "/rephotosfromrecentworkersrightswatchactivities/IMG-20250915-WA0031.jpg",
+        category: "Activities",
+        location: "Kenya"
+      },
+      {
+        id: 23,
+        title: "WRW Activity – Team Photo",
+        date: "September 15, 2025",
+        description: "Team photo from recent WRW activities.",
+        image: "/rephotosfromrecentworkersrightswatchactivities/IMG-20250915-WA0156.jpg",
+        category: "Activities",
+        location: "Kenya"
+      },
+      {
+        id: 24,
+        title: "WRW Activity – Workshop Moment",
+        date: "September 15, 2025",
+        description: "A moment captured during a workshop.",
+        image: "/rephotosfromrecentworkersrightswatchactivities/IMG-20250915-WA0022.jpg",
+        category: "Activities",
+        location: "Kenya"
+      },
+      {
+        id: 25,
+        title: "WRW Activity – Discussion",
+        date: "September 15, 2025",
+        description: "Discussion session during recent activities.",
+        image: "/rephotosfromrecentworkersrightswatchactivities/IMG-20250915-WA0023.jpg",
+        category: "Activities",
+        location: "Kenya"
+      },
+    ],
+    manuals: [
+      {
+        id: 1001,
+        title: "Leadership Training Manual",
+        date: "July 15, 2025",
+        description: "Practical guide on leadership for worker representatives and supervisors.",
+        fileSize: "1.0 MB",
+        image: "/reportpic1.png",
+        category: "Leadership",
+        content: "A modular manual covering foundational leadership skills, communication, and conflict resolution.",
+        downloadUrl: "/cli-handbook.pdf"
+      },
     ],
   }
 
@@ -329,6 +409,7 @@ export default function ResourcesPage() {
   const reportCategories = getCategories("reports")
   const videoCategories = getCategories("videos")
   const imageCategories = getCategories("images")
+  const manualCategories = getCategories("manuals")
 
   // Clear search function
   const clearSearch = () => {
@@ -440,11 +521,25 @@ export default function ResourcesPage() {
       return matchesSearch && matchesFilter
     })
 
+    // Filter manuals
+    const filteredManuals = resources.manuals.filter((manual) => {
+      const matchesSearch =
+        query === "" ||
+        manual.title.toLowerCase().includes(query) ||
+        manual.description.toLowerCase().includes(query) ||
+        manual.category.toLowerCase().includes(query)
+
+      const matchesFilter = filtersToApply.manuals.length === 0 || filtersToApply.manuals.includes(manual.category)
+
+      return matchesSearch && matchesFilter
+    })
+
     setFilteredResources({
       articles: filteredArticles,
       reports: filteredReports,
       videos: filteredVideos,
       images: filteredImages,
+      manuals: filteredManuals,
     })
 
     setTimeout(() => {
@@ -640,12 +735,12 @@ export default function ResourcesPage() {
             transition={{ duration: 0.8, delay: 0.4 }}
           >
             <Tabs defaultValue={activeTab} onValueChange={handleTabChange} className="w-full">
-              <TabsList className="justify-center mb-8 bg-transparent border-2 border-neutral-900 rounded-full p-1 w-fit mx-auto">
+              <TabsList className="justify-center mb-8 bg-transparent border-2 border-neutral-900 rounded-full p-0 w-fit mx-auto overflow-hidden">
                 {tabs.map((tab) => (
                 <TabsTrigger
                     key={tab.id}
                     value={tab.id}
-                  className="rounded-full px-8 py-2 data-[state=active]:bg-teal-500 data-[state=active]:text-black"
+                  className="rounded-full px-8 py-2 first:-ml-[2px] last:-mr-[2px] data-[state=active]:bg-teal-500 data-[state=active]:text-black"
                 >
                     {tab.label}
                 </TabsTrigger>
@@ -774,6 +869,49 @@ export default function ResourcesPage() {
                     {activeFilters.videos.length > 0 && (
                       <button
                         onClick={() => clearAllFilters("videos")}
+                        className="ml-2 text-sm text-teal-500 hover:text-teal-400 flex items-center"
+                        aria-label="Clear all filters"
+                      >
+                        Clear all <X className="h-3 w-3 ml-1" />
+                      </button>
+                    )}
+                  </div>
+                )}
+
+                {activeTab === "manuals" && manualCategories.length > 0 && (
+                  <div className="flex flex-wrap gap-2 justify-center">
+                    <span className="flex items-center text-muted-foreground text-sm mr-2">
+                      <Filter className="h-4 w-4 mr-1" /> Filter by:
+                    </span>
+                    {manualCategories.map((category) => (
+                      <Badge
+                        key={category}
+                        className={`cursor-pointer flex items-center ${
+                          activeFilters.manuals.includes(category)
+                            ? "bg-teal-500 text-black"
+                            : "bg-card text-foreground hover:bg-teal-500/20"
+                        }`}
+                      >
+                        <span onClick={() => toggleFilter(category, "manuals")} className="px-2 py-1">
+                          {category}
+                        </span>
+                        {activeFilters.manuals.includes(category) && (
+                          <button
+                            onClick={(e) => {
+                              e.stopPropagation()
+                              clearFilter(category, "manuals")
+                            }}
+                            className="ml-1 hover:bg-black/20 rounded-full p-0.5"
+                            aria-label={`Remove ${category} filter`}
+                          >
+                            <X className="h-3 w-3" />
+                          </button>
+                        )}
+                      </Badge>
+                    ))}
+                    {activeFilters.manuals.length > 0 && (
+                      <button
+                        onClick={() => clearAllFilters("manuals")}
                         className="ml-2 text-sm text-teal-500 hover:text-teal-400 flex items-center"
                         aria-label="Clear all filters"
                       >
@@ -1107,6 +1245,90 @@ export default function ResourcesPage() {
                               Watch Video
                             </Button>
                           </CardContent>
+                        </Card>
+                      </motion.div>
+                    ))}
+                  </div>
+                )}
+              </TabsContent>
+
+              <TabsContent value="manuals">
+                {filteredResources.manuals.length === 0 ? (
+                  <div className="text-center py-12">
+                    <div className="h-20 w-20 rounded-full bg-muted flex items-center justify-center mx-auto mb-6">
+                      <Search className="h-10 w-10 text-muted-foreground" />
+                    </div>
+                    <h3 className="text-xl font-bold text-foreground mb-2">
+                      No manuals found
+                    </h3>
+                    <p className="text-muted-foreground">
+                      Try adjusting your search terms or filters to find what you're looking for.
+                    </p>
+                  </div>
+                ) : (
+                  <div className="grid md:grid-cols-2 gap-8">
+                    {filteredResources.manuals.map((manual, index) => (
+                      <motion.div
+                        key={manual.id}
+                        initial={{ opacity: 0, y: 20 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ duration: 0.5, delay: 0.6 + index * 0.1 }}
+                      >
+                        <Card className="bg-card border-2 border-neutral-900 overflow-hidden rounded-2xl hover:shadow-xl hover:shadow-teal-500/5 transition-all duration-300 h-full">
+                          <div className="grid md:grid-cols-3 gap-0">
+                            <div className="relative h-56 md:col-span-1">
+                              <Image
+                                src={manual.image || "/placeholder.svg"}
+                                alt={manual.title}
+                                fill
+                                className="object-contain"
+                              />
+                              <div className="absolute top-3 right-3">
+                                <Badge className="bg-teal-500/80 text-black font-medium">{manual.category}</Badge>
+                              </div>
+                            </div>
+                            <div className="p-6 md:col-span-2 flex flex-col justify-between">
+                              <div>
+                                <h3 className="text-xl font-bold text-foreground mb-2">
+                                  {manual.title}
+                                </h3>
+                                <p className="text-sm text-teal-500 text-teal-600 mb-4">
+                                  {manual.date}
+                                </p>
+                                <p className="text-muted-foreground mb-4 line-clamp-3">
+                                  {manual.description}
+                                </p>
+                              </div>
+                              <div className="flex items-center text-sm text-muted-foreground mb-4">
+                                <FileText className="h-4 w-4 mr-2" />
+                                <span>{manual.downloadUrl.endsWith(".docx") ? "DOCX" : "PDF"}</span>
+                                <span className="mx-2">•</span>
+                                <span>{manual.fileSize}</span>
+                              </div>
+                              <div className="flex space-x-3">
+                                <Button
+                                  variant="default"
+                                  className="bg-teal-500 hover:bg-teal-600 text-black font-medium rounded-full"
+                                  onClick={() => handleDownload(manual.downloadUrl, manual.title)}
+                                  disabled={isDownloading === manual.title}
+                                >
+                                  {isDownloading === manual.title ? (
+                                    <Loading size={20} color="black" message="" className="mr-2" />
+                                  ) : (
+                                    <Download className="mr-2 h-4 w-4" />
+                                  )}
+                                  {isDownloading === manual.title ? "Downloading..." : "Download"}
+                                </Button>
+                                <Button
+                                  variant="outline"
+                                  className="text-foreground border-border border-gray-300 hover:bg-gray-100 rounded-full"
+                                  onClick={() => window.open(manual.downloadUrl, "_blank")}
+                                >
+                                  View Online
+                                </Button>
+                              </div>
+                            </div>
+                          </div>
                         </Card>
                       </motion.div>
                     ))}

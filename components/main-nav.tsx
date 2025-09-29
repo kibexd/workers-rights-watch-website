@@ -59,6 +59,7 @@ export default function MainNav() {
         { title: "Reports", href: "/resources?tab=reports", description: "Access our research reports and publications" },
         { title: "Videos", href: "/resources?tab=videos", description: "Watch our videos and documentaries" },
         { title: "Photo Gallery", href: "/resources?tab=images", description: "Browse our photo gallery" },
+        { title: "Training Manuals", href: "/resources?tab=manuals", description: "Download our training manuals and guides" },
       ],
     },
     { name: "Careers", href: "/careers" },

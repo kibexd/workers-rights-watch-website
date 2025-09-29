@@ -34,7 +34,8 @@ const partners = [
   { name: "Women Empowerment Link", logo: "/wel.jpeg", url: "https://wel.or.ke/" },
   { name: "CREAW", logo: "/creaw.png", url: "https://home.creaw.org/" },
   { name: "Business and Human Rights Resource Center", logo: "/bhrc.png", url: "https://www.business-humanrights.org/en/latest-news/kenya/" },
-  { name: "CIFCAD", logo: "/cifcad.png", url: "https://cifcad.org/" }
+  { name: "CIFCAD", logo: "/cifcad.png", url: "https://cifcad.org/" },
+  { name: "Horticulture Advocacy Network", logo: "/horticulture_logo-2048x940.png", url: "https://horticultureadvocacynetwork.org/" }
 ];
 
 // Double the partners array to create seamless loop
