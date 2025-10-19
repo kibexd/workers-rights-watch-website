@@ -10,9 +10,12 @@ Workers Rights Watch
 Nairobi, Kenya
 
 **Prepared By:**  
-[Your Name]  
+Enock Kibe  
 Web Developer  
-[Your Contact Information]
+**Contact Information:**  
+**Email:** kibeenock7390@gmail.com  
+**Phone (Airtel):** 0735 663 656  
+**Phone (Safaricom):** 0769 006 176
 
 **Date:** January 2025
 
@@ -976,7 +979,7 @@ Includes:
 
 ---
 
-**Prepared By:** [Your Name]  
+**Prepared By:** Enock Kibe  
 **Date:** January 2025  
 **Version:** 1.0
 
