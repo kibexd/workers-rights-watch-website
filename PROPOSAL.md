@@ -203,9 +203,9 @@ Your website is built with modern, industry-standard technology that ensures:
 
 ### Development Fee (One-Time Payment)
 
-**Total Cost: KES 180,000**
+**Total Investment: KES 180,000**
 
-*(Range: KES 150,000 - 200,000 based on complexity and features)*
+*This is a fixed, fair-market rate for the quality and scope of work delivered.*
 
 #### What This Includes:
 
@@ -276,19 +276,19 @@ Your website is built with modern, industry-standard technology that ensures:
 
 #### Kenya Market Context (2025):
 - Junior Developer (1-2 years): KES 80,000 - 120,000
-- Mid-Level Developer (3-5 years): KES 150,000 - 200,000 ✓ **(Your Website)**
+- **Mid-Level Developer (3-5 years): KES 180,000** ✓ **(Your Website - Fair Market Rate)**
 - Senior Developer (5+ years): KES 250,000 - 350,000
 - International Agency: KES 500,000 - 1,000,000+
 
-Your website is priced at mid-level professional quality - excellent value for the features delivered.
+Your investment of KES 180,000 reflects mid-level professional quality - exceptional value for a 10-page website with advanced features that would cost KES 500,000+ from an international agency.
 
 ---
 
 ### Monthly Maintenance & SEO Services
 
-**Monthly Cost: KES 18,000**
+**Monthly Investment: KES 18,000**
 
-*(Range: KES 15,000 - 20,000 based on service level)*
+*This fixed rate includes comprehensive maintenance, security, and SEO services.*
 
 #### What's Included Every Month:
 
@@ -571,15 +571,16 @@ If SEO brings just 2 additional donors per month averaging KES 15,000 each:
 
 ### Development Fee Payment Terms
 
-**Option A: Full Payment** *(Recommended)*
-- Full payment: KES 180,000
-- Due upon: Project completion and your approval
-- Benefit: 5% discount = KES 171,000 final cost
+**Option A: Full Payment** *(Recommended - Save KES 9,000)*
+- Full payment upon project completion: **KES 171,000**
+- 5% early payment discount applied
+- Due upon: Final delivery and your approval
+- **You save: KES 9,000**
 
-**Option B: Split Payment**
-- 50% upfront: KES 90,000 (paid when work begins)
-- 50% on completion: KES 90,000 (paid when delivered)
-- Total: KES 180,000
+**Option B: Split Payment** *(Standard Rate)*
+- 50% upfront: KES 90,000
+- 50% on completion: KES 90,000
+- **Total: KES 180,000**
 
 ### Maintenance Contract Terms
 
@@ -828,10 +829,10 @@ If you exceed this (great problem to have!), paid hosting costs KES 2,000-5,000/
 ## Investment Summary
 
 ### One-Time Development Fee
-| Item | Cost |
+| Payment Option | Investment |
 |------|------|
-| **Website Development (10 pages)** | **KES 180,000** |
-| *Or with 5% early payment discount* | *KES 171,000* |
+| **Standard Rate (Split Payment)** | **KES 180,000** |
+| **Early Payment Discount (Full Payment)** | **KES 171,000** ✓ *Save KES 9,000* |
 
 ### Monthly Recurring Costs
 | Service | Monthly | Quarterly | Annually |

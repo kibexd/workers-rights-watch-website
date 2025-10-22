@@ -112,9 +112,9 @@ Comprehensive documentation for your Workers Rights Watch website project has be
 
 ### Step 1: Review the Documents (15 minutes)
 1. Read through **README.md** to see if anything needs adjustment
-2. Check **PROPOSAL.md** pricing - make sure you're comfortable with:
-   - Development fee: KES 180,000
-   - Monthly maintenance: KES 18,000
+2. Check **PROPOSAL.md** pricing - FIXED rates (no ranges):
+   - Development fee: **KES 180,000** (or KES 171,000 with early payment discount)
+   - Monthly maintenance: **KES 18,000**
 3. Adjust your name and contact info where it says `[Your Name]`
 
 ### Step 2: Create PDF Documents (30-60 minutes)
@@ -141,11 +141,11 @@ Comprehensive documentation for your Workers Rights Watch website project has be
 
 "Madam Eunice, I've completed your Workers Rights Watch website with 10 full pages, modern design, payment integration, and all the features we discussed. I've prepared complete documentation so you can understand exactly what has been built and how it works.
 
-The development cost is KES 180,000, which is fair market rate for this level of work - you're getting mid-to-senior level quality. This includes 90-120 hours of professional development work.
+The investment is KES 180,000 - a fixed, fair market rate for professional mid-level work. This is exceptional value for a 10-page website with advanced features that would cost KES 500,000+ from an international agency. If you can pay in full upon completion, I'm offering a 5% discount bringing it to KES 171,000.
 
-For ongoing support, I recommend KES 18,000 per month which includes security updates, technical support, content updates, and SEO services to ensure your website ranks well on Google.
+For ongoing support, the investment is KES 18,000 per month, which includes security updates, technical support, content updates, and SEO services to ensure your website ranks well on Google and brings in donations.
 
-The only thing remaining is connecting the payment accounts for the donation system - once you provide your Stripe, M-Pesa, and PayPal credentials, I can have that live within a week."
+The website is 95% complete. The only thing remaining is connecting the payment accounts for the donation system - once you provide your Stripe, M-Pesa, and PayPal credentials, I can have that live within one week."
 
 ### Step 4: Send Documentation
 
@@ -169,10 +169,12 @@ Best regards,
 ### Step 5: Be Ready to Negotiate
 
 **If she says the price is too high:**
-- Show her the market rate comparison (in PROPOSAL.md page showing KES 150k-200k is standard)
-- Remind her you built 10 complete pages, not a simple website
-- Show all the features: payment systems, galleries, forms, social media integration
-- Offer payment plan: 50% now (KES 90,000), 50% on launch (KES 90,000)
+- Show her the market rate comparison: KES 180,000 is fair mid-level rate (agencies charge KES 500k-1M)
+- Remind her you built 10 complete pages with advanced features, not a basic website
+- Show all the features: payment systems, galleries, forms, social media integration, SEO
+- Highlight the value: She's getting KES 500k+ worth of work for KES 180k
+- Offer the early payment discount: KES 171,000 if she can pay in full
+- Offer split payment: 50/50 plan (KES 90,000 + KES 90,000)
 
 **If she doesn't want monthly maintenance:**
 - Explain website security risks without updates

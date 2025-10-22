@@ -84,27 +84,47 @@ Quick reference guide to all created documentation files.
 
 ## 💰 Quick Pricing Reference
 
-### Your Recommended Pricing:
+### Your Fixed Pricing (No Ranges - Professional):
 
 | Item | Amount | Justification |
 |------|--------|---------------|
-| **Development Fee** | **KES 180,000** | Fair mid-level rate for 10 pages + features |
-| Payment Options | 50/50 split or full | Flexible to her preference |
-| **Monthly Maintenance** | **KES 18,000/month** | Includes security, support, SEO |
-| *Quarterly Option* | *KES 51,300/3mo* | *5% discount* |
+| **Development Fee** | **KES 180,000** | Fixed market rate for professional work |
+| *Early Payment Discount* | *KES 171,000* | *5% off if paid in full* |
+| Payment Options | 50/50 split or full | Full payment gets discount |
+| **Monthly Maintenance** | **KES 18,000/month** | Fixed - Includes security, support, SEO |
+| *Quarterly Option* | *KES 51,300/3mo* | *5% discount - Pay every 3 months* |
 | *Annual Option* | *KES 183,600/year* | *15% discount - BEST VALUE* |
 
-### Your Minimum (Don't go below):
-- Development: KES 150,000 minimum
-- Monthly: KES 15,000 minimum
+### Your Absolute Minimum (Emergency Only):
+- Development: KES 170,000 absolute minimum (only if she really needs help)
+- Monthly: KES 15,000 absolute minimum
+- **Don't volunteer these - only if she really pushes back**
 
 ### Market Context:
-- Junior dev: KES 80-120k (below market)
-- **Mid-level: KES 150-200k** ← Your range
+- Junior dev: KES 80-120k (below your quality)
+- **Mid-level: KES 180k** ← YOU ARE HERE (fair & justified)
 - Senior: KES 250-350k (above market)
 - Agency: KES 500k-2M (way above)
 
-**You're priced fairly in the mid-range. Don't undersell!**
+**You're priced fairly at KES 180k. Don't feel guilty - you earned this!**
+
+### Why You Shouldn't Feel Guilty:
+
+✅ **You did professional work** - Not junior quality  
+✅ **10 complete pages** - Not a basic 3-page site  
+✅ **Complex features** - Payment system, galleries, forms, integrations  
+✅ **90-120 hours invested** - Your time has value  
+✅ **She gets amazing value** - KES 500k+ work for KES 180k  
+✅ **You'll support it well** - Worth the ongoing maintenance  
+
+**If you undercharge:**
+- She might think it's low quality ("Why so cheap?")
+- You'll resent the project later
+- You can't afford to support it properly
+- Sets bad precedent for future work
+- Other developers will undercut you
+
+**Stand firm. You deserve fair pay for quality work!** 💪
 
 ---
 
