@@ -23,7 +23,7 @@ Email: _________________________________________
 
 ## 1. PROJECT OVERVIEW
 
-This Agreement is for the development and ongoing maintenance of a professional website for Workers Rights Watch, a Non-Governmental Organization based in Kenya.
+This Agreement is for the development and ongoing maintenance of a professional website for Workers Rights Watch, a registered society in Kenya.
 
 **Website URL:** www.workersrightswatch.org (or as specified by Client)
 
@@ -61,9 +61,20 @@ The Developer has completed a professional 10-page website including:
 ✅ Job application system with CV upload  
 ✅ Volunteer application system  
 ✅ Search and filter functionality  
-✅ Multi-currency donation system (3 payment methods)  
-✅ SEO optimization (meta tags, sitemap, fast loading)  
-✅ Security features (SSL ready, form validation)
+✅ Multi-currency donation system (Stripe, M-Pesa, PayPal integration ready)  
+✅ SEO optimization (meta tags, sitemap, fast loading, structured data)  
+✅ Security features (SSL ready, form validation, spam protection)  
+✅ Email notification system (contact forms, applications)  
+✅ File upload system (CV/Resume handling)  
+✅ Image optimization and lazy loading  
+✅ Social media integration (Twitter/X feed, sharing buttons)  
+✅ Analytics ready (Google Analytics integration)  
+✅ Search functionality with category filtering  
+✅ Document management system (PDF downloads, online viewing)  
+✅ Interactive team profile modals  
+✅ Animated counters and statistics  
+✅ Partner logo carousel with hover effects  
+✅ Photo gallery with full-screen viewer and navigation
 
 ### C. Technical Specifications
 
@@ -79,24 +90,22 @@ The Developer has completed a professional 10-page website including:
 
 ### A. Development Fee (One-Time Payment)
 
-**Option 1: Full Payment (Recommended - Save KES 9,000)**
-- **Amount: KES 171,000**
-- 5% early payment discount applied
-- Due upon: Final delivery and Client approval
-- Payment method: M-Pesa, Bank Transfer, or Cheque
+**Note:** This is a custom website development project, not a basic template website. The cost reflects professional development work including 10 custom pages, advanced features, integrations, and modern design. Website development costs in Kenya range from KES 49,280 to KES 200,000+ depending on complexity and agency chosen. This investment represents mid-market pricing for custom development work.
 
-**Option 2: Split Payment (Standard Rate)**
-- First payment (50%): KES 90,000 - Due upon signing this agreement
-- Second payment (50%): KES 90,000 - Due upon final delivery
-- **Total: KES 180,000**
+**Payment Schedule:**
+- First payment (50%): KES 37,500 - Due upon signing this agreement
+- Second payment (50%): KES 37,500 - Due upon final delivery and approval
+- **Total: KES 75,000**
 
-**Client selects:** ☐ Option 1 (KES 171,000)  ☐ Option 2 (KES 180,000)
+**Accepted payment methods:** Bank Transfer or Cheque
 
 ### B. Monthly Maintenance & SEO Services
 
-**Monthly Fee: KES 18,000**
+**Monthly Fee: KES 15,000** (Fixed rate for first 3 years)
 
-Includes:
+**Note:** This monthly rate is fixed for the first three (3) years from the Maintenance Start Date. Beginning the first month of the fourth (4th) year (month 37), the monthly fee will increase by 10% to KES 16,500 and will remain fixed at that rate for the next 12 months, subject to further annual review.
+
+**Includes:**
 - Security updates and monitoring
 - Bug fixes and technical support (response within 48 hours)
 - Content updates (up to 2 hours per month)
@@ -106,29 +115,31 @@ Includes:
 - 99.9% uptime monitoring
 
 **Payment Terms:**
-- ☐ Monthly: KES 18,000 per month (cancel with 30 days notice)
-- ☐ Quarterly: KES 51,300 every 3 months (5% discount)
-- ☐ Annually: KES 183,600 per year (15% discount - Best Value)
+- Due on the 1st day of each month
+- Cancel with 30 days written notice
+- Late payments incur 5% fee after 7 days
 
 **Maintenance Start Date:** Upon website launch or _________________, 2025
 
 ---
 
-## 4. WHAT'S REMAINING
+## 4. WHAT'S REMAINING & SEPARATE SERVICES
 
-The following items require Client's action before final launch:
+### A. Included in This Agreement (Upon Payment)
 
-1. **Payment Gateway Credentials** (Client to provide within 40 days):
-   - Stripe Business Account credentials
-   - M-Pesa Daraja API credentials (Paybill/Till Number)
-   - PayPal Business Account credentials
+- Final website launch (1 day after payment confirmation)
+- Training and documentation handover
+- Google Analytics setup
 
-2. **Developer's Responsibilities:**
-   - Connect payment gateway accounts (1-2 days)
-   - Test all donation flows (1-2 days)
-   - Final website launch (1 day)
+### B. Donation System Integration (Separate Agreement)
 
-**Estimated Timeline:** 1 week after Client provides credentials
+**Note:** Payment gateway integration (Stripe, M-Pesa, PayPal) is NOT included in this KES 75,000 development fee. This will be a separate service agreement with separate pricing. Once completed:
+
+- Stripe and PayPal integration: 1 week after credentials provided
+- M-Pesa integration: 20 days (includes testing)
+- All donation flows tested and verified
+
+This separation allows the website to launch immediately while donation system integration proceeds under separate terms.
 
 ---
 
@@ -136,8 +147,8 @@ The following items require Client's action before final launch:
 
 ### 5.1 Payment Terms
 
-- Development fee is due as per Option 1 or Option 2 selected above
-- Maintenance fees are due on the 1st day of each billing period
+- Development fee: 50% (KES 37,500) due upon signing, 50% (KES 37,500) due upon delivery
+- Maintenance fees are due on the 1st day of each month
 - Late payments incur a 5% late fee after 7 days
 - Payments are non-refundable once work has commenced
 
@@ -165,7 +176,7 @@ The following items require Client's action before final launch:
 **Developer Does NOT Warrant:**
 - Website will be error-free 100% (no software is perfect)
 - Compatibility with all future browser updates (covered by maintenance)
-- Third-party service uptime (Stripe, M-Pesa, PayPal, hosting providers)
+- Third-party service uptime (Stripe, PayPal, hosting providers)
 
 **Support Period:**
 - 30 days free bug fix support after launch
@@ -183,17 +194,17 @@ The following are charged separately at KES 2,500-4,000 per hour:
 
 ### 5.6 Maintenance Contract Terms
 
-- Contract auto-renews based on selected billing period
+- Contract auto-renews monthly
 - Client can cancel with 30 days written notice
 - Developer can terminate for non-payment after 14 days
 - Upon cancellation, website remains Client's property but no further support provided
 
 ### 5.7 Hosting & Domain
 
-**Not Included in This Agreement:**
-- Domain name registration: ~KES 2,500/year (Client's responsibility)
-- Website hosting: Free tier recommended initially (Vercel), or KES 2,000-5,000/month if needed
-- Developer can assist with setup as part of included services
+- Website hosted with Client's existing hosting provider "Kenya Website for Logistics"
+- Developer coordinates deployment and provides technical assistance during launch
+- Domain registration and renewals are Client's responsibility (~KES 2,500/year)
+- Developer assists with DNS updates required for launch
 
 ### 5.8 Confidentiality
 
@@ -204,13 +215,10 @@ Both parties agree to keep confidential information private:
 
 ### 5.9 Liability & Indemnification
 
-**Developer's Liability is Limited to:**
-- Maximum: Total amount paid under this agreement
+- Developer's liability limited to total amount paid under this agreement
 - Developer not liable for lost revenue, data loss, or indirect damages
-- Client agrees to maintain regular backups (provided by Developer in maintenance)
-
-**Client Agrees:**
-- Website content provided by Client must not violate any laws or copyrights
+- Client maintains regular backups (provided by Developer in maintenance)
+- Client's content must not violate any laws or copyrights
 - Client indemnifies Developer against claims arising from Client's content
 
 ### 5.10 Force Majeure
@@ -233,18 +241,9 @@ Neither party liable for delays caused by:
 
 ### 5.13 Termination
 
-**Client May Terminate:**
-- For convenience with 30 days notice (maintenance only)
-- For cause if Developer fails to deliver as agreed
-
-**Developer May Terminate:**
-- For non-payment after 14 days
-- For Client breach of agreement terms
-
-**Upon Termination:**
-- All paid work remains Client's property
-- Outstanding payments become immediately due
-- Developer provides final backup of website
+- Client may terminate with 30 days notice (maintenance only) or for cause
+- Developer may terminate for non-payment after 14 days or breach of terms
+- Upon termination: paid work remains Client's property, outstanding payments due immediately, Developer provides final backup
 
 ---
 
@@ -267,8 +266,8 @@ Upon signing and payment, Developer will deliver:
 
 Client agrees to:
 
-- ☐ Provide payment as per selected option
-- ☐ Provide payment gateway credentials within 14 days
+- ☐ Provide payment as per payment schedule (50% on signing, 50% on delivery)
+- ☐ Provide payment gateway credentials (Stripe and PayPal) within 14 days
 - ☐ Review and approve final website before launch
 - ☐ Provide feedback and responses within 5 business days
 - ☐ Maintain confidentiality of admin access credentials
@@ -281,7 +280,7 @@ Client agrees to:
 Developer agrees to:
 
 - ☐ Deliver website as described in Section 2
-- ☐ Connect payment gateways upon receiving credentials
+- ☐ Connect payment gateways (Stripe and PayPal) upon receiving credentials
 - ☐ Test all functionality before launch
 - ☐ Provide training and documentation
 - ☐ Respond to support requests within 48 hours (maintenance period)
@@ -352,29 +351,31 @@ By signing below, both parties agree to all terms and conditions in this Agreeme
 
 ## PAYMENT CONFIRMATION
 
-**Payment Option Selected:** ☐ Option 1 (KES 171,000)  ☐ Option 2 (KES 180,000)
+**Development Fee Confirmed:** **KES 75,000** (50% on signing, 50% on delivery)
 
 **First Payment Details:**
 - Amount: KES __________________
 - Date Paid: __________________
-- Payment Method: ☐ M-Pesa  ☐ Bank Transfer  ☐ Cheque
+- Payment Method: ☐ Bank Transfer  ☐ Cheque
 - Reference/Transaction ID: __________________
 
-**Second Payment Details (If Option 2):**
+**Second Payment Details:**
 - Amount: KES __________________
 - Date Paid: __________________
-- Payment Method: ☐ M-Pesa  ☐ Bank Transfer  ☐ Cheque
+- Payment Method: ☐ Bank Transfer  ☐ Cheque
 - Reference/Transaction ID: __________________
 
 ---
 
 ## MAINTENANCE PAYMENT DETAILS
 
-**Billing Period:** ☐ Monthly  ☐ Quarterly  ☐ Annually
+**Monthly Fee:** KES 15,000 (Fixed for first 3 years)
 
 **First Maintenance Payment Due:** __________________
 
-**Payment Method:** ☐ M-Pesa  ☐ Bank Transfer  ☐ Cheque (recurring)
+**Payment Method:** ☐ Bank Transfer  ☐ Cheque (recurring)
+
+**Note:** Monthly rate will increase by 10% to KES 16,500 starting month 37 (first month of 4th year).
 
 ---
 
@@ -408,6 +409,6 @@ By signing below, both parties agree to all terms and conditions in this Agreeme
 ---
 
 **Document Version:** 1.0  
-**Created:** October 2025  
+**Created:** January 2025  
 **Valid for:** 90 days from creation date
 
