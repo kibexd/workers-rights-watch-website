@@ -93,25 +93,25 @@ The Developer has completed a professional 10-page website including:
 **Note:** This is a custom website development project, not a basic template website. The cost reflects professional development work including 10 custom pages, advanced features, integrations, and modern design. Website development costs in Kenya range from KES 49,280 to KES 200,000+ depending on complexity and agency chosen. This investment represents mid-market pricing for custom development work.
 
 **Payment Schedule:**
-- First payment (50%): KES 37,500 - Due upon signing this agreement
-- Second payment (50%): KES 37,500 - Due upon final delivery and approval
-- **Total: KES 75,000**
+- First payment (50%): KES 42,500 - Due upon signing this agreement
+- Second payment (50%): KES 42,500 - Due upon final delivery and approval
+- **Total: KES 85,000**
 
 **Accepted payment methods:** Bank Transfer or Cheque
 
-### B. Quarterly Maintenance & SEO Services
+### B. Monthly Maintenance & SEO Services
 
-**Quarterly Fee: KES 12,000 per quarter** (Fixed rate for first 3 years)
+**Monthly Fee: KES 5,000 per month** (Fixed rate for first 3 years)
 
-**Note:** This quarterly rate is fixed for the first three (3) years from the Maintenance Start Date. Beginning the first quarter of the fourth (4th) year (quarter 13), the quarterly fee will increase by 10% to KES 13,200 and will remain fixed at that rate for the next 12 months, subject to further annual review.
+**Note:** This monthly rate is fixed for the first three (3) years from the Maintenance Start Date. Beginning the first month of the fourth (4th) year (month 37), the monthly fee will increase by 10% to KES 5,500 and will remain fixed at that rate for the next 12 months, subject to further annual review.
 
 **What's Included:**
 - Security updates and monitoring
 - Bug fixes and technical support (response within 48 hours)
-- Content updates (up to 6 hours per quarter)
-- Image uploads (up to 30 images per quarter)
+- Content updates (up to 2 hours per month)
+- Image uploads (up to 10 images per month)
 - Performance optimization
-- SEO services (keyword research, analytics, quarterly reports)
+- SEO services (keyword research, analytics, monthly reports)
 - 99.9% uptime monitoring
 
 **Emergency Support:**
@@ -119,7 +119,7 @@ The Developer has completed a professional 10-page website including:
 - Emergency support includes urgent fixes, critical bugs, or immediate assistance required outside normal business hours
 
 **Payment Terms:**
-- Due on the 1st day of each quarter (January 1, April 1, July 1, October 1)
+- Due on the 1st day of each month
 - Cancel with 30 days written notice
 - Late payments incur 5% fee after 7 days
 
@@ -156,8 +156,8 @@ The following items require Client's action before final launch:
 
 ### 5.1 Payment Terms
 
-- Development fee: 50% (KES 37,500) due upon signing, 50% (KES 37,500) due upon delivery
-- Maintenance fees are due on the 1st day of each quarter (January 1, April 1, July 1, October 1)
+- Development fee: 50% (KES 42,500) due upon signing, 50% (KES 42,500) due upon delivery
+- Maintenance fees are due on the 1st day of each month
 - Late payments incur a 5% late fee after 7 days
 - Payments are non-refundable once work has commenced
 - Emergency visits are billed separately at KES 5,000 per visit
@@ -192,7 +192,7 @@ The following items require Client's action before final launch:
 - 30 days free bug fix support after launch
 - After 30 days, support covered under maintenance agreement
 
-### 5.5 What's NOT Included in Quarterly Maintenance
+### 5.5 What's NOT Included in Monthly Maintenance
 
 The following are charged separately at KES 2,500-4,000 per hour:
 - Major design changes or redesign
@@ -212,7 +212,7 @@ The Developer shall provide the Services to the Client as an independent contrac
 
 ### 5.7 Maintenance Contract Terms
 
-- Contract auto-renews quarterly
+- Contract auto-renews monthly
 - Client can cancel with 30 days written notice
 - Developer can terminate for non-payment after 14 days
 - Upon cancellation, website remains Client's property but no further support provided
@@ -327,7 +327,7 @@ Developer agrees to:
 - ☐ Provide training and documentation
 - ☐ Respond to support requests within 48 hours (maintenance period)
 - ☐ Maintain website security and performance (during maintenance)
-- ☐ Provide quarterly SEO reports (during maintenance)
+- ☐ Provide monthly SEO reports (during maintenance)
 
 ---
 
@@ -393,7 +393,7 @@ By signing below, both parties agree to all terms and conditions in this Agreeme
 
 ## PAYMENT CONFIRMATION
 
-**Development Fee Confirmed:** **KES 75,000** (50% on signing, 50% on delivery)
+**Development Fee Confirmed:** **KES 85,000** (50% on signing, 50% on delivery)
 
 **First Payment Details:**
 - Amount: KES __________________
@@ -411,7 +411,7 @@ By signing below, both parties agree to all terms and conditions in this Agreeme
 
 ## MAINTENANCE PAYMENT DETAILS
 
-**Quarterly Fee:** KES 12,000 per quarter (Fixed for first 3 years)
+**Monthly Fee:** KES 5,000 per month (Fixed for first 3 years)
 
 **First Maintenance Payment Due:** __________________
 
@@ -419,7 +419,7 @@ By signing below, both parties agree to all terms and conditions in this Agreeme
 
 **Emergency Visit Fee:** KES 5,000 per visit (billed separately when needed)
 
-**Note:** Quarterly rate will increase by 10% to KES 13,200 starting quarter 13 (first quarter of 4th year).
+**Note:** Monthly rate will increase by 10% to KES 5,500 starting month 37 (first month of 4th year).
 
 ---
 

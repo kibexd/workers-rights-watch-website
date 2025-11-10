@@ -6,7 +6,7 @@
 
 ## Opening (30 seconds)
 
-*"Madam Eunice, thank you for meeting. The website is complete and ready to launch. I've prepared a contract outlining the work delivered and payment terms: KES 75,000 development and KES 12,000 quarterly maintenance. Let's go through it together."*
+*"Madam Eunice, thank you for meeting. The website is complete and ready to launch. I've prepared a contract outlining the work delivered and payment terms: KES 85,000 development and KES 5,000 monthly maintenance. Let's go through it together."*
 
 ---
 
@@ -22,24 +22,31 @@
 
 ### Why This Price?
 
-*"Kenya market: KES 49,280 to KES 200,000+ for custom sites. My price: KES 75,000. You're getting KES 150,000+ worth of work. This is very fair."*
+*"Kenya market: KES 49,280 to KES 200,000+ for custom sites. My price: KES 85,000. You're getting KES 150,000+ worth of work. This is very fair."*
 
 ### Why Maintenance?
 
-*"KES 4,000/month keeps your site secure, ranked on Google, and brings in free traffic. Without it, one hack could cost KES 50,000+ to fix."*
+*"KES 5,000/month keeps your site secure, ranked on Google, and brings in free traffic. Without it, one hack could cost KES 50,000+ to fix."*
 
 ---
 
 ## If She Negotiates
 
-### Payment Flexibility (YES):
-- ✅ 3 payments: KES 25k + 25k + 25k
-- ✅ Delayed maintenance start
-- ✅ First quarter free
+### Discount Strategy (Your Secret Weapon):
+- 💡 **Contract shows:** KES 85,000
+- 💡 **If she negotiates:** Offer KES 77,000 (KES 8,000 off)
+- 💡 **Time pressure:** "Only available if we sign this week"
+- 💡 **Makes her feel:** She got a good deal!
 
-### Price Reduction (NO):
-- ❌ Won't go below KES 60,000 development
-- ❌ Won't go below KES 10,000/quarter maintenance
+### Payment Flexibility (YES):
+- ✅ 2 payments: KES 42,500 + 42,500 (or 38,500 + 38,500 if discounted)
+- ✅ 3-4 payments: More flexible schedule
+- ✅ Delayed maintenance start
+- ✅ First month maintenance free
+
+### Absolute Minimum (DON'T GO BELOW):
+- ❌ Development: KES 70,000
+- ❌ Maintenance: KES 5,000/month
 
 ---
 
@@ -53,10 +60,12 @@
 
 - **8 months of work:** May 2025 - January 2026
 - **10 pages delivered:** Home, About, Team, Programs, Work, Resources, Activities, Careers, Contact, Donate
-- **Your price:** KES 75,000 (fair market rate)
-- **Maintenance:** KES 12,000/quarter = KES 4,000/month (very affordable)
+- **Contract price:** KES 85,000
+- **Discount available:** KES 77,000 (if signed this week)
+- **Absolute minimum:** KES 70,000
+- **Maintenance:** KES 5,000/month (very affordable)
 - **Market rates:** KES 49,280 - KES 200,000+
-- **Your value:** You delivered KES 150,000+ worth of work for KES 75,000
+- **Your value:** You delivered KES 150,000+ worth of work
 
 ---
 

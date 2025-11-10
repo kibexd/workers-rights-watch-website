@@ -52,7 +52,7 @@
 
 *I've prepared a contract that outlines what's been delivered, the payment terms, and the ongoing support I'll provide.*
 
-*The development fee is KES 75,000 - which is very fair for a 10-page custom website in the Kenya market - and quarterly maintenance is only KES 12,000 every 3 months, which is just KES 4,000 per month.*
+*The development fee is KES 85,000 - which is very fair for a 10-page custom website in the Kenya market - and monthly maintenance is only KES 5,000 per month.*
 
 *I know we didn't discuss pricing at the start, and I apologize for that. I wanted you to see the quality of work first so you could understand the value.*
 
@@ -114,9 +114,9 @@
 - ✅ Modern, professional design
 - ✅ Mobile responsive
 
-**MY PRICE:** KES 75,000 - This is LOWER than most developers charge for this quality and quantity of work.
+**MY PRICE:** KES 85,000 - This is LOWER than most developers charge for this quality and quantity of work.
 
-**MAINTENANCE:** Only KES 12,000 per quarter (KES 4,000/month) - cheaper than most developers who charge KES 10,000-15,000 PER MONTH.
+**MAINTENANCE:** Only KES 5,000 per month - cheaper than most developers who charge KES 10,000-15,000 PER MONTH.
 
 *Honestly, if you went to another developer now, they'd charge you more to finish this work. You're getting excellent value."*
 
@@ -126,33 +126,34 @@
 
 **Your Response (Stand firm but offer flexibility):**
 
-*"I've already priced this very fairly for the work involved. I worked 8 months on this, and KES 75,000 works out to less than KES 10,000 per month for all this work.*
+*"I've already priced this very fairly for the work involved. I worked 8 months on this, and KES 85,000 works out to less than KES 11,000 per month for all this work.*
 
-*However, I can be flexible on the PAYMENT SCHEDULE:*
+*However, I understand budget constraints for NGOs. Let me offer you some flexibility:*
 
-**OPTION 1: Current plan (50/50)**
-- KES 37,500 now
-- KES 37,500 on delivery
+**OPTION 1: Discount for immediate agreement**
+- If we can sign today: **KES 77,000** (KES 8,000 discount!)
+- Payment: KES 38,500 now + KES 38,500 on delivery
+- This discount is only available if we sign this week
 
-**OPTION 2: Three payments (if it helps your budget)**
-- KES 25,000 now
-- KES 25,000 in 30 days
-- KES 25,000 on final delivery
+**OPTION 2: Standard rate with flexible payments**
+- Total: KES 85,000
+- Three payments: KES 30,000 + KES 30,000 + KES 25,000
+- Or four payments: KES 22,000 + KES 21,000 + KES 21,000 + KES 21,000
 
-**OPTION 3: Delayed start on maintenance**
-- Pay development fee now (KES 75,000)
-- Start maintenance in 3-6 months when you have budget
-- Emergency support available at KES 5,000 per visit
+**OPTION 3: Delayed maintenance start**
+- Pay development fee now (KES 85,000 or KES 77,000 if signed this week)
+- Start maintenance in 3 months when you have budget
+- Emergency support available at KES 5,000 per visit until then
 
-*But the development fee needs to be KES 75,000. I can't go lower than that without undervaluing 8 months of professional work."*
+*The standard price is KES 85,000, but I'm offering KES 77,000 if we can finalize this week. Either way, this is excellent value for 8 months of professional work."*
 
 ---
 
-### Objection 5: "We don't need quarterly maintenance..."
+### Objection 5: "We don't need monthly maintenance..."
 
 **Your Response:**
 
-*"I totally understand wanting to keep costs down. But let me explain why quarterly maintenance is actually an INVESTMENT, not just an expense:*
+*"I totally understand wanting to keep costs down. But let me explain why monthly maintenance is actually an INVESTMENT, not just an expense:*
 
 **WITHOUT MAINTENANCE:**
 - ❌ Website could get hacked (very common in Kenya)
@@ -161,17 +162,17 @@
 - ❌ Website could go down and you won't know
 - ❌ You'll have to pay KES 5,000-10,000 per emergency visit
 
-**WITH MAINTENANCE (KES 12,000/quarter = KES 4,000/month):**
+**WITH MAINTENANCE (KES 5,000/month):**
 - ✅ Website stays secure
 - ✅ Bugs get fixed quickly
 - ✅ SEO brings FREE traffic from Google
-- ✅ You get quarterly reports
+- ✅ You get monthly reports
 - ✅ Unlimited email support
 - ✅ You save money long-term
 
-*Think of it like this: Would you rather pay KES 4,000/month for peace of mind, or pay KES 50,000 later to fix a hacked website?*
+*Think of it like this: Would you rather pay KES 5,000/month for peace of mind, or pay KES 50,000 later to fix a hacked website?*
 
-*And at only KES 4,000 per month, this is one of the most affordable maintenance packages in Kenya."*
+*And at only KES 5,000 per month, this is one of the most affordable maintenance packages in Kenya."*
 
 ---
 
@@ -195,14 +196,20 @@
 
 ## Your Negotiation Boundaries
 
-### DO NOT GO BELOW:
-- **Development:** KES 60,000 (absolute minimum)
-- **Maintenance:** KES 10,000/quarter (absolute minimum)
+### STARTING PRICE (Anchor High):
+- **Development:** KES 85,000 (listed in contract)
+- **Maintenance:** KES 5,000/month
+
+### DISCOUNT STRATEGY:
+- **If she negotiates:** Offer KES 77,000 (KES 8,000 discount)
+- **Make it time-limited:** "Only available if we sign this week"
+- **Absolute minimum:** KES 70,000 (don't go below this)
 
 ### FLEXIBILITY YOU CAN OFFER:
+- ✅ KES 8,000 discount (KES 85,000 → KES 77,000)
 - ✅ Payment schedule (2, 3, or 4 payments)
 - ✅ Delayed maintenance start (3-6 months)
-- ✅ First quarter maintenance free (as signing bonus)
+- ✅ First month maintenance free (as signing bonus)
 
 ### WHAT TO PROTECT:
 - ⚠️ Your time value (8 months of work)
@@ -319,15 +326,19 @@
 
 [LISTEN TO HER NUMBER]
 
-**If it's close (KES 60,000+):**
+**If it's KES 75,000-80,000:**
 
-*"Okay, I can work with KES [her number] if we adjust the payment schedule. How about [her number] for development, and we can discuss maintenance later?"*
+*"I can meet you there! Let's do KES 77,000 - that's KES 8,000 off the standard rate. Does that work for you?"*
 
-**If it's too low (below KES 50,000):**
+**If it's KES 70,000-75,000:**
 
-*"I appreciate that, but I've invested 8 months into this project. At [her low number], I'd be working for less than KES 6,000 per month, which isn't sustainable.*
+*"Okay, I can work with KES 75,000 if we can sign today. That's my absolute best price for 8 months of work. Can we agree on that?"*
 
-*The absolute minimum I can accept is KES 60,000, and even that is below market rate. Can the organization stretch to that?"*
+**If it's too low (below KES 70,000):**
+
+*"I appreciate that, but I've invested 8 months into this project. At [her low number], I'd be working for less than KES 9,000 per month, which isn't sustainable.*
+
+*The absolute minimum I can accept is KES 70,000, and even that is below market rate for this quality of work. Can the organization stretch to that?"*
 
 ---
 
@@ -406,6 +417,24 @@ You've earned this. Don't let anyone make you feel guilty for charging fair rate
 - **Worst case:** She doesn't pay, you keep the website, you learned a lesson
 
 **Either way, YOU'RE OKAY.**
+
+---
+
+## Quick Pricing Reference
+
+**ANCHOR PRICE (In Contract):**
+- Development: KES 85,000
+- Maintenance: KES 5,000/month
+
+**DISCOUNT AVAILABLE:**
+- If she negotiates: KES 77,000 (save KES 8,000)
+- Time-limited: "Only this week"
+- Absolute minimum: KES 70,000
+
+**PAYMENT OPTIONS:**
+- 2 payments: 50/50
+- 3 payments: More flexible
+- 4 payments: If budget is tight
 
 ---
 
