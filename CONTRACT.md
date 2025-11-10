@@ -7,17 +7,17 @@
 ## PARTIES TO THIS AGREEMENT
 
 **SERVICE PROVIDER (Developer):**  
-Name: _________________________________________  
-Address: _________________________________________  
-Phone: _________________________________________  
-Email: _________________________________________
+Name: Enock Kibe Ngunyi  
+Address: 7426 00100 Nairobi  
+Phone: 0735663656  
+Email: kibeenock7390@gmail.com
 
 **CLIENT:**  
 Name: Mrs. Eunice Waweru  
 Organization: Workers Rights Watch  
-Address: Nairobi, Kenya  
-Phone: _________________________________________  
-Email: _________________________________________
+Address: P.O. Box 00232-1516, Ruiru, Kenya  
+Phone: +254(0)20-2605660 / +254(0)775366920  
+Email: info@workersrightswatch.org
 
 ---
 
@@ -99,23 +99,27 @@ The Developer has completed a professional 10-page website including:
 
 **Accepted payment methods:** Bank Transfer or Cheque
 
-### B. Monthly Maintenance & SEO Services
+### B. Quarterly Maintenance & SEO Services
 
-**Monthly Fee: KES 15,000** (Fixed rate for first 3 years)
+**Quarterly Fee: KES 12,000 per quarter** (Fixed rate for first 3 years)
 
-**Note:** This monthly rate is fixed for the first three (3) years from the Maintenance Start Date. Beginning the first month of the fourth (4th) year (month 37), the monthly fee will increase by 10% to KES 16,500 and will remain fixed at that rate for the next 12 months, subject to further annual review.
+**Note:** This quarterly rate is fixed for the first three (3) years from the Maintenance Start Date. Beginning the first quarter of the fourth (4th) year (quarter 13), the quarterly fee will increase by 10% to KES 13,200 and will remain fixed at that rate for the next 12 months, subject to further annual review.
 
-**Includes:**
+**What's Included:**
 - Security updates and monitoring
 - Bug fixes and technical support (response within 48 hours)
-- Content updates (up to 2 hours per month)
-- Image uploads (up to 10 images per month)
+- Content updates (up to 6 hours per quarter)
+- Image uploads (up to 30 images per quarter)
 - Performance optimization
-- SEO services (keyword research, analytics, monthly reports)
+- SEO services (keyword research, analytics, quarterly reports)
 - 99.9% uptime monitoring
 
+**Emergency Support:**
+- Emergency visits outside regular maintenance scope: KES 5,000 per visit
+- Emergency support includes urgent fixes, critical bugs, or immediate assistance required outside normal business hours
+
 **Payment Terms:**
-- Due on the 1st day of each month
+- Due on the 1st day of each quarter (January 1, April 1, July 1, October 1)
 - Cancel with 30 days written notice
 - Late payments incur 5% fee after 7 days
 
@@ -123,23 +127,28 @@ The Developer has completed a professional 10-page website including:
 
 ---
 
-## 4. WHAT'S REMAINING & SEPARATE SERVICES
+## 4. WHAT'S REMAINING
 
-### A. Included in This Agreement (Upon Payment)
+The following items require Client's action before final launch:
 
-- Final website launch (1 day after payment confirmation)
-- Training and documentation handover
-- Google Analytics setup
+1. **Payment Gateway Credentials** (Client to provide within 14 days):
+   - Stripe Business Account credentials
+   - PayPal Business Account credentials
 
-### B. Donation System Integration (Separate Agreement)
+2. **Developer's Responsibilities:**
+   - Connect payment gateway accounts (Stripe and PayPal) (1-2 days)
+   - Test all donation flows (1-2 days)
+   - Final website launch (1 day)
 
-**Note:** Payment gateway integration (Stripe, M-Pesa, PayPal) is NOT included in this KES 75,000 development fee. This will be a separate service agreement with separate pricing. Once completed:
+**Estimated Timeline:** 1 week after Client provides credentials
 
-- Stripe and PayPal integration: 1 week after credentials provided
-- M-Pesa integration: 20 days (includes testing)
-- All donation flows tested and verified
+### B. M-Pesa Integration (Separate Agreement)
 
-This separation allows the website to launch immediately while donation system integration proceeds under separate terms.
+**Note:** M-Pesa integration is NOT included in this development fee. M-Pesa integration will be a separate service with separate pricing, to be agreed upon separately. The integration will be completed within 20 days from the date of separate agreement to allow ample time for testing. Once integrated, donors will be able to make donations via M-Pesa through the website.
+
+### C. Donation System Integration (Separate Agreement)
+
+**Note:** The complete donation system integration (Stripe, M-Pesa, PayPal) is a separate service agreement. This current agreement covers the website development with the donation page structure ready for integration. The actual payment gateway connections and testing will be handled under a separate agreement with separate pricing.
 
 ---
 
@@ -148,9 +157,10 @@ This separation allows the website to launch immediately while donation system i
 ### 5.1 Payment Terms
 
 - Development fee: 50% (KES 37,500) due upon signing, 50% (KES 37,500) due upon delivery
-- Maintenance fees are due on the 1st day of each month
+- Maintenance fees are due on the 1st day of each quarter (January 1, April 1, July 1, October 1)
 - Late payments incur a 5% late fee after 7 days
 - Payments are non-refundable once work has commenced
+- Emergency visits are billed separately at KES 5,000 per visit
 
 ### 5.2 Project Timeline
 
@@ -182,7 +192,7 @@ This separation allows the website to launch immediately while donation system i
 - 30 days free bug fix support after launch
 - After 30 days, support covered under maintenance agreement
 
-### 5.5 What's NOT Included in Monthly Maintenance
+### 5.5 What's NOT Included in Quarterly Maintenance
 
 The following are charged separately at KES 2,500-4,000 per hour:
 - Major design changes or redesign
@@ -192,58 +202,90 @@ The following are charged separately at KES 2,500-4,000 per hour:
 - Third-party integration changes (beyond initial setup)
 - Training sessions (initial 2-hour handoff is included)
 
-### 5.6 Maintenance Contract Terms
+### 5.6 Independent Contractor
 
-- Contract auto-renews monthly
+The Developer shall provide the Services to the Client as an independent contractor and not a servant, employee, partner or agent of the Client. Accordingly:
+
+(a) The Developer agrees that the Client shall have no liability or responsibility for the payment of any statutory dues, employment insurance premiums or Employee Pension Plan contributions on any amounts paid by the Client to the Developer or amounts paid by the Developer to its contractors.
+
+(b) The Developer is free to provide services to other clients, so long as there is no interference with the Developer's contractual obligations to the Client.
+
+### 5.7 Maintenance Contract Terms
+
+- Contract auto-renews quarterly
 - Client can cancel with 30 days written notice
 - Developer can terminate for non-payment after 14 days
 - Upon cancellation, website remains Client's property but no further support provided
 
-### 5.7 Hosting & Domain
+### 5.8 Hosting & Domain
 
-- Website hosted with Client's existing hosting provider "Kenya Website for Logistics"
-- Developer coordinates deployment and provides technical assistance during launch
-- Domain registration and renewals are Client's responsibility (~KES 2,500/year)
-- Developer assists with DNS updates required for launch
+**Hosting Provider:**
+- The website will remain hosted with the Client's existing hosting provider "Kenya Website for Logistics" (or as designated by Client).
+- The Developer will coordinate deployment to the Client's hosting environment and provide technical assistance during launch.
+- Uptime, server configuration, email delivery, and infrastructure-level issues remain the responsibility of the hosting provider.
 
-### 5.8 Confidentiality
+**Domain & DNS:**
+- Domain name registration and renewals are the Client's responsibility (estimated ~KES 2,500/year).
+- The Developer will assist with DNS updates required for launch.
+
+### 5.9 Confidentiality
 
 Both parties agree to keep confidential information private:
 - Client's business information, donor data, financial information
 - Developer's code, methodologies, proprietary processes
 - This agreement remains confidential
 
-### 5.9 Liability & Indemnification
+### 5.10 Liability & Indemnification
 
-- Developer's liability limited to total amount paid under this agreement
+**Developer's Liability is Limited to:**
+- Maximum: Total amount paid under this agreement
 - Developer not liable for lost revenue, data loss, or indirect damages
-- Client maintains regular backups (provided by Developer in maintenance)
-- Client's content must not violate any laws or copyrights
+- Client agrees to maintain regular backups (provided by Developer in maintenance)
+
+**Client Agrees:**
+- Website content provided by Client must not violate any laws or copyrights
 - Client indemnifies Developer against claims arising from Client's content
 
-### 5.10 Force Majeure
+### 5.11 Force Majeure
 
 Neither party liable for delays caused by:
 - Natural disasters, pandemics, war, civil unrest
 - Internet/hosting service outages beyond Developer's control
 - Third-party service failures (payment gateways, email services)
 
-### 5.11 Dispute Resolution
+### 5.12 Dispute Resolution
 
-- Both parties agree to resolve disputes amicably through discussion
-- If unresolved, disputes shall be settled through mediation in Nairobi, Kenya
-- Kenyan law governs this agreement
+Should any dispute arise between the parties in connection with this agreement or the performance of it:
 
-### 5.12 Changes & Amendments
+(a) The parties shall first attempt to resolve such disputes by negotiation in good faith.
+
+(b) Should the dispute not be resolved within thirty (30) days of such negotiation, the said dispute shall be solved in final manner through arbitration.
+
+(c) Where, in the event of a dispute arising out of or relating to this contract, the parties wish to seek an amicable settlement of that dispute by mediation, the mediation shall take place in accordance with the Nairobi Centre for International Arbitration – Mediation Rules as at present in force.
+
+### 5.13 Governing Law
+
+This Agreement will be ruled and governed in accordance with the laws of Kenya.
+
+### 5.14 Changes & Amendments
 
 - Any changes to this agreement must be in writing and signed by both parties
 - Email agreements are acceptable if confirmed by both parties
 
-### 5.13 Termination
+### 5.15 Termination
 
-- Client may terminate with 30 days notice (maintenance only) or for cause
-- Developer may terminate for non-payment after 14 days or breach of terms
-- Upon termination: paid work remains Client's property, outstanding payments due immediately, Developer provides final backup
+**Client May Terminate:**
+- For convenience with 30 days notice (maintenance only)
+- For cause if Developer fails to deliver as agreed
+
+**Developer May Terminate:**
+- For non-payment after 14 days
+- For Client breach of agreement terms
+
+**Upon Termination:**
+- All paid work remains Client's property
+- Outstanding payments become immediately due
+- Developer provides final backup of website
 
 ---
 
@@ -285,7 +327,7 @@ Developer agrees to:
 - ☐ Provide training and documentation
 - ☐ Respond to support requests within 48 hours (maintenance period)
 - ☐ Maintain website security and performance (during maintenance)
-- ☐ Provide monthly SEO reports (during maintenance)
+- ☐ Provide quarterly SEO reports (during maintenance)
 
 ---
 
@@ -313,7 +355,7 @@ By signing below, both parties agree to all terms and conditions in this Agreeme
 
 ### DEVELOPER SIGNATURE
 
-**Developer Name:** _________________________________________
+**Developer Name:** Enock Kibe Ngunyi
 
 **Signature:** _________________________________________
 
@@ -369,13 +411,15 @@ By signing below, both parties agree to all terms and conditions in this Agreeme
 
 ## MAINTENANCE PAYMENT DETAILS
 
-**Monthly Fee:** KES 15,000 (Fixed for first 3 years)
+**Quarterly Fee:** KES 12,000 per quarter (Fixed for first 3 years)
 
 **First Maintenance Payment Due:** __________________
 
 **Payment Method:** ☐ Bank Transfer  ☐ Cheque (recurring)
 
-**Note:** Monthly rate will increase by 10% to KES 16,500 starting month 37 (first month of 4th year).
+**Emergency Visit Fee:** KES 5,000 per visit (billed separately when needed)
+
+**Note:** Quarterly rate will increase by 10% to KES 13,200 starting quarter 13 (first quarter of 4th year).
 
 ---
 
@@ -396,15 +440,15 @@ By signing below, both parties agree to all terms and conditions in this Agreeme
 ## APPENDIX A: CONTACT INFORMATION FOR ONGOING SUPPORT
 
 **Developer Contact:**
-- Email: _________________________________________
-- Phone: _________________________________________
-- WhatsApp: _________________________________________
+- Email: kibeenock7390@gmail.com
+- Phone: 0735663656
+- WhatsApp: 0735663656
 - Business Hours: Monday-Friday, 9 AM - 6 PM EAT
 
 **Client Contact:**
 - Email: info@workersrightswatch.org
-- Phone: _________________________________________
-- Address: _________________________________________
+- Phone: +254(0)20-2605660 / +254(0)775366920
+- Address: P.O. Box 00232-1516, Ruiru, Kenya
 
 ---
 

@@ -4,32 +4,32 @@
 
 ## EMAIL VERSION
 
-**Subject:** Workers Rights Watch Website - Ready for Launch
+**Subject:** Workers Rights Watch Website - Ready for Launch & Agreement
 
 ---
 
 Dear Madam Eunice,
 
-I'm excited to share that the **Workers Rights Watch website is 95% complete and ready to go live!**
+I hope this email finds you well.
+
+I'm excited to share that the **Workers Rights Watch website is now 95% complete and ready to go live!** All 10 pages, features, and functionality we discussed are working beautifully.
 
 I've prepared a **Website Development & Maintenance Agreement** (attached) that outlines:
 
-1. All 10 pages and features delivered
-2. Payment: **KES 75,000** (50% on signing, 50% on completion)
-3. Monthly maintenance: **KES 15,000** (fixed for 3 years)
-4. What's included and next steps
+1. The work completed (all pages and features)
+2. Payment terms: KES 75,000 (50% on signing, 50% on delivery)
+3. Ongoing maintenance and SEO services: KES 12,000/quarter (KES 4,000/month equivalent)
+4. What's needed to complete the final 5% (payment gateway credentials)
 
-The website can launch immediately upon agreement. The donation system integration (Stripe, M-Pesa, PayPal) will be handled separately to allow quick launch.
+Please review the agreement at your convenience. I'm happy to discuss any questions you may have or schedule a call to walk through it together.
 
-Please review the attached agreement, and let me know when we can discuss. I'm happy to walk through it together or answer any questions.
-
-Looking forward to seeing it live!
+The website is ready to make an impact for Workers Rights Watch, and I look forward to seeing it live.
 
 **Warm regards,**
 
-[Your Name]  
-[Your Phone]  
-[Your Email]
+Enock Kibe Ngunyi  
+Phone: 0735663656  
+Email: kibeenock7390@gmail.com
 
 **Attachment:** Website Development & Maintenance Agreement.pdf
 
@@ -39,21 +39,18 @@ Looking forward to seeing it live!
 
 Hi Madam Eunice,
 
-Great news! The Workers Rights Watch website is 95% complete and ready to launch! 🎉
+Good news! The Workers Rights Watch website is 95% complete and ready to launch. All 10 pages are working perfectly.
 
-I've prepared an agreement document that covers:
-• All 10 pages delivered
-• Payment: KES 75,000 (50/50 split)
-• Monthly maintenance: KES 15,000 (fixed 3 years)
+I've prepared a contract document for your review. It covers:
+- Development fee: KES 75,000 (50% on signing, 50% on delivery)
+- Quarterly maintenance: KES 12,000/quarter (KES 4,000/month)
+- All features delivered and next steps
 
-I'll send the full agreement document via email. The website can go live immediately once we finalize this.
+I'll send the contract document separately. Please review it and let me know when we can discuss.
 
-When would be a good time to discuss?
+Looking forward to launching this website for WRW!
 
-[Your Name]
+Enock Kibe Ngunyi
+0735663656
 
----
-
-## FOLLOW-UP (If Needed)
-
-"I'm available this week for a call/meeting to walk through the agreement together. The pricing reflects fair market rates for custom website development in Kenya (KES 49,280-200,000 depending on complexity)."
+*Attachment: Contract document (PDF)*
