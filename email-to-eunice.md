@@ -21,7 +21,7 @@ I've prepared a **Website Development & Maintenance Agreement** (attached) that 
 3. Ongoing maintenance and SEO services: KES 5,000/month
 4. What's needed to complete the final 5% (payment gateway credentials)
 
-Please review the agreement at your convenience. I'm happy to discuss any questions you may have or schedule a call to walk through it together.
+Please review the agreement at your convenience. I'm happy to discuss any questions you may have or schedule a call to walk through it together. The contract terms may be further refined to reflect your understanding and agreement.
 
 The website is ready to make an impact for Workers Rights Watch, and I look forward to seeing it live.
 
