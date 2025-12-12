@@ -37,7 +37,7 @@ export default function Footer() {
         { name: "Our Work", href: "/our-work" },
         { name: "Activities", href: "/activities" },
         { name: "Contact", href: "/contact" },
-        { name: "Donate", href: "/donate" },
+        // { name: "Donate", href: "/donate" }, // Hidden - Special integration not part of contract
       ],
     },
   ]

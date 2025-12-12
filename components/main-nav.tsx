@@ -64,7 +64,7 @@ export default function MainNav() {
     },
     { name: "Careers", href: "/careers" },
     { name: "Contact", href: "/contact" },
-    { name: "Donate", href: "/donate", isButton: true },
+    // { name: "Donate", href: "/donate", isButton: true }, // Hidden - Special integration not part of contract
   ]
 
   return (
@@ -133,11 +133,13 @@ export default function MainNav() {
                             </NavigationMenuContent>
                           </>
                         ) : item.isButton ? (
-                          <Link href={item.href} legacyBehavior passHref>
-                            <Button className="bg-teal-500 hover:bg-teal-600 text-black font-semibold rounded-full px-6 py-2 shadow-lg">
-                              {item.name}
-                            </Button>
-                          </Link>
+                          // Hidden - Special integration not part of contract
+                          // <Link href={item.href} legacyBehavior passHref>
+                          //   <Button className="bg-teal-500 hover:bg-teal-600 text-black font-semibold rounded-full px-6 py-2 shadow-lg">
+                          //     {item.name}
+                          //   </Button>
+                          // </Link>
+                          null
                         ) : (
                           <Link href={item.href} legacyBehavior passHref>
                             <NavigationMenuLink
@@ -213,13 +215,14 @@ export default function MainNav() {
                       )
                     ))}
                     {/* Render Donate button separately in mobile menu */}
-                    {navItems.find(item => item.isButton) && (
+                    {/* Hidden - Special integration not part of contract */}
+                    {/* {navItems.find(item => item.isButton) && (
                       <Link href="/donate">
                         <Button className="bg-teal-500 hover:bg-teal-600 text-black font-semibold rounded-full px-6 py-2 shadow-lg w-full">
                           {navItems.find(item => item.isButton)?.name}
                         </Button>
                       </Link>
-                    )}
+                    )} */}
                   </div>
                 </div>
               </motion.div>

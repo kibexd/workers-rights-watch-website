@@ -1,80 +1,119 @@
 import { NextResponse } from "next/server"
-// You might need to install PayPal SDK: npm install @paypal/checkout-server-sdk
-// const paypal = require('@paypal/checkout-server-sdk') // Uncomment and use the installed SDK
+
+// Helper function to get PayPal access token
+async function getPayPalAccessToken(): Promise<string> {
+  const clientId = process.env.PAYPAL_CLIENT_ID
+  const clientSecret = process.env.PAYPAL_CLIENT_SECRET
+  const baseUrl = process.env.PAYPAL_API_URL || "https://api-m.sandbox.paypal.com"
+
+  if (!clientId || !clientSecret) {
+    throw new Error("PayPal credentials are not configured")
+  }
+
+  const auth = Buffer.from(`${clientId}:${clientSecret}`).toString("base64")
+
+  const response = await fetch(`${baseUrl}/v1/oauth2/token`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/x-www-form-urlencoded",
+      Authorization: `Basic ${auth}`,
+    },
+    body: "grant_type=client_credentials",
+  })
+
+  if (!response.ok) {
+    const error = await response.text()
+    throw new Error(`Failed to get PayPal access token: ${error}`)
+  }
+
+  const data = await response.json()
+  return data.access_token
+}
 
 export async function POST(request: Request) {
   try {
-    // Parse the request body
     const body = await request.json()
-    const { amount, currency, name, email } = body // displayAmount and displayCurrency are not needed by PayPal API
+    const { amount, currency, name, email } = body
 
-    // Validate the required fields
+    // Validate required fields
     if (!amount || !currency || !name || !email) {
-      return NextResponse.json({ success: false, error: "Missing required fields" }, { status: 400 })
+      return NextResponse.json(
+        { success: false, error: "Missing required fields" },
+        { status: 400 }
+      )
     }
 
-    // This is where you would integrate with PayPal API
-    // Uncommented code:
+    // Get PayPal access token
+    const accessToken = await getPayPalAccessToken()
+    const baseUrl = process.env.PAYPAL_API_URL || "https://api-m.sandbox.paypal.com"
+    const appUrl = process.env.NEXT_PUBLIC_APP_URL || "http://localhost:3001"
 
-    // Ensure PayPal environment variables are set:
-    // PAYPAL_CLIENT_ID, PAYPAL_CLIENT_SECRET in .env.local
-    // NEXT_PUBLIC_APP_URL in .env.local or environment config
+    // Create PayPal order
+    const orderResponse = await fetch(`${baseUrl}/v2/checkout/orders`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${accessToken}`,
+      },
+      body: JSON.stringify({
+        intent: "CAPTURE",
+        purchase_units: [
+          {
+            amount: {
+              currency_code: currency.toUpperCase(),
+              value: amount.toFixed(2),
+            },
+            description: "Donation to Workers Rights Watch",
+            custom_id: `donation_${Date.now()}`,
+          },
+        ],
+        application_context: {
+          brand_name: "Workers Rights Watch",
+          landing_page: "BILLING",
+          user_action: "PAY_NOW",
+          return_url: `${appUrl}/donate?success=true&payment_method=paypal`,
+          cancel_url: `${appUrl}/donate?canceled=true&payment_method=paypal`,
+        },
+        payer: {
+          email_address: email,
+          name: {
+            given_name: name.split(" ")[0] || name,
+            surname: name.split(" ").slice(1).join(" ") || "",
+          },
+        },
+      }),
+    })
 
-    // Create PayPal environment
-    // const clientId = process.env.PAYPAL_CLIENT_ID
-    // const clientSecret = process.env.PAYPAL_CLIENT_SECRET
-    // Use SandboxEnvironment for testing, LiveEnvironment for production
-    // const environment = new paypal.core.SandboxEnvironment(clientId, clientSecret) // Uncomment and use SDK
-    // const client = new paypal.core.PayPalHttpClient(environment) // Uncomment and use SDK
+    if (!orderResponse.ok) {
+      const error = await orderResponse.text()
+      throw new Error(`Failed to create PayPal order: ${error}`)
+    }
 
-    // Create order request
-    // const paypalRequest = new paypal.orders.OrdersCreateRequest() // Uncomment and use SDK
-    // paypalRequest.prefer('return=representation') // Uncomment and use SDK
-    // paypalRequest.requestBody({ // Uncomment and use SDK
-    //   intent: 'CAPTURE',
-    //   purchase_units: [{
-    //     amount: {
-    //       currency_code: currency.toUpperCase(),
-    //       value: amount.toFixed(2), // Amount should be a string with 2 decimal places
-    //     },
-    //     description: 'Donation to Workers Rights Watch',
-    //   }],
-    //   application_context: {
-    //     brand_name: 'Workers Rights Watch', // Your brand name
-    //     landing_page: 'BILLING', // Or LOGIN, NO_PREFERENCE
-    //     user_action: 'PAY_NOW', // Or CONTINUE
-    //     // Configure return and cancel URLs where PayPal redirects the user after payment/cancellation
-    //     return_url: `${process.env.NEXT_PUBLIC_APP_URL}/donate?success=true`, // Example success page URL
-    //     cancel_url: `${process.env.NEXT_PUBLIC_APP_URL}/donate?cancelled=true`, // Example cancel page URL
-    //   },
-    // })
+    const orderData = await orderResponse.json()
 
-    // Execute request
-    // const response = await client.execute(paypalRequest) // Uncomment and use SDK
+    // Find approval URL
+    const approvalLink = orderData.links?.find(
+      (link: { rel: string; href: string }) => link.rel === "approve"
+    )
 
-    // Get approval URL to redirect the user
-    // const approvalUrl = response.result.links.find(link => link.rel === 'approve').href // Uncomment and use SDK
+    if (!approvalLink) {
+      throw new Error("Failed to get PayPal approval URL")
+    }
 
-    // Return the order ID and approval URL to the frontend
-    // return NextResponse.json({
-    //   success: true,
-    //   orderID: response.result.id,
-    //   approvalUrl,
-    // })
-
-
-    // For demo purposes, return a success response
     return NextResponse.json({
       success: true,
-      orderID: "demo_order_" + Date.now(),
-      // In a real scenario, this would be the actual PayPal approval URL
-      // For demo, we'll use a dummy redirect that simulates success
-      approvalUrl: "/donate?success=true",
+      orderID: orderData.id,
+      approvalUrl: approvalLink.href,
     })
   } catch (error) {
     console.error("Error creating PayPal order:", error)
-    // Provide a more user-friendly error message
-    const errorMessage = error instanceof Error ? error.message : "An unexpected error occurred during PayPal order creation";
-    return NextResponse.json({ success: false, error: errorMessage }, { status: 500 })
+    const errorMessage =
+      error instanceof Error
+        ? error.message
+        : "An unexpected error occurred during PayPal order creation"
+    return NextResponse.json(
+      { success: false, error: errorMessage },
+      { status: 500 }
+    )
   }
 }

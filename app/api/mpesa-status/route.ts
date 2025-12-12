@@ -38,41 +38,22 @@ async function getMpesaAccessToken(): Promise<string> {
   return data.access_token
 }
 
-export async function POST(request: Request) {
+export async function GET(request: Request) {
   try {
-    const body = await request.json()
-    const { amount, phone, name, email } = body
+    const { searchParams } = new URL(request.url)
+    const checkoutRequestID = searchParams.get("checkoutRequestID")
 
-    // Validate required fields (only amount and phone are required for M-Pesa)
-    if (!amount || !phone) {
+    if (!checkoutRequestID) {
       return NextResponse.json(
-        { success: false, error: "Amount and phone number are required" },
+        { success: false, error: "Missing checkoutRequestID" },
         { status: 400 }
       )
     }
 
-    // Format the phone number (remove leading 0 and add country code if needed)
-    let formattedPhone = phone.replace(/\s+/g, "") // Remove spaces
-    if (formattedPhone.startsWith("0")) {
-      formattedPhone = "254" + formattedPhone.substring(1)
-    } else if (!formattedPhone.startsWith("254")) {
-      formattedPhone = "254" + formattedPhone
-    }
-
-    // Validate phone number format
-    if (!/^254\d{9}$/.test(formattedPhone)) {
-      return NextResponse.json(
-        { success: false, error: "Invalid phone number format" },
-        { status: 400 }
-      )
-    }
-
-    // Get M-Pesa credentials
     const shortcode = process.env.MPESA_SHORTCODE
     const passkey = process.env.MPESA_PASSKEY
     const baseUrl =
       process.env.MPESA_API_URL || "https://sandbox.safaricom.co.ke"
-    const appUrl = process.env.NEXT_PUBLIC_APP_URL || "http://localhost:3001"
 
     if (!shortcode || !passkey) {
       return NextResponse.json(
@@ -93,59 +74,62 @@ export async function POST(request: Request) {
     // Get access token
     const accessToken = await getMpesaAccessToken()
 
-    // Initiate STK Push
-    const stkPushResponse = await fetch(
-      `${baseUrl}/mpesa/stkpush/v1/processrequest`,
+    // Query transaction status
+    const statusResponse = await fetch(
+      `${baseUrl}/mpesa/stkpushquery/v1/query`,
       {
         method: "POST",
-      headers: {
+        headers: {
           Authorization: `Bearer ${accessToken}`,
           "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        BusinessShortCode: shortcode,
+        },
+        body: JSON.stringify({
+          BusinessShortCode: shortcode,
           Password: password,
           Timestamp: timestamp,
-          TransactionType: "CustomerPayBillOnline",
-          Amount: Math.round(amount), // Amount in KES (whole number)
-          PartyA: formattedPhone,
-          PartyB: shortcode,
-        PhoneNumber: formattedPhone,
-          CallBackURL: `${appUrl}/api/mpesa-callback`,
-          AccountReference: `WRW-${Date.now()}`, // Unique reference
-          TransactionDesc: "Donation to Workers Rights Watch",
+          CheckoutRequestID: checkoutRequestID,
         }),
       }
     )
 
-    if (!stkPushResponse.ok) {
-      const error = await stkPushResponse.text()
+    if (!statusResponse.ok) {
+      const error = await statusResponse.text()
       throw new Error(`M-Pesa API error: ${error}`)
     }
 
-    const data = await stkPushResponse.json()
+    const data = await statusResponse.json()
 
-    if (data.ResponseCode === "0") {
-      return NextResponse.json({
-        success: true,
-        checkoutRequestID: data.CheckoutRequestID,
-        customerMessage: data.CustomerMessage,
-      })
-    } else {
-      console.error("M-Pesa API error:", data)
-      throw new Error(
-        data.ResponseDescription || "Failed to initiate M-Pesa payment"
-      )
-    }
+    // ResultCode meanings:
+    // 0 = Success
+    // 1 = Insufficient funds
+    // 1032 = Request cancelled by user
+    // 1037 = Timeout
+    const status =
+      data.ResultCode === 0
+        ? "COMPLETED"
+        : data.ResultCode === 1032
+          ? "CANCELLED"
+          : data.ResultCode === 1037
+            ? "TIMEOUT"
+            : "FAILED"
+
+    return NextResponse.json({
+      success: true,
+      status,
+      resultCode: data.ResultCode,
+      resultDesc: data.ResultDesc,
+      checkoutRequestID: data.CheckoutRequestID,
+    })
   } catch (error) {
-    console.error("Error processing M-Pesa payment:", error)
+    console.error("Error checking M-Pesa status:", error)
     const errorMessage =
       error instanceof Error
         ? error.message
-        : "An unexpected error occurred during M-Pesa payment"
+        : "An unexpected error occurred while checking payment status"
     return NextResponse.json(
       { success: false, error: errorMessage },
       { status: 500 }
     )
   }
 }
+
