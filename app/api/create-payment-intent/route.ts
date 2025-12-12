@@ -1,4 +1,9 @@
 import { NextResponse } from "next/server"
+import Stripe from "stripe"
+
+const stripe = new Stripe(process.env.STRIPE_SECRET_KEY || "", {
+  apiVersion: "2024-12-18.acacia",
+})
 
 export async function POST(request: Request) {
   try {
@@ -11,10 +16,13 @@ export async function POST(request: Request) {
       return NextResponse.json({ success: false, error: "Missing required fields" }, { status: 400 })
     }
 
-    // This is where you would integrate with Stripe
-    // Uncommented code:
-    // Ensure stripe-js is installed: npm install @stripe/stripe-js stripe
-    const stripe = require('stripe')(process.env.STRIPE_SECRET_KEY) // You need to set STRIPE_SECRET_KEY in .env.local
+    // Ensure Stripe is configured
+    if (!process.env.STRIPE_SECRET_KEY) {
+      return NextResponse.json(
+        { success: false, error: "Stripe is not configured" },
+        { status: 500 }
+      )
+    }
 
     // Create a payment intent
     const paymentIntent = await stripe.paymentIntents.create({
