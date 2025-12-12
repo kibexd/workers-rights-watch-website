@@ -1,11 +1,22 @@
 import { NextResponse } from "next/server"
-import Stripe from "stripe"
+// TODO: Stripe payment integration - commented out until donation system is complete
+// import Stripe from "stripe"
 
-const stripe = new Stripe(process.env.STRIPE_SECRET_KEY || "", {
-  apiVersion: "2024-12-18.acacia",
-})
+// const stripe = new Stripe(process.env.STRIPE_SECRET_KEY || "", {
+//   apiVersion: "2024-12-18.acacia",
+// })
 
 export async function POST(request: Request) {
+  // Stripe payment intent route - temporarily disabled
+  return NextResponse.json(
+    { 
+      success: false, 
+      error: "Payment system is not yet implemented. Please check back later." 
+    },
+    { status: 503 }
+  )
+
+  /* COMMENTED OUT - Stripe integration not yet complete
   try {
     // Parse the request body
     const body = await request.json()
@@ -40,15 +51,9 @@ export async function POST(request: Request) {
       success: true,
       clientSecret: paymentIntent.client_secret
     })
-
-
-    // For demo purposes, return a success response
-    // return NextResponse.json({
-    //   success: true,
-    //   clientSecret: "demo_client_secret_" + Date.now(),
-    // })
   } catch (error) {
     console.error("Error creating payment intent:", error)
     return NextResponse.json({ success: false, error: "Failed to process payment" }, { status: 500 })
   }
+  */
 }

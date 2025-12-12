@@ -1,11 +1,22 @@
 import { NextResponse } from "next/server"
-import Stripe from "stripe"
+// TODO: Stripe payment integration - commented out until donation system is complete
+// import Stripe from "stripe"
 
-const stripe = new Stripe(process.env.STRIPE_SECRET_KEY || "", {
-  apiVersion: "2024-12-18.acacia",
-})
+// const stripe = new Stripe(process.env.STRIPE_SECRET_KEY || "", {
+//   apiVersion: "2024-12-18.acacia",
+// })
 
 export async function POST(request: Request) {
+  // Stripe checkout session route - temporarily disabled
+  return NextResponse.json(
+    { 
+      success: false, 
+      error: "Payment system is not yet implemented. Please check back later." 
+    },
+    { status: 503 }
+  )
+
+  /* COMMENTED OUT - Stripe integration not yet complete
   try {
     const body = await request.json()
     const { amount, currency, name, email, displayAmount, displayCurrency } = body
@@ -71,5 +82,6 @@ export async function POST(request: Request) {
       { status: 500 }
     )
   }
+  */
 }
 

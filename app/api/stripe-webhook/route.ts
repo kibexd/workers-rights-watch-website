@@ -1,14 +1,22 @@
 import { NextResponse } from "next/server"
-import Stripe from "stripe"
+// TODO: Stripe payment integration - commented out until donation system is complete
+// import Stripe from "stripe"
 import { headers } from "next/headers"
 
-const stripe = new Stripe(process.env.STRIPE_SECRET_KEY || "", {
-  apiVersion: "2024-12-18.acacia",
-})
+// const stripe = new Stripe(process.env.STRIPE_SECRET_KEY || "", {
+//   apiVersion: "2024-12-18.acacia",
+// })
 
-const webhookSecret = process.env.STRIPE_WEBHOOK_SECRET
+// const webhookSecret = process.env.STRIPE_WEBHOOK_SECRET
 
 export async function POST(request: Request) {
+  // Stripe webhook route - temporarily disabled
+  return NextResponse.json(
+    { error: "Webhook handler is not yet implemented" },
+    { status: 503 }
+  )
+
+  /* COMMENTED OUT - Stripe integration not yet complete
   try {
     const body = await request.text()
     const headersList = await headers()
@@ -69,5 +77,6 @@ export async function POST(request: Request) {
       { status: 500 }
     )
   }
+  */
 }
 
