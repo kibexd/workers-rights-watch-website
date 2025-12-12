@@ -59,7 +59,7 @@ export default function Footer() {
       icon: <Linkedin className="h-5 w-5" />,
     },
     {
-      name: "X (Twitter)",
+      name: "X",
       href: "https://x.com/Workersrights24",
       icon: <Twitter className="h-5 w-5" />,
     },
