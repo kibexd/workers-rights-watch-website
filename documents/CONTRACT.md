@@ -377,7 +377,7 @@ For complete details on credentials and access to be transferred, refer to:
 - Section 5.3 (Intellectual Property & Ownership)
 - Section 6 (Deliverables Checklist)
 
-**Important Note:**https://web.whatsapp.com/
+**Important Note:**
 The handover agreement is a supplementary document that references this main contract. This contract takes precedence, and the handover agreement serves to formalize the credential transfer process after full payment.
 
 ---
