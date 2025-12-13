@@ -5,6 +5,8 @@
 
 **Primary Focus:** This agreement primarily covers the handover of **website production credentials** (Vercel, GitHub, and related access). Social media accounts were previously transferred and are included here for completeness.
 
+**Prerequisite:** This handover agreement is a supplementary document to the main **Website Development & Maintenance Agreement** (Contract), which must be signed by both parties before this handover process begins. This handover will only proceed after full payment (KES 60,000) has been received and cleared as per the main contract.
+
 ---
 
 **Agreement Date:** _________________, 2025

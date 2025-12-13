@@ -343,6 +343,43 @@ This Agreement will be ruled and governed in accordance with the laws of Kenya.
 - Outstanding payments become immediately due
 - Developer provides final backup of website
 
+### 5.16 Website Handover Process
+
+**Contract Signing First:**
+This main contract (Website Development & Maintenance Agreement) must be signed by both parties before any handover process begins. The handover is a separate process that occurs after full payment.
+
+**Handover Timeline:**
+
+**After Payment 1 (KES 30,000):**
+- Website launches on main domain (www.workersrightswatch.org)
+- Client receives Vercel dashboard access for website monitoring
+- Developer manages technical aspects and updates
+
+**After Payment 2 (KES 60,000 - FULL PAYMENT):**
+- Complete handover process begins
+- All login credentials transferred (see Section 5.3 for details)
+- Complete ownership transfers to Client
+
+**Handover Agreement:**
+A separate "Website & Social Media Handover Agreement" document will be provided and signed after full payment (Payment 2) is received and cleared. This handover agreement details:
+- Transfer of all login credentials (Vercel, GitHub repository, Google Analytics)
+- Social media 2FA codes (with options for client - see handover agreement)
+- Staff guidance and training on website monitoring and update request process
+- Ongoing support arrangements
+
+**Prerequisites for Handover:**
+1. ✅ This contract must be signed by both parties
+2. ✅ Full payment (KES 60,000) must be received and cleared
+3. ✅ Website must be approved by Client (see Section 9)
+
+**What Gets Handed Over:**
+For complete details on credentials and access to be transferred, refer to:
+- Section 5.3 (Intellectual Property & Ownership)
+- Section 6 (Deliverables Checklist)
+
+**Important Note:**https://web.whatsapp.com/
+The handover agreement is a supplementary document that references this main contract. This contract takes precedence, and the handover agreement serves to formalize the credential transfer process after full payment.
+
 ---
 
 ## 6. DELIVERABLES CHECKLIST
